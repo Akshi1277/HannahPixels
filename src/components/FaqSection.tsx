@@ -65,8 +65,10 @@ export default function FaqSection() {
               >
                 <button
                   type="button"
+                  id={`faq-question-${idx}`}
+                  aria-controls={`faq-answer-${idx}`}
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 outline-none"
                   aria-expanded={isOpen}
                 >
                   <span className="text-base md:text-lg font-bold text-[#181A16]">
@@ -82,6 +84,9 @@ export default function FaqSection() {
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
+                      id={`faq-answer-${idx}`}
+                      role="region"
+                      aria-labelledby={`faq-question-${idx}`}
                       key="content"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
@@ -100,7 +105,7 @@ export default function FaqSection() {
         </div>
 
         {/* Still have questions? */}
-        <div className="mt-12 p-6 rounded-2xl bg-white border border-[#538B56]/25 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-12 p-6 rounded-2xl bg-white border border-[#538B56]/25 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-sm">
           <div>
             <h4 className="text-sm font-bold text-[#181A16]">Have a custom technical inquiry or bespoke dimensions?</h4>
             <p className="text-xs text-[#6B6F62]">Our packaging consultant will review your specifications directly.</p>
@@ -109,10 +114,12 @@ export default function FaqSection() {
             href={whatsAppUrl("Hello Hannah Pixels, I'd like to ask a question about custom packaging.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2.5 rounded-full bg-[#F8BC23] text-[#181A16] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all shrink-0 flex items-center gap-2"
+            className="group pl-5 pr-2 py-2 rounded-full bg-[#F8BC23] text-[#181A16] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all shrink-0 flex items-center gap-2.5 shadow-md shadow-[#F8BC23]/20 hover:scale-105 active:scale-[0.98]"
           >
-            <Icon name="MessageCircleIcon" size={14} />
             <span>Chat with an Expert</span>
+            <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+              <Icon name="MessageCircleIcon" size={13} />
+            </span>
           </a>
         </div>
       </div>

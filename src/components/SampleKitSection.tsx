@@ -89,128 +89,151 @@ Shipping Address: ${formData.address || 'Not specified'}`
               </div>
             </div>
 
-            {/* Right: Low-Friction Request Card */}
+            {/* Right: Low-Friction Request Card with Double-Bezel Architecture */}
             <div className="lg:col-span-5">
-              <div className="bg-[#090B0A]/95 backdrop-blur-xl border border-[#F8BC23]/40 rounded-2xl p-7 md:p-8 shadow-2xl">
-                {ordered ? (
-                  <div className="text-center py-8 space-y-4">
-                    <div className="w-14 h-14 rounded-full bg-[#1E3A2F] border border-[#F8BC23]/50 flex items-center justify-center text-[#F8BC23] mx-auto">
-                      <Icon name="MessageCircleIcon" size={26} />
-                    </div>
-                    <h3 className="text-xl font-bold text-white">One Last Step</h3>
-                    <p className="text-sm text-white/70 leading-relaxed">
-                      Thanks, <strong className="text-white">{formData.name || 'valued brand partner'}</strong> — tap below to send these details to our team on WhatsApp so we can dispatch your swatch box.
-                    </p>
-                    <a
-                      href={sampleKitWhatsAppUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all shadow-lg shadow-[#F8BC23]/20"
-                    >
-                      <Icon name="MessageCircleIcon" size={16} />
-                      <span>Send Details via WhatsApp</span>
-                    </a>
-                    <div>
-                      <button
-                        onClick={() => setOrdered(false)}
-                        className="text-xs font-bold text-[#F8BC23] underline hover:text-[#FFCB4D] cursor-pointer pt-2"
+              <div className="rounded-[2.5rem] p-2 bg-white/5 ring-1 ring-[#F8BC23]/30 shadow-2xl">
+                <div className="bg-[#090B0A]/95 backdrop-blur-xl rounded-[calc(2.5rem-0.5rem)] p-7 md:p-8 border border-white/10">
+                  {ordered ? (
+                    <div className="text-center py-8 space-y-4">
+                      <div className="w-14 h-14 rounded-full bg-[#1E3A2F] border border-[#F8BC23]/50 flex items-center justify-center text-[#F8BC23] mx-auto">
+                        <Icon name="MessageCircleIcon" size={26} />
+                      </div>
+                      <h3 className="text-xl font-bold text-white">One Last Step</h3>
+                      <p className="text-sm text-white/70 leading-relaxed">
+                        Thanks, <strong className="text-white">{formData.name || 'valued brand partner'}</strong> — tap below to send these details to our team on WhatsApp so we can dispatch your swatch box.
+                      </p>
+                      <a
+                        href={sampleKitWhatsAppUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-3 pl-6 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all shadow-lg shadow-[#F8BC23]/20"
                       >
-                        Submit another request
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-bold text-white">Request Swatch Box</h3>
-                        <span className="text-[10px] font-bold text-[#F8BC23] bg-[#141A17] border border-[#F8BC23]/30 px-2 py-0.5 rounded-full">
-                          Complimentary B2B
+                        <Icon name="MessageCircleIcon" size={16} />
+                        <span>Send Details via WhatsApp</span>
+                        <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                          <Icon name="ArrowRightIcon" size={10} />
                         </span>
-                      </div>
-                      <p className="text-xs text-white/60 mt-1">Dispatched express to your studio in UK or UAE.</p>
-                    </div>
-
-                    <div className="space-y-3 pt-1">
+                      </a>
                       <div>
-                        <label className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Your Name</label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="e.g. Oliver Sterling"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none transition-colors"
-                        />
+                        <button
+                          onClick={() => setOrdered(false)}
+                          className="text-xs font-bold text-[#F8BC23] underline hover:text-[#FFCB4D] cursor-pointer pt-2"
+                        >
+                          Submit another request
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div>
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-lg font-bold text-white">Request Swatch Box</h3>
+                          <span className="text-[10px] font-bold text-[#F8BC23] bg-[#141A17] border border-[#F8BC23]/30 px-2.5 py-0.5 rounded-full">
+                            Complimentary B2B
+                          </span>
+                        </div>
+                        <p className="text-xs text-white/60 mt-1">Dispatched express to your studio in UK or UAE.</p>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="space-y-3 pt-1">
                         <div>
-                          <label className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Brand / Company</label>
+                          <label htmlFor="swatch-name" className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Your Name</label>
                           <input
+                            id="swatch-name"
+                            name="name"
                             type="text"
                             required
-                            placeholder="e.g. Maison Oud Ltd"
-                            value={formData.company}
-                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none transition-colors"
+                            autoComplete="name"
+                            placeholder="e.g. Oliver Sterling"
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 outline-none transition-colors"
                           />
                         </div>
+
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <label htmlFor="swatch-company" className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Brand / Company</label>
+                            <input
+                              id="swatch-company"
+                              name="company"
+                              type="text"
+                              required
+                              autoComplete="organization"
+                              placeholder="e.g. Maison Oud Ltd"
+                              value={formData.company}
+                              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                              className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 outline-none transition-colors"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="swatch-email" className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Work Email</label>
+                            <input
+                              id="swatch-email"
+                              name="email"
+                              type="email"
+                              required
+                              autoComplete="email"
+                              spellCheck={false}
+                              placeholder="oliver@brand.com"
+                              value={formData.email}
+                              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                              className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 outline-none transition-colors"
+                            />
+                          </div>
+                        </div>
+
                         <div>
-                          <label className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Work Email</label>
+                          <label htmlFor="swatch-interest" className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Primary Packaging Interest</label>
+                          <select
+                            id="swatch-interest"
+                            name="productInterest"
+                            value={formData.productInterest}
+                            onChange={(e) => setFormData({ ...formData, productInterest: e.target.value })}
+                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none transition-colors"
+                          >
+                            <option value="Luxury Packaging">Luxury Packaging (Rigid &amp; Gift Boxes)</option>
+                            <option value="Product Packaging">Product Packaging (Corrugated &amp; Folding Cartons)</option>
+                            <option value="Fragrance & Beauty">Fragrance &amp; Beauty Packaging</option>
+                            <option value="Chocolate & Confectionery">Chocolate &amp; Confectionery Packaging</option>
+                            <option value="Paper & Carry">Paper &amp; Carry (Luxury Bags &amp; Collateral)</option>
+                            <option value="Books & Publishing">Books &amp; Publishing (Hardcover &amp; Catalogues)</option>
+                            <option value="All Collections">Complete Atelier Swatch Box (All Collections)</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label htmlFor="swatch-address" className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Shipping Address (UK / UAE / Global)</label>
                           <input
-                            type="email"
+                            id="swatch-address"
+                            name="address"
+                            type="text"
                             required
-                            placeholder="oliver@brand.com"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none transition-colors"
+                            autoComplete="street-address"
+                            placeholder="Street, City, Postal Code & Country"
+                            value={formData.address}
+                            onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 outline-none transition-colors"
                           />
                         </div>
                       </div>
 
-                      <div>
-                        <label className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Primary Packaging Interest</label>
-                        <select
-                          value={formData.productInterest}
-                          onChange={(e) => setFormData({ ...formData, productInterest: e.target.value })}
-                          className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none transition-colors"
-                        >
-                          <option value="Luxury Packaging">Luxury Packaging (Rigid &amp; Gift Boxes)</option>
-                          <option value="Product Packaging">Product Packaging (Corrugated &amp; Folding Cartons)</option>
-                          <option value="Fragrance & Beauty">Fragrance &amp; Beauty Packaging</option>
-                          <option value="Chocolate & Confectionery">Chocolate &amp; Confectionery Packaging</option>
-                          <option value="Paper & Carry">Paper &amp; Carry (Luxury Bags &amp; Collateral)</option>
-                          <option value="Books & Publishing">Books &amp; Publishing (Hardcover &amp; Catalogues)</option>
-                          <option value="All Collections">Complete Atelier Swatch Box (All Collections)</option>
-                        </select>
-                      </div>
+                      <button
+                        type="submit"
+                        className="group w-full mt-2 py-3 pl-6 pr-2.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#F8BC23]/20 cursor-pointer flex items-center justify-between"
+                      >
+                        <span className="font-bold">Dispatch Sample Swatch Box</span>
+                        <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                          <Icon name="ArrowRightIcon" size={12} />
+                        </span>
+                      </button>
 
-                      <div>
-                        <label className="block text-[11px] font-bold uppercase tracking-wider text-white/70 mb-1">Shipping Address (UK / UAE / Global)</label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="Street, City, Postal Code & Country"
-                          value={formData.address}
-                          onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                          className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none transition-colors"
-                        />
-                      </div>
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full mt-2 py-3.5 px-6 rounded-xl bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all shadow-lg shadow-[#F8BC23]/20 cursor-pointer"
-                    >
-                      Dispatch Sample Swatch Box
-                    </button>
-
-                    <p className="text-[10px] text-white/40 text-center pt-1">
-                      Includes 12+ paperboard grades, foil swatch ribbons &amp; physical sample builds.
-                    </p>
-                  </form>
-                )}
+                      <p className="text-[10px] text-white/40 text-center pt-1">
+                        Includes 12+ paperboard grades, foil swatch ribbons &amp; physical sample builds.
+                      </p>
+                    </form>
+                  )}
+                </div>
               </div>
             </div>
           </div>

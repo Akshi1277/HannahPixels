@@ -39,10 +39,15 @@ export default function Header() {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden'
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') closeMenu()
+      }
+      window.addEventListener('keydown', handleKeyDown)
+      return () => {
+        document.body.style.overflow = ''
+        window.removeEventListener('keydown', handleKeyDown)
+      }
     } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
       document.body.style.overflow = ''
     }
   }, [menuOpen])
@@ -184,6 +189,8 @@ export default function Header() {
           <button
             className="lg:hidden flex items-center justify-center w-11 h-11 rounded-full border border-white/20 bg-black/50 backdrop-blur-md text-white"
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation-drawer"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             <Icon
@@ -197,7 +204,13 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#090B0A]/98 backdrop-blur-2xl flex flex-col pt-24 px-6 pb-8 overflow-y-auto">
+        <div
+          id="mobile-navigation-drawer"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation Menu"
+          className="fixed inset-0 z-50 bg-[#090B0A]/98 backdrop-blur-2xl flex flex-col pt-24 px-6 pb-8 overflow-y-auto"
+        >
           <div className="flex items-center justify-between pb-6 border-b border-[#202824]">
             <AppImage
               src="/hannahpixels.png"
@@ -208,6 +221,7 @@ export default function Header() {
             />
             <button
               onClick={closeMenu}
+              aria-label="Close navigation menu"
               className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white"
             >
               <Icon name="XMarkIcon" size={20} />

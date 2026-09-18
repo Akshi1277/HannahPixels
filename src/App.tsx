@@ -23,7 +23,7 @@ export default function App() {
         <Header />
         <main>
           <HeroSection />
-          <Suspense fallback={<div className="h-32 flex items-center justify-center opacity-60 text-xs tracking-widest uppercase text-[#93660C]">Loading...</div>}>
+          <Suspense fallback={<div className="h-32 flex items-center justify-center opacity-60 text-xs tracking-widest uppercase text-[#93660C]">Loading…</div>}>
             <ServicesSection />
             <AboutSection />
             <LogisticsSection />

@@ -275,7 +275,7 @@ Please share specification options and turnaround plan!`
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#F8BC23]">
                           1. Select Product Collection
                         </label>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div role="radiogroup" aria-label="Product Collection" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                           {[
                             'Luxury Packaging',
                             'Product Packaging',
@@ -287,10 +287,12 @@ Please share specification options and turnaround plan!`
                             <button
                               type="button"
                               key={type}
+                              role="radio"
+                              aria-checked={form.productType === type}
                               onClick={() => setForm({ ...form, productType: type })}
                               className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                                 form.productType === type
-                                  ? 'bg-[#141A17] border-[#F8BC23] text-[#F8BC23] shadow-md shadow-[#F8BC23]/15'
+                                  ? 'bg-[#141A17] border-[#F8BC23] text-[#F8BC23] shadow-md shadow-[#F8BC23]/15 ring-2 ring-[#F8BC23]/20'
                                   : 'bg-[#141A17]/40 border-[#202824] text-white/80 hover:border-white/20'
                               }`}
                             >
@@ -306,7 +308,7 @@ Please share specification options and turnaround plan!`
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#F8BC23]">
                           2. Target Volume Tier
                         </label>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div role="radiogroup" aria-label="Volume Tier" className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                           {[
                             { label: '100 - 500', note: 'Boutique MOQ' },
                             { label: '500 - 2000', note: 'Popular' },
@@ -316,10 +318,12 @@ Please share specification options and turnaround plan!`
                             <button
                               type="button"
                               key={q.label}
+                              role="radio"
+                              aria-checked={form.quantity === q.label}
                               onClick={() => setForm({ ...form, quantity: q.label })}
                               className={`p-3.5 rounded-xl border text-center transition-all cursor-pointer ${
                                 form.quantity === q.label
-                                  ? 'bg-[#141A17] border-[#F8BC23] text-[#F8BC23] shadow-md shadow-[#F8BC23]/15'
+                                  ? 'bg-[#141A17] border-[#F8BC23] text-[#F8BC23] shadow-md shadow-[#F8BC23]/15 ring-2 ring-[#F8BC23]/20'
                                   : 'bg-[#141A17]/40 border-[#202824] text-white/70 hover:border-white/20'
                               }`}
                             >
@@ -334,10 +338,12 @@ Please share specification options and turnaround plan!`
                         <button
                           type="button"
                           onClick={handleNext}
-                          className="px-8 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all flex items-center gap-2"
+                          className="group pl-7 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] flex items-center gap-3 shadow-lg shadow-[#F8BC23]/20"
                         >
                           <span>Next: Finishes &amp; Specs</span>
-                          <Icon name="ArrowRightIcon" size={14} />
+                          <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                            <Icon name="ArrowRightIcon" size={11} />
+                          </span>
                         </button>
                       </div>
                     </motion.div>
@@ -356,7 +362,7 @@ Please share specification options and turnaround plan!`
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#F8BC23]">
                           Specialist Finishes &amp; Add-ons
                         </label>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div role="group" aria-label="Finishes selection" className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {[
                             'Hot Foil Stamping (Gold / Bronze / Copper)',
                             'Multi-Level 3D Emboss / Deboss',
@@ -370,10 +376,12 @@ Please share specification options and turnaround plan!`
                               <button
                                 type="button"
                                 key={finish}
+                                role="checkbox"
+                                aria-checked={isChecked}
                                 onClick={() => toggleFinish(finish)}
                                 className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer flex items-center gap-3 ${
                                   isChecked
-                                    ? 'bg-[#141A17] border-[#F8BC23] text-white'
+                                    ? 'bg-[#141A17] border-[#F8BC23] text-white ring-2 ring-[#F8BC23]/20'
                                     : 'bg-[#141A17]/40 border-[#202824] text-white/60 hover:border-white/20'
                                 }`}
                               >
@@ -391,19 +399,21 @@ Please share specification options and turnaround plan!`
 
                       {/* Dimensions or Notes */}
                       <div className="space-y-2 pt-2">
-                        <label className="block text-xs font-bold uppercase tracking-wider text-[#F8BC23]">
+                        <label htmlFor="quote-dimensions" className="block text-xs font-bold uppercase tracking-wider text-[#F8BC23]">
                           Approximate Dimensions (L × W × H) or Packaging Notes
                         </label>
                         <input
+                          id="quote-dimensions"
+                          name="dimensions"
                           type="text"
                           value={form.dimensions}
                           onChange={(e) => setForm({ ...form, dimensions: e.target.value })}
                           placeholder="e.g. 120 x 80 x 40 mm for 50ml perfume bottle with dieline requirement"
-                          className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] text-sm text-white px-4 py-3 rounded-xl outline-none transition-colors"
+                          className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 text-sm text-white px-4 py-3 rounded-xl outline-none transition-colors"
                         />
                       </div>
 
-                      <div className="pt-4 flex justify-between">
+                      <div className="pt-4 flex justify-between items-center">
                         <button
                           type="button"
                           onClick={handleBack}
@@ -414,10 +424,12 @@ Please share specification options and turnaround plan!`
                         <button
                           type="button"
                           onClick={handleNext}
-                          className="px-8 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all flex items-center gap-2"
+                          className="group pl-7 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] flex items-center gap-3 shadow-lg shadow-[#F8BC23]/20"
                         >
                           <span>Next: Contact Details</span>
-                          <Icon name="ArrowRightIcon" size={14} />
+                          <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                            <Icon name="ArrowRightIcon" size={11} />
+                          </span>
                         </button>
                       </div>
                     </motion.div>
@@ -441,47 +453,60 @@ Please share specification options and turnaround plan!`
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Your Full Name</label>
+                          <label htmlFor="quote-name" className="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Your Full Name</label>
                           <input
+                            id="quote-name"
+                            name="name"
                             type="text"
                             required
+                            autoComplete="name"
                             value={form.name}
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
                             placeholder="Full Name"
-                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] text-sm text-white px-4 py-3 rounded-xl outline-none"
+                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 text-sm text-white px-4 py-3 rounded-xl outline-none"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Company / Brand Name</label>
+                          <label htmlFor="quote-company" className="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Company / Brand Name</label>
                           <input
+                            id="quote-company"
+                            name="company"
                             type="text"
                             required
+                            autoComplete="organization"
                             value={form.company}
                             onChange={(e) => setForm({ ...form, company: e.target.value })}
                             placeholder="Brand Name"
-                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] text-sm text-white px-4 py-3 rounded-xl outline-none"
+                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 text-sm text-white px-4 py-3 rounded-xl outline-none"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Corporate Email</label>
+                          <label htmlFor="quote-email" className="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Corporate Email</label>
                           <input
+                            id="quote-email"
+                            name="email"
                             type="email"
                             required
+                            autoComplete="email"
+                            spellCheck={false}
                             value={form.email}
                             onChange={(e) => setForm({ ...form, email: e.target.value })}
                             placeholder="procurement@company.com"
-                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] text-sm text-white px-4 py-3 rounded-xl outline-none"
+                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 text-sm text-white px-4 py-3 rounded-xl outline-none"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Phone / WhatsApp Number</label>
+                          <label htmlFor="quote-phone" className="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1">Phone / WhatsApp Number</label>
                           <input
+                            id="quote-phone"
+                            name="phone"
                             type="tel"
                             required
+                            autoComplete="tel"
                             value={form.phone}
                             onChange={(e) => setForm({ ...form, phone: e.target.value })}
                             placeholder="+44 or +971 number"
-                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] text-sm text-white px-4 py-3 rounded-xl outline-none"
+                            className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 text-sm text-white px-4 py-3 rounded-xl outline-none"
                           />
                         </div>
                       </div>
@@ -498,10 +523,12 @@ Please share specification options and turnaround plan!`
                         <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                           <button
                             type="submit"
-                            className="px-8 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all shadow-xl shadow-[#F8BC23]/20 flex items-center justify-center gap-2 w-full sm:w-auto cursor-pointer"
+                            className="group pl-8 pr-3 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-xl shadow-[#F8BC23]/20 flex items-center justify-center gap-3 w-full sm:w-auto cursor-pointer"
                           >
                             <span>Review &amp; Send Request</span>
-                            <Icon name="ArrowRightIcon" size={14} />
+                            <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                              <Icon name="ArrowRightIcon" size={11} />
+                            </span>
                           </button>
                         </div>
                       </div>

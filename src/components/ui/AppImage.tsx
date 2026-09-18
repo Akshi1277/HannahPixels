@@ -30,6 +30,8 @@ export default function AppImage({
         className={`absolute inset-0 w-full h-full ${className}`}
         sizes={sizes}
         loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
+        decoding="async"
         {...props}
       />
     )
@@ -44,6 +46,8 @@ export default function AppImage({
       className={className}
       sizes={sizes}
       loading={priority ? 'eager' : 'lazy'}
+      fetchPriority={priority ? 'high' : 'auto'}
+      decoding="async"
       {...props}
     />
   )

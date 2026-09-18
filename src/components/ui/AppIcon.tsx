@@ -73,70 +73,72 @@ interface AppIconProps {
 }
 
 export default function AppIcon({ name, size = 16, className = '' }: AppIconProps) {
+  const iconProps = { size, className, 'aria-hidden': true }
+
   switch (name) {
     case 'ChevronDownIcon':
-      return <ChevronDown size={size} className={className} />
+      return <ChevronDown {...iconProps} />
     case 'ArrowRightIcon':
-      return <ArrowRight size={size} className={className} />
+      return <ArrowRight {...iconProps} />
     case 'Bars3Icon':
-      return <Menu size={size} className={className} />
+      return <Menu {...iconProps} />
     case 'XMarkIcon':
-      return <X size={size} className={className} />
+      return <X {...iconProps} />
     case 'StarIcon':
-      return <Star size={size} className={className} />
+      return <Star {...iconProps} />
     case 'ArrowDownIcon':
-      return <ArrowDown size={size} className={className} />
+      return <ArrowDown {...iconProps} />
     case 'ClockIcon':
-      return <Clock size={size} className={className} />
+      return <Clock {...iconProps} />
     case 'CurrencyRupeeIcon':
-      return <IndianRupee size={size} className={className} />
+      return <IndianRupee {...iconProps} />
     case 'UserGroupIcon':
-      return <Users size={size} className={className} />
+      return <Users {...iconProps} />
     case 'SparklesIcon':
-      return <Sparkles size={size} className={className} />
+      return <Sparkles {...iconProps} />
     case 'CubeIcon':
-      return <Box size={size} className={className} />
+      return <Box {...iconProps} />
     case 'WrenchScrewdriverIcon':
-      return <Wrench size={size} className={className} />
+      return <Wrench {...iconProps} />
     case 'CheckBadgeIcon':
-      return <BadgeCheck size={size} className={className} />
+      return <BadgeCheck {...iconProps} />
     case 'TrophyIcon':
-      return <Trophy size={size} className={className} />
+      return <Trophy {...iconProps} />
     case 'ChatBubbleLeftRightIcon':
-      return <MessageSquare size={size} className={className} />
+      return <MessageSquare {...iconProps} />
     case 'GlobeAltIcon':
-      return <Globe size={size} className={className} />
+      return <Globe {...iconProps} />
     case 'CameraIcon':
-      return <Camera size={size} className={className} />
+      return <Camera {...iconProps} />
     case 'BriefcaseIcon':
-      return <Briefcase size={size} className={className} />
+      return <Briefcase {...iconProps} />
     case 'BookOpenIcon':
-      return <BookOpen size={size} className={className} />
+      return <BookOpen {...iconProps} />
     case 'HeartIcon':
-      return <Heart size={size} className={className} />
+      return <Heart {...iconProps} />
     case 'ShoppingBagIcon':
-      return <ShoppingBag size={size} className={className} />
+      return <ShoppingBag {...iconProps} />
     case 'CakeIcon':
-      return <Cake size={size} className={className} />
+      return <Cake {...iconProps} />
     case 'BeakerIcon':
-      return <FlaskConical size={size} className={className} />
+      return <FlaskConical {...iconProps} />
     case 'PhoneIcon':
-      return <Phone size={size} className={className} />
+      return <Phone {...iconProps} />
     case 'EnvelopeIcon':
-      return <Mail size={size} className={className} />
+      return <Mail {...iconProps} />
     case 'MapPinIcon':
-      return <MapPin size={size} className={className} />
+      return <MapPin {...iconProps} />
     case 'CheckIcon':
-      return <Check size={size} className={className} />
+      return <Check {...iconProps} />
     case 'ArrowLeftIcon':
-      return <ArrowLeft size={size} className={className} />
+      return <ArrowLeft {...iconProps} />
     case 'MessageCircleIcon':
-      return <MessageCircle size={size} className={className} />
+      return <MessageCircle {...iconProps} />
     case 'LeafIcon':
-      return <Leaf size={size} className={className} />
+      return <Leaf {...iconProps} />
     case 'ShieldCheckIcon':
-      return <ShieldCheck size={size} className={className} />
+      return <ShieldCheck {...iconProps} />
     default:
-      return <Sparkles size={size} className={className} />
+      return <Sparkles {...iconProps} />
   }
 }

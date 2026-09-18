@@ -350,7 +350,7 @@ export default function PackagingTransformationSection() {
 
           <div className="flex items-center justify-center gap-2 pt-4 text-[11px] text-white/40 tracking-wider font-mono">
             <span>SCROLL TO ADVANCE ASSEMBLY</span>
-            <span className="animate-bounce text-[#F8BC23]">↓</span>
+            <span className="text-[#F8BC23] transition-transform duration-300">↓</span>
           </div>
         </footer>
       </div>
