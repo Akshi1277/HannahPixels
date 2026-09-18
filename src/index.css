@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Light, paper-toned body */
+  --background: #FBF9F4;
+  --foreground: #181A16;
+  --secondary: #F3EEE3;
+  --secondary-foreground: #181A16;
+  --muted: #F3EEE3;
+  --muted-foreground: #6B6F62;
+  --card: #FFFFFF;
+  --card-foreground: #181A16;
+  --border: #E6E0D2;
+  --input: #E6E0D2;
+
+  /* True brand colors, sampled from the logo */
+  --primary: #F8BC23;
+  --primary-foreground: #181A16;
+  --accent: #538B56;
+  --accent-foreground: #FFFFFF;
+  --ring: #F8BC23;
+  /* Deepened variants for text/links on light backgrounds (contrast-safe) */
+  --gold-ink: #93660C;
+  --green-ink: #3B6A3E;
+
+  /* Dark chrome bookends: header, footer, hero scrim, floating WhatsApp chip */
+  --dark-bg: #090B0A;
+  --dark-surface: #0F1412;
+  --dark-elevated: #141A17;
+  --dark-border: #202824;
+  --dark-foreground: #FAF8F5;
+
+  --radius: 0.75rem;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Fraunces', serif;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-dark-bg: var(--dark-bg);
+  --color-dark-surface: var(--dark-surface);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --radius: var(--radius);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer utilities {
+  /* Hero only — the single largest headline on the page */
+  .display-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  /* Section headlines (H2-level, one per section) */
+  .section-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 3.8vw, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  .editorial-serif {
+    font-family: var(--font-serif);
+  }
+
+  .editorial-italic {
+    font-style: italic;
+  }
+
+  .label-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  .pill-nav {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(248, 188, 35, 0.2);
+    border-radius: 100px;
+    padding: 10px 24px;
+  }
+
+  .blob-primary {
+    background: radial-gradient(circle, rgba(248, 188, 35, 0.18) 0%, transparent 70%);
+    filter: blur(80px);
+  }
+
+  .blob-accent {
+    background: radial-gradient(circle, rgba(83, 139, 86, 0.20) 0%, transparent 70%);
+    filter: blur(60px);
+  }
+}
