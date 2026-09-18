@@ -5,45 +5,45 @@ import { motion } from 'framer-motion'
 const standards = [
   {
     num: '01',
-    title: 'Thoughtful by Design',
+    title: 'THOUGHTFUL BY DESIGN.',
     subtitle: 'Structural Intent & Ergonomics',
-    body: 'Every fold, closure angle, and unboxing reveal has intentional purpose. We calibrate tactile anticipation into the physical architecture before ink ever touches substrate.',
+    body: 'Every decision has a purpose — from the structure of a box to the feel of the paper.',
     craftDetail: 'Micron-calibrated dieline geometry & friction-fit tolerances',
     specs: ['Structural CAD', 'Friction Clasp', 'Tactile Motion'],
     featured: true
   },
   {
     num: '02',
-    title: 'Materials That Matter',
+    title: 'MATERIALS THAT MATTER.',
     subtitle: 'Curated Substrates',
-    body: 'The right substrate transforms how a brand is held and remembered. We curate virgin cotton pulps, textured FSC-certified boards, and eco-conscious luxury stocks.',
+    body: 'The right material can transform how a product is seen, held and remembered.',
     craftDetail: 'FSC® Certified Cotton Pulp & Textured Rigid Greyboard',
     specs: ['350–600 GSM', 'Acid-Free', 'FSC® Certified'],
     featured: false
   },
   {
     num: '03',
-    title: 'Precision in Every Detail',
+    title: 'PRECISION IN EVERY DETAIL.',
     subtitle: 'Zero-Tolerance Calibration',
-    body: 'True luxury lives in invisible tolerances. Flawless 45° corner mitres, micro-registered hot foil stamping, and crisp magnetic snap closures.',
+    body: 'Good packaging should feel effortless. That comes from getting the details right.',
     craftDetail: '±0.2mm registration accuracy & laser-guided steel rule die cutting',
     specs: ['Laser Dielines', '±0.2mm Registration', 'Magnetic Snaps'],
     featured: false
   },
   {
     num: '04',
-    title: 'Made to Endure',
+    title: 'MADE TO LAST.',
     subtitle: 'Keepsake Longevity',
-    body: 'We create pieces designed to be preserved, showcased, and treasured on vanity tables and executive desks long after the unboxing moment.',
+    body: 'We create pieces designed to be experienced, kept and remembered.',
     craftDetail: 'High-density fiber core with scuff-resistant soft-touch coatings',
     specs: ['Anti-Scuff Matte', 'Reinforced Edges', 'Heirloom Grade'],
     featured: false
   },
   {
     num: '05',
-    title: 'Without Borders',
+    title: 'WITHOUT BORDERS.',
     subtitle: 'Global Atelier Logistics',
-    body: 'From single bespoke client prototypes to multi-thousand enterprise rollouts, Hannah Pixels delivers worldwide with white-glove transit packaging.',
+    body: 'From a single bespoke project to larger production runs, Hannah Pixels works with brands across markets and delivers worldwide.',
     craftDetail: 'Multi-hub production dispatch across London, Dubai & worldwide freight nodes',
     specs: ['Worldwide Air/Sea', 'Customs Cleared', 'White-Glove Pack'],
     featured: false

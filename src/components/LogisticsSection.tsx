@@ -17,63 +17,63 @@ interface ProcessStep {
 const processSteps: ProcessStep[] = [
   {
     step: '01',
-    phase: 'STAGE 01 · ARCHITECTURE',
-    title: 'Discover & Structure',
-    shortSummary: 'Unboxing ergonomics & structural blueprinting.',
-    description: 'We deconstruct your product geometry, target market presence, and unboxing ergonomics to engineer the initial precision dieline blueprint.',
+    phase: 'STAGE 01 · DISCOVER',
+    title: 'DISCOVER',
+    shortSummary: 'We begin with your brand, your product and the purpose behind the piece.',
+    description: 'We begin with your brand, your product and the purpose behind the piece.',
     deliverable: 'Bespoke 2D/3D Dieline CAD & Tolerance Spec',
     tools: ['Structural CAD', 'Geometry Mapping', 'Ergonomics Study'],
-    craftTag: 'Dieline Blueprint'
+    craftTag: 'Brand & Purpose'
   },
   {
     step: '02',
-    phase: 'STAGE 02 · PROTOTYPE',
-    title: 'Develop & White Sample',
-    shortSummary: 'Physical white-mockup validation & friction fit.',
-    description: 'Ideas take physical shape through unprinted white-box prototypes, friction-lock calibration, drop-fit tests, and closure resistance verification.',
+    phase: 'STAGE 02 · DEVELOP',
+    title: 'DEVELOP',
+    shortSummary: 'Ideas become structures, materials, finishes and considered details.',
+    description: 'Ideas become structures, materials, finishes and considered details.',
     deliverable: '1:1 Scale Kongsberg Plotter White Mockup',
     tools: ['Kongsberg Cutting Table', 'Friction Fit', 'Drop Simulation'],
-    craftTag: 'Physical Prototype'
+    craftTag: 'Structures & Finishes'
   },
   {
     step: '03',
-    phase: 'STAGE 03 · CURATION',
-    title: 'Curate & Refine Substrates',
-    shortSummary: 'Specialist papers, weights, and foil pairing.',
-    description: 'We test virgin cotton pulps, textured rigid boards, Pantone spot inks, and Kurz hot-stamping foils under controlled lighting to achieve perfect tactile synergy.',
+    phase: 'STAGE 03 · REFINE',
+    title: 'REFINE',
+    shortSummary: 'We explore papers, boards, textures, colours and specialist finishes to find the right combination.',
+    description: 'We explore papers, boards, textures, colours and specialist finishes to find the right combination.',
     deliverable: 'Custom Swatch Library & Surface Proofs',
     tools: ['Fedrigoni / GF Smith', 'Pantone Matching System', 'Kurz Foils'],
-    craftTag: 'Substrate & Foil Library'
+    craftTag: 'Papers & Specialist Finishes'
   },
   {
     step: '04',
-    phase: 'STAGE 04 · PRESSWORK',
-    title: 'Precision Production',
-    shortSummary: 'Heidelberg offset press runs with zero tolerance.',
-    description: 'Heidelberg multi-unit presswork executed with spectrophotometer densitometry, micro-dot registration, and standardized D50 press-sheet calibration.',
+    phase: 'STAGE 04 · PRODUCE',
+    title: 'PRODUCE',
+    shortSummary: 'Every piece is produced with precision and close attention to detail.',
+    description: 'Every piece is produced with precision and close attention to detail.',
     deliverable: 'Press-Passed Production Sheets & Proofs',
     tools: ['Heidelberg Speedmaster', 'Micro-Densitometry', 'D50 Light Proofing'],
-    craftTag: 'Heidelberg Precision'
+    craftTag: 'Precision Production'
   },
   {
     step: '05',
-    phase: 'STAGE 05 · EMBELLISHMENT',
-    title: 'Artisan Finishing & Assembly',
-    shortSummary: 'Sculptural brass deboss, hot foil, and magnets.',
-    description: 'Sculptural brass die stamping, crisp debossing, edge-gilding, and hand-wrapped rigid box assembly with concealed neodymium magnetic clasps.',
+    phase: 'STAGE 05 · FINISH',
+    title: 'FINISH',
+    shortSummary: 'From embossing and debossing to foiling, speciality papers and bespoke constructions, the final details bring the work together.',
+    description: 'From embossing and debossing to foiling, speciality papers and bespoke constructions, the final details bring the work together.',
     deliverable: 'Finished Bespoke Packaging Artifacts',
     tools: ['Brass Tooling', 'Multi-Level Foil', 'Neodymium Magnets'],
-    craftTag: 'Sculptural Finishing'
+    craftTag: 'Emboss, Deboss & Foiling'
   },
   {
     step: '06',
-    phase: 'STAGE 06 · WHITE-GLOVE',
-    title: 'Global Delivery & Logistics',
-    shortSummary: 'Climate-sealed transit packaging & global dispatch.',
-    description: 'Every consignment is protected in custom moisture-resistant transit sleeves and dispatched with direct white-glove courier tracking to London, Dubai, and worldwide.',
+    phase: 'STAGE 06 · DELIVER',
+    title: 'DELIVER',
+    shortSummary: 'Finished pieces are prepared for delivery across the world.',
+    description: 'Finished pieces are prepared for delivery across the world.',
     deliverable: 'Fully Cleared Worldwide Doorstep Logistics',
     tools: ['Moisture-Seal Crates', 'Expedited Air/Sea Freight', 'Customs Clearance'],
-    craftTag: 'Worldwide Dispatch'
+    craftTag: 'Worldwide Delivery'
   }
 ]
 
@@ -322,9 +322,12 @@ export default function LogisticsSection() {
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 z-10 w-full sm:w-auto">
             <a
               href="#quote-builder"
-              className="w-full sm:w-auto text-center px-6 py-3.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all shadow-md"
+              className="group w-full sm:w-auto text-center pl-6 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-md flex items-center justify-center gap-3"
             >
-              Start Project Inquiry
+              <span>Start Project Inquiry</span>
+              <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                <Icon name="ArrowRightIcon" size={11} />
+              </span>
             </a>
             <a
               href={whatsAppUrl("Hello Hannah Pixels, I'd like to consult on a new print & packaging project.")}

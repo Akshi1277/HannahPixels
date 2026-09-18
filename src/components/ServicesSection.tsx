@@ -144,9 +144,6 @@ export default function ServicesSection() {
     ? services
     : services.filter(s => s.category === activeCategory)
 
-  const flagship = filteredServices[0] || services[0]
-  const companionServices = filteredServices.slice(1)
-
   const handleSelectProduct = (productType: string) => {
     const el = document.getElementById('quote-builder')
     if (el) {
@@ -176,14 +173,14 @@ export default function ServicesSection() {
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2.5 pb-12 border-b border-[#E6E0D2]">
+        <div className="flex flex-wrap items-center gap-2.5 pb-10 border-b border-[#E6E0D2]">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#F8BC23] text-[#181A16] shadow-lg shadow-[#F8BC23]/25 scale-105 font-bold'
+                  ? 'bg-[#181A16] text-[#F8BC23] shadow-md shadow-[#181A16]/20 scale-105 font-bold ring-2 ring-[#F8BC23]/40'
                   : 'bg-white text-[#4A4E43] hover:text-[#181A16] hover:bg-[#F3EEE3] border border-[#E6E0D2]'
               }`}
             >
@@ -192,182 +189,140 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* Flagship Spotlight Feature */}
-        <div className="my-12">
-          <div className="bg-white border border-[#F8BC23]/30 rounded-3xl overflow-hidden shadow-xl relative">
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-              {/* Flagship Visual */}
-              <div className="lg:col-span-7 relative min-h-[380px] lg:min-h-[500px] overflow-hidden group bg-[#F3EEE3]">
-                <AppImage
-                  src={flagship.image}
-                  alt={flagship.alt}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
-                <div className="absolute top-6 left-6 z-10">
-                  <span className="label-tag bg-[#090B0A]/85 backdrop-blur-md border border-[#F8BC23]/40 text-[#F8BC23] px-4 py-1.5 rounded-full text-[11px] shadow-lg inline-flex items-center gap-1.5">
-                    <Icon name="SparklesIcon" size={12} />
-                    Featured Collection · {flagship.tag}
-                  </span>
-                </div>
-              </div>
+        {/* Asymmetrical Bento Grid with Double-Bezel Hardware Enclosures */}
+        <div className="mt-12">
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6"
+            >
+              {filteredServices.map((service, idx) => {
+                // Layout Archetype: Asymmetrical Bento footprint allocation
+                const isHero = activeCategory === 'all' && idx === 0 // Luxury Packaging: 8 cols
+                const isVerticalLuxe = activeCategory === 'all' && idx === 1 // Fragrance & Beauty: 4 cols
+                const isBannerLuxe = activeCategory === 'all' && idx === 5 // Books & Publishing: 12 cols
+                
+                const colSpanClass = isHero
+                  ? 'lg:col-span-8'
+                  : isVerticalLuxe
+                  ? 'lg:col-span-4'
+                  : isBannerLuxe
+                  ? 'lg:col-span-12'
+                  : 'lg:col-span-4'
 
-              {/* Flagship Technical Details & Items */}
-              <div className="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between space-y-6 bg-white">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-                    <span className="text-xs font-bold text-[#93660C] uppercase tracking-widest">{flagship.tag}</span>
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#181A16] tracking-tight leading-snug">
-                    {flagship.title}
-                  </h3>
-                  <p className="text-base text-[#4A4E43] leading-relaxed font-normal">
-                    {flagship.subtitle}
-                  </p>
-
-                  <div className="pt-4 space-y-3">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#181A16]">Formats &amp; Applications:</p>
-                    <div className="grid grid-cols-2 gap-2">
-                      {flagship.subItems.map(item => (
-                        <div key={item} className="flex items-center gap-2 text-xs text-[#2D3129] bg-[#FBF9F4] border border-[#E6E0D2] p-2 rounded-lg">
-                          <Icon name="CheckIcon" size={13} className="text-[#93660C] shrink-0" />
-                          <span className="font-medium">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-[#E6E0D2] flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                  <a
-                    href="#quote-builder"
-                    onClick={() => handleSelectProduct(flagship.formType)}
-                    className="flex-1 text-center py-3.5 px-6 rounded-xl bg-[#F8BC23] text-[#181A16] hover:bg-[#FFCB4D] font-bold text-xs uppercase tracking-wider transition-all shadow-md"
-                  >
-                    Configure {flagship.title}
-                  </a>
-                  <a
-                    href={whatsAppUrl(`Hello Hannah Pixels, I'd like to inquire about ${flagship.title}.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-3.5 px-5 rounded-xl border border-[#E6E0D2] hover:border-[#F8BC23]/50 hover:bg-[#F3EEE3] text-[#4A4E43] text-xs font-semibold flex items-center justify-center gap-2 transition-all"
-                  >
-                    <Icon name="MessageCircleIcon" size={14} className="text-[#93660C]" />
-                    <span>Inquire</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Companion Collection Cards */}
-        {companionServices.length > 0 && (
-          <div className="pt-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#181A16] mb-6">
-              All Brand Packaging Collections ({companionServices.length})
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <AnimatePresence>
-                {companionServices.map((service, idx) => (
+                return (
                   <motion.div
                     id={service.id}
                     key={service.id}
                     layout
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 15 }}
-                    transition={{ duration: 0.35, delay: idx * 0.05 }}
+                    exit={{ opacity: 0, scale: 0.96 }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                    className={`${colSpanClass} flex flex-col`}
                   >
-                    <ServiceCard service={service} onSelectProduct={handleSelectProduct} />
+                    {/* Double-Bezel Outer Shell */}
+                    <div className="p-1.5 rounded-[2rem] bg-[#F3EEE3] ring-1 ring-[#93660C]/15 transition-all duration-300 hover:ring-[#93660C]/40 hover:shadow-2xl group flex flex-col h-full">
+                      {/* Double-Bezel Inner Core */}
+                      <div className="rounded-[calc(2rem-0.375rem)] bg-white border border-[#E6E0D2] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden flex flex-col h-full justify-between">
+                        
+                        {/* Top: Image & Header Info */}
+                        <div>
+                          {/* Image Container with Ambient Scrim */}
+                          <div
+                            className={`relative w-full overflow-hidden bg-[#F3EEE3] ${
+                              isHero
+                                ? 'aspect-[16/9] lg:aspect-[16/8]'
+                                : isBannerLuxe
+                                ? 'aspect-[16/9] lg:aspect-[21/8]'
+                                : 'aspect-[16/10]'
+                            }`}
+                          >
+                            <AppImage
+                              src={service.image}
+                              alt={service.alt}
+                              fill
+                              sizes={isHero || isBannerLuxe ? "(max-width: 1024px) 100vw, 70vw" : "(max-width: 768px) 100vw, 33vw"}
+                              className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                            
+                            <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                              <span className="label-tag bg-[#090B0A]/85 backdrop-blur-md border border-[#F8BC23]/40 text-[#F8BC23] px-3.5 py-1 rounded-full text-[10px] font-mono tracking-wider shadow-md inline-flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />
+                                {service.tag}
+                              </span>
+                              {isHero && (
+                                <span className="label-tag bg-[#F8BC23] text-[#090B0A] px-2.5 py-1 rounded-full text-[10px] font-bold font-mono tracking-wider shadow-md">
+                                  FLAGSHIP DISCIPLINE
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Content Details */}
+                          <div className={`p-6 md:p-8 space-y-4 ${isBannerLuxe ? 'lg:flex lg:items-start lg:justify-between lg:space-y-0 lg:gap-8' : ''}`}>
+                            <div className="space-y-2 max-w-xl">
+                              <h3 className="text-2xl font-serif font-bold text-[#181A16] tracking-tight group-hover:text-[#93660C] transition-colors leading-snug">
+                                {service.title}
+                              </h3>
+                              <p className="text-sm text-[#4A4E43] leading-relaxed font-normal">
+                                {service.subtitle}
+                              </p>
+                            </div>
+
+                            {/* Sub-items Tags */}
+                            <div className="pt-2">
+                              <p className="text-[10px] font-mono uppercase tracking-widest text-[#93660C] mb-2 font-bold">
+                                Formats &amp; Specifications:
+                              </p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {service.subItems.map(item => (
+                                  <span
+                                    key={item}
+                                    className="text-[11px] font-mono text-[#2D3129] bg-[#FBF9F4] border border-[#E6E0D2] px-2.5 py-1 rounded-lg"
+                                  >
+                                    {item}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom: Action CTAs with Button-in-Button Trailing Icon */}
+                        <div className="p-6 md:p-8 pt-0 border-t border-[#E6E0D2]/60 mt-4 flex items-center justify-between gap-3">
+                          <button
+                            onClick={() => handleSelectProduct(service.formType)}
+                            className="group/btn flex items-center gap-2.5 bg-[#181A16] text-[#F8BC23] pl-4 pr-2 py-2 rounded-full text-xs font-mono uppercase tracking-wider hover:bg-[#202824] transition-all hover:scale-105 active:scale-[0.98] shadow-sm cursor-pointer"
+                          >
+                            <span>Configure {service.title.split(' ')[0]}</span>
+                            <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center group-hover/btn:scale-110 group-hover/btn:translate-x-0.5 transition-transform duration-200">
+                              <Icon name="ArrowRightIcon" size={10} />
+                            </span>
+                          </button>
+
+                          <a
+                            href={whatsAppUrl(`Hello Hannah Pixels, I'd like to inquire about bespoke ${service.title}.`)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-[#E6E0D2] bg-[#FBF9F4] hover:border-[#F8BC23]/60 hover:bg-[#F3EEE3] text-xs font-mono text-[#93660C] transition-all"
+                            aria-label={`Inquire about ${service.title} via WhatsApp`}
+                          >
+                            <Icon name="MessageCircleIcon" size={13} />
+                            <span className="hidden sm:inline">WhatsApp Studio</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-          </div>
-        )}
+                )
+              })}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
-  )
-}
-
-function ServiceCard({
-  service,
-  onSelectProduct
-}: {
-  service: ServiceItem
-  onSelectProduct: (productType: string) => void
-}) {
-  return (
-    <div className="group relative rounded-2xl overflow-hidden border border-[#E6E0D2] bg-white hover:border-[#F8BC23]/50 transition-all duration-300 flex flex-col h-full shadow-md hover:shadow-xl">
-      {/* Image Container */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#F3EEE3]">
-        <AppImage
-          src={service.image}
-          alt={service.alt}
-          fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-        <div className="absolute top-3 left-3 z-10">
-          <span className="label-tag bg-[#090B0A]/85 backdrop-blur-md border border-[#F8BC23]/40 text-[#F8BC23] px-3 py-1 rounded-full text-[10px]">
-            {service.tag}
-          </span>
-        </div>
-      </div>
-
-      {/* Card Content */}
-      <div className="p-6 flex flex-col flex-1 justify-between space-y-4">
-        <div className="space-y-3">
-          <div>
-            <h3 className="text-xl font-bold text-[#181A16] tracking-tight">
-              {service.title}
-            </h3>
-            <p className="text-xs text-[#93660C] font-semibold mt-1">
-              {service.subtitle}
-            </p>
-          </div>
-
-          {/* Sub-items Tags */}
-          <div className="pt-2 flex flex-wrap gap-1.5">
-            {service.subItems.map(item => (
-              <span
-                key={item}
-                className="text-[11px] font-medium text-[#2D3129] bg-[#FBF9F4] border border-[#E6E0D2] px-2 py-0.5 rounded-md"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Action Link */}
-        <div className="pt-4 border-t border-[#E6E0D2] flex items-center justify-between">
-          <a
-            href="#quote-builder"
-            onClick={() => onSelectProduct(service.formType)}
-            className="inline-flex items-center gap-1.5 text-[#93660C] font-bold text-xs uppercase tracking-wider hover:text-[#181A16] transition-colors"
-          >
-            <span>Configure Collection</span>
-            <Icon name="ArrowRightIcon" size={12} />
-          </a>
-
-          <a
-            href={whatsAppUrl(`Hello Hannah Pixels, I'm inquiring about ${service.title}.`)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-8 h-8 rounded-full bg-[#F3EEE3] border border-[#F8BC23]/40 flex items-center justify-center text-[#93660C] hover:bg-[#F8BC23] hover:text-[#181A16] transition-all"
-            aria-label={`Ask about ${service.title} on WhatsApp`}
-          >
-            <Icon name="MessageCircleIcon" size={14} />
-          </a>
-        </div>
-      </div>
-    </div>
   )
 }
 

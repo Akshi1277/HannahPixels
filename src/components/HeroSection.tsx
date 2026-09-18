@@ -111,11 +111,13 @@ export default function HeroSection() {
           >
             <a
               href="#quote-builder"
-              className="flex items-center gap-3 bg-[#F8BC23] text-[#090B0A] px-8 py-4 rounded-full font-bold text-sm hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#F8BC23]/25 relative overflow-hidden group"
+              className="group flex items-center gap-3.5 bg-[#F8BC23] text-[#090B0A] pl-7 pr-3.5 py-3 rounded-full font-bold text-sm hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-xl shadow-[#F8BC23]/25 relative overflow-hidden"
             >
-              <span className="relative z-10 flex items-center gap-2 font-semibold tracking-wide">
+              <span className="relative z-10 font-semibold tracking-wide">
                 Start a Conversation
-                <Icon name="ArrowRightIcon" size={16} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+              <span className="relative z-10 w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                <Icon name="ArrowRightIcon" size={14} />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
             </a>

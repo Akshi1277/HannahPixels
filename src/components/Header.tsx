@@ -171,10 +171,12 @@ export default function Header() {
 
             <a
               href="#quote-builder"
-              className="flex items-center gap-2 bg-[#F8BC23] text-[#090B0A] px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-95 shadow-md shadow-[#F8BC23]/20 whitespace-nowrap"
+              className="group flex items-center gap-2.5 bg-[#F8BC23] text-[#090B0A] pl-4 pr-2 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-md shadow-[#F8BC23]/20 whitespace-nowrap"
             >
               <span>Request Quote</span>
-              <Icon name="ArrowRightIcon" size={12} />
+              <span className="w-5 h-5 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                <Icon name="ArrowRightIcon" size={10} />
+              </span>
             </a>
           </div>
 

@@ -16,7 +16,9 @@ const FaqSection = lazy(() => import('@/components/FaqSection'))
 export default function App() {
   return (
     <ReactLenis root>
-      <div className="min-h-screen bg-background text-foreground selection:bg-[#F8BC23] selection:text-black">
+      <div className="min-h-screen bg-background text-foreground selection:bg-[#F8BC23] selection:text-black relative">
+        {/* Luxury physical paper grain overlay */}
+        <div className="paper-grain-overlay" aria-hidden="true" />
         <WhatsAppButton />
         <Header />
         <main>

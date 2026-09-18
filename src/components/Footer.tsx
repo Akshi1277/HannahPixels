@@ -44,9 +44,12 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto shrink-0">
             <a
               href="#quote-builder"
-              className="w-full sm:w-auto text-center px-8 py-4 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all shadow-lg shadow-[#F8BC23]/20"
+              className="group w-full sm:w-auto text-center pl-8 pr-3 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-lg shadow-[#F8BC23]/20 flex items-center justify-center gap-3"
             >
-              Request a Quotation
+              <span>Request a Quotation</span>
+              <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                <Icon name="ArrowRightIcon" size={12} />
+              </span>
             </a>
             <a
               href={whatsAppUrl('Hello Hannah Pixels, I would like to inquire about print and packaging services.')}
