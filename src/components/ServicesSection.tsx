@@ -4,99 +4,137 @@ import Icon from '@/components/ui/AppIcon'
 import { motion, AnimatePresence } from 'framer-motion'
 import { whatsAppUrl } from '@/lib/contact'
 
-const services = [
+export interface ServiceItem {
+  id: string
+  category: string
+  title: string
+  subtitle: string
+  subItems: string[]
+  image: string
+  alt: string
+  tag: string
+  formType: string
+}
+
+const services: ServiceItem[] = [
   {
-    id: 'service-rigid-box',
+    id: 'service-luxury-packaging',
     category: 'luxury',
-    title: 'Luxury Rigid & VIP Presentation Boxes',
-    subtitle: 'Perfumes, Oud, Fine Jewelry & VIP Gifting',
-    description:
-      'Architectural magnetic closure boxes, neck-and-shoulder builds, and drawer cases. Hand-wrapped in FSC-certified tactile papers, fitted with precision laser-cut high-density EVA or velvet-flocked trays, and adorned with hot foil stamping for commanding shelf presence.',
+    title: 'Luxury Packaging',
+    subtitle: 'Packaging designed for brands where every detail matters.',
+    subItems: [
+      'Rigid Boxes',
+      'Luxury Gift Boxes',
+      'Magnetic Closure Boxes',
+      'Drawer Boxes',
+      'Presentation Boxes',
+      'Bespoke Packaging'
+    ],
     image: '/images/luxury-packaging-hero.jpg',
-    alt: 'Luxury rigid presentation boxes with gold foiling and magnetic flap',
-    tag: 'Luxury',
-    specs: ['1200–2400 GSM Rigid Greyboard', 'Neodymium Magnetic Snap Closures', 'Laser-Cut Velvet & EVA Inlays', 'Precision Hot Foil & 3D Deboss'],
-    formType: 'Rigid Boxes',
-    dielineFormats: 'AI, PDF & 3D Interactive Render'
+    alt: 'Hannah Pixels luxury rigid gift box with magnetic closure and hot foil stamping',
+    tag: 'Atelier Grade',
+    formType: 'Luxury Packaging'
   },
   {
-    id: 'service-food-packaging',
-    category: 'hospitality',
-    title: 'Eco Hospitality & Food-to-Go Packaging',
-    subtitle: 'Artisan Coffee Roasters, Deli Bowls & Bakery',
-    description:
-      'Certified sustainable single and double-wall hot beverage cups, leakproof virgin kraft deli bowls, custom greaseproof wraps, and compostable bagasse containers. Formulated with plastic-free aqueous barriers fully compliant with UK Plastic Packaging Tax (PPT) and Dubai Municipality Food Safety standards.',
-    image: '/images/eco-packaging-clean.jpg',
-    alt: 'Eco friendly custom printed coffee cups and food packaging on warm stone',
-    tag: 'FSC® Certified',
-    specs: ['Plastic-Free Aqueous Water Barrier', 'Soy-Based Food-Safe Inks', 'Double-Wall Thermal Insulation', 'UK PPT Exemption Certified'],
-    formType: 'Food & Beverage',
-    dielineFormats: 'Standard 8oz, 12oz, 16oz + Custom Bowls'
+    id: 'service-product-packaging',
+    category: 'product',
+    title: 'Product Packaging',
+    subtitle: 'Functional, distinctive packaging created around your product and brand.',
+    subItems: [
+      'Corrugated Boxes',
+      'Folding Cartons',
+      'Product Boxes',
+      'Custom Printed Boxes',
+      'E-commerce Packaging',
+      'Retail Packaging'
+    ],
+    image: '/images/packaging_boxes.png',
+    alt: 'Hannah Pixels custom printed corrugated and product packaging boxes',
+    tag: 'Structural Engineering',
+    formType: 'Product Packaging'
   },
   {
-    id: 'service-paper-bags',
-    category: 'retail',
-    title: 'Boutique Retail Bags',
-    subtitle: 'Fashion, Jewelry & Event Carriers',
-    description:
-      'Heavyweight 250–350 GSM laminated art paper, virgin natural ribbed kraft, and tactile textured paper carriers. Hand-assembled with dyed-to-match grosgrain ribbon, knotted Japanese cotton cord, or concealed magnetic flap closures with reinforced baseboards.',
+    id: 'service-fragrance-beauty',
+    category: 'fragrance',
+    title: 'Fragrance & Beauty',
+    subtitle: 'Packaging created for the worlds of fragrance, beauty and personal care.',
+    subItems: [
+      'Perfume Boxes',
+      'Fragrance Packaging',
+      'Cosmetic Boxes',
+      'Beauty Packaging',
+      'Premium Presentation Sets'
+    ],
+    image: '/images/luxury-swatch-box.jpg',
+    alt: 'Hannah Pixels bespoke perfume and fragrance presentation packaging',
+    tag: 'Perfume & Cosmetics',
+    formType: 'Fragrance & Beauty'
+  },
+  {
+    id: 'service-chocolate-confectionery',
+    category: 'chocolate',
+    title: 'Chocolate & Confectionery',
+    subtitle: 'Packaging that makes indulgence part of the experience.',
+    subItems: [
+      'Chocolate Boxes',
+      'Confectionery Packaging',
+      'Gift Boxes',
+      'Premium Food Packaging',
+      'Seasonal Packaging',
+      'Bespoke Collections'
+    ],
+    image: '/images/atelier-craft-emboss.jpg',
+    alt: 'Hannah Pixels artisan chocolate and confectionery gift packaging',
+    tag: 'Gourmet & Gifting',
+    formType: 'Chocolate & Confectionery'
+  },
+  {
+    id: 'service-paper-carry',
+    category: 'paper',
+    title: 'Paper & Carry',
+    subtitle: 'Paper products that extend your brand beyond the package.',
+    subItems: [
+      'Luxury Paper Bags',
+      'Retail Bags',
+      'Gift Bags',
+      'Custom Printed Bags',
+      'Tissue & Wrapping Paper',
+      'Brand Collateral'
+    ],
     image: 'https://printfix.co.in/wp-content/uploads/2026/04/paper-bags-2.jpg.jpeg',
-    alt: 'Boutique paper carrier bags with ribbon handles and foil branding',
-    tag: 'Retail & Fashion',
-    specs: ['Grosgrain Ribbon & Cord Handles', 'Reinforced 400 GSM Base Board', 'Precision Foil Stamped & Blind Debossed'],
-    formType: 'Paper Bags',
-    dielineFormats: 'Custom Sizing Available'
-  },
-  {
-    id: 'service-custom-labels',
-    category: 'retail',
-    title: 'High-Speed Automated Roll Labels',
-    subtitle: 'Perfumes, Bottling Lines & Cosmetic Jars',
-    description:
-      'Scratch, oil, and moisture-resistant roll labels engineered for automated high-speed labelling machinery. Printed on metallic gold BOPP, natural textured unbleached wine stocks, or ultra-clear film with raised tactile UV varnishes.',
-    image: '/images/custom_labels.png',
-    alt: 'Custom printed roll labels and embossed foil decals',
-    tag: 'Industrial Bottling & Jars',
-    specs: ['Water, Oil & Alcohol Proof', 'Metallic Foil BOPP & Unbleached Stock', 'Machine Roll Core Spec 76mm'],
-    formType: 'Custom Labels',
-    dielineFormats: 'Roll & Sheet Formats'
-  },
-  {
-    id: 'service-corrugated-box',
-    category: 'ecommerce',
-    title: 'E-Commerce Postal Shippers & Mailers',
-    subtitle: 'Crash-Lock & Peel-and-Seal Logistics',
-    description:
-      'Durable micro-flute E and B-flute corrugated mailer boxes engineered to withstand cross-continental courier transit without crushing. Custom printed inside and out with vegetable-based inks and integrated double peel-and-seal return adhesive strips.',
-    image: 'https://printfix.co.in/wp-content/uploads/2026/04/corrugated-new.jpg',
-    alt: 'Custom printed e-commerce shipping boxes with self-seal tape',
-    tag: 'Freight & Postal Delivery',
-    specs: ['High Burst-Strength E/B Flute', 'Integrated Double Tear-Tape Strips', 'Full Interior & Exterior CMYK'],
-    formType: 'Corrugated Boxes',
-    dielineFormats: 'Standard Royal Mail / FedEx Parcel Sizes'
+    alt: 'Hannah Pixels luxury retail paper carrier bags with custom handles',
+    tag: 'Retail & Collateral',
+    formType: 'Paper & Carry'
   },
   {
     id: 'service-books-publishing',
-    category: 'luxury',
-    title: 'Lookbooks, Hardcovers & Menus',
-    subtitle: 'Hospitality Menus & Brand Books',
-    description:
-      'Custom bound lookbooks, hardcover investor cases, real-leather and linen restaurant menus, and gold-gilded lookbooks. Suited to hospitality venues, resorts, and premium brand presentations across London and Dubai.',
+    category: 'publishing',
+    title: 'Books & Publishing',
+    subtitle: 'Print created for stories, ideas and objects worth keeping.',
+    subItems: [
+      'Books',
+      'Coffee Table Books',
+      'Art Books',
+      'Notebooks & Journals',
+      'Catalogues',
+      'Editorial Publishing',
+      'Corporate Publishing'
+    ],
     image: 'https://printfix.co.in/wp-content/uploads/2026/04/Books-main.jpg',
-    alt: 'Luxury hardcover books with custom binding and foil finishing',
-    tag: 'Publishing & Hospitality',
-    specs: ['Section-Sewn Case Binding', 'Gold & Copper Foil Gilded Edges', 'Custom Cloth & Leather Binding'],
-    formType: 'Publishing & Books',
-    dielineFormats: 'Custom Page Configurations'
+    alt: 'Hannah Pixels custom bound hardback books, catalogues and editorial publishing',
+    tag: 'Editorial & Publishing',
+    formType: 'Books & Publishing'
   }
 ]
 
 const categories = [
-  { id: 'all', label: 'All Packaging' },
-  { id: 'luxury', label: 'Luxury & VIP' },
-  { id: 'hospitality', label: 'Eco Hospitality & Food' },
-  { id: 'retail', label: 'Boutique Retail & Bags' },
-  { id: 'ecommerce', label: 'E-Commerce Shippers' }
+  { id: 'all', label: 'All Collections' },
+  { id: 'luxury', label: 'Luxury Packaging' },
+  { id: 'product', label: 'Product Packaging' },
+  { id: 'fragrance', label: 'Fragrance & Beauty' },
+  { id: 'chocolate', label: 'Chocolate & Confectionery' },
+  { id: 'paper', label: 'Paper & Carry' },
+  { id: 'publishing', label: 'Books & Publishing' }
 ]
 
 export default function ServicesSection() {
@@ -106,7 +144,6 @@ export default function ServicesSection() {
     ? services
     : services.filter(s => s.category === activeCategory)
 
-  // Flagship featured product (first in filtered list)
   const flagship = filteredServices[0] || services[0]
   const companionServices = filteredServices.slice(1)
 
@@ -127,13 +164,13 @@ export default function ServicesSection() {
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">01</span>
               <span className="w-8 h-px bg-[#93660C]/40" />
-              <span className="editorial-tag text-[#93660C]">PACKAGING COLLECTIONS</span>
+              <span className="editorial-tag text-[#93660C]">WHAT WE CREATE</span>
             </div>
             <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-              Bespoke Rigid Boxes &amp; Sustainable Containers
+              Print &amp; Packaging Engineered for Enduring Brands.
             </h2>
             <p className="text-[#4A4E43] text-base md:text-lg leading-relaxed font-normal">
-              Every box, cup, and carrier is custom manufactured to your millimeter specifications. Low minimum order runs from 100 units with complete in-house tooling.
+              Thoughtful design, exceptional materials and precise production across six core disciplines.
             </p>
           </div>
         </div>
@@ -146,7 +183,7 @@ export default function ServicesSection() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#F8BC23] text-[#181A16] shadow-lg shadow-[#F8BC23]/25 scale-105'
+                  ? 'bg-[#F8BC23] text-[#181A16] shadow-lg shadow-[#F8BC23]/25 scale-105 font-bold'
                   : 'bg-white text-[#4A4E43] hover:text-[#181A16] hover:bg-[#F3EEE3] border border-[#E6E0D2]'
               }`}
             >
@@ -155,7 +192,7 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* Flagship Spotlight Feature (Breaks the Monotony) */}
+        {/* Flagship Spotlight Feature */}
         <div className="my-12">
           <div className="bg-white border border-[#F8BC23]/30 rounded-3xl overflow-hidden shadow-xl relative">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
@@ -168,33 +205,36 @@ export default function ServicesSection() {
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
                 <div className="absolute top-6 left-6 z-10">
                   <span className="label-tag bg-[#090B0A]/85 backdrop-blur-md border border-[#F8BC23]/40 text-[#F8BC23] px-4 py-1.5 rounded-full text-[11px] shadow-lg inline-flex items-center gap-1.5">
-                    <Icon name="StarIcon" size={11} variant="solid" />
+                    <Icon name="SparklesIcon" size={12} />
                     Featured Collection · {flagship.tag}
                   </span>
                 </div>
               </div>
 
-              {/* Flagship Technical Details & Dieline Hub */}
+              {/* Flagship Technical Details & Items */}
               <div className="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between space-y-6 bg-white">
                 <div className="space-y-4">
-                  <p className="text-xs font-bold text-[#93660C] uppercase tracking-widest">{flagship.subtitle}</p>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
+                    <span className="text-xs font-bold text-[#93660C] uppercase tracking-widest">{flagship.tag}</span>
+                  </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-[#181A16] tracking-tight leading-snug">
                     {flagship.title}
                   </h3>
-                  <p className="text-sm text-[#4A4E43] leading-relaxed font-normal">
-                    {flagship.description}
+                  <p className="text-base text-[#4A4E43] leading-relaxed font-normal">
+                    {flagship.subtitle}
                   </p>
 
-                  <div className="pt-4 space-y-2.5">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#181A16]">Specifications:</p>
-                    <div className="grid grid-cols-1 gap-2">
-                      {flagship.specs.map(spec => (
-                        <div key={spec} className="flex items-center gap-2.5 text-xs text-[#4A4E43]">
-                          <Icon name="CheckBadgeIcon" size={14} className="text-[#3B6A3E] shrink-0" />
-                          <span>{spec}</span>
+                  <div className="pt-4 space-y-3">
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#181A16]">Formats &amp; Applications:</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {flagship.subItems.map(item => (
+                        <div key={item} className="flex items-center gap-2 text-xs text-[#2D3129] bg-[#FBF9F4] border border-[#E6E0D2] p-2 rounded-lg">
+                          <Icon name="CheckIcon" size={13} className="text-[#93660C] shrink-0" />
+                          <span className="font-medium">{item}</span>
                         </div>
                       ))}
                     </div>
@@ -207,16 +247,16 @@ export default function ServicesSection() {
                     onClick={() => handleSelectProduct(flagship.formType)}
                     className="flex-1 text-center py-3.5 px-6 rounded-xl bg-[#F8BC23] text-[#181A16] hover:bg-[#FFCB4D] font-bold text-xs uppercase tracking-wider transition-all shadow-md"
                   >
-                    Configure {flagship.formType}
+                    Configure {flagship.title}
                   </a>
                   <a
-                    href={whatsAppUrl(`Hello Hannah Pixels, I'd like to request the CAD dieline for ${flagship.title}.`)}
+                    href={whatsAppUrl(`Hello Hannah Pixels, I'd like to inquire about ${flagship.title}.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-3.5 px-5 rounded-xl border border-[#E6E0D2] hover:border-[#F8BC23]/50 hover:bg-[#F3EEE3] text-[#4A4E43] text-xs font-semibold flex items-center justify-center gap-2 transition-all"
                   >
-                    <Icon name="ArrowDownIcon" size={14} className="text-[#93660C]" />
-                    <span>Request CAD Dieline</span>
+                    <Icon name="MessageCircleIcon" size={14} className="text-[#93660C]" />
+                    <span>Inquire</span>
                   </a>
                 </div>
               </div>
@@ -228,7 +268,7 @@ export default function ServicesSection() {
         {companionServices.length > 0 && (
           <div className="pt-4">
             <h4 className="text-xs font-bold uppercase tracking-widest text-[#181A16] mb-6">
-              More Packaging Formats ({companionServices.length})
+              All Brand Packaging Collections ({companionServices.length})
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <AnimatePresence>
@@ -258,7 +298,7 @@ function ServiceCard({
   service,
   onSelectProduct
 }: {
-  service: (typeof services)[0]
+  service: ServiceItem
   onSelectProduct: (productType: string) => void
 }) {
   return (
@@ -272,7 +312,7 @@ function ServiceCard({
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         <div className="absolute top-3 left-3 z-10">
           <span className="label-tag bg-[#090B0A]/85 backdrop-blur-md border border-[#F8BC23]/40 text-[#F8BC23] px-3 py-1 rounded-full text-[10px]">
             {service.tag}
@@ -282,25 +322,24 @@ function ServiceCard({
 
       {/* Card Content */}
       <div className="p-6 flex flex-col flex-1 justify-between space-y-4">
-        <div className="space-y-2.5">
+        <div className="space-y-3">
           <div>
-            <p className="text-[11px] font-bold text-[#93660C] uppercase tracking-wider">{service.subtitle}</p>
-            <h3 className="text-xl font-bold text-[#181A16] tracking-tight mt-1">
+            <h3 className="text-xl font-bold text-[#181A16] tracking-tight">
               {service.title}
             </h3>
+            <p className="text-xs text-[#93660C] font-semibold mt-1">
+              {service.subtitle}
+            </p>
           </div>
 
-          <p className="text-sm text-[#4A4E43] leading-relaxed font-normal">
-            {service.description}
-          </p>
-
+          {/* Sub-items Tags */}
           <div className="pt-2 flex flex-wrap gap-1.5">
-            {service.specs.slice(0, 2).map(spec => (
+            {service.subItems.map(item => (
               <span
-                key={spec}
-                className="text-[10px] font-medium text-[#3B6A3E] bg-[#F3EEE3] border border-[#538B56]/30 px-2 py-0.5 rounded-md"
+                key={item}
+                className="text-[11px] font-medium text-[#2D3129] bg-[#FBF9F4] border border-[#E6E0D2] px-2 py-0.5 rounded-md"
               >
-                {spec}
+                {item}
               </span>
             ))}
           </div>
@@ -313,7 +352,7 @@ function ServiceCard({
             onClick={() => onSelectProduct(service.formType)}
             className="inline-flex items-center gap-1.5 text-[#93660C] font-bold text-xs uppercase tracking-wider hover:text-[#181A16] transition-colors"
           >
-            <span>Configure Packaging</span>
+            <span>Configure Collection</span>
             <Icon name="ArrowRightIcon" size={12} />
           </a>
 
@@ -331,3 +370,4 @@ function ServiceCard({
     </div>
   )
 }
+

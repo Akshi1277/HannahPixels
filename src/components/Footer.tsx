@@ -3,20 +3,21 @@ import Icon from '@/components/ui/AppIcon'
 import { whatsAppUrl, CONTACT_EMAIL } from '@/lib/contact'
 
 const packagingServices = [
-  { label: 'Luxury Rigid Presentation Boxes', href: '#services' },
-  { label: 'Eco-Friendly Food & Beverage', href: '#services' },
-  { label: 'Boutique Retail Bags', href: '#services' },
-  { label: 'Custom Cartons & Roll Labels', href: '#services' },
-  { label: 'Tactile Hot Foil & 3D Embossing', href: '#finishes' },
-  { label: 'Sample Swatch Kit', href: '#sample-kit' },
+  { label: 'Luxury Packaging', href: '#services' },
+  { label: 'Product Packaging', href: '#services' },
+  { label: 'Fragrance & Beauty', href: '#services' },
+  { label: 'Chocolate & Confectionery', href: '#services' },
+  { label: 'Paper & Carry', href: '#services' },
+  { label: 'Books & Publishing', href: '#services' }
 ]
 
 const companyLinks = [
-  { label: 'About Hannah Pixels', href: '#about' },
-  { label: 'Tactile Finishes Showcase', href: '#finishes' },
-  { label: 'UK & UAE Logistics', href: '#logistics' },
-  { label: 'Get a Quote', href: '#contact' },
-  { label: 'Production & MOQ FAQ', href: '#faq' },
+  { label: 'Our Vision', href: '#about' },
+  { label: 'What We Create', href: '#services' },
+  { label: 'The Process', href: '#process' },
+  { label: 'The Standard', href: '#standards' },
+  { label: 'Finishes & Craft', href: '#finishes' },
+  { label: 'Sample Swatch Box', href: '#sample-kit' }
 ]
 
 export default function Footer() {
@@ -26,6 +27,40 @@ export default function Footer() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#F8BC23]/5 rounded-full filter blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Signature Brand Statement Banner */}
+        <div className="pb-16 mb-16 border-b border-[#202824] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="space-y-3 max-w-2xl">
+            <p className="text-xs font-mono font-bold tracking-[0.25em] text-[#F8BC23] uppercase">
+              HANNAH PIXELS · DESIGN • PRINT • PACKAGING
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white uppercase leading-[1.1]">
+              PRINT THAT SPEAKS. PACKAGING THAT STAYS.
+            </h2>
+            <p className="text-sm md:text-base text-white/65 font-normal">
+              Hannah Pixels — Design • Print • Packaging — Worldwide.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto shrink-0">
+            <a
+              href="#quote-builder"
+              className="w-full sm:w-auto text-center px-8 py-4 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all shadow-lg shadow-[#F8BC23]/20"
+            >
+              Request a Quotation
+            </a>
+            <a
+              href={whatsAppUrl('Hello Hannah Pixels, I would like to inquire about print and packaging services.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto text-center px-6 py-4 rounded-full border border-white/20 hover:border-[#F8BC23]/50 text-white/90 font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+            >
+              <Icon name="MessageCircleIcon" size={15} className="text-[#F8BC23]" />
+              <span>WhatsApp Studio</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Navigation & Contact Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#202824]">
           {/* Brand & Atelier Footprint */}
           <div className="lg:col-span-4 space-y-5">
@@ -39,7 +74,7 @@ export default function Footer() {
               />
             </a>
             <p className="text-sm text-white/70 leading-relaxed max-w-sm font-normal">
-              Hannah Pixels is a direct packaging manufacturer, specializing in rigid presentation boxes, hot foil finishes, eco-certified food &amp; drink containers, and boutique retail packaging — serving the UK, UAE, and beyond.
+              Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world. Designed with intention. Made to be remembered.
             </p>
 
             <div className="pt-2 flex flex-col gap-2.5 text-xs text-white/70">
@@ -64,7 +99,7 @@ export default function Footer() {
 
           {/* Service Links */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F8BC23]">Packaging</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F8BC23]">What We Create</h4>
             <ul className="space-y-2.5">
               {packagingServices.map((s) => (
                 <li key={s.label}>
@@ -82,7 +117,7 @@ export default function Footer() {
 
           {/* Company Links */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F8BC23]">Company</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F8BC23]">Hannah Pixels</h4>
             <ul className="space-y-2.5">
               {companyLinks.map((l) => (
                 <li key={l.label}>
@@ -100,20 +135,20 @@ export default function Footer() {
 
           {/* Direct Atelier Support */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F8BC23]">Direct Packaging Advisor</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F8BC23]">Direct Atelier Advisory</h4>
             <p className="text-sm text-white/70 leading-relaxed font-normal">
-              Connect with our structural packaging engineers for custom dielines, foil swatches, and international freight coordination.
+              Connect directly with our packaging specialists for material guidance, bespoke dielines, and international delivery.
             </p>
 
             <div className="space-y-2.5">
               <a
-                href={whatsAppUrl("Hello Hannah Pixels team, I'd like to request a bespoke packaging quote and dieline.")}
+                href={whatsAppUrl("Hello Hannah Pixels team, I'd like to consult on a packaging project.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 hover:bg-emerald-500/20 text-xs font-bold transition-all"
               >
                 <Icon name="MessageCircleIcon" size={16} />
-                <span>WhatsApp Packaging Advisor</span>
+                <span>WhatsApp Atelier Desk</span>
               </a>
 
               <a
@@ -126,7 +161,7 @@ export default function Footer() {
             </div>
 
             <p className="text-[11px] text-white/50 pt-1">
-              Business Hours: Mon – Sat · 9:00 AM – 7:00 PM (GMT / GST)
+              Atelier Hours: Mon – Sat · 9:00 AM – 7:00 PM (GMT / GST)
             </p>
           </div>
         </div>
@@ -135,14 +170,17 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
           <p>© {new Date().getFullYear()} Hannah Pixels. All Rights Reserved.</p>
           <div className="flex items-center gap-4 text-white/60">
-            <span>UK</span>
+            <span>Design</span>
             <span>·</span>
-            <span>UAE</span>
+            <span>Print</span>
             <span>·</span>
-            <span>International Door-to-Door Delivery</span>
+            <span>Packaging</span>
+            <span>·</span>
+            <span>Worldwide</span>
           </div>
         </div>
       </div>
     </footer>
   )
 }
+

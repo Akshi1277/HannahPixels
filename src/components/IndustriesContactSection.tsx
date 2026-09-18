@@ -6,38 +6,38 @@ import { whatsAppUrl } from '@/lib/contact'
 
 const industriesData = [
   {
-    label: 'Niche Perfumery, Oud & Fragrance',
+    label: 'Fragrance & Beauty',
     icon: 'BeakerIcon',
-    image: '/images/luxury-packaging-hero.jpg',
-    products: 'Perfume Rigid Cases, Drawer Boxes, Custom Laser Velvet Foam Inserts',
+    image: '/images/luxury-swatch-box.jpg',
+    products: 'Perfume Boxes, Fragrance Packaging, Cosmetic Boxes, Premium Presentation Sets',
     highlight: 'Gold Foil & Deep Deboss'
   },
   {
-    label: 'Specialty Coffee & Food-to-Go',
-    icon: 'CakeIcon',
-    image: '/images/eco-packaging-clean.jpg',
-    products: 'Double-Wall Coffee Cups, Kraft Salad Bowls, Printed Greaseproof Sheets',
-    highlight: '100% Aqueous & Compostable'
+    label: 'Luxury Packaging',
+    icon: 'SparklesIcon',
+    image: '/images/luxury-packaging-hero.jpg',
+    products: 'Rigid Boxes, Luxury Gift Boxes, Magnetic Closure Boxes, Drawer Boxes',
+    highlight: 'Bespoke Atelier Build'
   },
   {
-    label: 'Dates, Chocolates & Confectionery',
+    label: 'Chocolate & Confectionery',
     icon: 'HeartIcon',
-    image: '/images/luxury-swatch-box.jpg',
-    products: 'Partitioned Gifting Trays, Book-Style Rigid Cases, Window Cartons',
+    image: '/images/atelier-craft-emboss.jpg',
+    products: 'Chocolate Boxes, Confectionery Packaging, Partitioned Gift Boxes, Seasonal Drops',
     highlight: 'Food-Grade Certified'
   },
   {
-    label: 'Boutique Fashion & E-Commerce',
-    icon: 'ShoppingBagIcon',
-    image: '/images/atelier-craft-emboss.jpg',
-    products: 'Grosgrain Ribbon Bags, Self-Seal Shipping Mailers, Embossed Hangtags',
-    highlight: 'Laminated & Heavy Kraft'
+    label: 'Product & E-Commerce',
+    icon: 'CubeIcon',
+    image: '/images/packaging_boxes.png',
+    products: 'Corrugated Boxes, Folding Cartons, Custom Printed Boxes, Retail Packaging',
+    highlight: 'Engineered Protection'
   },
   {
-    label: 'Corporate VIP Gifting & Publishing',
+    label: 'Books & Publishing',
     icon: 'BookOpenIcon',
     image: 'https://printfix.co.in/wp-content/uploads/2026/04/Books-main.jpg',
-    products: 'Hardcover Lookbooks, Annual Reports, Gilded Edges, Presentation Hampers',
+    products: 'Coffee Table Books, Art Books, Notebooks & Journals, Catalogues, Editorial',
     highlight: 'Swiss & Case Binding'
   }
 ]
@@ -57,7 +57,7 @@ type PricingState = {
 export default function IndustriesContactSection() {
   const [form, setForm] = useState<PricingState>({
     step: 1,
-    productType: 'Rigid Boxes',
+    productType: 'Luxury Packaging',
     quantity: '500-2000',
     finishes: ['Hot Foil Stamping'],
     dimensions: '',
@@ -129,7 +129,7 @@ Please share specification options and turnaround plan!`
           >
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">06</span>
+                <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">07</span>
                 <span className="w-8 h-px bg-[#93660C]/40" />
                 <span className="editorial-tag text-[#93660C]">SECTOR SPECIALIZATIONS</span>
               </div>
@@ -195,7 +195,7 @@ Please share specification options and turnaround plan!`
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center space-y-4 mb-12">
             <div className="inline-flex items-center justify-center gap-3">
-              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">07</span>
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">08</span>
               <span className="w-8 h-px bg-[#93660C]/40" />
               <span className="editorial-tag text-[#93660C]">SPECIFICATION &amp; QUOTE BUILDER</span>
             </div>
@@ -273,16 +273,16 @@ Please share specification options and turnaround plan!`
                       {/* Product Type selection */}
                       <div className="space-y-3">
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#F8BC23]">
-                          1. Select Product Category
+                          1. Select Product Collection
                         </label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                           {[
-                            'Rigid Boxes',
-                            'Food & Beverage',
-                            'Paper Bags',
-                            'Custom Labels',
-                            'Corrugated Boxes',
-                            'Publishing'
+                            'Luxury Packaging',
+                            'Product Packaging',
+                            'Fragrance & Beauty',
+                            'Chocolate & Confectionery',
+                            'Paper & Carry',
+                            'Books & Publishing'
                           ].map((type) => (
                             <button
                               type="button"
@@ -295,7 +295,7 @@ Please share specification options and turnaround plan!`
                               }`}
                             >
                               <p className="font-bold text-sm text-white">{type}</p>
-                              <p className="text-[11px] text-white/50 mt-1">Custom Manufacturing</p>
+                              <p className="text-[11px] text-white/50 mt-1">Hannah Pixels Collection</p>
                             </button>
                           ))}
                         </div>

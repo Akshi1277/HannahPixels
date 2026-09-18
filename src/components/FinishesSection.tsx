@@ -73,9 +73,9 @@ export default function FinishesSection() {
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16">
           <div className="space-y-4 max-w-2xl">
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">02</span>
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">05</span>
               <span className="w-8 h-px bg-[#93660C]/40" />
-              <span className="editorial-tag text-[#93660C]">TACTILE FINISHES ATELIER</span>
+              <span className="editorial-tag text-[#93660C]">FINISHES &amp; CRAFT</span>
             </div>
             <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
               Specialist Foil, Embossing &amp; Surface Treatments

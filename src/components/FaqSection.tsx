@@ -42,7 +42,7 @@ export default function FaqSection() {
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center space-y-4 mb-16">
           <div className="inline-flex items-center justify-center gap-3">
-            <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">08</span>
+            <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">09</span>
             <span className="w-8 h-px bg-[#93660C]/40" />
             <span className="editorial-tag text-[#93660C]">PROCUREMENT FAQ</span>
           </div>

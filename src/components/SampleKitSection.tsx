@@ -11,7 +11,7 @@ export default function SampleKitSection() {
     email: '',
     phone: '',
     address: '',
-    productInterest: 'Luxury Rigid Boxes'
+    productInterest: 'Luxury Packaging'
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,7 +35,7 @@ Shipping Address: ${formData.address || 'Not specified'}`
           {/* Section Header */}
           <div className="max-w-3xl mb-12 space-y-4">
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#F8BC23]">03</span>
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#F8BC23]">06</span>
               <span className="w-8 h-px bg-[#F8BC23]/40" />
               <span className="editorial-tag text-[#F8BC23]">PHYSICAL SAMPLE SWATCH BOX</span>
             </div>
@@ -176,11 +176,13 @@ Shipping Address: ${formData.address || 'Not specified'}`
                           onChange={(e) => setFormData({ ...formData, productInterest: e.target.value })}
                           className="w-full bg-[#141A17] border border-[#202824] focus:border-[#F8BC23] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none transition-colors"
                         >
-                          <option value="Luxury Rigid Boxes">Luxury Rigid Boxes (Magnetic / Drawer)</option>
-                          <option value="Eco Food & Beverage">Eco Food &amp; Beverage Packaging (Cups / Bowls)</option>
-                          <option value="Boutique Retail Bags">Boutique Bags &amp; Ribbons</option>
-                          <option value="Roll Labels & Cartons">Custom Roll Labels &amp; Mono Cartons</option>
-                          <option value="All Categories">Complete Sample Box (All Categories)</option>
+                          <option value="Luxury Packaging">Luxury Packaging (Rigid &amp; Gift Boxes)</option>
+                          <option value="Product Packaging">Product Packaging (Corrugated &amp; Folding Cartons)</option>
+                          <option value="Fragrance & Beauty">Fragrance &amp; Beauty Packaging</option>
+                          <option value="Chocolate & Confectionery">Chocolate &amp; Confectionery Packaging</option>
+                          <option value="Paper & Carry">Paper &amp; Carry (Luxury Bags &amp; Collateral)</option>
+                          <option value="Books & Publishing">Books &amp; Publishing (Hardcover &amp; Catalogues)</option>
+                          <option value="All Collections">Complete Atelier Swatch Box (All Collections)</option>
                         </select>
                       </div>
 

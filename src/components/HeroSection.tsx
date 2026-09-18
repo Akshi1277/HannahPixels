@@ -66,10 +66,10 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-[#F8BC23]/35 bg-black/40 backdrop-blur-md"
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#F8BC23]/35 bg-black/40 backdrop-blur-md"
           >
             <span className="editorial-tag text-[#F8BC23] tracking-[0.22em] font-semibold text-[10px]">
-              ATELIER PACKAGING · UK &amp; UAE · LOW MOQ FROM 100 PCS
+              HANNAH PIXELS · DESIGN • PRINT • PACKAGING · WORLDWIDE
             </span>
           </motion.div>
 
@@ -80,22 +80,27 @@ export default function HeroSection() {
             animate="show"
             className="display-headline text-white perspective-[1000px] max-w-4xl tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]"
           >
-            <motion.span className="inline-block" variants={wordItem}>Custom</motion.span>{' '}
-            <motion.span className="inline-block" variants={wordItem}>Packaging,</motion.span>
+            <motion.span className="inline-block" variants={wordItem}>Where</motion.span>{' '}
+            <motion.span className="inline-block" variants={wordItem}>Ideas</motion.span>{' '}
             <br className="hidden md:block" />
-            <motion.span className="inline-block text-[#F8BC23] font-normal italic" variants={wordItem}>Manufactured</motion.span>{' '}
-            <motion.span className="inline-block text-[#F8BC23] font-normal italic" variants={wordItem}>Direct.</motion.span>
+            <motion.span className="inline-block text-[#F8BC23] font-normal italic" variants={wordItem}>Take</motion.span>{' '}
+            <motion.span className="inline-block text-[#F8BC23] font-normal italic" variants={wordItem}>Form.</motion.span>
           </motion.h1>
 
           {/* Sub-copy with breathing room */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]"
+            className="max-w-2xl space-y-3"
           >
-            From magnetic rigid boxes for oud and luxury confectionery to certified eco-friendly hospitality containers. Direct manufacturing, rapid 24-hour CAD dielines, and uncompromised tactile finishing.
-          </motion.p>
+            <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed font-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+              Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world. From luxury rigid boxes and fragrance packaging to bespoke paper bags, corrugated solutions, chocolate packaging and publishing, we bring together thoughtful design, exceptional materials and precise production.
+            </p>
+            <p className="text-sm md:text-base text-[#F8BC23] font-medium tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+              Designed with intention. Made to be remembered.
+            </p>
+          </motion.div>
 
           {/* CTAs */}
           <motion.div 
@@ -109,7 +114,7 @@ export default function HeroSection() {
               className="flex items-center gap-3 bg-[#F8BC23] text-[#090B0A] px-8 py-4 rounded-full font-bold text-sm hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#F8BC23]/25 relative overflow-hidden group"
             >
               <span className="relative z-10 flex items-center gap-2 font-semibold tracking-wide">
-                Request Quote
+                Start a Conversation
                 <Icon name="ArrowRightIcon" size={16} className="group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
@@ -133,15 +138,19 @@ export default function HeroSection() {
           >
             <div className="flex items-center gap-2">
               <Icon name="CheckBadgeIcon" size={15} className="text-[#F8BC23]" />
-              <span>FSC® Certified Sourcing</span>
+              <span>Thoughtful Design</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Icon name="SparklesIcon" size={15} className="text-[#F8BC23]" />
+              <span>Exceptional Materials</span>
             </div>
             <div className="flex items-center gap-2">
               <Icon name="ClockIcon" size={15} className="text-[#F8BC23]" />
-              <span>24–48h CAD Dieline Turnaround</span>
+              <span>Precise Production</span>
             </div>
             <div className="flex items-center gap-2">
               <Icon name="GlobeAltIcon" size={15} className="text-[#F8BC23]" />
-              <span>UK &amp; UAE Consolidated Freight</span>
+              <span>Worldwide Delivery</span>
             </div>
           </motion.div>
         </div>

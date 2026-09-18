@@ -23,10 +23,10 @@ export default function App() {
           <HeroSection />
           <Suspense fallback={<div className="h-32 flex items-center justify-center opacity-60 text-xs tracking-widest uppercase text-[#93660C]">Loading...</div>}>
             <ServicesSection />
-            <FinishesSection />
-            <SampleKitSection />
             <AboutSection />
             <LogisticsSection />
+            <FinishesSection />
+            <SampleKitSection />
             <IndustriesContactSection />
             <FaqSection />
           </Suspense>

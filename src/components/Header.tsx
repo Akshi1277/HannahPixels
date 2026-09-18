@@ -4,10 +4,12 @@ import Icon from '@/components/ui/AppIcon'
 import { whatsAppUrl } from '@/lib/contact'
 
 const collections = [
-  { label: 'Luxury Rigid & VIP Boxes', href: '#services', desc: 'Perfumes, Oud, Dates & Luxury Gifting' },
-  { label: 'Eco Food & Drink Packaging', href: '#services', desc: 'Paper Cups, Deli Bowls & Takeaway' },
-  { label: 'Boutique Bags', href: '#services', desc: 'Rope & Ribbon Handle Retail Carriers' },
-  { label: 'Cartons & Custom Labels', href: '#services', desc: 'Folding Boxes & Waterproof Roll Labels' },
+  { label: 'Luxury Packaging', href: '#services', desc: 'Rigid, Gift, Magnetic & Drawer Boxes' },
+  { label: 'Product Packaging', href: '#services', desc: 'Corrugated, Folding Cartons & Mailers' },
+  { label: 'Fragrance & Beauty', href: '#services', desc: 'Perfume, Cosmetic & Presentation Sets' },
+  { label: 'Chocolate & Confectionery', href: '#services', desc: 'Indulgence Boxes & Food Packaging' },
+  { label: 'Paper & Carry', href: '#services', desc: 'Luxury Bags, Tissue & Collateral' },
+  { label: 'Books & Publishing', href: '#services', desc: 'Hardcovers, Art Books & Catalogues' },
 ]
 
 export default function Header() {
@@ -53,15 +55,18 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 border-b transition-[background-color,border-color,box-shadow,padding] duration-300 ease-out ${
           scrolled
-            ? 'bg-[#090B0A]/95 backdrop-blur-xl border-b border-[#202824] shadow-2xl py-3'
-            : 'bg-gradient-to-b from-[#090B0A]/90 to-transparent py-4'
+            ? 'bg-[#090B0A]/95 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] py-3'
+            : 'bg-[#090B0A]/75 backdrop-blur-md py-4'
         }`}
+        style={{
+          borderBottomColor: scrolled ? '#202824' : 'transparent'
+        }}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
           {/* Logo with clean luxury presence */}
-          <a href="#" className="flex items-center group py-1" aria-label="Hannah Pixels homepage">
+          <a href="#" className="flex items-center group py-1 shrink-0" aria-label="Hannah Pixels homepage">
             <AppImage
               src="/hannahpixels.png"
               alt="Hannah Pixels - Luxury Packaging & Printing"
@@ -73,22 +78,22 @@ export default function Header() {
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center pill-nav gap-7" aria-label="Main navigation">
-            {/* Collections Dropdown */}
+          <nav className="hidden lg:flex items-center pill-nav gap-5 xl:gap-7" aria-label="Main navigation">
+            {/* What We Create Dropdown */}
             <div
               className="relative"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
               <button
-                className="label-tag flex items-center gap-1.5 text-white/80 hover:text-[#F8BC23] transition-colors cursor-pointer py-1"
+                className="flex items-center gap-1.5 text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors cursor-pointer py-1 whitespace-nowrap"
                 aria-haspopup="true"
                 aria-expanded={collectionsOpen}
               >
-                Collections
+                <span>What We Create</span>
                 <Icon
                   name="ChevronDownIcon"
-                  size={12}
+                  size={11}
                   className={`text-[#F8BC23] transition-transform duration-300 ${collectionsOpen ? 'rotate-180' : ''}`}
                 />
               </button>
@@ -116,48 +121,48 @@ export default function Header() {
             </div>
 
             <a
+              href="#about"
+              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
+            >
+              Our Vision
+            </a>
+
+            <a
+              href="#process"
+              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
+            >
+              The Process
+            </a>
+
+            <a
+              href="#standards"
+              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
+            >
+              Standards
+            </a>
+
+            <a
               href="#finishes"
-              className="label-tag text-white/80 hover:text-[#F8BC23] transition-colors"
+              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
             >
               Finishes &amp; Craft
             </a>
 
             <a
               href="#sample-kit"
-              className="label-tag text-white/80 hover:text-[#F8BC23] transition-colors"
+              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
             >
-              Sample Kit
-            </a>
-
-            <a
-              href="#logistics"
-              className="label-tag text-white/80 hover:text-[#F8BC23] transition-colors"
-            >
-              Global Hubs
-            </a>
-
-            <a
-              href="#about"
-              className="label-tag text-white/80 hover:text-[#F8BC23] transition-colors"
-            >
-              About
-            </a>
-
-            <a
-              href="#faq"
-              className="label-tag text-white/80 hover:text-[#F8BC23] transition-colors"
-            >
-              FAQ
+              Sample Box
             </a>
           </nav>
 
           {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3 shrink-0">
             <a
               href={whatsAppUrl("Hello Hannah Pixels team, I'd like to inquire about custom packaging and printing.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-[#F8BC23]/40 text-white/90 hover:text-[#F8BC23] text-xs font-medium transition-all"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-[#F8BC23]/40 text-white/90 hover:text-[#F8BC23] text-xs font-medium transition-all whitespace-nowrap"
               aria-label="Direct WhatsApp Consultation with Hannah Pixels"
             >
               <Icon name="MessageCircleIcon" size={14} className="text-[#F8BC23]" />
@@ -166,9 +171,9 @@ export default function Header() {
 
             <a
               href="#quote-builder"
-              className="flex items-center gap-2 bg-[#F8BC23] text-[#090B0A] px-5 py-2 rounded-full label-tag font-bold hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-95 shadow-md shadow-[#F8BC23]/15"
+              className="flex items-center gap-2 bg-[#F8BC23] text-[#090B0A] px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-95 shadow-md shadow-[#F8BC23]/20 whitespace-nowrap"
             >
-              Request Quote
+              <span>Request Quote</span>
               <Icon name="ArrowRightIcon" size={12} />
             </a>
           </div>
@@ -213,7 +218,7 @@ export default function Header() {
                 onClick={() => setMobileCollectionsOpen(!mobileCollectionsOpen)}
                 className="w-full flex items-center justify-between py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
               >
-                Packaging Collections
+                What We Create
                 <Icon
                   name="ChevronDownIcon"
                   size={16}
@@ -238,11 +243,35 @@ export default function Header() {
             </div>
 
             <a
+              href="#about"
+              onClick={closeMenu}
+              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
+            >
+              Our Vision
+            </a>
+
+            <a
+              href="#process"
+              onClick={closeMenu}
+              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
+            >
+              The Process
+            </a>
+
+            <a
+              href="#standards"
+              onClick={closeMenu}
+              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
+            >
+              The Standards
+            </a>
+
+            <a
               href="#finishes"
               onClick={closeMenu}
               className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
             >
-              Finishes &amp; Craftsmanship
+              Finishes &amp; Craft
             </a>
 
             <a
@@ -250,31 +279,7 @@ export default function Header() {
               onClick={closeMenu}
               className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
             >
-              Order Sample Kit
-            </a>
-
-            <a
-              href="#logistics"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              Global Operations (UK &amp; Dubai)
-            </a>
-
-            <a
-              href="#about"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              About Us
-            </a>
-
-            <a
-              href="#faq"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              Frequently Asked Questions
+              Sample Swatch Box
             </a>
           </nav>
 

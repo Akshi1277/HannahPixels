@@ -2,41 +2,41 @@ import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
 import { motion } from 'framer-motion'
 
-const standardPillars = [
+const standards = [
   {
     num: '01',
-    title: 'Direct Manufacturing',
-    tag: 'Zero Broker Margin',
-    body: 'We own and operate our precision die-cutting, foil stamping, and case-making lines. You collaborate directly with packaging engineers, cutting out trading agents and broker markups.'
+    title: 'THOUGHTFUL BY DESIGN.',
+    body: 'Every decision has a purpose — from the structure of a box to the feel of the paper.'
   },
   {
     num: '02',
-    title: 'Certified FSC® Material Integrity',
-    tag: 'Sustainable Sourcing',
-    body: 'From recycled greyboard to virgin kraft, every substrate is sustainably harvested. Our food-grade packaging uses plastic-free aqueous barriers fully exempt from the UK Plastic Packaging Tax.'
+    title: 'MATERIALS THAT MATTER.',
+    body: 'The right material can transform how a product is seen, held and remembered.'
   },
   {
     num: '03',
-    title: 'Low MOQ from 100 Units',
-    tag: 'Agile Procurement',
-    body: 'Launch new lines, seasonal drops, or limited-run packaging without tying up capital in 5,000-unit minimums. We scale from 100 units up to full commercial volume.'
+    title: 'PRECISION IN EVERY DETAIL.',
+    body: 'Good packaging should feel effortless. That comes from getting the details right.'
   },
   {
     num: '04',
-    title: 'UK & UAE Logistics',
-    tag: 'Door-to-Door Delivery',
-    body: 'Serving clients across the United Kingdom and the UAE with unified cross-border clearance, full UK VAT invoicing, and UAE TRN compliance.'
+    title: 'MADE TO LAST.',
+    body: 'We create pieces designed to be experienced, kept and remembered.'
+  },
+  {
+    num: '05',
+    title: 'WITHOUT BORDERS.',
+    body: 'From a single bespoke project to larger production runs, Hannah Pixels works with brands across markets and delivers worldwide.'
   }
 ]
 
 export default function AboutSection() {
-
   return (
-    <section id="about" className="bg-[#FBF9F4] border-t border-[#E6E0D2] relative overflow-hidden scroll-mt-28" aria-label="About Hannah Pixels">
-      {/* Brand Statement */}
+    <section id="about" className="bg-[#FBF9F4] border-t border-[#E6E0D2] relative overflow-hidden scroll-mt-28" aria-label="Our Vision & Standards">
+      {/* Brand Statement / Our Vision */}
       <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left: Authentic Artisan Image */}
+          {/* Left: Authentic Atelier Image */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,19 +53,19 @@ export default function AboutSection() {
                 className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-              {/* Floating Hallmark Seal */}
+              {/* Floating Atelier Seal */}
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-white/95 backdrop-blur-xl border border-[#F8BC23]/30 rounded-2xl p-5 shadow-xl">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-2xl font-extrabold text-[#181A16] tracking-tight">100 Pcs</p>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#93660C] mt-0.5">Starting Minimum Order</p>
-                      <p className="text-[11px] text-[#6B6F62] mt-0.5">Serving the UK &amp; UAE</p>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#93660C]">Hannah Pixels Atelier</p>
+                      <p className="text-base font-extrabold text-[#181A16] tracking-tight mt-0.5">Design • Print • Packaging</p>
+                      <p className="text-[11px] text-[#6B6F62] mt-0.5">Delivered Worldwide</p>
                     </div>
                     <div className="w-11 h-11 rounded-xl bg-[#F8BC23]/15 border border-[#F8BC23]/30 flex items-center justify-center shrink-0">
-                      <Icon name="WrenchScrewdriverIcon" size={20} className="text-[#93660C]" />
+                      <Icon name="SparklesIcon" size={20} className="text-[#93660C]" />
                     </div>
                   </div>
                 </div>
@@ -73,79 +73,86 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Right: Text Narrative */}
+          {/* Right: Vision Narrative */}
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">04</span>
+                <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">02</span>
                 <span className="w-8 h-px bg-[#93660C]/40" />
-                <span className="editorial-tag text-[#93660C]">MANUFACTURING HERITAGE</span>
+                <span className="editorial-tag text-[#93660C]">OUR VISION</span>
               </div>
-              <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-                Direct Production. Zero Trading Brokerage.
+              <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl lg:text-5xl font-medium tracking-tight leading-[1.15]">
+                To Make the Physical World of Brands More Beautiful.
               </h2>
             </div>
 
-            {/* Editorial Narrative */}
-            <p className="text-lg sm:text-xl md:text-2xl text-[#181A16] font-normal leading-relaxed max-w-xl">
-              Hannah Pixels is a packaging manufacturer specializing in bespoke rigid boxes, certified eco food and drink containers, boutique retail bags, and precision print finishes. From initial structural CAD dielines to master assembly, our focus is tactile consistency, factory-direct pricing, and punctual international delivery.
-            </p>
+            {/* Editorial Paragraphs */}
+            <div className="space-y-5 text-[#2D3129] font-normal text-base md:text-lg leading-relaxed">
+              <p className="text-xl md:text-2xl text-[#181A16] font-medium leading-snug">
+                We believe packaging is more than protection.
+              </p>
+              <p className="text-lg md:text-xl text-[#3E4237] leading-relaxed">
+                It is the first touch. The first impression. The moment a brand becomes tangible.
+              </p>
+              <p>
+                Hannah Pixels was created to bring greater thought, craft and character to the way brands are experienced in the physical world.
+              </p>
+              <p>
+                We work with brands that value detail — creating print and packaging that feels considered, distinctive and made to last.
+              </p>
+            </div>
 
-            {/* Key Metrics */}
-            <div className="pt-6 border-t border-[#E6E0D2] grid grid-cols-3 gap-6">
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-[#181A16]">Direct</p>
-                <p className="text-xs text-[#93660C] font-semibold mt-1">Factory Manufacturing</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-[#181A16]">24–48h</p>
-                <p className="text-xs text-[#93660C] font-semibold mt-1">CAD Digital Proofs</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-[#181A16]">100 Pcs</p>
-                <p className="text-xs text-[#93660C] font-semibold mt-1">Starting MOQ</p>
-              </div>
+            {/* Accent Signature */}
+            <div className="pt-4 border-t border-[#E6E0D2] flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#F8BC23]" />
+              <p className="text-sm font-semibold tracking-wide uppercase text-[#93660C]">
+                Made for brands with a point of view.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* The 4-Pillar Standard */}
-      <div className="border-t border-[#E6E0D2] bg-[#F3EEE3] py-20 md:py-28">
+      {/* The 5 Hannah Pixels Standards */}
+      <div id="standards" className="border-t border-[#E6E0D2] bg-[#F3EEE3] py-20 md:py-28 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#93660C]">The Quality Benchmark</span>
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">03</span>
+                <span className="w-8 h-px bg-[#93660C]/40" />
+                <span className="editorial-tag text-[#93660C]">THE STANDARD</span>
+              </div>
               <h3 className="section-headline text-[#181A16] text-2xl md:text-4xl font-medium tracking-tight">
                 The Hannah Pixels Standard
               </h3>
             </div>
             <p className="text-sm text-[#4A4E43] max-w-md leading-relaxed font-normal">
-              We eliminate traditional agency layers and trading markups, giving you direct access to precision packaging manufacturing.
+              Five principles that guide every piece we design, refine and produce.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {standardPillars.map((pillar) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {standards.map((std, idx) => (
               <div
-                key={pillar.num}
-                className="p-8 rounded-2xl border border-[#E6E0D2] bg-white hover:border-[#F8BC23]/50 transition-all duration-300 space-y-4 group relative overflow-hidden shadow-sm hover:shadow-lg"
+                key={std.num}
+                className={`p-8 rounded-2xl border border-[#E6E0D2] bg-white hover:border-[#F8BC23]/50 transition-all duration-300 space-y-4 group relative overflow-hidden shadow-sm hover:shadow-lg ${
+                  idx === 4 ? 'md:col-span-2 lg:col-span-2' : ''
+                }`}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-serif font-bold text-[#93660C] group-hover:scale-110 transition-transform">
-                    {pillar.num}
+                    {std.num}
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#3B6A3E] bg-[#F3EEE3] border border-[#538B56]/30 px-2.5 py-0.5 rounded-full">
-                    {pillar.tag}
-                  </span>
+                  <span className="w-2 h-2 rounded-full bg-[#F8BC23]/60 group-hover:bg-[#F8BC23] transition-colors" />
                 </div>
 
-                <h4 className="text-lg font-bold text-[#181A16] group-hover:text-[#93660C] transition-colors leading-snug">
-                  {pillar.title}
+                <h4 className="text-base font-bold tracking-wider uppercase text-[#181A16] group-hover:text-[#93660C] transition-colors leading-snug">
+                  {std.title}
                 </h4>
 
                 <p className="text-sm text-[#4A4E43] leading-relaxed font-normal">
-                  {pillar.body}
+                  {std.body}
                 </p>
               </div>
             ))}
@@ -155,4 +162,5 @@ export default function AboutSection() {
     </section>
   )
 }
+
 
