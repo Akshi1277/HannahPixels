@@ -1,7 +1,6 @@
-import { useRef } from 'react'
 import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
-import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const standardPillars = [
   {
@@ -31,14 +30,6 @@ const standardPillars = [
 ]
 
 export default function AboutSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 85%", "end 50%"]
-  })
-
-  const text = "Hannah Pixels is a packaging manufacturer specializing in bespoke rigid boxes, certified eco food and drink disposables, boutique bags, and precision print finishes. From initial structural CAD dielines to master assembly, our focus is tactile quality, zero middleman markups, and punctual delivery."
-  const words = text.split(" ")
 
   return (
     <section id="about" className="bg-[#FBF9F4] border-t border-[#E6E0D2] relative overflow-hidden scroll-mt-28" aria-label="About Hannah Pixels">
@@ -85,32 +76,20 @@ export default function AboutSection() {
           {/* Right: Text Narrative */}
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#F8BC23]/40">
-                <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-                <span className="label-tag text-[#93660C] text-[11px]">About Hannah Pixels</span>
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">04</span>
+                <span className="w-8 h-px bg-[#93660C]/40" />
+                <span className="editorial-tag text-[#93660C]">MANUFACTURING HERITAGE</span>
               </div>
               <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-                Architectural Packaging.<br />
-                <span className="text-[#93660C] font-normal italic">Precision Manufacturing.</span>
+                Direct Production. Zero Trading Brokerage.
               </h2>
             </div>
 
-            {/* Kinetic Text Scrub */}
-            <div ref={containerRef} className="flex flex-wrap gap-x-2 text-lg sm:text-xl md:text-2xl font-medium leading-relaxed max-w-xl">
-              {words.map((word, i) => {
-                const start = i / words.length
-                const end = start + (1 / words.length)
-                return (
-                  <WordSpan
-                    key={i}
-                    word={word}
-                    progress={scrollYProgress}
-                    start={start}
-                    end={end}
-                  />
-                )
-              })}
-            </div>
+            {/* Editorial Narrative */}
+            <p className="text-lg sm:text-xl md:text-2xl text-[#181A16] font-normal leading-relaxed max-w-xl">
+              Hannah Pixels is a packaging manufacturer specializing in bespoke rigid boxes, certified eco food and drink containers, boutique retail bags, and precision print finishes. From initial structural CAD dielines to master assembly, our focus is tactile consistency, factory-direct pricing, and punctual international delivery.
+            </p>
 
             {/* Key Metrics */}
             <div className="pt-6 border-t border-[#E6E0D2] grid grid-cols-3 gap-6">
@@ -177,23 +156,3 @@ export default function AboutSection() {
   )
 }
 
-function WordSpan({
-  word,
-  progress,
-  start,
-  end
-}: {
-  word: string
-  progress: MotionValue<number>
-  start: number
-  end: number
-}) {
-  const opacity = useTransform(progress, [start, end], [0.35, 1])
-  const color = useTransform(progress, [start, end], ["#C6C1B2", "#181A16"])
-
-  return (
-    <motion.span style={{ opacity, color }} className="inline-block transition-colors">
-      {word}
-    </motion.span>
-  )
-}

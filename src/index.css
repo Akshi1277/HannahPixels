@@ -130,13 +130,16 @@
     padding: 10px 24px;
   }
 
-  .blob-primary {
-    background: radial-gradient(circle, rgba(248, 188, 35, 0.18) 0%, transparent 70%);
-    filter: blur(80px);
+  .hairline-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(230, 224, 210, 0.9) 20%, rgba(230, 224, 210, 0.9) 80%, transparent 100%);
   }
 
-  .blob-accent {
-    background: radial-gradient(circle, rgba(83, 139, 86, 0.20) 0%, transparent 70%);
-    filter: blur(60px);
+  .editorial-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
   }
 }
+

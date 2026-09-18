@@ -7,12 +7,13 @@ export default function LogisticsSection() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#F8BC23]/40">
-              <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-              <span className="label-tag text-[#93660C]">International Footprint</span>
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">05</span>
+              <span className="w-8 h-px bg-[#93660C]/40" />
+              <span className="editorial-tag text-[#93660C]">INTERNATIONAL FOOTPRINT</span>
             </div>
             <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-              Cross-Continental Reach, UK &amp; UAE Delivery.
+              Cross-Continental Reach. UK &amp; UAE Freight.
             </h2>
           </div>
           <p className="text-[#4A4E43] text-base md:text-lg leading-relaxed max-w-md font-normal">

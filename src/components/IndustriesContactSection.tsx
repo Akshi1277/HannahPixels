@@ -128,13 +128,13 @@ Please share specification options and turnaround plan!`
             className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16"
           >
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#F8BC23]/40">
-                <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-                <span className="label-tag text-[#93660C]">Sector Specialization</span>
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">06</span>
+                <span className="w-8 h-px bg-[#93660C]/40" />
+                <span className="editorial-tag text-[#93660C]">SECTOR SPECIALIZATIONS</span>
               </div>
               <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-                Specialist Sectors.<br />
-                <span className="text-[#93660C] font-normal italic">Tailored Manufacturing.</span>
+                Specialized Packaging for Demanding Industries
               </h2>
             </div>
             <p className="text-[#4A4E43] text-base md:text-lg leading-relaxed max-w-sm font-normal">
@@ -194,20 +194,20 @@ Please share specification options and turnaround plan!`
       <div id="quote-builder" className="py-24 border-t border-[#E6E0D2] bg-[#F3EEE3] scroll-mt-28">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center space-y-4 mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#F8BC23]/40">
-              <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-              <span className="label-tag text-[#93660C]">Packaging Inquiry</span>
+            <div className="inline-flex items-center justify-center gap-3">
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">07</span>
+              <span className="w-8 h-px bg-[#93660C]/40" />
+              <span className="editorial-tag text-[#93660C]">SPECIFICATION &amp; QUOTE BUILDER</span>
             </div>
             <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-              Request Your<br />
-              <span className="text-[#93660C] font-normal italic">Quotation &amp; 3D Dieline.</span>
+              Request a Production Quotation &amp; CAD Dieline
             </h2>
             <p className="text-[#4A4E43] text-sm md:text-base max-w-lg mx-auto">
-              Select your specifications to receive a direct manufacturer quotation, structural mockup, and production timeline.
+              Configure your packaging parameters to generate a direct manufacturing quotation, structural vector template, and shipping schedule.
             </p>
           </div>
 
-          <div id="form" className="bg-gradient-to-br from-[#141A17] via-[#0F1412] to-[#090B0A] border border-[#F8BC23]/30 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
+          <div id="form" className="bg-[#0E1311] border border-[#202824] rounded-3xl p-6 md:p-10 shadow-xl relative overflow-hidden">
             {/* Step indicator */}
             <div className="flex items-center justify-between mb-8 pb-6 border-b border-[#202824]">
               {[1, 2, 3].map((s) => (
@@ -236,9 +236,9 @@ Please share specification options and turnaround plan!`
                   <Icon name="MessageCircleIcon" size={32} />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-white">One Last Step</h3>
+                  <h3 className="text-2xl font-bold text-white">Specification Dossier Prepared</h3>
                   <p className="text-sm text-white/70 max-w-md mx-auto">
-                    Your specification for <strong className="text-white">{form.productType}</strong> ({form.quantity} units) is ready. Tap below to send it to our team on WhatsApp — that's how requests reach us directly right now.
+                    Your custom build sheet for <strong className="text-white">{form.productType}</strong> ({form.quantity} units) has been compiled. Transmit your dossier directly to our senior structural desk on WhatsApp for 24-hour dieline generation.
                   </p>
                 </div>
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -249,7 +249,7 @@ Please share specification options and turnaround plan!`
                     className="px-6 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] hover:bg-[#FFCB4D] text-xs font-bold transition-all flex items-center gap-2 shadow-lg shadow-[#F8BC23]/20"
                   >
                     <Icon name="MessageCircleIcon" size={16} />
-                    <span>Send Details via WhatsApp</span>
+                    <span>Transmit Dossier via WhatsApp</span>
                   </a>
                   <button
                     onClick={() => { setSubmitted(false); setForm(p => ({ ...p, step: 1 })) }}

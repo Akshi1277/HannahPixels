@@ -5,12 +5,6 @@ import HeroSection from '@/components/HeroSection'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/ui/WhatsAppButton'
 
-// DielineSection is built but temporarily disabled: useScroll() returns a
-// frozen value (never updates past its mount-time value) whenever its target
-// is a tall section with a sticky child, reproduced even in a minimal
-// from-scratch test — see conversation notes. Not a Lenis, StrictMode, lazy-
-// loading, or framer-motion 13.0 vs 13.4 issue; all ruled out individually.
-// const DielineSection = lazy(() => import('@/components/DielineSection'))
 const ServicesSection = lazy(() => import('@/components/ServicesSection'))
 const FinishesSection = lazy(() => import('@/components/FinishesSection'))
 const SampleKitSection = lazy(() => import('@/components/SampleKitSection'))
@@ -27,7 +21,6 @@ export default function App() {
         <Header />
         <main>
           <HeroSection />
-          {/* <DielineSection /> — disabled, see note above import */}
           <Suspense fallback={<div className="h-32 flex items-center justify-center opacity-60 text-xs tracking-widest uppercase text-[#93660C]">Loading...</div>}>
             <ServicesSection />
             <FinishesSection />

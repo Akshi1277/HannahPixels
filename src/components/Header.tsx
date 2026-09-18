@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
 import { whatsAppUrl } from '@/lib/contact'
@@ -15,6 +15,18 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [collectionsOpen, setCollectionsOpen] = useState(false)
   const [mobileCollectionsOpen, setMobileCollectionsOpen] = useState(false)
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const handleMouseEnter = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current)
+    setCollectionsOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    closeTimerRef.current = setTimeout(() => {
+      setCollectionsOpen(false)
+    }, 150)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
@@ -65,8 +77,8 @@ export default function Header() {
             {/* Collections Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setCollectionsOpen(true)}
-              onMouseLeave={() => setCollectionsOpen(false)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <button
                 className="label-tag flex items-center gap-1.5 text-white/80 hover:text-[#F8BC23] transition-colors cursor-pointer py-1"
@@ -145,16 +157,16 @@ export default function Header() {
               href={whatsAppUrl("Hello Hannah Pixels team, I'd like to inquire about custom packaging and printing.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-[#264A38] bg-[#141A17]/80 text-[#F8BC23] hover:border-[#F8BC23]/50 hover:bg-[#1E3A2F]/50 text-xs font-semibold transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-[#F8BC23]/40 text-white/90 hover:text-[#F8BC23] text-xs font-medium transition-all"
               aria-label="Direct WhatsApp Consultation with Hannah Pixels"
             >
               <Icon name="MessageCircleIcon" size={14} className="text-[#F8BC23]" />
-              <span>WhatsApp Us</span>
+              <span>WhatsApp Studio</span>
             </a>
 
             <a
               href="#quote-builder"
-              className="flex items-center gap-2 bg-[#F8BC23] text-[#090B0A] px-5 py-2.5 rounded-full label-tag font-bold hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-95 shadow-lg shadow-[#F8BC23]/20"
+              className="flex items-center gap-2 bg-[#F8BC23] text-[#090B0A] px-5 py-2 rounded-full label-tag font-bold hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-95 shadow-md shadow-[#F8BC23]/15"
             >
               Request Quote
               <Icon name="ArrowRightIcon" size={12} />

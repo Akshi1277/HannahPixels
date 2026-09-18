@@ -55,11 +55,6 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#090B0A]/92 via-[#090B0A]/60 via-35% via-[#090B0A]/10 via-55% to-transparent pointer-events-none" />
       </motion.div>
 
-      {/* Luxury atelier showroom lighting — illuminates the packaging & stone pedestals */}
-      <div className="absolute top-1/4 right-[5%] lg:right-[15%] w-[38rem] h-[38rem] bg-[radial-gradient(circle,rgba(248,188,35,0.15)_0%,transparent_70%)] blur-3xl pointer-events-none z-0" />
-      <div className="absolute top-1/6 right-[2%] w-[26rem] h-[26rem] bg-[radial-gradient(circle,rgba(255,255,255,0.10)_0%,transparent_60%)] blur-2xl pointer-events-none z-0" />
-      <div className="absolute bottom-10 left-1/4 w-96 h-96 blob-accent opacity-20 z-0 pointer-events-none" />
-
       {/* Content with Fade & Parallax */}
       <motion.div 
         className="max-w-7xl mx-auto px-6 w-full relative z-10 pt-36"
@@ -68,14 +63,13 @@ export default function HeroSection() {
         <div className="w-full space-y-6 md:space-y-8">
           {/* Eyebrow tag */}
           <motion.div 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="inline-flex items-center gap-3 bg-[#0D1210]/90 backdrop-blur-xl border border-[#F8BC23]/40 rounded-full px-5 py-2 shadow-2xl"
+            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-[#F8BC23]/35 bg-black/40 backdrop-blur-md"
           >
-            <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-            <span className="label-tag text-[#F8BC23] tracking-widest font-semibold text-[11px]">
-              Serving UK &amp; UAE · Low MOQ from 100 Pcs · Direct Manufacturing
+            <span className="editorial-tag text-[#F8BC23] tracking-[0.22em] font-semibold text-[10px]">
+              ATELIER PACKAGING · UK &amp; UAE · LOW MOQ FROM 100 PCS
             </span>
           </motion.div>
 
@@ -151,19 +145,6 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </div>
-
-       
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.4 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
-      >
-        <div className="w-px h-10 bg-gradient-to-b from-[#F8BC23]/0 via-[#F8BC23]/50 to-[#F8BC23]" />
-        <Icon name="ChevronDownIcon" size={14} className="text-[#F8BC23]" />
       </motion.div>
     </section>
   )

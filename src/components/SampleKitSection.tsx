@@ -30,28 +30,22 @@ Shipping Address: ${formData.address || 'Not specified'}`
 
   return (
     <section id="sample-kit" className="py-24 md:py-32 bg-[#FBF9F4] relative overflow-hidden scroll-mt-28" aria-label="Sample Swatch Kit">
-      {/* Subtle Glow */}
-      <div className="absolute top-1/3 right-10 w-96 h-96 blob-accent opacity-40 pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="bg-gradient-to-br from-[#141A17] via-[#0F1412] to-[#090B0A] border border-[#F8BC23]/35 rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
-          {/* Subtle golden background accent */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#F8BC23]/10 rounded-full filter blur-3xl pointer-events-none" />
-
+        <div className="bg-[#0E1311] border border-[#202824] rounded-3xl p-8 md:p-12 lg:p-16 shadow-xl relative overflow-hidden">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#090B0A] border border-[#F8BC23]/40">
-              <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-              <span className="label-tag text-[#F8BC23] text-[11px]">Direct Physical Proofing</span>
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#F8BC23]">03</span>
+              <span className="w-8 h-px bg-[#F8BC23]/40" />
+              <span className="editorial-tag text-[#F8BC23]">PHYSICAL SAMPLE SWATCH BOX</span>
             </div>
 
             <h2 className="section-headline text-white text-3xl md:text-5xl font-medium tracking-tight">
-              Experience the Craftsmanship.<br />
-              <span className="text-[#F8BC23] font-normal italic">Order the Sample Swatch Box.</span>
+              Test Our Materials in Person
             </h2>
 
             <p className="text-white/75 text-base md:text-lg leading-relaxed font-normal">
-              Packaging cannot be judged purely on a screen. Feel the 1800 GSM greyboard rigidity, run your fingers across multi-level foil debossing, and test lid snap magnetic resistance before production.
+              Packaging cannot be judged purely on a screen. Feel the 1800 GSM greyboard rigidity, examine multi-level foil debossing under natural light, and test lid snap magnetic resistance before placing a production run.
             </p>
           </div>
 

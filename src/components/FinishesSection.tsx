@@ -68,23 +68,20 @@ export default function FinishesSection() {
 
   return (
     <section id="finishes" className="py-24 md:py-32 bg-[#F3EEE3] border-t border-[#E6E0D2] relative overflow-hidden scroll-mt-28" aria-label="Tactile Finishes Studio">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 blob-primary opacity-40 pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16">
           <div className="space-y-4 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#F8BC23]/40">
-              <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-              <span className="label-tag text-[#93660C] text-[11px]">Tactile Material Studio</span>
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">02</span>
+              <span className="w-8 h-px bg-[#93660C]/40" />
+              <span className="editorial-tag text-[#93660C]">TACTILE FINISHES ATELIER</span>
             </div>
             <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-              Specialist Finishes.<br />
-              <span className="text-[#93660C] font-normal italic">Engineered for Haptic Impact.</span>
+              Specialist Foil, Embossing &amp; Surface Treatments
             </h2>
             <p className="text-[#4A4E43] text-base md:text-lg leading-relaxed font-normal">
-              Packaging is experienced through touch before it is even opened. Explore our precision finishing techniques calibrated to microscopic tolerances.
+              Packaging is experienced through touch before it is opened. Explore precision finishing techniques engineered with in-house tooling dies.
             </p>
           </div>
 

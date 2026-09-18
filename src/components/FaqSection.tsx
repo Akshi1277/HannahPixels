@@ -41,12 +41,13 @@ export default function FaqSection() {
     <section id="faq" className="py-24 md:py-32 bg-[#F3EEE3] border-t border-[#E6E0D2] relative scroll-mt-28">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#F8BC23]/40">
-            <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-            <span className="label-tag text-[#93660C]">Procurement FAQ</span>
+          <div className="inline-flex items-center justify-center gap-3">
+            <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">08</span>
+            <span className="w-8 h-px bg-[#93660C]/40" />
+            <span className="editorial-tag text-[#93660C]">PROCUREMENT FAQ</span>
           </div>
           <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-            Frequently Asked Procurement Questions.
+            Frequently Asked Procurement Questions
           </h2>
           <p className="text-[#4A4E43] text-sm md:text-base max-w-lg mx-auto">
             Everything you need to know about turnaround times, dielines, low MOQs, and international delivery.

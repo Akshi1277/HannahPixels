@@ -120,21 +120,17 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="py-24 md:py-32 bg-[#FBF9F4] relative overflow-hidden scroll-mt-28" aria-label="Packaging Collections">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 blob-primary opacity-40 pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 blob-accent opacity-40 pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
           <div className="space-y-4 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EEE3] border border-[#F8BC23]/40">
-              <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-              <span className="label-tag text-[#93660C] text-[11px]">Packaging Collections</span>
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">01</span>
+              <span className="w-8 h-px bg-[#93660C]/40" />
+              <span className="editorial-tag text-[#93660C]">PACKAGING COLLECTIONS</span>
             </div>
             <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-              Complete Packaging Range.<br />
-              <span className="text-[#93660C] font-normal italic">Engineered with Precision.</span>
+              Bespoke Rigid Boxes &amp; Sustainable Containers
             </h2>
             <p className="text-[#4A4E43] text-base md:text-lg leading-relaxed font-normal">
               Every box, cup, and carrier is custom manufactured to your millimeter specifications. Low minimum order runs from 100 units with complete in-house tooling.
