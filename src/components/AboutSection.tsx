@@ -147,7 +147,7 @@ export default function AboutSection() {
                 <span className="w-8 h-px bg-[#93660C]/40" />
                 <span className="editorial-tag text-[#93660C]">THE STANDARD</span>
               </div>
-              <h3 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
+              <h3 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight text-balance">
                 The Hannah Pixels Standard
               </h3>
             </div>
@@ -190,7 +190,7 @@ export default function AboutSection() {
                   <p className="text-xs font-mono tracking-widest text-[#F8BC23] uppercase">
                     {standards[0].subtitle}
                   </p>
-                  <h4 className="text-2xl md:text-3xl font-serif font-bold text-white tracking-tight leading-tight">
+                  <h4 className="text-2xl md:text-3xl font-serif font-bold text-white tracking-[0.03em] leading-tight">
                     {standards[0].title}
                   </h4>
                   <p className="text-white/80 text-sm md:text-base leading-relaxed font-normal">
@@ -247,7 +247,7 @@ export default function AboutSection() {
                     </div>
 
                     <div className="space-y-2">
-                      <h4 className="text-lg font-bold tracking-tight text-[#181A16] group-hover:text-[#93660C] transition-colors leading-snug">
+                      <h4 className="text-xl font-serif font-bold tracking-[0.03em] text-[#181A16] group-hover:text-[#93660C] transition-colors leading-snug">
                         {std.title}
                       </h4>
                       <p className="text-sm text-[#4A4E43] leading-relaxed font-normal">
