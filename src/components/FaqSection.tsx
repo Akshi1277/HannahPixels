@@ -38,7 +38,7 @@ export default function FaqSection() {
   }
 
   return (
-    <section id="faq" className="pt-12 md:pt-16 pb-24 md:pb-32 bg-[#F3EEE3] border-t border-[#E6E0D2] relative scroll-mt-28">
+    <section id="faq" className="pt-12 md:pt-16 pb-16 md:pb-20 bg-[#F3EEE3] border-t border-[#E6E0D2] relative scroll-mt-28">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center space-y-4 mb-16">
           <div className="inline-flex items-center justify-center gap-3">
@@ -49,7 +49,7 @@ export default function FaqSection() {
           <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
             Frequently Asked Procurement Questions
           </h2>
-          <p className="text-[#4A4E43] text-sm md:text-base max-w-lg mx-auto">
+          <p className="text-[#4A4E43] text-sm md:text-base max-w-xl mx-auto leading-relaxed">
             Everything you need to know about turnaround times, dielines, low MOQs, and international delivery.
           </p>
         </div>
@@ -61,21 +61,30 @@ export default function FaqSection() {
             return (
               <div
                 key={faq.q}
-                className="rounded-2xl border border-[#E6E0D2] bg-white overflow-hidden transition-colors hover:border-[#F8BC23]/40"
+                className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                  isOpen
+                    ? 'border-[#93660C]/40 bg-white shadow-md'
+                    : 'border-[#E6E0D2] bg-white hover:border-[#93660C]/30 hover:shadow-sm'
+                }`}
               >
                 <button
                   type="button"
                   id={`faq-question-${idx}`}
                   aria-controls={`faq-answer-${idx}`}
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 outline-none"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#F8BC23]/50 outline-none group"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base md:text-lg font-bold text-[#181A16]">
-                    {faq.q}
-                  </span>
+                  <div className="flex items-center gap-4 min-w-0">
+                    <span className="font-mono text-xs md:text-sm font-bold tracking-wider text-[#93660C] shrink-0 bg-[#F3EEE3] px-2.5 py-1 rounded-md border border-[#E6E0D2]">
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-base md:text-lg font-bold text-[#181A16] group-hover:text-[#93660C] transition-colors">
+                      {faq.q}
+                    </span>
+                  </div>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                    isOpen ? 'bg-[#F8BC23] text-[#181A16] rotate-180' : 'bg-[#F3EEE3] text-[#93660C]'
+                    isOpen ? 'bg-[#F8BC23] text-[#181A16] rotate-180 shadow-sm' : 'bg-[#F3EEE3] text-[#93660C] group-hover:bg-[#EAE4D5]'
                   }`}>
                     <Icon name="ChevronDownIcon" size={16} />
                   </div>
@@ -93,7 +102,7 @@ export default function FaqSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                     >
-                      <div className="px-6 pb-6 pt-1 text-sm text-[#4A4E43] leading-relaxed border-t border-[#E6E0D2]">
+                      <div className="px-6 pb-6 pt-3 text-sm md:text-base text-[#4A4E43] leading-relaxed border-t border-[#E6E0D2]/70 pl-6 md:pl-[4.25rem]">
                         {faq.a}
                       </div>
                     </motion.div>
@@ -104,21 +113,31 @@ export default function FaqSection() {
           })}
         </div>
 
-        {/* Still have questions? */}
-        <div className="mt-12 p-6 rounded-2xl bg-white border border-[#93660C]/20 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div>
-            <h4 className="text-sm font-bold text-[#181A16]">Have a custom technical inquiry or bespoke dimensions?</h4>
-            <p className="text-xs text-[#6B6F62]">Our packaging consultant will review your specifications directly.</p>
+        {/* Still have questions? - Refined Atelier Bespoke Advisory Note */}
+        <div className="mt-12 p-6 md:p-8 rounded-2xl bg-white border border-[#93660C]/25 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left transition-all hover:border-[#93660C]/45 hover:shadow-md">
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center gap-2">
+              <span className="text-[#93660C] text-xs">✦</span>
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#93660C] font-bold">
+                Bespoke Specifications
+              </span>
+            </div>
+            <h4 className="text-xl md:text-2xl font-medium text-[#181A16] font-serif tracking-tight">
+              Have bespoke dimensions or structural requirements?
+            </h4>
+            <p className="text-xs md:text-sm text-[#5C6154] max-w-lg">
+              Our packaging engineers review CAD dielines, bespoke inserts, and specialty paper stocks directly.
+            </p>
           </div>
           <a
-            href={whatsAppUrl("Hello Hannah Pixels, I'd like to ask a question about custom packaging.")}
+            href={whatsAppUrl("Hello Hannah Pixels, I'd like to consult on bespoke packaging dimensions.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="group pl-5 pr-2 py-2 rounded-full bg-[#F8BC23] text-[#181A16] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all shrink-0 flex items-center gap-2.5 shadow-md shadow-[#F8BC23]/20 hover:scale-105 active:scale-[0.98]"
+            className="group pl-6 pr-2.5 py-2.5 rounded-full bg-[#181A16] text-[#F8BC23] font-bold text-xs uppercase tracking-wider hover:bg-[#262B22] hover:text-white transition-all shrink-0 flex items-center gap-3 shadow-md hover:scale-105 active:scale-[0.98]"
           >
-            <span>Chat with an Expert</span>
-            <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
-              <Icon name="MessageCircleIcon" size={13} />
+            <span>Consult Atelier Team</span>
+            <span className="w-7 h-7 rounded-full bg-[#F8BC23] text-[#181A16] flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+              <Icon name="ArrowRightIcon" size={13} />
             </span>
           </a>
         </div>
