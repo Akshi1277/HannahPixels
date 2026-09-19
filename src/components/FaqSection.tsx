@@ -21,8 +21,8 @@ const faqs = [
     a: 'Yes. If you only have product dimensions or a sample bottle/jar, our packaging engineers will generate custom vector dielines (PDF/AI format) and provide interactive 3D folding renders so you can inspect artwork alignment before die-making.'
   },
   {
-    q: 'Are your food and hospitality containers certified safe and eco-friendly?',
-    a: 'All our food-to-go cups, deli bowls, and greaseproof wraps are manufactured from 100% FSC®-certified virgin boards, printed with vegetable/soy-based inks, and utilize plastic-free water-based aqueous coatings. They fully comply with UK Plastic Packaging Tax (PPT) exemptions and Dubai Municipality Food Safety regulations.'
+    q: 'Are your materials certified sustainable and food-contact safe?',
+    a: 'Yes. All our paperboards, rigid greyboards, and confectionery ballotin trays are manufactured from 100% FSC®-certified virgin fiber stocks, printed with vegetable/soy-based inks, and utilize certified grease-resistant barrier coatings. We provide full compliance documentation for luxury confectionery, fragrance, and retail across the UK, UAE, and international markets.'
   },
   {
     q: 'What details do you need to send an instant quote?',

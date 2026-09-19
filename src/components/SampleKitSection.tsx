@@ -29,7 +29,7 @@ Shipping Address: ${formData.address || 'Not specified'}`
   )
 
   return (
-    <section id="sample-kit" className="pt-4 md:pt-6 pb-20 md:pb-28 bg-[#FBF9F4] relative overflow-hidden scroll-mt-28" aria-label="Sample Swatch Kit">
+    <section id="sample-kit" className="pt-4 md:pt-6 pb-10 md:pb-12 bg-[#FBF9F4] relative overflow-hidden scroll-mt-28" aria-label="Sample Swatch Kit">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="bg-[#0E1311] border border-[#202824] rounded-3xl p-8 md:p-12 lg:p-16 shadow-xl relative overflow-hidden">
           {/* Section Header */}

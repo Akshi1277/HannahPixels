@@ -29,7 +29,8 @@ import {
   ArrowLeft,
   MessageCircle,
   Leaf,
-  ShieldCheck
+  ShieldCheck,
+  Clipboard
 } from 'lucide-react'
 
 export type IconName =
@@ -64,6 +65,7 @@ export type IconName =
   | 'MessageCircleIcon'
   | 'LeafIcon'
   | 'ShieldCheckIcon'
+  | 'ClipboardIcon'
 
 interface AppIconProps {
   name: IconName
@@ -138,6 +140,8 @@ export default function AppIcon({ name, size = 16, className = '' }: AppIconProp
       return <Leaf {...iconProps} />
     case 'ShieldCheckIcon':
       return <ShieldCheck {...iconProps} />
+    case 'ClipboardIcon':
+      return <Clipboard {...iconProps} />
     default:
       return <Sparkles {...iconProps} />
   }

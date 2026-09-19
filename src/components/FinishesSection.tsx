@@ -20,7 +20,7 @@ const finishes: FinishItem[] = [
     id: 'foil',
     title: 'Hot Foil Stamping',
     badge: 'Reflective Detail',
-    subtitle: 'Radiant metallic pigments pressed into textured boards',
+    subtitle: 'Radiant metallic foil on textured boards',
     description: 'Heated brass tooling transfers fine metallic pigments directly into the fibers of heavy paper and rigid greyboard. Reflects natural ambient light with crisp, razor-sharp edge definition.',
     image: '/images/finish-gold-foil.jpg',
     palette: [
@@ -37,7 +37,7 @@ const finishes: FinishItem[] = [
     id: 'emboss',
     title: 'Sculpted Emboss & Deboss',
     badge: 'Dimensional Relief',
-    subtitle: 'Sculptural tactile depth carved into raw paper fibers',
+    subtitle: 'Sculptural relief carved into raw fibers',
     description: 'Crisp matched brass dies sculpt paper fibers to elevate or depress typography and emblems. Creates dramatic physical light and shadow play you can feel across your fingertips.',
     image: '/images/finish-blind-deboss.jpg',
     palette: [
@@ -54,7 +54,7 @@ const finishes: FinishItem[] = [
     id: 'speciality-papers',
     title: 'Curated Speciality Papers & Textures',
     badge: 'Tactile Substrates',
-    subtitle: 'Exploring papers, boards, textures, and colours',
+    subtitle: 'Tactile cotton, laid & uncoated papers',
     description: 'A curated library of tactile surfaces: deckle-edged virgin cotton, Japanese laid papers, ribbed kraft, and fibrous uncoated stocks. We know precisely how each substrate responds to print, fold, foil, and finish.',
     image: '/images/finish-speciality-papers.jpg',
     palette: [
@@ -71,7 +71,7 @@ const finishes: FinishItem[] = [
     id: 'inlays',
     title: 'Bespoke Constructions & Inlays',
     badge: 'Tailored Fit',
-    subtitle: 'Custom velvet trays, ribbons, and magnetic closures',
+    subtitle: 'Custom velvet trays & magnetic closures',
     description: 'Every element of the opening ritual is considered. Custom precision-molded inlays lined in plush Italian velvet or brushed satin cradle the object within, paired with concealed magnetic clasps and grosgrain ribbon pulls.',
     image: '/images/finish-velvet-inlays.jpg',
     palette: [
@@ -118,7 +118,7 @@ export default function FinishesSection() {
         {/* Interactive Finishes Studio Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left: Navigation Column */}
-          <div className="lg:col-span-4 flex flex-col justify-between gap-3.5" role="tablist" aria-label="Finishes selector">
+          <div className="lg:col-span-4 flex flex-col justify-start gap-4" role="tablist" aria-label="Finishes selector">
             <div className="flex flex-col gap-3">
               {finishes.map((f, idx) => {
                 const active = f.id === selectedFinish
@@ -146,7 +146,7 @@ export default function FinishesSection() {
                       <h3 className={`text-base font-bold transition-colors truncate ${active ? 'text-[#181A16]' : 'text-[#4A4E43] group-hover:text-[#181A16]'}`}>
                         {f.title}
                       </h3>
-                      <p className={`text-xs truncate ${active ? 'text-[#6B6F62]' : 'text-[#8A8E80]'}`}>
+                      <p className={`text-xs leading-snug ${active ? 'text-[#6B6F62]' : 'text-[#8A8E80]'}`}>
                         {f.subtitle}
                       </p>
                     </div>
