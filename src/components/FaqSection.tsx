@@ -38,7 +38,7 @@ export default function FaqSection() {
   }
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-[#F3EEE3] border-t border-[#E6E0D2] relative scroll-mt-28">
+    <section id="faq" className="pt-12 md:pt-16 pb-24 md:pb-32 bg-[#F3EEE3] border-t border-[#E6E0D2] relative scroll-mt-28">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center space-y-4 mb-16">
           <div className="inline-flex items-center justify-center gap-3">
@@ -105,7 +105,7 @@ export default function FaqSection() {
         </div>
 
         {/* Still have questions? */}
-        <div className="mt-12 p-6 rounded-2xl bg-white border border-[#538B56]/25 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-sm">
+        <div className="mt-12 p-6 rounded-2xl bg-white border border-[#93660C]/20 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
             <h4 className="text-sm font-bold text-[#181A16]">Have a custom technical inquiry or bespoke dimensions?</h4>
             <p className="text-xs text-[#6B6F62]">Our packaging consultant will review your specifications directly.</p>

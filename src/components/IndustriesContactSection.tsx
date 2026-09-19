@@ -21,7 +21,7 @@ const industriesData = [
     image: '/images/luxury-rigid-box.jpg',
     products: 'Shoulder-and-Neck Boxes, Magnetic Flap Closures & Bespoke Drawer Builds',
     highlight: '1800 GSM Greyboard',
-    technicalSpec: 'Crisp 90° V-grooved structural edges with zero board warping'
+    technicalSpec: 'Crisp 90° V-grooved edges with zero board warping'
   },
   {
     label: 'Chocolate & Gourmet',
@@ -30,7 +30,7 @@ const industriesData = [
     image: '/images/luxury-chocolate-packaging.jpg',
     products: 'Ballotin Boxes, Gold Foil Divider Trays & Airtight Luxury Packaging',
     highlight: 'Food-Grade Certified',
-    technicalSpec: 'FSC certified grease-resistant barrier coatings preserving confectionery aroma'
+    technicalSpec: 'Grease-resistant barrier liners preserving confectionery aroma'
   },
   {
     label: 'Product & E-Commerce',
@@ -39,7 +39,7 @@ const industriesData = [
     image: '/images/product-packaging-mailers.jpg',
     products: 'Reinforced E-Flute Mailers, Tamper-Evident Peel Strips & Internal Product Dividers',
     highlight: 'Drop-Tested Fluting',
-    technicalSpec: 'Engineered unboxing geometry delivering pristine transit protection'
+    technicalSpec: 'Engineered unboxing fluting with tamper-evident tear strips'
   },
   {
     label: 'Books & Publishing',
@@ -48,7 +48,7 @@ const industriesData = [
     image: '/images/editorial-publishing-books.jpg',
     products: 'Hardcover Slipcases, Thread-Sewn Cloth Spines & Lay-Flat Archival Lookbooks',
     highlight: 'Smyth-Sewn Binding',
-    technicalSpec: 'Archival acid-free text papers with precision foil stamped buckram cloth'
+    technicalSpec: 'Acid-free archival text papers with foil-stamped buckram'
   }
 ]
 
@@ -237,7 +237,7 @@ Please share specification options and turnaround schedule.`
       </div>
 
       {/* Interactive Quotation & Specification Builder with Double-Bezel Framing */}
-      <div id="quote-builder" className="pt-16 pb-24 md:pb-32 border-t border-[#E6E0D2] bg-[#F3EEE3] scroll-mt-28">
+      <div id="quote-builder" className="pt-14 pb-12 md:pb-16 border-t border-[#E6E0D2] bg-[#F3EEE3] scroll-mt-28">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center space-y-4 mb-12">
             <div className="inline-flex items-center justify-center gap-3">

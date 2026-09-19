@@ -54,8 +54,8 @@ Shipping Address: ${formData.address || 'Not specified'}`
             <div className="lg:col-span-7 space-y-6">
               <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-[#F8BC23]/35 shadow-2xl group bg-[#0A0D0B]">
                 <AppImage
-                  src="/images/luxury-swatch-box.jpg"
-                  alt="Hannah Pixels luxury sample swatch box with foil ribbons and textured cards"
+                  src="/images/sample-swatch-box-atelier.jpg"
+                  alt="Hannah Pixels bespoke sample swatch box with foil ribbons, deckle-edge cards, and velvet trays"
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"

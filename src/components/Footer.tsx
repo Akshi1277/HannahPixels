@@ -128,7 +128,7 @@ export default function Footer() {
                     href={l.href}
                     className="text-sm text-white/70 hover:text-[#F8BC23] transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#1E3A2F] group-hover:bg-[#F8BC23] transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#93660C]/40 group-hover:bg-[#F8BC23] transition-colors" />
                     <span>{l.label}</span>
                   </a>
                 </li>
@@ -148,7 +148,7 @@ export default function Footer() {
                 href={whatsAppUrl("Hello Hannah Pixels team, I'd like to consult on a packaging project.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 hover:bg-emerald-500/20 text-xs font-bold transition-all"
+                className="flex items-center gap-2.5 p-3 rounded-xl bg-[#181A16] border border-[#F8BC23]/30 text-[#F8BC23] hover:bg-[#202824] hover:border-[#F8BC23]/60 text-xs font-bold transition-all shadow-sm"
               >
                 <Icon name="MessageCircleIcon" size={16} />
                 <span>WhatsApp Atelier Desk</span>
@@ -156,7 +156,7 @@ export default function Footer() {
 
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="flex items-center gap-2.5 p-3 rounded-xl bg-[#141A17] border border-[#264A38]/50 text-white/80 hover:text-white hover:border-[#F8BC23]/40 text-xs font-medium transition-all"
+                className="flex items-center gap-2.5 p-3 rounded-xl bg-[#181A16] border border-white/10 text-white/80 hover:text-white hover:border-[#F8BC23]/40 text-xs font-medium transition-all"
               >
                 <Icon name="EnvelopeIcon" size={16} className="text-[#F8BC23]" />
                 <span>{CONTACT_EMAIL}</span>
