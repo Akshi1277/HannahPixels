@@ -133,17 +133,17 @@ export default function Header() {
             </a>
 
             <a
-              href="#process"
-              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
-            >
-              The Process
-            </a>
-
-            <a
               href="#standards"
               className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
             >
               Standards
+            </a>
+
+            <a
+              href="#process"
+              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
+            >
+              The Process
             </a>
 
             <a
@@ -267,19 +267,19 @@ export default function Header() {
             </a>
 
             <a
-              href="#process"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              The Process
-            </a>
-
-            <a
               href="#standards"
               onClick={closeMenu}
               className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
             >
               The Standards
+            </a>
+
+            <a
+              href="#process"
+              onClick={closeMenu}
+              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
+            >
+              The Process
             </a>
 
             <a

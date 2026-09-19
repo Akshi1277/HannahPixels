@@ -3,41 +3,46 @@ import Icon from '@/components/ui/AppIcon'
 import { whatsAppUrl, CONTACT_EMAIL } from '@/lib/contact'
 
 const packagingServices = [
-  { label: 'Luxury Packaging', href: '#services' },
-  { label: 'Product Packaging', href: '#services' },
-  { label: 'Fragrance & Beauty', href: '#services' },
-  { label: 'Chocolate & Confectionery', href: '#services' },
-  { label: 'Paper & Carry', href: '#services' },
+  { label: 'Luxury Rigid Boxes', href: '#services' },
+  { label: 'Product Packaging & Mailers', href: '#services' },
+  { label: 'Fragrance & Perfumery', href: '#services' },
+  { label: 'Confectionery & Gourmet', href: '#services' },
+  { label: 'Luxury Bags & Carry', href: '#services' },
   { label: 'Books & Publishing', href: '#services' }
 ]
 
 const companyLinks = [
   { label: 'Our Vision', href: '#about' },
-  { label: 'What We Create', href: '#services' },
-  { label: 'The Process', href: '#process' },
   { label: 'The Standard', href: '#standards' },
+  { label: 'The Process', href: '#process' },
   { label: 'Finishes & Craft', href: '#finishes' },
-  { label: 'Sample Swatch Box', href: '#sample-kit' }
+  { label: 'Sample Swatch Box', href: '#sample-kit' },
+  { label: 'Procurement FAQ', href: '#faq' }
 ]
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#202824] bg-[#040605] pt-16 pb-12 text-white relative overflow-hidden">
+    <footer className="border-t border-[#202824] bg-[#040605] pt-16 pb-16 text-white relative overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#F8BC23]/5 rounded-full filter blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Signature Brand Statement Banner */}
         <div className="pb-16 mb-16 border-b border-[#202824] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-          <div className="space-y-3 max-w-2xl">
-            <p className="text-xs font-mono font-bold tracking-[0.25em] text-[#F8BC23] uppercase">
-              HANNAH PIXELS · DESIGN • PRINT • PACKAGING
-            </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white uppercase leading-[1.1]">
-              PRINT THAT SPEAKS. PACKAGING THAT STAYS.
+          <div className="space-y-4 max-w-2xl">
+            <div className="inline-flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
+              <span className="text-xs font-mono font-bold tracking-[0.25em] text-[#F8BC23] uppercase">
+                ATELIER PRINT &amp; PACKAGING HOUSE
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-serif font-normal tracking-tight text-white leading-[1.15]">
+              Print that speaks.{' '}
+              <br className="hidden sm:inline" />
+              <span className="italic text-[#F8BC23]">Packaging that stays.</span>
             </h2>
-            <p className="text-sm md:text-base text-white/65 font-normal">
-              Hannah Pixels — Design • Print • Packaging — Worldwide.
+            <p className="text-sm md:text-base text-white/70 font-normal leading-relaxed">
+              Bespoke luxury packaging, archival print editions, and tailored brand unboxing experiences engineered between London and Dubai.
             </p>
           </div>
 
@@ -110,7 +115,7 @@ export default function Footer() {
                     href={s.href}
                     className="text-sm text-white/70 hover:text-[#F8BC23] transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]/50 group-hover:bg-[#F8BC23] transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]/60 group-hover:bg-[#F8BC23] transition-colors" />
                     <span>{s.label}</span>
                   </a>
                 </li>
@@ -128,7 +133,7 @@ export default function Footer() {
                     href={l.href}
                     className="text-sm text-white/70 hover:text-[#F8BC23] transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#93660C]/40 group-hover:bg-[#F8BC23] transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]/60 group-hover:bg-[#F8BC23] transition-colors" />
                     <span>{l.label}</span>
                   </a>
                 </li>
@@ -169,8 +174,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Credits & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
+        {/* Bottom Credits & Copyright - with clearance for floating WhatsApp FAB */}
+        <div className="pt-8 sm:pr-28 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
           <p>© {new Date().getFullYear()} Hannah Pixels. All Rights Reserved.</p>
           <div className="flex items-center gap-4 text-white/60">
             <span>Design</span>
