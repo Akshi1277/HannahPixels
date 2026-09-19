@@ -2,63 +2,87 @@ import { useState } from 'react'
 import Icon from '@/components/ui/AppIcon'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const finishes = [
+interface FinishItem {
+  id: string
+  title: string
+  badge: string
+  subtitle: string
+  description: string
+  image: string
+  palette: { name: string; descriptor: string; bg: string; border: string }[]
+  substratePairing: string
+  idealFor: string
+  tactileFeel: string
+}
+
+const finishes: FinishItem[] = [
   {
     id: 'foil',
-    title: 'Metallic Hot Foil Stamping',
-    badge: 'Reflective Finish',
-    description: 'Precision heated brass dies transfer metallic pigments into deep fibers of textured board, producing a radiant, crisp specular reflection that catches natural light at every angle.',
+    title: 'Hot Foil Stamping',
+    badge: 'Reflective Detail',
+    subtitle: 'Radiant metallic pigments pressed into textured boards',
+    description: 'Heated brass tooling transfers fine metallic pigments directly into the fibers of heavy paper and rigid greyboard. Reflects natural ambient light with crisp, razor-sharp edge definition.',
+    image: '/images/finish-gold-foil.jpg',
     palette: [
-      { name: 'Crown Champagne Gold', bg: 'linear-gradient(135deg, #F9E7B9 0%, #F8BC23 50%, #B28834 100%)', border: '#F8BC23' },
-      { name: 'Imperial Rose Gold', bg: 'linear-gradient(135deg, #FAD0C4 0%, #E89E90 50%, #B86756 100%)', border: '#E89E90' },
-      { name: 'Architectural Matte Silver', bg: 'linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 50%, #8E8E93 100%)', border: '#D4D4D8' },
-      { name: 'Burnished Copper Bronze', bg: 'linear-gradient(135deg, #E6A070 0%, #C46D3B 50%, #803D16 100%)', border: '#C46D3B' }
+      { name: 'Crown Champagne Gold', descriptor: 'Lustrous satin gold', bg: 'linear-gradient(135deg, #F9E7B9 0%, #F8BC23 50%, #B28834 100%)', border: '#D89E1E' },
+      { name: 'Architectural Matte Silver', descriptor: 'Cool muted platinum', bg: 'linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 50%, #8E8E93 100%)', border: '#C0C0C4' },
+      { name: 'Imperial Rose Gold', descriptor: 'Warm blush copper', bg: 'linear-gradient(135deg, #FAD0C4 0%, #E89E90 50%, #B86756 100%)', border: '#D48677' },
+      { name: 'Burnished Bronze', descriptor: 'Deep antique sheen', bg: 'linear-gradient(135deg, #E6A070 0%, #C46D3B 50%, #803D16 100%)', border: '#A65628' }
     ],
-    substratePairing: '350–600 GSM Uncoated Cotton Paper & 1800 GSM Rigid Greyboard',
-    idealFor: 'Perfumery boxes, luxury gifting cases, and boutique shopping bags.',
-    tactileFeel: 'Crisp, micro-indented metallic edges with mirror-grade light catch.'
+    substratePairing: '350–600 GSM Cotton Paper, Uncoated Linen & Rigid Greyboard',
+    idealFor: 'Perfumery cartons, luxury rigid gift boxes, boutique shopping bags',
+    tactileFeel: 'Micro-indented metallic edges with mirror-grade light catch'
   },
   {
     id: 'emboss',
-    title: 'Multi-Level 3D Sculpted Emboss & Deboss',
-    badge: 'Tactile Relief',
-    description: 'Crisp male and female brass dies sculpt paper fibers to elevate or depress typography and family crests, creating dramatic physical light and shadow play you can feel with your fingertips.',
+    title: 'Sculpted Emboss & Deboss',
+    badge: 'Dimensional Relief',
+    subtitle: 'Sculptural tactile depth carved into raw paper fibers',
+    description: 'Crisp matched brass dies sculpt paper fibers to elevate or depress typography and emblems. Creates dramatic physical light and shadow play you can feel across your fingertips.',
+    image: '/images/finish-blind-deboss.jpg',
     palette: [
-      { name: 'Blind Deboss (No Foil/Ink)', bg: 'linear-gradient(135deg, #3A413C 0%, #20241F 100%)', border: '#5A655D' },
-      { name: 'Registered Foil & Emboss', bg: 'linear-gradient(135deg, #F8BC23 0%, #20241F 70%)', border: '#F8BC23' },
-      { name: 'Micro-Chiseled Texture', bg: 'linear-gradient(135deg, #4E5850 0%, #262B27 100%)', border: '#6B776D' }
+      { name: 'Deep Blind Deboss', descriptor: 'Pure shadow relief (no ink)', bg: 'linear-gradient(135deg, #F5EFE4 0%, #DDD6C6 100%)', border: '#C4BCA8' },
+      { name: 'Registered Foil & Emboss', descriptor: 'Gold foil elevated in 3D', bg: 'linear-gradient(135deg, #F8BC23 0%, #8A6414 100%)', border: '#B28834' },
+      { name: 'Multi-Level Sculpted Relief', descriptor: 'Graduated contour levels', bg: 'linear-gradient(135deg, #EBE3D3 0%, #BAAE96 100%)', border: '#A89B82' },
+      { name: 'Micro-Chiseled Crest', descriptor: 'Fine precision bevel lines', bg: 'linear-gradient(135deg, #FAF7F0 0%, #CCC4B2 100%)', border: '#B8AF9B' }
     ],
-    substratePairing: 'Heavyweight Virgin Kraft, Colorplan FSC Boards & Coated Art Stocks',
-    idealFor: 'Boutique lookbooks, emblem seals, and fragrance presentation sleeves.',
-    tactileFeel: 'Deep dimensional sculpted relief with perceptible shadow depth.'
+    substratePairing: 'Heavyweight Virgin Cotton, Colorplan FSC Boards & Raw Pulp Stock',
+    idealFor: 'Emblem seals, luxury lookbook covers, fragrance sleeves',
+    tactileFeel: 'Deep dimensional sculpted relief with perceptible shadow depth'
   },
   {
-    id: 'spot-uv',
-    title: 'Soft-Touch Velvet & Raised 3D Spot UV',
-    badge: 'Contrasting Surface',
-    description: 'Ultra-matte peach-skin velvet lamination paired with high-build liquid clear polymer cured under ultraviolet lamps. The visual and haptic contrast between velvety matte and glass-like gloss creates instant tactile intrigue.',
+    id: 'speciality-papers',
+    title: 'Curated Speciality Papers & Textures',
+    badge: 'Tactile Substrates',
+    subtitle: 'Exploring papers, boards, textures, and colours',
+    description: 'A curated library of tactile surfaces: deckle-edged virgin cotton, Japanese laid papers, ribbed kraft, and fibrous uncoated stocks. We know precisely how each substrate responds to print, fold, foil, and finish.',
+    image: '/images/finish-speciality-papers.jpg',
     palette: [
-      { name: 'High-Build Raised 3D Gloss', bg: 'linear-gradient(135deg, #5C7264 0%, #222923 100%)', border: '#7C9585' },
-      { name: 'Peach-Skin Velvet Matte', bg: 'linear-gradient(135deg, #3A443E 0%, #24291F 100%)', border: '#525E54' },
-      { name: 'Textured Drip-Off Varnish', bg: 'linear-gradient(135deg, #4B5A50 0%, #262E28 100%)', border: '#68796D' }
+      { name: 'Deckle-Edge Cotton', descriptor: 'Raw, fibrous deckled pulp', bg: 'linear-gradient(135deg, #FDFBF7 0%, #EFE9DC 100%)', border: '#DCD4C4' },
+      { name: 'Japanese Ribbed Laid', descriptor: 'Fine horizontal tactile ribs', bg: 'linear-gradient(135deg, #F5F0E4 0%, #DDD5C2 100%)', border: '#C5BBA6' },
+      { name: 'Warm Charcoal Uncoated', descriptor: 'Deep dyed matte texture', bg: 'linear-gradient(135deg, #2A2E2A 0%, #171916 100%)', border: '#3F443E' },
+      { name: 'Gold-Flecked Ivory Board', descriptor: 'Warm ivory with mineral specks', bg: 'linear-gradient(135deg, #FFFDF8 0%, #EBE0C8 100%)', border: '#D9CDB2' }
     ],
-    substratePairing: '350–450 GSM Mono Cartons & Laminated Rigid Box Wraps',
-    idealFor: 'Gourmet confectionery, artisan coffee bean pouches, and luxury cosmetics.',
-    tactileFeel: 'Silky smooth velvet backdrop interrupted by high-gloss glass-like accents.'
+    substratePairing: '120 GSM Flyleaves to 800 GSM Multi-Ply Pasted Boards',
+    idealFor: 'Rigid box wraps, editorial lookbooks, letterpress stationery',
+    tactileFeel: 'Natural organic paper grain with rich haptic warmth'
   },
   {
-    id: 'inserts',
-    title: 'Bespoke Laser-Cut Foam & Velvet Inlays',
-    badge: 'Cushioned Fit',
-    description: 'Computer-routed high-density EVA foam and thermoformed trays wrapped in real Italian velvet or brushed satin. Engineered down to 0.5mm precision to securely cradle heavy glass flacons, porcelain jars, or watches during transit.',
+    id: 'inlays',
+    title: 'Bespoke Constructions & Inlays',
+    badge: 'Tailored Fit',
+    subtitle: 'Custom velvet trays, ribbons, and magnetic closures',
+    description: 'Every element of the opening ritual is considered. Custom precision-molded inlays lined in plush Italian velvet or brushed satin cradle the object within, paired with concealed magnetic clasps and grosgrain ribbon pulls.',
+    image: '/images/finish-velvet-inlays.jpg',
     palette: [
-      { name: 'Italian Black Velvet Flocking', bg: 'linear-gradient(135deg, #3A3C3A 0%, #17191A 100%)', border: '#565A56' },
-      { name: 'High-Density Non-Dusting EVA', bg: 'linear-gradient(135deg, #464F49 0%, #21261F 100%)', border: '#616D63' },
-      { name: 'Compostable Molded Paper Pulp', bg: 'linear-gradient(135deg, #8A7B68 0%, #5E5345 100%)', border: '#9E8D77' }
+      { name: 'Midnight Emerald Velvet', descriptor: 'Plush tailored fluted tray', bg: 'linear-gradient(135deg, #1C3B2B 0%, #0D1C14 100%)', border: '#2C5C43' },
+      { name: 'Obsidian Black Velvet', descriptor: 'Deep matte light-absorbing pile', bg: 'linear-gradient(135deg, #252825 0%, #121412 100%)', border: '#383D38' },
+      { name: 'Champagne Grosgrain Ribbon', descriptor: 'Ribbed textile pull tab', bg: 'linear-gradient(135deg, #F8E3BE 0%, #D8B778 100%)', border: '#C5A362' },
+      { name: 'Concealed Magnetic Flap', descriptor: 'Satisfying snap closure', bg: 'linear-gradient(135deg, #C2B6A3 0%, #857A68 100%)', border: '#6E6454' }
     ],
-    substratePairing: 'Laser-Cut to exact CAD product drawings and 3D sample scans',
-    idealFor: 'Fragrance flacons, crystal bottles, jewelry, and VIP gifting.',
-    tactileFeel: 'Precision friction fit with plush, protective cushioning.'
+    substratePairing: 'High-Density Precision Foam, FSC Molded Pulp & Italian Velvet',
+    idealFor: 'Fragrance flacons, fine jewelry cases, crystal presentation boxes',
+    tactileFeel: 'Smooth friction fit with plush, protective cushioning'
   }
 ]
 
@@ -67,10 +91,10 @@ export default function FinishesSection() {
   const current = finishes.find(f => f.id === selectedFinish) || finishes[0]
 
   return (
-    <section id="finishes" className="py-24 md:py-32 bg-[#F3EEE3] border-t border-[#E6E0D2] relative overflow-hidden scroll-mt-28" aria-label="Tactile Finishes Studio">
+    <section id="finishes" className="pt-20 md:pt-28 pb-12 md:pb-16 bg-[#FBF9F4] border-t border-[#E6E0D2] relative overflow-hidden scroll-mt-28" aria-label="Tactile Finishes Studio">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-14">
           <div className="space-y-4 max-w-2xl">
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">05</span>
@@ -81,124 +105,193 @@ export default function FinishesSection() {
               Specialist Foil, Embossing &amp; Surface Treatments
             </h2>
             <p className="text-[#4A4E43] text-base md:text-lg leading-relaxed font-normal">
-              Packaging is experienced through touch before it is opened. Explore precision finishing techniques engineered with in-house tooling dies.
+              Packaging is experienced through touch before it is opened. We explore papers, boards, textures, finishes, and colours — and know how each will respond to print, fold, foil, and finish.
             </p>
           </div>
 
-          <div className="text-xs text-[#6B6F62] border-l border-[#F8BC23]/40 pl-4 py-1">
-            <span className="text-[#93660C] font-bold block mb-0.5">Tactile Proofing</span>
+          <div className="text-xs text-[#6B6F62] border-l-2 border-[#93660C]/40 pl-4 py-1">
+            <span className="text-[#93660C] font-bold block mb-0.5 tracking-wide uppercase">Tactile Proofing</span>
             <span>All finishes available in physical swatch kit</span>
           </div>
         </div>
 
         {/* Interactive Finishes Studio Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Navigation Column */}
-          <div className="lg:col-span-5 flex flex-col gap-3" role="tablist" aria-label="Finishes selector">
-            {finishes.map((f) => {
-              const active = f.id === selectedFinish
-              return (
-                <button
-                  key={f.id}
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => setSelectedFinish(f.id)}
-                  className={`text-left p-6 rounded-2xl border transition-all cursor-pointer flex items-start justify-between gap-4 ${
-                    active
-                      ? 'bg-white border-[#F8BC23] shadow-lg shadow-[#F8BC23]/15 ring-2 ring-[#F8BC23]/20'
-                      : 'bg-white/60 border-[#E6E0D2] hover:border-[#F8BC23]/40 hover:bg-white'
-                  }`}
-                >
-                  <div className="space-y-1.5">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
-                      active ? 'bg-[#F8BC23] text-[#181A16]' : 'bg-[#F3EEE3] text-[#6B6F62]'
-                    }`}>
-                      {f.badge}
-                    </span>
-                    <h3 className={`text-lg font-bold transition-colors ${active ? 'text-[#181A16]' : 'text-[#4A4E43]'}`}>
-                      {f.title}
-                    </h3>
-                  </div>
+          {/* Left: Navigation Column */}
+          <div className="lg:col-span-4 flex flex-col justify-between gap-3.5" role="tablist" aria-label="Finishes selector">
+            <div className="flex flex-col gap-3">
+              {finishes.map((f, idx) => {
+                const active = f.id === selectedFinish
+                return (
+                  <button
+                    key={f.id}
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setSelectedFinish(f.id)}
+                    className={`text-left p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 group ${
+                      active
+                        ? 'bg-white border-[#F8BC23] shadow-md shadow-[#93660C]/10 ring-2 ring-[#F8BC23]/25'
+                        : 'bg-white/70 border-[#E6E0D2] hover:border-[#93660C]/40 hover:bg-white'
+                    }`}
+                  >
+                    <div className="space-y-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-[10px] text-[#93660C] font-bold">0{idx + 1}</span>
+                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                          active ? 'bg-[#F8BC23]/25 text-[#93660C]' : 'bg-[#F3EEE3] text-[#6B6F62]'
+                        }`}>
+                          {f.badge}
+                        </span>
+                      </div>
+                      <h3 className={`text-base font-bold transition-colors truncate ${active ? 'text-[#181A16]' : 'text-[#4A4E43] group-hover:text-[#181A16]'}`}>
+                        {f.title}
+                      </h3>
+                      <p className={`text-xs truncate ${active ? 'text-[#6B6F62]' : 'text-[#8A8E80]'}`}>
+                        {f.subtitle}
+                      </p>
+                    </div>
 
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all ${
-                    active ? 'bg-[#F8BC23] text-[#181A16]' : 'bg-[#F3EEE3] text-[#8A8E80]'
-                  }`}>
-                    <Icon name="ArrowRightIcon" size={14} />
-                  </div>
-                </button>
-              )
-            })}
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                      active ? 'bg-[#F8BC23] text-[#181A16] scale-105' : 'bg-[#F3EEE3] text-[#8A8E80] group-hover:bg-[#E6E0D2] group-hover:text-[#181A16]'
+                    }`}>
+                      <Icon name="ArrowRightIcon" size={14} />
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Atelier Physical Proofing Notice Card to balance column height */}
+            <div className="p-5 rounded-2xl bg-[#F3EEE3] border border-[#E6E0D2] space-y-2.5">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-[#93660C]/10 flex items-center justify-center text-[#93660C] shrink-0">
+                  <Icon name="SparklesIcon" size={16} />
+                </div>
+                <div>
+                  <p className="font-bold text-xs text-[#181A16]">Physical Atelier Proofing</p>
+                  <span className="text-[10px] text-[#6B6F62] uppercase tracking-wider font-mono">Custom Swatches Available</span>
+                </div>
+              </div>
+              <p className="text-xs text-[#4A4E43] leading-relaxed">
+                Every finish can be sampled on your exact brand paper stock or flacon dimensions before production.
+              </p>
+              <a
+                href="#sample-kit"
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#93660C] hover:text-[#181A16] transition-colors pt-1"
+              >
+                <span>Request Swatches in Sample Box</span>
+                <Icon name="ArrowRightIcon" size={12} />
+              </a>
+            </div>
           </div>
 
-          {/* Details Column with Double-Bezel Architecture */}
-          <div className="lg:col-span-7">
-            <div className="rounded-[2.5rem] p-2 bg-[#181A16]/5 ring-1 ring-[#93660C]/15 shadow-2xl h-full">
+          {/* Right: Active Detail Showcase with Double-Bezel Architecture */}
+          <div className="lg:col-span-8">
+            <div className="rounded-[2.25rem] p-2 md:p-2.5 bg-[#181A16]/5 ring-1 ring-[#93660C]/20 shadow-2xl h-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.id}
                   role="tabpanel"
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-                  className="h-full bg-white border border-[#E6E0D2] rounded-[calc(2.5rem-0.5rem)] p-8 md:p-10 flex flex-col justify-between shadow-xl relative overflow-hidden"
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                  className="h-full bg-white border border-[#E6E0D2] rounded-[calc(2.25rem-0.375rem)] p-6 md:p-8 lg:p-9 flex flex-col justify-between shadow-xl relative overflow-hidden"
                 >
-                  <div className="absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl from-[#F8BC23]/15 to-transparent pointer-events-none rounded-bl-full" />
+                  <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-[#F8BC23]/10 to-transparent pointer-events-none rounded-bl-full" />
 
-                  <div className="space-y-8 relative z-10">
-                    <div className="space-y-3">
-                      <span className="text-xs font-bold text-[#93660C] tracking-widest uppercase">
-                        {current.badge}
-                      </span>
-                      <h3 className="text-2xl md:text-3xl font-bold text-[#181A16] tracking-tight">
+                  <div className="space-y-6 relative z-10">
+                    {/* Visual Showcase: Physical Macro Photography */}
+                    <div className="relative rounded-2xl overflow-hidden border border-[#E6E0D2] shadow-md group aspect-[16/9] md:aspect-[16/8] lg:h-72 w-full bg-[#F3EEE3]">
+                      <img
+                        src={current.image}
+                        alt={`${current.title} physical macro craft`}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent pointer-events-none" />
+                      
+                      <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between text-white">
+                        <div>
+                          <span className="text-[10px] font-mono tracking-widest uppercase text-[#F8BC23] font-bold block">
+                            ATELIER CRAFT DETAIL
+                          </span>
+                          <span className="text-sm md:text-base font-serif font-medium drop-shadow-sm">
+                            {current.subtitle}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-mono bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 text-white/90 hidden sm:inline-block">
+                          Macro 1:1
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Description & Header */}
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] font-bold text-[#93660C] tracking-widest uppercase">
+                          {current.badge}
+                        </span>
+                        <span className="text-[#C4BCA8]">•</span>
+                        <span className="text-xs text-[#6B6F62]">In-House Tooling &amp; Application</span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-serif font-medium text-[#181A16] tracking-tight">
                         {current.title}
                       </h3>
-                      <p className="text-sm md:text-base text-[#4A4E43] leading-relaxed pt-1 font-normal">
+                      <p className="text-sm md:text-base text-[#4A4E43] leading-relaxed pt-0.5 font-normal">
                         {current.description}
                       </p>
                     </div>
 
                     {/* Tactile Material Swatch Display */}
-                    <div className="space-y-3 pt-2">
-                      <p className="text-xs font-bold text-[#181A16] tracking-wider uppercase">
-                        Tactile Shade &amp; Substrate Options:
+                    <div className="space-y-2.5 pt-0.5">
+                      <p className="text-xs font-bold text-[#181A16] tracking-wider uppercase flex items-center justify-between">
+                        <span>Tactile Swatches &amp; Variations:</span>
+                        <span className="text-[10px] font-mono text-[#93660C] font-normal lowercase">physical swatches available</span>
                       </p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                         {current.palette.map((p) => (
                           <div
                             key={p.name}
-                            className="flex items-center gap-3 p-3 rounded-xl bg-[#F3EEE3] border border-[#E6E0D2] text-xs text-[#181A16]"
+                            className="flex items-center gap-3 p-2.5 rounded-xl bg-[#FBF9F4] border border-[#E6E0D2] hover:border-[#93660C]/30 transition-colors"
                           >
                             <div
-                              className="w-7 h-7 rounded-lg shrink-0 shadow-md border"
+                              className="w-8 h-8 rounded-lg shrink-0 shadow-sm border"
                               style={{ background: p.bg, borderColor: p.border }}
                             />
-                            <span className="font-semibold">{p.name}</span>
+                            <div className="min-w-0">
+                              <span className="font-semibold text-xs text-[#181A16] block truncate">{p.name}</span>
+                              <span className="text-[10px] text-[#6B6F62] block truncate">{p.descriptor}</span>
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* Substrate & Feel Specs */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                      <div className="p-4 rounded-xl bg-[#F3EEE3] border border-[#538B56]/25 space-y-1">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#3B6A3E]">Substrate Weight</span>
-                        <p className="text-xs text-[#4A4E43]">{current.substratePairing}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-0.5">
+                      <div className="p-3.5 rounded-xl bg-[#FBF9F4] border border-[#E6E0D2] space-y-1">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#93660C] block">Substrates</span>
+                        <p className="text-xs text-[#4A4E43] leading-snug">{current.substratePairing}</p>
                       </div>
-                      <div className="p-4 rounded-xl bg-[#F3EEE3] border border-[#538B56]/25 space-y-1">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#3B6A3E]">Haptic Feel</span>
-                        <p className="text-xs text-[#4A4E43]">{current.tactileFeel}</p>
+                      <div className="p-3.5 rounded-xl bg-[#FBF9F4] border border-[#E6E0D2] space-y-1">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#93660C] block">Haptic Feel</span>
+                        <p className="text-xs text-[#4A4E43] leading-snug">{current.tactileFeel}</p>
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-[#FBF9F4] border border-[#E6E0D2] space-y-1 sm:col-span-1">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#93660C] block">Best Suited For</span>
+                        <p className="text-xs text-[#4A4E43] leading-snug">{current.idealFor}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Bottom Action with Button-in-Button */}
-                  <div className="pt-8 mt-8 border-t border-[#E6E0D2] flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+                  <div className="pt-5 mt-5 border-t border-[#E6E0D2] flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
                     <a
                       href="#sample-kit"
                       className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#93660C] hover:text-[#181A16] transition-colors"
                     >
-                      <span>Order Physical Swatch in Sample Box</span>
+                      <span>Request Physical Swatch in Sample Box</span>
                       <Icon name="ArrowRightIcon" size={12} className="group-hover:translate-x-1 transition-transform" />
                     </a>
 
@@ -206,7 +299,7 @@ export default function FinishesSection() {
                       href="#quote-builder"
                       className="group inline-flex items-center gap-3 pl-6 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#181A16] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-md shadow-[#F8BC23]/20"
                     >
-                      <span>Apply Finish to Custom Order</span>
+                      <span>Apply Finish to Custom Inquiry</span>
                       <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
                         <Icon name="ArrowRightIcon" size={11} />
                       </span>
@@ -221,3 +314,4 @@ export default function FinishesSection() {
     </section>
   )
 }
+

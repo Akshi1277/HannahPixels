@@ -29,7 +29,7 @@ Shipping Address: ${formData.address || 'Not specified'}`
   )
 
   return (
-    <section id="sample-kit" className="py-24 md:py-32 bg-[#FBF9F4] relative overflow-hidden scroll-mt-28" aria-label="Sample Swatch Kit">
+    <section id="sample-kit" className="pt-4 md:pt-6 pb-20 md:pb-28 bg-[#FBF9F4] relative overflow-hidden scroll-mt-28" aria-label="Sample Swatch Kit">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="bg-[#0E1311] border border-[#202824] rounded-3xl p-8 md:p-12 lg:p-16 shadow-xl relative overflow-hidden">
           {/* Section Header */}
@@ -80,7 +80,7 @@ Shipping Address: ${formData.address || 'Not specified'}`
                 </div>
                 <div className="flex items-center gap-2.5 p-3 rounded-xl bg-[#090B0A]/70 border border-[#202824]">
                   <Icon name="CheckBadgeIcon" size={15} className="text-[#F8BC23] shrink-0" />
-                  <span>Plastic-Free Aqueous Food Cup Substrates</span>
+                  <span>Curated Speciality Papers &amp; Cotton Board Cards</span>
                 </div>
                 <div className="flex items-center gap-2.5 p-3 rounded-xl bg-[#090B0A]/70 border border-[#202824]">
                   <Icon name="CheckBadgeIcon" size={15} className="text-[#F8BC23] shrink-0" />
