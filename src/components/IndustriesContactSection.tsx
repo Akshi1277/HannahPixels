@@ -36,7 +36,7 @@ const industriesData = [
   {
     label: 'Books & Publishing',
     icon: 'BookOpenIcon',
-    image: 'https://printfix.co.in/wp-content/uploads/2026/04/Books-main.jpg',
+    image: '/images/editorial-publishing-books.jpg',
     products: 'Coffee Table Books, Art Books, Notebooks & Journals, Catalogues, Editorial',
     highlight: 'Swiss & Case Binding'
   }

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
 import { motion, AnimatePresence } from 'framer-motion'
-import { whatsAppUrl } from '@/lib/contact'
 
 export interface ServiceItem {
   id: string
@@ -30,8 +29,8 @@ const services: ServiceItem[] = [
       'Presentation Boxes',
       'Bespoke Packaging'
     ],
-    image: '/images/luxury-packaging-hero.jpg',
-    alt: 'Hannah Pixels luxury rigid gift box with magnetic closure and hot foil stamping',
+    image: '/images/luxury-rigid-box.jpg',
+    alt: 'Hannah Pixels luxury matte rigid presentation drawer box with gold monogram and silk pull tab',
     tag: 'Atelier Grade',
     formType: 'Luxury Packaging'
   },
@@ -48,9 +47,9 @@ const services: ServiceItem[] = [
       'E-commerce Packaging',
       'Retail Packaging'
     ],
-    image: '/images/packaging_boxes.png',
-    alt: 'Hannah Pixels custom printed corrugated and product packaging boxes',
-    tag: 'Structural Engineering',
+    image: '/images/product-packaging-mailers.jpg',
+    alt: 'Hannah Pixels custom printed corrugated product boxes and retail packaging',
+    tag: 'Structural Craft',
     formType: 'Product Packaging'
   },
   {
@@ -65,9 +64,9 @@ const services: ServiceItem[] = [
       'Beauty Packaging',
       'Premium Presentation Sets'
     ],
-    image: '/images/luxury-swatch-box.jpg',
-    alt: 'Hannah Pixels bespoke perfume and fragrance presentation packaging',
-    tag: 'Perfume & Cosmetics',
+    image: '/images/fragrance-luxury-packaging.jpg',
+    alt: 'Hannah Pixels bespoke perfume presentation box with custom velvet inserts',
+    tag: 'Perfume & Beauty',
     formType: 'Fragrance & Beauty'
   },
   {
@@ -101,9 +100,9 @@ const services: ServiceItem[] = [
       'Tissue & Wrapping Paper',
       'Brand Collateral'
     ],
-    image: 'https://printfix.co.in/wp-content/uploads/2026/04/paper-bags-2.jpg.jpeg',
+    image: '/images/luxury-paper-carry-bags.jpg',
     alt: 'Hannah Pixels luxury retail paper carrier bags with custom handles',
-    tag: 'Retail & Collateral',
+    tag: 'Retail & Carry',
     formType: 'Paper & Carry'
   },
   {
@@ -120,9 +119,9 @@ const services: ServiceItem[] = [
       'Editorial Publishing',
       'Corporate Publishing'
     ],
-    image: 'https://printfix.co.in/wp-content/uploads/2026/04/Books-main.jpg',
-    alt: 'Hannah Pixels custom bound hardback books, catalogues and editorial publishing',
-    tag: 'Editorial & Publishing',
+    image: '/images/editorial-publishing-books.jpg',
+    alt: 'Hannah Pixels bespoke linen hardcover coffee table art books and editorial monographs with gold foil debossing',
+    tag: 'Editorial & Books',
     formType: 'Books & Publishing'
   }
 ]
@@ -153,7 +152,7 @@ export default function ServicesSection() {
   }
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-[#FBF9F4] relative overflow-hidden scroll-mt-28" aria-label="Packaging Collections">
+    <section id="services" className="py-24 md:py-32 bg-[#FBF9F4] border-t border-[#E6E0D2] relative overflow-hidden scroll-mt-28" aria-label="Packaging Collections">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
@@ -164,7 +163,7 @@ export default function ServicesSection() {
               <span className="editorial-tag text-[#93660C]">WHAT WE CREATE</span>
             </div>
             <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-              Print &amp; Packaging Engineered for Enduring Brands.
+              Packaging Crafted for Brands with a Point of View.
             </h2>
             <p className="text-[#4A4E43] text-base md:text-lg leading-relaxed font-normal">
               Thoughtful design, exceptional materials and precise production across six core disciplines.
@@ -180,7 +179,7 @@ export default function ServicesSection() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#181A16] text-[#F8BC23] shadow-md shadow-[#181A16]/20 scale-105 font-bold ring-2 ring-[#F8BC23]/40'
+                  ? 'bg-[#181A16] text-[#F8BC23] shadow-md shadow-[#181A16]/20 font-bold ring-2 ring-[#F8BC23]/40'
                   : 'bg-white text-[#4A4E43] hover:text-[#181A16] hover:bg-[#F3EEE3] border border-[#E6E0D2]'
               }`}
             >
@@ -189,135 +188,97 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* Asymmetrical Bento Grid with Double-Bezel Hardware Enclosures */}
+        {/* Balanced 3×2 Grid with Double-Bezel Hardware Enclosures */}
         <div className="mt-12">
           <AnimatePresence mode="popLayout">
             <motion.div
               layout
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
             >
-              {filteredServices.map((service, idx) => {
-                // Layout Archetype: Asymmetrical Bento footprint allocation
-                const isHero = activeCategory === 'all' && idx === 0 // Luxury Packaging: 8 cols
-                const isVerticalLuxe = activeCategory === 'all' && idx === 1 // Fragrance & Beauty: 4 cols
-                const isBannerLuxe = activeCategory === 'all' && idx === 5 // Books & Publishing: 12 cols
-                
-                const colSpanClass = isHero
-                  ? 'lg:col-span-8'
-                  : isVerticalLuxe
-                  ? 'lg:col-span-4'
-                  : isBannerLuxe
-                  ? 'lg:col-span-12'
-                  : 'lg:col-span-4'
-
-                return (
-                  <motion.div
-                    id={service.id}
-                    key={service.id}
-                    layout
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.96 }}
-                    transition={{ duration: 0.4, delay: idx * 0.05 }}
-                    className={`${colSpanClass} flex flex-col`}
-                  >
-                    {/* Double-Bezel Outer Shell */}
-                    <div className="p-1.5 rounded-[2rem] bg-[#F3EEE3] ring-1 ring-[#93660C]/15 transition-all duration-300 hover:ring-[#93660C]/40 hover:shadow-2xl group flex flex-col h-full">
-                      {/* Double-Bezel Inner Core */}
-                      <div className="rounded-[calc(2rem-0.375rem)] bg-white border border-[#E6E0D2] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden flex flex-col h-full justify-between">
-                        
-                        {/* Top: Image & Header Info */}
-                        <div>
-                          {/* Image Container with Ambient Scrim */}
-                          <div
-                            className={`relative w-full overflow-hidden bg-[#F3EEE3] ${
-                              isHero
-                                ? 'aspect-[16/9] lg:aspect-[16/8]'
-                                : isBannerLuxe
-                                ? 'aspect-[16/9] lg:aspect-[21/8]'
-                                : 'aspect-[16/10]'
-                            }`}
-                          >
-                            <AppImage
-                              src={service.image}
-                              alt={service.alt}
-                              fill
-                              sizes={isHero || isBannerLuxe ? "(max-width: 1024px) 100vw, 70vw" : "(max-width: 768px) 100vw, 33vw"}
-                              className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                            
-                            <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-                              <span className="label-tag bg-[#090B0A]/85 backdrop-blur-md border border-[#F8BC23]/40 text-[#F8BC23] px-3.5 py-1 rounded-full text-[10px] font-mono tracking-wider shadow-md inline-flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />
-                                {service.tag}
-                              </span>
-                              {isHero && (
-                                <span className="label-tag bg-[#F8BC23] text-[#090B0A] px-2.5 py-1 rounded-full text-[10px] font-bold font-mono tracking-wider shadow-md">
-                                  FLAGSHIP DISCIPLINE
-                                </span>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Content Details */}
-                          <div className={`p-6 md:p-8 space-y-4 ${isBannerLuxe ? 'lg:flex lg:items-start lg:justify-between lg:space-y-0 lg:gap-8' : ''}`}>
-                            <div className="space-y-2 max-w-xl">
-                              <h3 className="text-2xl font-serif font-bold text-[#181A16] tracking-tight group-hover:text-[#93660C] transition-colors leading-snug">
-                                {service.title}
-                              </h3>
-                              <p className="text-sm text-[#4A4E43] leading-relaxed font-normal">
-                                {service.subtitle}
-                              </p>
-                            </div>
-
-                            {/* Sub-items Tags */}
-                            <div className="pt-2">
-                              <p className="text-[10px] font-mono uppercase tracking-widest text-[#93660C] mb-2 font-bold">
-                                Formats &amp; Specifications:
-                              </p>
-                              <div className="flex flex-wrap gap-1.5">
-                                {service.subItems.map(item => (
-                                  <span
-                                    key={item}
-                                    className="text-[11px] font-mono text-[#2D3129] bg-[#FBF9F4] border border-[#E6E0D2] px-2.5 py-1 rounded-lg"
-                                  >
-                                    {item}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
+              {filteredServices.map((service, idx) => (
+                <motion.div
+                  id={service.id}
+                  key={service.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  className="flex flex-col"
+                >
+                  {/* Double-Bezel Outer Shell */}
+                  <div className="p-1.5 rounded-[2.25rem] bg-[#181A16]/5 ring-1 ring-[#93660C]/10 shadow-xs hover:shadow-xl hover:ring-[#93660C]/30 hover:-translate-y-1 transition-all duration-400 group flex flex-col h-full">
+                    {/* Double-Bezel Inner Core */}
+                    <div className="rounded-[calc(2.25rem-0.375rem)] bg-white border border-[#E6E0D2] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden flex flex-col h-full justify-between">
+                      
+                      {/* Top: Image & Header Info */}
+                      <div>
+                        {/* Image Container with Ambient Scrim */}
+                        <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#F3EEE3]">
+                          <AppImage
+                            src={service.image}
+                            alt={service.alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
+                          
+                          {/* Top floating discipline tag */}
+                          <div className="absolute top-4 left-4 z-10">
+                            <span className="label-tag bg-[#090B0A]/85 backdrop-blur-md border border-[#F8BC23]/40 text-[#F8BC23] px-3.5 py-1 rounded-full text-[10px] font-mono tracking-wider shadow-md inline-flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />
+                              {service.tag}
+                            </span>
                           </div>
                         </div>
 
-                        {/* Bottom: Action CTAs with Button-in-Button Trailing Icon */}
-                        <div className="p-6 md:p-8 pt-0 border-t border-[#E6E0D2]/60 mt-4 flex items-center justify-between gap-3">
-                          <button
-                            onClick={() => handleSelectProduct(service.formType)}
-                            className="group/btn flex items-center gap-2.5 bg-[#181A16] text-[#F8BC23] pl-4 pr-2 py-2 rounded-full text-xs font-mono uppercase tracking-wider hover:bg-[#202824] transition-all hover:scale-105 active:scale-[0.98] shadow-sm cursor-pointer"
-                          >
-                            <span>Configure {service.title.split(' ')[0]}</span>
-                            <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center group-hover/btn:scale-110 group-hover/btn:translate-x-0.5 transition-transform duration-200">
-                              <Icon name="ArrowRightIcon" size={10} />
-                            </span>
-                          </button>
+                        {/* Content Details */}
+                        <div className="p-6 md:p-8 space-y-4">
+                          <div className="space-y-2">
+                            <h3 className="text-2xl font-serif font-bold text-[#181A16] tracking-tight group-hover:text-[#93660C] transition-colors leading-snug">
+                              {service.title}
+                            </h3>
+                            <p className="text-sm text-[#4A4E43] leading-relaxed font-normal">
+                              {service.subtitle}
+                            </p>
+                          </div>
 
-                          <a
-                            href={whatsAppUrl(`Hello Hannah Pixels, I'd like to inquire about bespoke ${service.title}.`)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-[#E6E0D2] bg-[#FBF9F4] hover:border-[#F8BC23]/60 hover:bg-[#F3EEE3] text-xs font-mono text-[#93660C] transition-all"
-                            aria-label={`Inquire about ${service.title} via WhatsApp`}
-                          >
-                            <Icon name="MessageCircleIcon" size={13} />
-                            <span className="hidden sm:inline">WhatsApp Studio</span>
-                          </a>
+                          {/* Formats & Specifications Tags */}
+                          <div className="pt-2">
+                            <p className="text-[10px] font-mono uppercase tracking-widest text-[#93660C] mb-2.5 font-bold">
+                              Formats &amp; Specifications
+                            </p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {service.subItems.map(item => (
+                                <span
+                                  key={item}
+                                  className="text-[11px] font-mono text-[#2D3129] bg-[#FBF9F4] border border-[#E6E0D2] px-2.5 py-1 rounded-lg"
+                                >
+                                  {item}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
+
+                      {/* Bottom: Single Clear Primary Action */}
+                      <div className="p-6 md:p-8 pt-0 border-t border-[#E6E0D2]/60 mt-4">
+                        <button
+                          onClick={() => handleSelectProduct(service.formType)}
+                          className="w-full group/btn flex items-center justify-between bg-[#181A16] hover:bg-[#202824] text-[#F8BC23] px-5 py-3 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
+                        >
+                          <span>Configure {service.title}</span>
+                          <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover/btn:scale-110 group-hover/btn:translate-x-0.5 transition-transform duration-200">
+                            <Icon name="ArrowRightIcon" size={11} />
+                          </span>
+                        </button>
+                      </div>
                     </div>
-                  </motion.div>
-                )
-              })}
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -325,4 +286,3 @@ export default function ServicesSection() {
     </section>
   )
 }
-
