@@ -171,8 +171,8 @@ Please share specification options and turnaround schedule.`
             </p>
           </motion.div>
 
-          {/* 5-Card Visual Grid with Interactive Selector */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+          {/* 5-Card Visual Grid with Interactive Selector (Horizontal Snap Carousel on Mobile, Grid on Tablet/Desktop) */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-6 px-6 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 sm:gap-5 no-scrollbar">
             {industriesData.map((ind, idx) => (
               <motion.div
                 key={ind.label}
@@ -181,7 +181,7 @@ Please share specification options and turnaround schedule.`
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: idx * 0.05, ease: [0.23, 1, 0.32, 1] }}
                 onClick={() => selectIndustryForQuote(ind.mappingType)}
-                className="group relative rounded-3xl overflow-hidden border border-[#E6E0D2] hover:border-[#F8BC23] transition-all duration-500 flex flex-col justify-between h-[410px] shadow-md hover:shadow-2xl cursor-pointer bg-[#0A0D0B]"
+                className="group relative rounded-3xl overflow-hidden border border-[#E6E0D2] hover:border-[#F8BC23] transition-all duration-500 flex flex-col justify-between h-[390px] sm:h-[410px] w-[84vw] sm:w-auto shrink-0 snap-center shadow-md hover:shadow-2xl cursor-pointer bg-[#0A0D0B]"
                 role="button"
                 tabIndex={0}
                 aria-label={`Configure ${ind.label} packaging`}
@@ -232,6 +232,11 @@ Please share specification options and turnaround schedule.`
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Mobile Swipe Guidance Indicator */}
+          <div className="flex sm:hidden items-center justify-center gap-2 pt-3 text-[11px] font-mono text-[#93660C] uppercase tracking-wider">
+            <span>← Swipe to explore 5 sectors →</span>
           </div>
         </div>
       </div>

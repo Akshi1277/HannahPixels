@@ -160,4 +160,13 @@
     text-transform: uppercase;
     letter-spacing: 0.18em;
   }
+
+  /* Cross-browser clean scrollbar hiding for horizontal swipeable lists */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

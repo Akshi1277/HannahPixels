@@ -117,9 +117,9 @@ export default function FinishesSection() {
 
         {/* Interactive Finishes Studio Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left: Navigation Column */}
+          {/* Navigation Column: Horizontal scroll strip on mobile, vertical stack on desktop */}
           <div className="lg:col-span-4 flex flex-col justify-start gap-4" role="tablist" aria-label="Finishes selector">
-            <div className="flex flex-col gap-3">
+            <div className="flex lg:flex-col gap-3 overflow-x-auto no-scrollbar -mx-6 px-6 lg:mx-0 lg:px-0 pb-2 lg:pb-0">
               {finishes.map((f, idx) => {
                 const active = f.id === selectedFinish
                 return (
@@ -128,7 +128,7 @@ export default function FinishesSection() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setSelectedFinish(f.id)}
-                    className={`text-left p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 group ${
+                    className={`text-left p-3.5 sm:p-5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 sm:gap-4 group shrink-0 min-w-[240px] sm:min-w-[280px] lg:min-w-0 lg:w-full ${
                       active
                         ? 'bg-white border-[#F8BC23] shadow-md shadow-[#93660C]/10 ring-2 ring-[#F8BC23]/25'
                         : 'bg-white/70 border-[#E6E0D2] hover:border-[#93660C]/40 hover:bg-white'
@@ -143,26 +143,26 @@ export default function FinishesSection() {
                           {f.badge}
                         </span>
                       </div>
-                      <h3 className={`text-base font-bold transition-colors truncate ${active ? 'text-[#181A16]' : 'text-[#4A4E43] group-hover:text-[#181A16]'}`}>
+                      <h3 className={`text-sm sm:text-base font-bold transition-colors truncate ${active ? 'text-[#181A16]' : 'text-[#4A4E43] group-hover:text-[#181A16]'}`}>
                         {f.title}
                       </h3>
-                      <p className={`text-xs leading-snug ${active ? 'text-[#6B6F62]' : 'text-[#8A8E80]'}`}>
+                      <p className={`text-xs leading-snug truncate ${active ? 'text-[#6B6F62]' : 'text-[#8A8E80]'}`}>
                         {f.subtitle}
                       </p>
                     </div>
 
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                    <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all ${
                       active ? 'bg-[#F8BC23] text-[#181A16] scale-105' : 'bg-[#F3EEE3] text-[#8A8E80] group-hover:bg-[#E6E0D2] group-hover:text-[#181A16]'
                     }`}>
-                      <Icon name="ArrowRightIcon" size={14} />
+                      <Icon name="ArrowRightIcon" size={13} />
                     </div>
                   </button>
                 )
               })}
             </div>
 
-            {/* Atelier Physical Proofing Notice Card to balance column height */}
-            <div className="p-5 rounded-2xl bg-[#F3EEE3] border border-[#E6E0D2] space-y-2.5">
+            {/* Atelier Physical Proofing Notice Card - hidden on mobile to eliminate clutter, visible on lg */}
+            <div className="hidden lg:block p-5 rounded-2xl bg-[#F3EEE3] border border-[#E6E0D2] space-y-2.5">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-[#93660C]/10 flex items-center justify-center text-[#93660C] shrink-0">
                   <Icon name="SparklesIcon" size={16} />

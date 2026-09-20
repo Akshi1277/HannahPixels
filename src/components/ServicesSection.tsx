@@ -171,13 +171,13 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2.5 pb-10 border-b border-[#E6E0D2]">
+        {/* Category Filter Pills - Horizontal swipe on mobile, wrap on desktop */}
+        <div className="flex items-center gap-2.5 pb-6 sm:pb-10 border-b border-[#E6E0D2] overflow-x-auto no-scrollbar -mx-6 px-6 sm:mx-0 sm:px-0 sm:flex-wrap">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer shrink-0 ${
                 activeCategory === cat.id
                   ? 'bg-[#181A16] text-[#F8BC23] shadow-md shadow-[#181A16]/20 font-bold ring-2 ring-[#F8BC23]/40'
                   : 'bg-white text-[#4A4E43] hover:text-[#181A16] hover:bg-[#F3EEE3] border border-[#E6E0D2]'
