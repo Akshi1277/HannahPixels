@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
+import AmbientDust from '@/components/ui/AmbientDust'
+import MagneticButton from '@/components/ui/MagneticButton'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function HeroSection() {
@@ -53,6 +55,9 @@ export default function HeroSection() {
         {/* Tailored Scrims — seamless dark field on left, sunlit physical packaging on right */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#090B0A] via-[#090B0A]/40 via-30% to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#090B0A] via-[#090B0A]/85 via-32% via-[#090B0A]/15 via-55% to-transparent pointer-events-none" />
+        
+        {/* Atmospheric Floating Gold Ambient Dust */}
+        <AmbientDust count={18} color="#F8BC23" />
       </motion.div>
 
       {/* Content with Fade & Parallax */}
@@ -74,7 +79,7 @@ export default function HeroSection() {
             </span>
           </motion.div>
 
-          {/* Stately Editorial Headline */}
+          {/* Stately Editorial Headline with Specular Gold Shimmer */}
           <motion.h1 
             variants={container}
             initial="hidden"
@@ -84,8 +89,8 @@ export default function HeroSection() {
             <motion.span className="inline-block" variants={wordItem}>Where</motion.span>{' '}
             <motion.span className="inline-block" variants={wordItem}>Ideas</motion.span>{' '}
             <br className="hidden sm:block" />
-            <motion.span className="inline-block text-[#F8BC23] font-normal italic" variants={wordItem}>Take</motion.span>{' '}
-            <motion.span className="inline-block text-[#F8BC23] font-normal italic" variants={wordItem}>Form.</motion.span>
+            <motion.span className="inline-block shimmer-gold font-normal italic" variants={wordItem}>Take</motion.span>{' '}
+            <motion.span className="inline-block shimmer-gold font-normal italic" variants={wordItem}>Form.</motion.span>
           </motion.h1>
 
           {/* Crisp, Dignified Sub-copy constrained to 420px to protect negative space */}
@@ -103,32 +108,30 @@ export default function HeroSection() {
             </p>
           </motion.div>
 
-          {/* Clean, Tactile CTAs */}
+          {/* Clean, Tactile CTAs with Magnetic Spring Dynamics */}
           <motion.div 
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6 }}
             className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2"
           >
-            <a
-              href="#quote-builder"
-              className="group flex items-center gap-3 bg-[#F8BC23] text-[#090B0A] pl-7 pr-3 py-3.5 rounded-full font-bold text-xs sm:text-[13px] uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-black/50 relative overflow-hidden"
-            >
-              <span className="relative z-10 font-bold">
-                Start a Conversation
-              </span>
-              <span className="relative z-10 w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-105 group-hover:translate-x-0.5 transition-transform duration-200">
-                <Icon name="ArrowRightIcon" size={12} />
-              </span>
-            </a>
+            <MagneticButton href="#quote-builder" strength={25}>
+              <div className="group flex items-center gap-3 bg-[#F8BC23] text-[#090B0A] pl-7 pr-3 py-3.5 rounded-full font-bold text-xs sm:text-[13px] uppercase tracking-wider hover:bg-[#FFCB4D] transition-all active:scale-[0.98] shadow-lg shadow-black/50 relative overflow-hidden">
+                <span className="relative z-10 font-bold">
+                  Start a Conversation
+                </span>
+                <span className="relative z-10 w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                  <Icon name="ArrowRightIcon" size={12} />
+                </span>
+              </div>
+            </MagneticButton>
 
-            <a
-              href="#what-we-create"
-              className="flex items-center gap-2 px-6 py-3.5 rounded-full text-white/90 hover:text-white border border-white/25 hover:border-[#F8BC23]/60 bg-black/40 hover:bg-black/60 backdrop-blur-md transition-all text-xs sm:text-[13px] font-semibold uppercase tracking-wider"
-            >
-              <span>Explore Creations</span>
-              <Icon name="ArrowDownIcon" size={12} className="text-[#F8BC23]" />
-            </a>
+            <MagneticButton href="#services" strength={18}>
+              <div className="flex items-center gap-2 px-6 py-3.5 rounded-full text-white/90 hover:text-white border border-white/25 hover:border-[#F8BC23]/60 bg-black/40 hover:bg-black/60 backdrop-blur-md transition-all text-xs sm:text-[13px] font-semibold uppercase tracking-wider">
+                <span>Explore Creations</span>
+                <Icon name="ArrowDownIcon" size={12} className="text-[#F8BC23]" />
+              </div>
+            </MagneticButton>
           </motion.div>
 
           {/* Canonical Pillars Strip - Single Horizon Line */}
