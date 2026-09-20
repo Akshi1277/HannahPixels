@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Icon from '@/components/ui/AppIcon'
+import SpotlightCard from '@/components/ui/SpotlightCard'
+import MagneticButton from '@/components/ui/MagneticButton'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface FinishItem {
@@ -185,9 +187,14 @@ export default function FinishesSection() {
             </div>
           </div>
 
-          {/* Right: Active Detail Showcase with Double-Bezel Architecture */}
+          {/* Right: Active Detail Showcase with Double-Bezel Architecture & Specular Lighting */}
           <div className="lg:col-span-8">
-            <div className="rounded-[2.25rem] p-2 md:p-2.5 bg-[#181A16]/5 ring-1 ring-[#93660C]/20 shadow-2xl h-full">
+            <SpotlightCard
+              className="rounded-[2.25rem] p-2 md:p-2.5 bg-[#181A16]/5 ring-1 ring-[#93660C]/20 shadow-2xl h-full"
+              tilt={false}
+              spotlightColor="rgba(248, 188, 35, 0.12)"
+              borderColor="rgba(248, 188, 35, 0.45)"
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.id}
@@ -295,19 +302,21 @@ export default function FinishesSection() {
                       <Icon name="ArrowRightIcon" size={12} className="group-hover:translate-x-1 transition-transform" />
                     </a>
 
-                    <a
-                      href="#quote-builder"
-                      className="group inline-flex items-center gap-3 pl-6 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#181A16] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-md shadow-[#F8BC23]/20"
-                    >
-                      <span>Apply Finish to Custom Inquiry</span>
-                      <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
-                        <Icon name="ArrowRightIcon" size={11} />
-                      </span>
-                    </a>
+                    <MagneticButton strength={18}>
+                      <a
+                        href="#quote-builder"
+                        className="group inline-flex items-center gap-3 pl-6 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#181A16] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-md shadow-[#F8BC23]/20"
+                      >
+                        <span>Apply Finish to Custom Inquiry</span>
+                        <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                          <Icon name="ArrowRightIcon" size={11} />
+                        </span>
+                      </a>
+                    </MagneticButton>
                   </div>
                 </motion.div>
               </AnimatePresence>
-            </div>
+            </SpotlightCard>
           </div>
         </div>
       </div>
