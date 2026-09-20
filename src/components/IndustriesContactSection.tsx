@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
+import SpotlightCard from '@/components/ui/SpotlightCard'
+import MagneticButton from '@/components/ui/MagneticButton'
 import { motion, AnimatePresence } from 'framer-motion'
 import { whatsAppUrl } from '@/lib/contact'
 
@@ -180,56 +182,66 @@ Please share specification options and turnaround schedule.`
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: idx * 0.05, ease: [0.23, 1, 0.32, 1] }}
-                onClick={() => selectIndustryForQuote(ind.mappingType)}
-                className="group relative rounded-3xl overflow-hidden border border-[#E6E0D2] hover:border-[#F8BC23] transition-all duration-500 flex flex-col justify-between h-[390px] sm:h-[410px] w-[84vw] sm:w-auto shrink-0 snap-center shadow-md hover:shadow-2xl cursor-pointer bg-[#0A0D0B]"
-                role="button"
-                tabIndex={0}
-                aria-label={`Configure ${ind.label} packaging`}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    selectIndustryForQuote(ind.mappingType)
-                  }
-                }}
+                className="w-[84vw] sm:w-auto shrink-0 snap-center h-[390px] sm:h-[410px]"
               >
-                {/* Image background */}
-                <div className="absolute inset-0 z-0">
-                  <AppImage
-                    src={ind.image}
-                    alt={`${ind.label} luxury packaging`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 20vw"
-                    className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/25 group-hover:via-black/65 transition-colors duration-500" />
-                </div>
+                <SpotlightCard
+                  onClick={() => selectIndustryForQuote(ind.mappingType)}
+                  className="rounded-3xl border border-[#E6E0D2] hover:border-[#F8BC23] transition-all duration-500 h-full w-full shadow-md hover:shadow-2xl cursor-pointer bg-[#0A0D0B]"
+                  spotlightColor="rgba(248, 188, 35, 0.15)"
+                  borderColor="rgba(248, 188, 35, 0.5)"
+                  tilt={true}
+                  maxTilt={3}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Configure ${ind.label} packaging`}
+                  onKeyDown={(e: React.KeyboardEvent) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      selectIndustryForQuote(ind.mappingType)
+                    }
+                  }}
+                >
+                  <div className="flex flex-col justify-between h-full w-full">
+                    {/* Image background */}
+                    <div className="absolute inset-0 z-0">
+                      <AppImage
+                        src={ind.image}
+                        alt={`${ind.label} luxury packaging`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 20vw"
+                        className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/25 group-hover:via-black/65 transition-colors duration-500" />
+                    </div>
 
-                {/* Top Badge */}
-                <div className="relative z-10 p-5 flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-2xl bg-black/60 backdrop-blur-md border border-[#F8BC23]/40 flex items-center justify-center text-[#F8BC23] group-hover:scale-110 group-hover:bg-[#F8BC23] group-hover:text-black transition-all duration-300">
-                    <Icon name={ind.icon as any} size={18} />
+                    {/* Top Badge */}
+                    <div className="relative z-10 p-5 flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-2xl bg-black/60 backdrop-blur-md border border-[#F8BC23]/40 flex items-center justify-center text-[#F8BC23] group-hover:scale-110 group-hover:bg-[#F8BC23] group-hover:text-black transition-all duration-300">
+                        <Icon name={ind.icon as any} size={18} />
+                      </div>
+                      <span className="text-[10px] font-mono text-[#F8BC23] bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#F8BC23]/20">
+                        0{idx + 1}
+                      </span>
+                    </div>
+
+                    {/* Bottom Content */}
+                    <div className="relative z-10 p-5 space-y-2.5">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#F8BC23] bg-black/60 backdrop-blur-md border border-[#F8BC23]/30 px-2.5 py-0.5 rounded-full inline-block">
+                        {ind.highlight}
+                      </span>
+                      <h3 className="text-lg font-serif font-medium text-white leading-snug">
+                        {ind.label}
+                      </h3>
+                      <p className="text-xs text-white/70 line-clamp-2 leading-relaxed">
+                        {ind.technicalSpec}
+                      </p>
+
+                      <div className="pt-2 flex items-center gap-1.5 text-[11px] font-bold text-[#F8BC23] group-hover:translate-x-1 transition-transform">
+                        <span>Configure Specification</span>
+                        <Icon name="ArrowRightIcon" size={11} />
+                      </div>
+                    </div>
                   </div>
-                  <span className="text-[10px] font-mono text-[#F8BC23] bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#F8BC23]/20">
-                    0{idx + 1}
-                  </span>
-                </div>
-
-                {/* Bottom Content */}
-                <div className="relative z-10 p-5 space-y-2.5">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#F8BC23] bg-black/60 backdrop-blur-md border border-[#F8BC23]/30 px-2.5 py-0.5 rounded-full inline-block">
-                    {ind.highlight}
-                  </span>
-                  <h3 className="text-lg font-serif font-medium text-white leading-snug">
-                    {ind.label}
-                  </h3>
-                  <p className="text-xs text-white/70 line-clamp-2 leading-relaxed">
-                    {ind.technicalSpec}
-                  </p>
-
-                  <div className="pt-2 flex items-center gap-1.5 text-[11px] font-bold text-[#F8BC23] group-hover:translate-x-1 transition-transform">
-                    <span>Configure Specification</span>
-                    <Icon name="ArrowRightIcon" size={11} />
-                  </div>
-                </div>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
@@ -258,8 +270,13 @@ Please share specification options and turnaround schedule.`
             </p>
           </div>
 
-          {/* Double-Bezel Outer Frame */}
-          <div className="rounded-[2.25rem] p-2 sm:p-2.5 bg-[#181A16]/10 ring-1 ring-[#93660C]/25 shadow-2xl">
+          {/* Double-Bezel Outer Frame with Specular Spotlight */}
+          <SpotlightCard
+            className="rounded-[2.25rem] p-2 sm:p-2.5 bg-[#181A16]/10 ring-1 ring-[#93660C]/25 shadow-2xl"
+            tilt={false}
+            spotlightColor="rgba(248, 188, 35, 0.08)"
+            borderColor="rgba(248, 188, 35, 0.45)"
+          >
             <div id="form" className="bg-[#0E1311] border border-[#202824] rounded-[calc(2.25rem-0.375rem)] p-6 md:p-10 lg:p-12 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#F8BC23]/10 to-transparent pointer-events-none rounded-bl-full" />
 
@@ -304,18 +321,20 @@ Please share specification options and turnaround schedule.`
                   </div>
 
                   <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <a
-                      href={generateWhatsAppUrl()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group pl-6 pr-2.5 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] flex items-center gap-3 shadow-xl shadow-[#F8BC23]/25 w-full sm:w-auto justify-center"
-                    >
-                      <Icon name="MessageCircleIcon" size={16} />
-                      <span>Transmit Dossier via WhatsApp</span>
-                      <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
-                        <Icon name="ArrowRightIcon" size={11} />
-                      </span>
-                    </a>
+                    <MagneticButton strength={20}>
+                      <a
+                        href={generateWhatsAppUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group pl-6 pr-2.5 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] flex items-center gap-3 shadow-xl shadow-[#F8BC23]/25 w-full sm:w-auto justify-center"
+                      >
+                        <Icon name="MessageCircleIcon" size={16} />
+                        <span>Transmit Dossier via WhatsApp</span>
+                        <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                          <Icon name="ArrowRightIcon" size={11} />
+                        </span>
+                      </a>
+                    </MagneticButton>
 
                     <button
                       type="button"
@@ -419,16 +438,18 @@ Please share specification options and turnaround schedule.`
                         </div>
 
                         <div className="pt-4 flex justify-end">
-                          <button
-                            type="button"
-                            onClick={handleNext}
-                            className="group pl-7 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] flex items-center gap-3 shadow-lg shadow-[#F8BC23]/20 cursor-pointer"
-                          >
-                            <span>Next: Finishes &amp; Dimensions</span>
-                            <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
-                              <Icon name="ArrowRightIcon" size={11} />
-                            </span>
-                          </button>
+                          <MagneticButton strength={15}>
+                            <button
+                              type="button"
+                              onClick={handleNext}
+                              className="group pl-7 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] flex items-center gap-3 shadow-lg shadow-[#F8BC23]/20 cursor-pointer"
+                            >
+                              <span>Next: Finishes &amp; Dimensions</span>
+                              <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                                <Icon name="ArrowRightIcon" size={11} />
+                              </span>
+                            </button>
+                          </MagneticButton>
                         </div>
                       </motion.div>
                     )}
@@ -506,16 +527,18 @@ Please share specification options and turnaround schedule.`
                           >
                             Back
                           </button>
-                          <button
-                            type="button"
-                            onClick={handleNext}
-                            className="group pl-7 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] flex items-center gap-3 shadow-lg shadow-[#F8BC23]/20 cursor-pointer"
-                          >
-                            <span>Next: Brand Details</span>
-                            <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
-                              <Icon name="ArrowRightIcon" size={11} />
-                            </span>
-                          </button>
+                          <MagneticButton strength={15}>
+                            <button
+                              type="button"
+                              onClick={handleNext}
+                              className="group pl-7 pr-2.5 py-2.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] flex items-center gap-3 shadow-lg shadow-[#F8BC23]/20 cursor-pointer"
+                            >
+                              <span>Next: Brand Details</span>
+                              <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                                <Icon name="ArrowRightIcon" size={11} />
+                              </span>
+                            </button>
+                          </MagneticButton>
                         </div>
                       </motion.div>
                     )}
@@ -606,15 +629,17 @@ Please share specification options and turnaround schedule.`
                             Back
                           </button>
 
-                          <button
-                            type="submit"
-                            className="group pl-8 pr-3 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-xl shadow-[#F8BC23]/25 flex items-center justify-center gap-3 w-full sm:w-auto cursor-pointer"
-                          >
-                            <span>Compile Specification Dossier</span>
-                            <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
-                              <Icon name="ArrowRightIcon" size={11} />
-                            </span>
-                          </button>
+                          <MagneticButton strength={16}>
+                            <button
+                              type="submit"
+                              className="group pl-8 pr-3 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-xl shadow-[#F8BC23]/25 flex items-center justify-center gap-3 w-full sm:w-auto cursor-pointer"
+                            >
+                              <span>Compile Specification Dossier</span>
+                              <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                                <Icon name="ArrowRightIcon" size={11} />
+                              </span>
+                            </button>
+                          </MagneticButton>
                         </div>
                       </motion.div>
                     )}
@@ -622,7 +647,7 @@ Please share specification options and turnaround schedule.`
                 </form>
               )}
             </div>
-          </div>
+          </SpotlightCard>
         </div>
       </div>
     </section>
