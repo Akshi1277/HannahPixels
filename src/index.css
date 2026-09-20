@@ -169,4 +169,30 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* Specular gold foil light sweep effect */
+  @keyframes foil-sweep {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .shimmer-gold {
+    background: linear-gradient(
+      105deg,
+      #F8BC23 0%,
+      #F8BC23 38%,
+      #FFF8E7 50%,
+      #F8BC23 62%,
+      #F8BC23 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: foil-sweep 7s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  }
 }
