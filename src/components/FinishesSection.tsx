@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Icon from '@/components/ui/AppIcon'
-import SpotlightCard from '@/components/ui/SpotlightCard'
 import MagneticButton from '@/components/ui/MagneticButton'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -187,14 +186,9 @@ export default function FinishesSection() {
             </div>
           </div>
 
-          {/* Right: Active Detail Showcase with Double-Bezel Architecture & Specular Lighting */}
+          {/* Right: Active Detail Showcase with Double-Bezel Architecture */}
           <div className="lg:col-span-8">
-            <SpotlightCard
-              className="rounded-[2.25rem] p-2 md:p-2.5 bg-[#181A16]/5 ring-1 ring-[#93660C]/20 shadow-2xl h-full"
-              tilt={false}
-              spotlightColor="rgba(248, 188, 35, 0.12)"
-              borderColor="rgba(248, 188, 35, 0.45)"
-            >
+            <div className="rounded-[2.25rem] p-2 md:p-2.5 bg-[#181A16]/5 ring-1 ring-[#93660C]/20 shadow-2xl h-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.id}
@@ -316,7 +310,7 @@ export default function FinishesSection() {
                   </div>
                 </motion.div>
               </AnimatePresence>
-            </SpotlightCard>
+            </div>
           </div>
         </div>
       </div>

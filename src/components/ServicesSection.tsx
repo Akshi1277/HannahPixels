@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
-import SpotlightCard from '@/components/ui/SpotlightCard'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export interface ServiceItem {
@@ -207,14 +206,8 @@ export default function ServicesSection() {
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
                   className="flex flex-col"
                 >
-                  {/* Double-Bezel Outer Shell with Dynamic Specular Spotlight & 3D Tilt */}
-                  <SpotlightCard
-                    className="p-1.5 rounded-[2.25rem] bg-[#181A16]/5 ring-1 ring-[#93660C]/10 shadow-xs hover:shadow-2xl transition-all duration-400 flex flex-col h-full"
-                    tilt={true}
-                    maxTilt={3}
-                    spotlightColor="rgba(248, 188, 35, 0.08)"
-                    borderColor="rgba(248, 188, 35, 0.45)"
-                  >
+                  {/* Double-Bezel Outer Shell with Precision Luxury Elevation */}
+                  <div className="p-1.5 rounded-[2.25rem] bg-[#181A16]/5 ring-1 ring-[#93660C]/15 shadow-xs hover:shadow-[0_20px_40px_-15px_rgba(24,26,22,0.12)] hover:ring-[#93660C]/35 hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group flex flex-col h-full">
                     {/* Double-Bezel Inner Core */}
                     <div className="rounded-[calc(2.25rem-0.375rem)] bg-white border border-[#E6E0D2] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden flex flex-col h-full justify-between">
                       
@@ -283,7 +276,7 @@ export default function ServicesSection() {
                         </button>
                       </div>
                     </div>
-                  </SpotlightCard>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
