@@ -89,23 +89,23 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#F3EFEA] text-[#111111]">
       {/* ===================== HERO SECTION ===================== */}
-      <section className="pt-32 sm:pt-36 md:pt-40 pb-16 px-6 lg:px-12 border-b border-[#E2DDD5]">
+      <section className="pt-28 sm:pt-32 md:pt-36 pb-16 md:pb-24 px-6 lg:px-12 border-b border-[#E2DDD5] overflow-hidden">
         <div className="max-w-[1400px] mx-auto">
           {/* Eyebrow Bar */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase pb-10 border-b border-[#111111]/10 gap-2">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase pb-8 border-b border-[#111111]/10 gap-2">
             <span>PRINT &amp; PACKAGING HOUSE</span>
             <span className="hidden md:inline">DESIGN • PRINT • PACKAGING — WORLDWIDE</span>
             <span>NO. 01 — FORM</span>
           </div>
 
-          {/* Asymmetric Headline + Packaging Photo Grid */}
-          <div className="pt-12 grid lg:grid-cols-12 gap-8 items-start relative">
+          {/* Headline + Packaging Photo Grid */}
+          <div className="pt-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start relative">
             {/* Headline + Subtext */}
             <div className="lg:col-span-8 z-10">
               <h1 className="sr-only">WHERE IDEAS TAKE FORM.</h1>
               <MaskedLines
                 mode="load"
-                className="font-serif text-[4.25rem] sm:text-[7rem] md:text-[9rem] lg:text-[10.5rem] xl:text-[11.8rem] leading-[0.88] font-normal tracking-[-0.02em] select-none text-[#111111]"
+                className="font-serif text-[3.75rem] sm:text-[5.5rem] md:text-[6.75rem] lg:text-[7.75rem] xl:text-[8.75rem] leading-[0.88] font-normal tracking-[-0.02em] select-none text-[#111111]"
                 lines={[
                   'WHERE',
                   <span key="ideas" className="italic text-[#A67C52]">IDEAS</span>,
@@ -113,7 +113,7 @@ export default function Home() {
                 ]}
               />
 
-              <div className="pt-10 max-w-xl space-y-4">
+              <div className="pt-8 max-w-xl space-y-4">
                 <p className="text-base sm:text-lg text-[#111111] font-normal leading-relaxed">
                   Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world.
                 </p>
@@ -145,47 +145,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Architectural Exhibit Card on the right */}
-            <div className="lg:col-span-4 pt-6 lg:pt-8 flex flex-col gap-3">
-              <div className="p-3 bg-white border border-[#E2DDD5] shadow-xs group">
-                <div className="aspect-[4/5] relative overflow-hidden bg-[#1E2421]">
-                  <AppImage
-                    src="/images/packaging-category-rigid-boxes.jpg"
-                    alt="Hannah Pixels luxury rigid box with gold foil stamping"
-                    fill
-                    priority
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                  />
-                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-black/75 backdrop-blur-xs text-[10px] font-mono tracking-widest text-[#C49A74] uppercase">
-                    ARCHIVE — 01
-                  </div>
-                  <div className="absolute bottom-3 right-3 px-2.5 py-1 bg-white/90 backdrop-blur-xs text-[9px] font-mono tracking-widest text-[#111111] uppercase">
-                    LONDON &amp; DUBAI
-                  </div>
-                </div>
-
-                {/* Technical Specification Blueprint Tag */}
-                <div className="pt-3 pb-1 px-1 space-y-1.5 border-t border-[#E2DDD5]/60 mt-3">
-                  <div className="flex items-center justify-between text-[10px] font-mono tracking-[0.2em] uppercase text-[#111111]/60">
-                    <span>STRUCTURE: RIGID DRAW</span>
-                    <span className="text-[#A67C52]">TOLERANCE: ±0.1MM</span>
-                  </div>
-                  <div className="text-[11px] font-mono text-[#111111]/80 leading-snug">
-                    350 GSM FSC Greyboard · 120°C Stamped Gold Foil · Velvet Inlay Cavity
-                  </div>
-                </div>
-              </div>
-
-              {/* Atelier Provenance Strip */}
-              <div className="flex items-center justify-between px-3 py-2 border border-[#E2DDD5] bg-[#FAF8F5] text-[10px] font-mono tracking-wider text-[#111111]/70 uppercase">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#A67C52]" />
-                  <span>CAD DIELINE APPROVED</span>
-                </span>
-                <Link to="/capabilities#luxury-packaging" className="hover:text-[#A67C52] transition-colors underline">
-                  VIEW SPECS ↗
-                </Link>
+            {/* Clean, Frameless Luxury Packaging Photo on the right */}
+            <div className="lg:col-span-4 pt-4 lg:pt-6">
+              <div className="aspect-[4/5] relative overflow-hidden bg-[#8FA396] shadow-sm">
+                <AppImage
+                  src="/images/hero-sage-boxes.jpg"
+                  alt="Hannah Pixels luxury magnetic rigid boxes on sage background"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
               </div>
             </div>
           </div>
