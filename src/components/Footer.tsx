@@ -1,23 +1,25 @@
+import { Link } from 'react-router-dom'
 import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
 import { whatsAppUrl, CONTACT_EMAIL } from '@/lib/contact'
 
 const packagingServices = [
-  { label: 'Luxury Rigid Boxes', href: '#services' },
-  { label: 'Product Packaging & Mailers', href: '#services' },
-  { label: 'Fragrance & Perfumery', href: '#services' },
-  { label: 'Confectionery & Gourmet', href: '#services' },
-  { label: 'Luxury Bags & Carry', href: '#services' },
-  { label: 'Books & Publishing', href: '#services' }
+  { label: 'Luxury Rigid Boxes', href: '/capabilities#services' },
+  { label: 'Product Packaging & Mailers', href: '/capabilities#services' },
+  { label: 'Fragrance & Perfumery', href: '/capabilities#services' },
+  { label: 'Confectionery & Gourmet', href: '/capabilities#services' },
+  { label: 'Luxury Bags & Carry', href: '/capabilities#services' },
+  { label: 'Books & Publishing', href: '/capabilities#services' }
 ]
 
 const companyLinks = [
-  { label: 'Our Vision', href: '#about' },
-  { label: 'The Standard', href: '#standards' },
-  { label: 'The Process', href: '#process' },
-  { label: 'Finishes & Craft', href: '#finishes' },
-  { label: 'Sample Swatch Box', href: '#sample-kit' },
-  { label: 'Procurement FAQ', href: '#faq' }
+  { label: 'Our Vision', href: '/about' },
+  { label: 'The Standard', href: '/about#standards' },
+  { label: 'The Process & Engineering', href: '/process' },
+  { label: 'Specialist Finishes', href: '/capabilities#finishes' },
+  { label: 'Sample Swatch Box', href: '/capabilities#sample-kit' },
+  { label: 'Procurement FAQ', href: '/about#faq' },
+  { label: 'Direct Atelier Desks', href: '/contact' }
 ]
 
 export default function Footer() {
@@ -36,7 +38,7 @@ export default function Footer() {
                 ATELIER PRINT &amp; PACKAGING HOUSE
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-serif font-normal tracking-tight text-white leading-[1.15]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-serif font-normal tracking-tight text-white leading-[1.12]">
               Print that speaks.{' '}
               <br className="hidden sm:inline" />
               <span className="italic text-[#F8BC23]">Packaging that stays.</span>
@@ -47,15 +49,15 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto shrink-0">
-            <a
-              href="#quote-builder"
+            <Link
+              to="/contact"
               className="group w-full sm:w-auto text-center pl-8 pr-3 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-lg shadow-[#F8BC23]/20 flex items-center justify-center gap-3"
             >
               <span>Request a Quotation</span>
               <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
                 <Icon name="ArrowRightIcon" size={12} />
               </span>
-            </a>
+            </Link>
             <a
               href={whatsAppUrl('Hello Hannah Pixels, I would like to inquire about print and packaging services.')}
               target="_blank"
@@ -72,7 +74,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#202824]">
           {/* Brand & Atelier Footprint */}
           <div className="lg:col-span-4 space-y-5">
-            <a href="#" aria-label="Hannah Pixels homepage" className="inline-block group py-1">
+            <Link to="/" aria-label="Hannah Pixels homepage" className="inline-block group py-1">
               <AppImage
                 src="/hannahpixels.png"
                 alt="Hannah Pixels logo"
@@ -80,7 +82,7 @@ export default function Footer() {
                 height={50}
                 className="h-8 md:h-9 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity"
               />
-            </a>
+            </Link>
             <p className="text-sm text-white/70 leading-relaxed max-w-sm font-normal">
               Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world. Designed with intention. Made to be remembered.
             </p>
@@ -111,13 +113,13 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {packagingServices.map((s) => (
                 <li key={s.label}>
-                  <a
-                    href={s.href}
+                  <Link
+                    to={s.href}
                     className="text-sm text-white/70 hover:text-[#F8BC23] transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]/60 group-hover:bg-[#F8BC23] transition-colors" />
                     <span>{s.label}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -129,13 +131,13 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {companyLinks.map((l) => (
                 <li key={l.label}>
-                  <a
-                    href={l.href}
+                  <Link
+                    to={l.href}
                     className="text-sm text-white/70 hover:text-[#F8BC23] transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]/60 group-hover:bg-[#F8BC23] transition-colors" />
                     <span>{l.label}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -168,27 +170,26 @@ export default function Footer() {
               </a>
             </div>
 
-            <p className="text-[11px] text-white/50 pt-1">
+            <p className="text-[11px] text-white/50 pt-1 font-mono">
               Atelier Hours: Mon – Sat · 9:00 AM – 7:00 PM (GMT / GST)
             </p>
           </div>
         </div>
 
-        {/* Bottom Credits & Copyright - with clearance for floating WhatsApp FAB */}
+        {/* Bottom Credits & Copyright */}
         <div className="pt-8 sm:pr-28 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
           <p>© {new Date().getFullYear()} Hannah Pixels. All Rights Reserved.</p>
-          <div className="flex items-center gap-4 text-white/60">
-            <span>Design</span>
+          <div className="flex items-center gap-4 text-white/60 font-mono text-[11px]">
+            <span>London</span>
+            <span>·</span>
+            <span>Dubai</span>
             <span>·</span>
             <span>Print</span>
             <span>·</span>
             <span>Packaging</span>
-            <span>·</span>
-            <span>Worldwide</span>
           </div>
         </div>
       </div>
     </footer>
   )
 }
-

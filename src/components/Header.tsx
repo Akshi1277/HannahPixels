@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
 import { whatsAppUrl } from '@/lib/contact'
 
 const collections = [
-  { label: 'Luxury Packaging', href: '#services', desc: 'Rigid, Gift, Magnetic & Drawer Boxes' },
-  { label: 'Product Packaging', href: '#services', desc: 'Corrugated, Folding Cartons & Mailers' },
-  { label: 'Fragrance & Beauty', href: '#services', desc: 'Perfume, Cosmetic & Presentation Sets' },
-  { label: 'Chocolate & Confectionery', href: '#services', desc: 'Indulgence Boxes & Food Packaging' },
-  { label: 'Paper & Carry', href: '#services', desc: 'Luxury Bags, Tissue & Collateral' },
-  { label: 'Books & Publishing', href: '#services', desc: 'Hardcovers, Art Books & Catalogues' },
+  { label: 'Luxury Rigid Boxes', href: '/capabilities#services', desc: 'Rigid, Gift, Magnetic & Drawer Boxes' },
+  { label: 'Folding Cartons & Mailers', href: '/capabilities#services', desc: 'Corrugated, Folding Cartons & Mailers' },
+  { label: 'Fragrance & Beauty', href: '/capabilities#services', desc: 'Perfume, Cosmetic & Presentation Sets' },
+  { label: 'Chocolate & Confectionery', href: '/capabilities#services', desc: 'Indulgence Boxes & Food Packaging' },
+  { label: 'Paper & Carry', href: '/capabilities#services', desc: 'Luxury Bags, Tissue & Collateral' },
+  { label: 'Books & Publishing', href: '/capabilities#services', desc: 'Hardcovers, Art Books & Catalogues' },
 ]
 
 export default function Header() {
@@ -71,7 +72,7 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
           {/* Logo with clean luxury presence */}
-          <a href="#" className="flex items-center group py-1 shrink-0" aria-label="Hannah Pixels homepage">
+          <Link to="/" className="flex items-center group py-1 shrink-0" aria-label="Hannah Pixels homepage">
             <AppImage
               src="/hannahpixels.png"
               alt="Hannah Pixels - Luxury Packaging & Printing"
@@ -80,7 +81,7 @@ export default function Header() {
               priority
               className="h-8 md:h-9 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity"
             />
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center pill-nav gap-5 xl:gap-7" aria-label="Main navigation">
@@ -107,9 +108,9 @@ export default function Header() {
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-80 z-50">
                   <div className="bg-[#0F1412] border border-[#F8BC23]/30 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.95)] backdrop-blur-2xl overflow-hidden p-2.5">
                     {collections.map((c) => (
-                      <a
+                      <Link
                         key={c.label}
-                        href={c.href}
+                        to={c.href}
                         className="flex flex-col px-4 py-2.5 rounded-xl hover:bg-[#1E3A2F]/40 transition-all group"
                         onClick={() => setCollectionsOpen(false)}
                       >
@@ -118,47 +119,76 @@ export default function Header() {
                           <Icon name="ArrowRightIcon" size={10} className="text-[#F8BC23] opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                         <span className="text-[11px] text-white/50 group-hover:text-white/70">{c.desc}</span>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
               )}
             </div>
 
-            <a
-              href="#about"
-              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
+            <NavLink
+              to="/capabilities"
+              className={({ isActive }) =>
+                `text-[11px] xl:text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap py-1 flex items-center gap-1.5 ${
+                  isActive ? 'text-[#F8BC23]' : 'text-white/80 hover:text-[#F8BC23]'
+                }`
+              }
             >
-              Our Vision
-            </a>
+              {({ isActive }) => (
+                <>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />}
+                  <span>Capabilities</span>
+                </>
+              )}
+            </NavLink>
 
-            <a
-              href="#standards"
-              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
+            <NavLink
+              to="/process"
+              className={({ isActive }) =>
+                `text-[11px] xl:text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap py-1 flex items-center gap-1.5 ${
+                  isActive ? 'text-[#F8BC23]' : 'text-white/80 hover:text-[#F8BC23]'
+                }`
+              }
             >
-              Standards
-            </a>
+              {({ isActive }) => (
+                <>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />}
+                  <span>The Process</span>
+                </>
+              )}
+            </NavLink>
 
-            <a
-              href="#process"
-              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `text-[11px] xl:text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap py-1 flex items-center gap-1.5 ${
+                  isActive ? 'text-[#F8BC23]' : 'text-white/80 hover:text-[#F8BC23]'
+                }`
+              }
             >
-              The Process
-            </a>
+              {({ isActive }) => (
+                <>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />}
+                  <span>Our Vision</span>
+                </>
+              )}
+            </NavLink>
 
-            <a
-              href="#finishes"
-              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `text-[11px] xl:text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap py-1 flex items-center gap-1.5 ${
+                  isActive ? 'text-[#F8BC23]' : 'text-white/80 hover:text-[#F8BC23]'
+                }`
+              }
             >
-              Finishes &amp; Craft
-            </a>
-
-            <a
-              href="#sample-kit"
-              className="text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors whitespace-nowrap py-1"
-            >
-              Sample Box
-            </a>
+              {({ isActive }) => (
+                <>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />}
+                  <span>Contact</span>
+                </>
+              )}
+            </NavLink>
           </nav>
 
           {/* Desktop CTAs */}
@@ -174,15 +204,15 @@ export default function Header() {
               <span>WhatsApp Studio</span>
             </a>
 
-            <a
-              href="#quote-builder"
+            <Link
+              to="/contact"
               className="group flex items-center gap-2.5 bg-[#F8BC23] text-[#090B0A] pl-4 pr-2 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-md shadow-[#F8BC23]/20 whitespace-nowrap"
             >
               <span>Request Quote</span>
               <span className="w-5 h-5 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
                 <Icon name="ArrowRightIcon" size={10} />
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Hamburger */}
@@ -212,13 +242,15 @@ export default function Header() {
           className="fixed inset-0 z-50 bg-[#090B0A]/98 backdrop-blur-2xl flex flex-col pt-24 px-6 pb-8 overflow-y-auto"
         >
           <div className="flex items-center justify-between pb-6 border-b border-[#202824]">
-            <AppImage
-              src="/hannahpixels.png"
-              alt="Hannah Pixels"
-              width={130}
-              height={40}
-              className="h-7 w-auto object-contain"
-            />
+            <Link to="/" onClick={closeMenu}>
+              <AppImage
+                src="/hannahpixels.png"
+                alt="Hannah Pixels"
+                width={130}
+                height={40}
+                className="h-7 w-auto object-contain"
+              />
+            </Link>
             <button
               onClick={closeMenu}
               aria-label="Close navigation menu"
@@ -229,6 +261,14 @@ export default function Header() {
           </div>
 
           <nav className="flex flex-col gap-1 py-6" aria-label="Mobile navigation">
+            <Link
+              to="/"
+              onClick={closeMenu}
+              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
+            >
+              Home
+            </Link>
+
             <div>
               <button
                 onClick={() => setMobileCollectionsOpen(!mobileCollectionsOpen)}
@@ -244,59 +284,51 @@ export default function Header() {
               {mobileCollectionsOpen && (
                 <div className="pl-3 py-2 flex flex-col gap-1.5 bg-white/5 rounded-xl my-2">
                   {collections.map((c) => (
-                    <a
+                    <Link
                       key={c.label}
-                      href={c.href}
+                      to={c.href}
                       onClick={closeMenu}
                       className="py-2 text-sm text-white/80 hover:text-[#F8BC23] flex items-center justify-between pr-3"
                     >
                       <span>{c.label}</span>
                       <Icon name="ArrowRightIcon" size={12} className="text-[#F8BC23]" />
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
-            <a
-              href="#about"
+            <Link
+              to="/capabilities"
               onClick={closeMenu}
               className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
             >
-              Our Vision
-            </a>
+              Capabilities &amp; Finishes
+            </Link>
 
-            <a
-              href="#standards"
+            <Link
+              to="/process"
               onClick={closeMenu}
               className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
             >
-              The Standards
-            </a>
+              The Process &amp; Engineering
+            </Link>
 
-            <a
-              href="#process"
+            <Link
+              to="/about"
               onClick={closeMenu}
               className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
             >
-              The Process
-            </a>
+              Our Vision &amp; Heritage
+            </Link>
 
-            <a
-              href="#finishes"
+            <Link
+              to="/contact"
               onClick={closeMenu}
               className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
             >
-              Finishes &amp; Craft
-            </a>
-
-            <a
-              href="#sample-kit"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              Sample Swatch Box
-            </a>
+              Contact &amp; Dieline Desk
+            </Link>
           </nav>
 
           <div className="mt-auto space-y-3 pt-6">
@@ -311,14 +343,14 @@ export default function Header() {
               <span>WhatsApp Specialist Desk</span>
             </a>
 
-            <a
-              href="#quote-builder"
+            <Link
+              to="/contact"
               onClick={closeMenu}
               className="flex items-center justify-center gap-2 w-full bg-[#F8BC23] text-[#090B0A] py-3.5 rounded-full label-tag hover:bg-[#FFCB4D] transition-all font-bold shadow-lg shadow-[#F8BC23]/20"
             >
               Request Quote
               <Icon name="ArrowRightIcon" size={12} />
-            </a>
+            </Link>
           </div>
         </div>
       )}

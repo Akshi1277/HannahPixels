@@ -3,6 +3,7 @@
 // only needs to be swapped in once.
 export const WHATSAPP_NUMBER = '447400000000'
 export const CONTACT_EMAIL = 'atelier@hannahpixels.com'
+export const PHONE_NUMBER = '+44 (0) 20 7946 0912'
 
 export function whatsAppUrl(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
