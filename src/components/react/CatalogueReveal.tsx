@@ -25,22 +25,24 @@ export default function CatalogueReveal({ items }: { items: Item[] }) {
           onFocus={() => setHovered(i)}
           onBlur={() => setHovered(null)}
         >
-          <div className="flex items-center justify-between py-6 md:py-8 lg:py-10 px-2 sm:px-4 md:px-6">
-            {/* Left: Number + Title (stacked on 2 lines matching reference) */}
-            <div className="flex items-start sm:items-baseline gap-6 sm:gap-10 md:gap-14">
-              <span className="font-serif italic text-sm md:text-base text-accent/80 flex-shrink-0 pt-2 sm:pt-0">
-                {item.num}
-              </span>
+          <div className="flex items-center py-6 md:py-8 lg:py-10 px-2 sm:px-4">
+            {/* Left: Number */}
+            <span className="font-serif italic text-sm md:text-base text-accent/80 w-10 sm:w-14 md:w-16 flex-shrink-0">
+              {item.num}
+            </span>
 
-              <h3 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-light text-foreground group-hover:text-accent transition-colors leading-[0.96] max-w-[240px] sm:max-w-xs md:max-w-sm">
-                {item.title}
-              </h3>
-            </div>
+            {/* Title: 2-line stacked editorial */}
+            <h3 className="font-serif text-3xl sm:text-5xl md:text-6xl font-light text-foreground group-hover:text-accent transition-colors leading-[0.96] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] flex-shrink-0">
+              {item.title}
+            </h3>
 
-            {/* Right: In-flow Preview Image (strictly contained in row boundaries) + Arrow */}
-            <div className="flex items-center gap-6 sm:gap-10 md:gap-14 lg:gap-16">
+            {/* Controlled editorial spacer between title and image */}
+            <div className="flex-1 min-w-4 sm:min-w-8" />
+
+            {/* Right: In-flow Preview Image + Arrow */}
+            <div className="flex items-center gap-6 sm:gap-8 md:gap-12 flex-shrink-0">
               <div
-                className="hidden md:block w-48 sm:w-56 md:w-60 lg:w-64 h-28 sm:h-32 md:h-36 overflow-hidden pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] bg-secondary/40"
+                className="hidden md:block w-48 sm:w-56 md:w-60 h-28 sm:h-32 md:h-36 overflow-hidden pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] bg-secondary/40"
                 style={{
                   opacity: hovered === i ? 1 : 0,
                   transform:
