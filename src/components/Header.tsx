@@ -46,13 +46,17 @@ export default function Header() {
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
-          {/* Logo in Cormorant Garamond */}
+          {/* Hannah Pixels Logo */}
           <Link
             to="/"
-            className="text-lg md:text-xl font-serif font-medium uppercase tracking-[0.2em] text-[#111111] hover:text-[#A67C52] transition-colors shrink-0"
+            className="flex items-center shrink-0 group py-1"
             aria-label="Hannah Pixels homepage"
           >
-            HANNAH PIXELS
+            <img
+              src="/hannahpixels.png"
+              alt="Hannah Pixels"
+              className="h-8 md:h-9 lg:h-10 w-auto object-contain transition-opacity group-hover:opacity-80"
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -109,9 +113,14 @@ export default function Header() {
             <Link
               to="/"
               onClick={() => setMenuOpen(false)}
-              className="text-lg font-serif font-medium uppercase tracking-[0.2em] text-[#111111]"
+              className="flex items-center shrink-0"
+              aria-label="Hannah Pixels homepage"
             >
-              HANNAH PIXELS
+              <img
+                src="/hannahpixels.png"
+                alt="Hannah Pixels"
+                className="h-8 w-auto object-contain"
+              />
             </Link>
             <button
               onClick={() => setMenuOpen(false)}

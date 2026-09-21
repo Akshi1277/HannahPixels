@@ -17,6 +17,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
           {/* Brand Column */}
           <div className="lg:col-span-4 space-y-6">
+            <Link to="/" className="inline-block group" aria-label="Hannah Pixels homepage">
+              <img
+                src="/hannahpixels.png"
+                alt="Hannah Pixels"
+                className="h-10 w-auto object-contain transition-opacity group-hover:opacity-85"
+              />
+            </Link>
+
             <div className="space-y-1">
               <h3 className="font-serif text-3xl sm:text-4xl text-white font-normal">
                 Where ideas

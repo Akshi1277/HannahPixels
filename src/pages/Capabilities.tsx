@@ -62,27 +62,33 @@ const categories = [
 const finishes = [
   {
     title: 'Hot Foil Stamping',
-    desc: 'Micro-engraved brass dies transferring metallic gold, copper, rose gold, silver, or holographic foils under 120°C calibrated pressure.'
+    desc: 'Micro-engraved brass dies transferring metallic gold, copper, rose gold, silver, or holographic foils under 120°C calibrated pressure.',
+    image: '/images/finish-gold-foil.jpg'
   },
   {
     title: '3D Multi-Level Embossing',
-    desc: 'Tactile sculpted dies elevating typography and brand crests above the surface plane with microscopic shadow depth.'
+    desc: 'Tactile sculpted dies elevating typography and brand crests above the surface plane with microscopic shadow depth.',
+    image: '/images/finish-blind-deboss.jpg'
   },
   {
     title: 'Precision Spot UV & Varnish',
-    desc: 'High-gloss polymer coating cured under ultraviolet light to contrast against velvety matte or uncoated raw paper stocks.'
+    desc: 'High-gloss polymer coating cured under ultraviolet light to contrast against velvety matte or uncoated raw paper stocks.',
+    image: '/images/atelier-craft-emboss.jpg'
   },
   {
     title: 'Velvet Soft-Touch Lamination',
-    desc: 'Tactile anti-scratch matte lamination imparting a peach-skin, velvety hand-feel that repels fingerprints.'
+    desc: 'Tactile anti-scratch matte lamination imparting a peach-skin, velvety hand-feel that repels fingerprints.',
+    image: '/images/finish-velvet-inlays.jpg'
   },
   {
     title: 'Bespoke Laser-Cut Inserts',
-    desc: 'High-density EVA foam and velvet-flocked cardboard trays CNC cut to the exact 3D contours of your physical products.'
+    desc: 'High-density EVA foam and velvet-flocked cardboard trays CNC cut to the exact 3D contours of your physical products.',
+    image: '/images/eco-packaging-clean.jpg'
   },
   {
     title: 'Textured Specialty Papers',
-    desc: 'Sustainably milled FSC art papers with linen, laid, felt, and handmade deckled textures sourced from European mills.'
+    desc: 'Sustainably milled FSC art papers with linen, laid, felt, and handmade deckled textures sourced from European mills.',
+    image: '/images/finish-speciality-papers.jpg'
   }
 ]
 
@@ -190,10 +196,27 @@ export default function Capabilities() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-6 border-t border-white/15">
             {finishes.map((f, i) => (
-              <div key={f.title} className="p-8 border border-white/15 space-y-4">
-                <span className="font-serif italic text-lg text-[#C49A74]">0{i + 1}</span>
-                <h3 className="font-serif text-2xl text-white font-normal">{f.title}</h3>
-                <p className="text-xs sm:text-sm text-white/60 leading-relaxed font-normal">{f.desc}</p>
+              <div key={f.title} className="border border-white/15 bg-white/[0.02] flex flex-col group overflow-hidden">
+                <div className="aspect-[16/10] relative overflow-hidden bg-white/5">
+                  <AppImage
+                    src={f.image}
+                    alt={f.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-black/75 backdrop-blur-xs font-serif italic text-sm text-[#C49A74]">
+                    0{i + 1}
+                  </div>
+                </div>
+                <div className="p-7 space-y-3 flex-1 flex flex-col justify-between">
+                  <h3 className="font-serif text-2xl text-white font-normal group-hover:text-[#C49A74] transition-colors">
+                    {f.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-white/60 leading-relaxed font-normal">
+                    {f.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -226,7 +249,7 @@ export default function Capabilities() {
           <div className="lg:col-span-5">
             <div className="aspect-[4/3] relative overflow-hidden bg-white border border-[#E2DDD5] p-2">
               <AppImage
-                src="/images/packaging-category-paper-carry.jpg"
+                src="/images/sample-swatch-box-atelier.jpg"
                 alt="Hannah Pixels material sample swatch box"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"

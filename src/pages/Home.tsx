@@ -276,6 +276,48 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Material Photography Gallery */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+            <div className="md:col-span-5 aspect-[4/3] relative overflow-hidden bg-white/5 border border-white/10 group">
+              <AppImage
+                src="/images/finish-gold-foil.jpg"
+                alt="Gold hot foil stamping detail on bookcloth"
+                fill
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute bottom-3 left-3 px-3 py-1 bg-black/75 backdrop-blur-xs text-[10px] font-mono tracking-widest text-[#C49A74] uppercase">
+                01 / HOT FOIL STAMPING
+              </div>
+            </div>
+
+            <div className="md:col-span-3 aspect-[3/4] md:aspect-auto relative overflow-hidden bg-white/5 border border-white/10 group">
+              <AppImage
+                src="/images/finish-velvet-inlays.jpg"
+                alt="Bespoke velvet and dark texture finish"
+                fill
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute bottom-3 left-3 px-3 py-1 bg-black/75 backdrop-blur-xs text-[10px] font-mono tracking-widest text-[#C49A74] uppercase">
+                02 / BESPOKE INLAYS
+              </div>
+            </div>
+
+            <div className="md:col-span-4 aspect-[3/4] relative overflow-hidden bg-white/5 border border-white/10 group">
+              <AppImage
+                src="/images/finish-speciality-papers.jpg"
+                alt="Tactile specialty paper and cotton fiber texture"
+                fill
+                sizes="(max-width: 768px) 100vw, 35vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute bottom-3 left-3 px-3 py-1 bg-black/75 backdrop-blur-xs text-[10px] font-mono tracking-widest text-[#C49A74] uppercase">
+                03 / SPECIALTY PAPERS
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6 border-t border-white/15">
             {[
               { num: '01', title: 'Foil & Emboss', desc: 'Hot-stamped metallic luster and multi-level 3D blind debossing.' },
