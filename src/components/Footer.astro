@@ -25,7 +25,7 @@ const year = new Date().getFullYear()
       </div>
 
       <nav class="md:col-span-2 space-y-4" aria-label="Footer navigation">
-        <h4 class="type-label text-white/45">Sitemap</h4>
+        <h3 class="type-label text-white/45">Sitemap</h3>
         <ul class="space-y-2 text-sm text-white/75">
           <li><a href="/" class="hover:text-accent-quiet transition-colors">Home</a></li>
           <li><a href="/capabilities" class="hover:text-accent-quiet transition-colors">Capabilities</a></li>
@@ -36,7 +36,7 @@ const year = new Date().getFullYear()
       </nav>
 
       <nav class="md:col-span-3 space-y-4" aria-label="Footer capabilities">
-        <h4 class="type-label text-white/45">Capabilities</h4>
+        <h3 class="type-label text-white/45">Capabilities</h3>
         <ul class="space-y-2 text-sm text-white/75">
           {capabilities.map((c) => (
             <li>
@@ -47,7 +47,7 @@ const year = new Date().getFullYear()
       </nav>
 
       <div class="md:col-span-2 space-y-4">
-        <h4 class="type-label text-white/45">Enquiries</h4>
+        <h3 class="type-label text-white/45">Enquiries</h3>
         <div class="space-y-2 text-sm text-white/75">
           <a href={`mailto:${CONTACT_EMAIL}`} class="block hover:text-accent-quiet transition-colors">{CONTACT_EMAIL}</a>
           <p class="text-white/45 text-xs tracking-wide">Worldwide enquiries welcome.</p>
