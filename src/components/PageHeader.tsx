@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import MaskedLines from '@/components/ui/MaskedLines'
 
 interface PageHeaderProps {
   eyebrow: string
@@ -30,11 +31,18 @@ export default function PageHeader({
         {/* Headline + Subtitle Grid */}
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="lg:col-span-8">
-            <h1 className="font-serif text-[3.75rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] xl:text-[9rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
-              {titleLine1 && <span className="block">{titleLine1}</span>}
-              {titleLine2 && <span className="block">{titleLine2}</span>}
-              <span className="block italic text-[#A67C52]">{titleItalic}</span>
+            <h1 className="sr-only">
+              {[titleLine1, titleLine2, titleItalic].filter(Boolean).join(' ')}
             </h1>
+            <MaskedLines
+              mode="load"
+              className="font-serif text-[3.75rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] xl:text-[9rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none"
+              lines={[
+                titleLine1,
+                titleLine2,
+                <span key="italic" className="italic text-[#A67C52]">{titleItalic}</span>
+              ].filter(Boolean) as (string | ReactNode)[]}
+            />
           </div>
 
           <div className="lg:col-span-4 pb-2 md:pb-4">

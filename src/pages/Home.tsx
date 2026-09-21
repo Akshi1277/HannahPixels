@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import AppImage from '@/components/ui/AppImage'
+import MaskedLines from '@/components/ui/MaskedLines'
 
 const catalogueItems = [
   {
@@ -101,11 +102,16 @@ export default function Home() {
           <div className="pt-12 grid lg:grid-cols-12 gap-8 items-start relative">
             {/* Headline + Subtext */}
             <div className="lg:col-span-8 z-10">
-              <h1 className="font-serif text-[4.25rem] sm:text-[7rem] md:text-[9rem] lg:text-[10.5rem] xl:text-[11.8rem] leading-[0.88] font-normal tracking-[-0.02em] select-none text-[#111111]">
-                <span className="block">WHERE</span>
-                <span className="block italic text-[#A67C52]">IDEAS</span>
-                <span className="block">TAKE FORM.</span>
-              </h1>
+              <h1 className="sr-only">WHERE IDEAS TAKE FORM.</h1>
+              <MaskedLines
+                mode="load"
+                className="font-serif text-[4.25rem] sm:text-[7rem] md:text-[9rem] lg:text-[10.5rem] xl:text-[11.8rem] leading-[0.88] font-normal tracking-[-0.02em] select-none text-[#111111]"
+                lines={[
+                  'WHERE',
+                  <span key="ideas" className="italic text-[#A67C52]">IDEAS</span>,
+                  'TAKE FORM.'
+                ]}
+              />
 
               <div className="pt-10 max-w-xl space-y-4">
                 <p className="text-base sm:text-lg text-[#111111] font-normal leading-relaxed">
@@ -215,12 +221,16 @@ export default function Home() {
           </div>
           <div className="grid lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-8">
-              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
-                <span className="block">DESIGNED WITH</span>
-                <span className="block italic text-[#A67C52]">INTENTION.</span>
-                <span className="block">MADE TO BE</span>
-                <span className="block">REMEMBERED.</span>
-              </h2>
+              <MaskedLines
+                mode="scroll"
+                className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none"
+                lines={[
+                  'DESIGNED WITH',
+                  <span key="intention" className="italic text-[#A67C52]">INTENTION.</span>,
+                  'MADE TO BE',
+                  'REMEMBERED.'
+                ]}
+              />
             </div>
             <div className="lg:col-span-4 space-y-4 pb-2 md:pb-6">
               <h3 className="font-serif text-2xl sm:text-3xl text-[#111111] font-normal leading-snug">
@@ -251,10 +261,14 @@ export default function Home() {
           </div>
           <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
             <div className="lg:col-span-8">
-              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
-                <span className="block">WHAT WE</span>
-                <span className="block italic text-[#A67C52]">CREATE</span>
-              </h2>
+              <MaskedLines
+                mode="scroll"
+                className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none"
+                lines={[
+                  'WHAT WE',
+                  <span key="create" className="italic text-[#A67C52]">CREATE</span>
+                ]}
+              />
             </div>
             <div className="lg:col-span-4 pb-2">
               <p className="text-base sm:text-lg text-[#111111]/75 leading-relaxed font-normal">
@@ -330,10 +344,14 @@ export default function Home() {
           </div>
           <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
             <div className="lg:col-span-8">
-              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-white uppercase select-none">
-                <span className="block">MATERIALS</span>
-                <span className="block">THAT <span className="italic text-[#C49A74]">MATTER.</span></span>
-              </h2>
+              <MaskedLines
+                mode="scroll"
+                className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-white uppercase select-none"
+                lines={[
+                  'MATERIALS',
+                  <span key="matter">THAT <span className="italic text-[#C49A74]">MATTER.</span></span>
+                ]}
+              />
             </div>
             <div className="lg:col-span-4 pb-2">
               <p className="text-base sm:text-lg text-white/70 leading-relaxed font-normal">
@@ -418,10 +436,14 @@ export default function Home() {
           </div>
           <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
             <div className="lg:col-span-8">
-              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
-                <span className="block">FROM IDEA TO</span>
-                <span className="block italic text-[#A67C52]">FINISHED PIECE.</span>
-              </h2>
+              <MaskedLines
+                mode="scroll"
+                className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none"
+                lines={[
+                  'FROM IDEA TO',
+                  <span key="finished" className="italic text-[#A67C52]">FINISHED PIECE.</span>
+                ]}
+              />
             </div>
             <div className="lg:col-span-4 pb-2">
               <p className="text-base sm:text-lg text-[#111111]/75 leading-relaxed font-normal">
@@ -483,10 +505,14 @@ export default function Home() {
 
           <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
             <div className="lg:col-span-8">
-              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
-                <span className="block">STANDARDS</span>
-                <span className="block">OF <span className="italic text-[#A67C52]">EXECUTION.</span></span>
-              </h2>
+              <MaskedLines
+                mode="scroll"
+                className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none"
+                lines={[
+                  'STANDARDS',
+                  <span key="execution">OF <span className="italic text-[#A67C52]">EXECUTION.</span></span>
+                ]}
+              />
             </div>
             <div className="lg:col-span-4 pb-2">
               <p className="text-base sm:text-lg text-[#111111]/75 leading-relaxed font-normal">
