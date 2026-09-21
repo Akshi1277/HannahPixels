@@ -35,21 +35,18 @@ export default function ProcessStepper({ stages }: { stages: Stage[] }) {
           ref={(el) => {
             refs.current[i] = el
           }}
-          className="py-16 md:py-24 border-t border-grid first:border-t-0 transition-[opacity,filter] duration-500 ease-out"
-          style={{
-            opacity: activeIndex === i ? 1 : 0.35,
-            filter: activeIndex === i ? 'none' : 'blur(0.5px)',
-          }}
+          className="py-16 md:py-24 border-t border-grid first:border-t-0 transition-opacity duration-500 ease-out"
+          style={{ opacity: activeIndex === i ? 1 : 0.35 }}
         >
           <div className="grid lg:grid-cols-12 gap-6 lg:gap-16 items-start">
             <div className="lg:col-span-4 flex items-baseline gap-5">
               <span
-                className="font-serif italic text-accent shrink-0 transition-[font-size] duration-500"
-                style={{ fontSize: activeIndex === i ? '3.5rem' : '2rem' }}
+                className="font-serif italic text-accent shrink-0 origin-left transition-transform duration-500 text-[2rem]"
+                style={{ transform: activeIndex === i ? 'scale(1.75)' : 'scale(1)' }}
               >
                 {stage.num}
               </span>
-              <h3 className="font-serif text-3xl sm:text-4xl text-foreground">{stage.title}</h3>
+              <h2 className="font-serif text-3xl sm:text-4xl text-foreground">{stage.title}</h2>
             </div>
             <div className="lg:col-span-6">
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg">

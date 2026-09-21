@@ -18,7 +18,7 @@ import { capabilities } from '@/data/capabilities'
 
     <div class="flex flex-wrap gap-x-6 gap-y-3 mt-12 pt-8 border-t border-grid">
       {capabilities.map((c) => (
-        <a href={`#${c.slug}`} class="type-label text-muted-foreground hover:text-accent transition-colors">{c.title}</a>
+        <a href={`#${c.slug}`} class="type-label text-muted-foreground hover:text-accent-ink transition-colors">{c.title}</a>
       ))}
     </div>
   </section>
@@ -30,7 +30,7 @@ import { capabilities } from '@/data/capabilities'
           <div class="aspect-[5/4] relative overflow-hidden bg-secondary">
             <img
               src={cat.image}
-              alt={cat.title}
+              alt={cat.imageAlt}
               class="absolute inset-0 w-full h-full object-cover"
               loading="lazy"
             />
@@ -51,7 +51,7 @@ import { capabilities } from '@/data/capabilities'
               ))}
             </ul>
 
-            <a href="/contact" class="type-label text-foreground border-b border-foreground/40 hover:border-accent hover:text-accent transition-colors pb-1 inline-block mt-10">
+            <a href="/contact" class="type-label text-foreground border-b border-foreground/40 hover:border-accent-ink hover:text-accent-ink transition-colors pb-1 inline-block mt-10">
               Start a Project →
             </a>
           </div>

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import MaskedLines from '@/components/react/MaskedLines'
+import HeadlineReveal from '@/components/HeadlineReveal.astro'
 import ProcessStepper from '@/components/react/ProcessStepper'
 import { processStages } from '@/data/process'
 ---
@@ -12,10 +12,9 @@ import { processStages } from '@/data/process'
   <section class="pt-[140px] pb-16 md:pb-24 px-6 lg:px-10">
     <div class="max-w-3xl">
       <div class="type-eyebrow text-muted-foreground mb-6">Process</div>
-      <MaskedLines
-        client:load
-        mode="load"
-        className="type-section text-foreground"
+      <HeadlineReveal
+        as="h1"
+        class="type-section text-foreground"
         lines={['From Idea to', '*Finished Piece.*']}
       />
       <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-8 max-w-lg">

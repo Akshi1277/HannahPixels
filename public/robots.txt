@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hannahpixels.com/sitemap-index.xml

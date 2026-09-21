@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import MaskedLines from '@/components/react/MaskedLines'
+import HeadlineReveal from '@/components/HeadlineReveal.astro'
 import ContactForm from '@/components/react/ContactForm'
 import { CONTACT_EMAIL, PHONE_DISPLAY } from '@/lib/contact'
 ---
@@ -12,10 +12,9 @@ import { CONTACT_EMAIL, PHONE_DISPLAY } from '@/lib/contact'
   <section class="pt-[140px] pb-16 md:pb-24 px-6 lg:px-10">
     <div class="max-w-3xl">
       <div class="type-eyebrow text-muted-foreground mb-6">Contact</div>
-      <MaskedLines
-        client:load
-        mode="load"
-        className="type-section text-foreground"
+      <HeadlineReveal
+        as="h1"
+        class="type-section text-foreground"
         lines={["Let's Make", '*Something Tangible.*']}
       />
       <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-8 max-w-lg">

@@ -1,0 +1,55 @@
+---
+// Zero-JS headline reveal. Renders immediately in plain HTML/CSS — no client
+// hydration gate — so the primary heading is never invisible while waiting
+// for JS to load. Wrap a word/phrase in *asterisks* for the italic accent.
+interface Props {
+  lines: string[]
+  as?: 'h1' | 'h2' | 'div'
+  class?: string
+  accentClass?: string
+  stagger?: number
+}
+
+const { lines, as: Tag = 'div', class: className = '', accentClass = 'text-accent', stagger = 0.14 } = Astro.props
+
+function renderAccented(line: string) {
+  return line
+    .split(/(\*[^*]+\*)/g)
+    .filter(Boolean)
+    .map((part) =>
+      part.startsWith('*') && part.endsWith('*')
+        ? `<em class="italic ${accentClass}">${part.slice(1, -1)}</em>`
+        : part
+    )
+    .join('')
+}
+---
+
+<Tag class={`headline-reveal ${className}`}>
+  {lines.map((line, i) => (
+    <span class="block overflow-hidden pb-[0.3em] -mb-[0.3em]">
+      <span
+        class="headline-reveal-line block"
+        style={`animation-delay: ${i * stagger}s`}
+        set:html={renderAccented(line)}
+      />
+    </span>
+  ))}
+</Tag>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .headline-reveal-line {
+      animation: headline-reveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+  }
+
+  @keyframes headline-reveal {
+    from {
+      transform: translateY(115%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+</style>

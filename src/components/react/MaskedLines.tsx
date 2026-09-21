@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const LUXURY_EASE = [0.16, 1, 0.3, 1] as const
 
@@ -38,6 +38,7 @@ export default function MaskedLines({
   stagger = 0.14,
   mode = 'load',
 }: MaskedLinesProps) {
+  const reduceMotion = useReducedMotion()
   const trigger =
     mode === 'load'
       ? { animate: 'visible' }
@@ -46,10 +47,22 @@ export default function MaskedLines({
           viewport: { once: true, margin: '-10% 0px' },
         }
 
+  if (reduceMotion) {
+    return (
+      <div className={className}>
+        {lines.map((line, i) => (
+          <span key={i} className={`block ${lineClassName}`}>
+            {renderAccented(line, accentClassName)}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
   return (
     <motion.div className={className} initial="hidden" {...trigger}>
       {lines.map((line, i) => (
-        <span key={i} className="block overflow-hidden pb-[0.06em] -mb-[0.06em]">
+        <span key={i} className="block overflow-hidden pb-[0.3em] -mb-[0.3em]">
           <motion.span
             className={`block will-change-transform ${lineClassName}`}
             variants={{

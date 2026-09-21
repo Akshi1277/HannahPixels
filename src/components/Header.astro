@@ -9,22 +9,31 @@ const navLinks = [
 
 const path = Astro.url.pathname
 const isActive = (to: string) => (to === '/' ? path === '/' : path.startsWith(to))
+const isHome = path === '/'
 ---
 
-<header class="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-grid">
+<header
+  id="site-header"
+  data-blend={isHome ? 'true' : 'false'}
+  data-scrolled={isHome ? 'false' : 'true'}
+  class="fixed top-0 left-0 right-0 z-40 transition-[background-color,border-color] duration-500 border-b border-transparent data-[scrolled=true]:bg-background/95 data-[scrolled=true]:backdrop-blur-sm data-[scrolled=true]:border-grid"
+>
   <div class="max-w-[1440px] mx-auto px-6 lg:px-10 h-[76px] flex items-center justify-between gap-6">
     <a href="/" class="shrink-0" aria-label="Hannah Pixels homepage">
-      <img src="/hannahpixels-dark.png" alt="Hannah Pixels" class="h-8 w-auto object-contain" />
+      <img
+        id="site-logo"
+        src={isHome ? '/hannahpixels-white.png' : '/hannahpixels-dark.png'}
+        alt="Hannah Pixels"
+        class="h-8 w-auto object-contain"
+      />
     </a>
 
     <nav class="hidden md:flex items-center gap-9" aria-label="Main navigation">
       {navLinks.map((link) => (
         <a
           href={link.to}
-          class:list={[
-            'type-label transition-colors',
-            isActive(link.to) ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
-          ]}
+          class="type-label transition-colors duration-500 nav-link"
+          data-active={isActive(link.to) ? 'true' : 'false'}
           aria-current={isActive(link.to) ? 'page' : undefined}
         >
           {link.label}
@@ -34,21 +43,22 @@ const isActive = (to: string) => (to === '/' ? path === '/' : path.startsWith(to
 
     <a
       href="/contact"
-      class="hidden md:inline-flex items-center type-label bg-ink text-ink-foreground hover:bg-accent px-5 py-2.5 transition-colors"
+      id="nav-cta"
+      class="hidden md:inline-flex items-center type-label bg-ink text-ink-foreground hover:bg-accent px-5 py-2.5 transition-colors duration-500"
     >
       Start a Project
     </a>
 
     <button
       id="menu-toggle"
-      class="md:hidden flex items-center justify-center w-10 h-10 border border-foreground/20"
+      class="md:hidden flex items-center justify-center w-11 h-11 border transition-colors duration-500 nav-toggle"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Open menu"
     >
       <span class="relative block w-4 h-3" aria-hidden="true">
-        <span class="menu-bar absolute left-0 top-0 w-4 h-px bg-foreground transition-transform"></span>
-        <span class="menu-bar absolute left-0 bottom-0 w-4 h-px bg-foreground transition-transform"></span>
+        <span class="menu-bar absolute left-0 top-0 w-4 h-px transition-transform"></span>
+        <span class="menu-bar absolute left-0 bottom-0 w-4 h-px transition-transform"></span>
       </span>
     </button>
   </div>
@@ -77,7 +87,73 @@ const isActive = (to: string) => (to === '/' ? path === '/' : path.startsWith(to
   </a>
 </div>
 
+<style>
+  #site-header {
+    --nav-fg: var(--foreground);
+    --nav-muted: var(--muted-foreground);
+    --nav-border: color-mix(in srgb, var(--foreground) 20%, transparent);
+  }
+  #site-header[data-blend='true'][data-scrolled='false'] {
+    --nav-fg: var(--background);
+    --nav-muted: color-mix(in srgb, var(--background) 78%, transparent);
+    --nav-border: color-mix(in srgb, var(--background) 35%, transparent);
+  }
+
+  .nav-link {
+    color: var(--nav-muted);
+  }
+  .nav-link[data-active='true'] {
+    color: var(--nav-fg);
+  }
+  .nav-link:hover {
+    color: var(--nav-fg);
+  }
+
+  .nav-toggle {
+    border-color: var(--nav-border);
+  }
+  .menu-bar {
+    background-color: var(--nav-fg);
+  }
+
+  #site-header[data-blend='true'][data-scrolled='false'] #nav-cta {
+    background-color: var(--background);
+    color: var(--ink);
+  }
+  #site-header[data-blend='true'][data-scrolled='false'] #nav-cta:hover {
+    background-color: var(--accent-quiet);
+  }
+</style>
+
 <script>
+  const header = document.getElementById('site-header')!
+  const logo = document.getElementById('site-logo') as HTMLImageElement | null
+
+  if (header.dataset.blend === 'true') {
+    const setScrolled = (scrolled: boolean) => {
+      const next = scrolled ? 'true' : 'false'
+      if (header.dataset.scrolled === next) return
+      header.dataset.scrolled = next
+      if (logo) logo.src = scrolled ? '/hannahpixels-dark.png' : '/hannahpixels-white.png'
+    }
+
+    const threshold = () => Math.max(window.innerHeight - 140, 200)
+
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > threshold())
+        ticking = false
+      })
+    }
+
+    setScrolled(window.scrollY > threshold())
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+  }
+
   const toggle = document.getElementById('menu-toggle')!
   const menu = document.getElementById('mobile-menu')!
   const bars = toggle.querySelectorAll('.menu-bar')

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="This page could not be found."
+>
+  <section class="min-h-[70vh] flex items-center px-6 lg:px-10 pt-[100px] pb-20">
+    <div class="max-w-2xl">
+      <div class="type-eyebrow text-muted-foreground mb-6">404</div>
+      <h1 class="type-section text-foreground">
+        This page <span class="italic text-accent">took a different form.</span>
+      </h1>
+      <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-8 max-w-lg">
+        The piece you're looking for doesn't exist, or has moved. Let's get you back to something tangible.
+      </p>
+      <a
+        href="/"
+        class="type-label inline-block bg-ink text-ink-foreground hover:bg-accent px-6 py-3.5 transition-colors mt-10"
+      >
+        Back to Home
+      </a>
+    </div>
+  </section>
+</BaseLayout>

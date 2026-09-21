@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import MaskedLines from '@/components/react/MaskedLines'
+import HeadlineReveal from '@/components/HeadlineReveal.astro'
 ---
 
 <BaseLayout
@@ -10,10 +10,9 @@ import MaskedLines from '@/components/react/MaskedLines'
   <section class="pt-[140px] pb-16 md:pb-24 px-6 lg:px-10">
     <div class="max-w-3xl">
       <div class="type-eyebrow text-muted-foreground mb-6">Our Vision</div>
-      <MaskedLines
-        client:load
-        mode="load"
-        className="type-section text-foreground"
+      <HeadlineReveal
+        as="h1"
+        class="type-section text-foreground"
         lines={['To Make the Physical', 'World of Brands', '*More Beautiful.*']}
       />
     </div>
@@ -22,8 +21,8 @@ import MaskedLines from '@/components/react/MaskedLines'
   <section class="px-6 lg:px-10 pb-20 md:pb-28">
     <div class="max-w-[1440px] mx-auto aspect-[21/9] relative overflow-hidden bg-secondary">
       <img
-        src="/images/atelier-vision-master.jpg"
-        alt="Material and craft detail"
+        src="/images/atelier-workshop-detail.jpg"
+        alt="Print and paper workshop, foil press and stock drawers"
         class="absolute inset-0 w-full h-full object-cover"
         loading="lazy"
       />
@@ -42,7 +41,7 @@ import MaskedLines from '@/components/react/MaskedLines'
         Hannah Pixels was created to bring greater thought, craft and character to the way brands are experienced in the physical world.
       </p>
       <p class="text-lg text-muted-foreground leading-relaxed">
-        We work with brands that value detail, creating print and packaging that feels considered, distinctive and made to last.
+        We work with brands that value detail — creating print and packaging that feels considered, distinctive and made to last.
       </p>
     </div>
   </section>
@@ -51,5 +50,11 @@ import MaskedLines from '@/components/react/MaskedLines'
     <h2 class="type-section text-ink-foreground uppercase max-w-4xl mx-auto">
       Made for Brands<br /><span class="italic text-accent-quiet">With a Point of View.</span>
     </h2>
+    <a
+      href="/contact"
+      class="type-label inline-block bg-background text-ink hover:bg-accent-quiet px-7 py-3.5 transition-colors mt-12"
+    >
+      Start a Project
+    </a>
   </section>
 </BaseLayout>
