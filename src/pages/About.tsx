@@ -1,203 +1,192 @@
-import { Suspense, lazy } from 'react'
 import { Link } from 'react-router-dom'
 import PageHeader from '@/components/PageHeader'
-import Icon from '@/components/ui/AppIcon'
-import { CONTACT_EMAIL } from '@/lib/contact'
+import FaqSection from '@/components/FaqSection'
+import AppImage from '@/components/ui/AppImage'
 
-const AboutSection = lazy(() => import('@/components/AboutSection'))
-const FaqSection = lazy(() => import('@/components/FaqSection'))
+const standards = [
+  {
+    num: '01',
+    title: 'Thoughtful by Design',
+    desc: 'Every decision has a purpose — from the structure of a box to the feel of the paper. We eliminate unnecessary excess and engineer proportions that elevate the unboxing ritual.'
+  },
+  {
+    num: '02',
+    title: 'Materials That Matter',
+    desc: 'The right material transforms how a product is held, seen, and remembered. We source exclusively FSC-certified greyboards, virgin kraft fibers, and through-dyed archival paper stocks.'
+  },
+  {
+    num: '03',
+    title: 'Precision in Every Detail',
+    desc: 'Good packaging should feel effortless. That comes from getting microscopic tolerances right: ±0.1mm CNC scoring, razor-sharp 90° corners, and hand-finished adhesive seams.'
+  },
+  {
+    num: '04',
+    title: 'Made to Last',
+    desc: 'We create packaging designed to be kept, repurposed, and treasured as keepsake objects long after the product inside has been opened.'
+  },
+  {
+    num: '05',
+    title: 'Without Borders',
+    desc: 'Operating with twin hubs in London and Dubai, Hannah Pixels serves luxury brands across the UK, Europe, the Middle East, and worldwide with full cross-border logistics.'
+  }
+]
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#F3EFEA] text-[#111111]">
       <PageHeader
-        badge="Our Heritage & Vision"
-        title="The Hannah Pixels Atelier &"
-        titleItalic="Global Presence."
-        description="Hannah Pixels was founded to bring greater thought, craft, and character to physical packaging. From our dual hubs in London and Dubai, we engineer packaging for brands with a distinct point of view."
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'About' }
-        ]}
-      >
-        {/* Quick Jump Bar */}
-        <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
-          <span className="text-white/40 uppercase tracking-wider">Explore:</span>
-          <a
-            href="#about"
-            className="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-white/80 hover:text-[#F8BC23] transition-colors"
-          >
-            Our Vision ↓
-          </a>
-          <a
-            href="#standards"
-            className="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-white/80 hover:text-[#F8BC23] transition-colors"
-          >
-            The 5 Standards ↓
-          </a>
-          <a
-            href="#sustainability"
-            className="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-white/80 hover:text-[#F8BC23] transition-colors"
-          >
-            Sustainability &amp; Materials ↓
-          </a>
-          <a
-            href="#faq"
-            className="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-white/80 hover:text-[#F8BC23] transition-colors"
-          >
-            Procurement FAQ ↓
-          </a>
-        </div>
-      </PageHeader>
+        eyebrow="ABOUT — OUR VISION"
+        titleLine1="TO MAKE THE PHYSICAL"
+        titleLine2="WORLD OF BRANDS"
+        titleItalic="MORE BEAUTIFUL."
+        description="Hannah Pixels was created to bring greater thought, craft and character to the way brands are experienced in the physical world."
+      />
 
-      <Suspense fallback={<div className="h-40 flex items-center justify-center text-xs tracking-widest uppercase text-[#93660C]">Loading Atelier Heritage…</div>}>
-        {/* Core Vision & The 5 Standards */}
-        <AboutSection />
-
-        {/* Sustainability, Dual Hubs & Material Ethics */}
-        <section id="sustainability" className="py-20 md:py-28 bg-[#090B0A] text-white border-t border-[#202824]">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="max-w-2xl mb-14">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141A17] border border-[#C9A050]/30 mb-4">
-                <span className="w-2 h-2 rounded-full bg-[#C9A050]" />
-                <span className="label-tag text-[#DFBF75]">MATERIAL ETHICS</span>
+      {/* Philosophy Narrative + Atelier Photography */}
+      <section className="py-20 md:py-32 px-6 lg:px-12 border-b border-[#E2DDD5]">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-5">
+            <div className="aspect-[4/5] relative overflow-hidden bg-[#111111] border border-[#E2DDD5] shadow-xs">
+              <AppImage
+                src="/images/atelier-vision-master.jpg"
+                alt="Hannah Pixels artisan inspecting rigid box craftsmanship"
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover"
+              />
+              <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/60 backdrop-blur-md text-white text-xs font-mono tracking-wider flex justify-between items-center">
+                <span>ATELIER DESK</span>
+                <span className="text-[#A67C52]">LONDON &amp; DUBAI</span>
               </div>
-              <h2 className="font-serif text-3xl md:text-5xl font-medium tracking-tight leading-[1.12]">
-                Conscious Luxury.{' '}
-                <span className="italic text-[#F8BC23] font-normal">Uncompromised Quality.</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7 space-y-8">
+            <div className="space-y-4">
+              <span className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase">
+                THE FOUNDING INTENT
+              </span>
+              <h2 className="font-serif text-3xl sm:text-5xl text-[#111111] font-normal leading-[1.08]">
+                Where Ideas Take Form.
               </h2>
-              <p className="text-white/70 text-base md:text-lg leading-relaxed mt-4">
-                We believe true luxury is sustainable by design. We eliminate unnecessary single-use plastics in favor of archival greyboard, soy-based inks, and water-based adhesives.
+            </div>
+
+            <blockquote className="font-serif text-2xl sm:text-3xl text-[#111111] leading-snug border-l-2 border-[#A67C52] pl-6 italic">
+              “We believe packaging is more than protection. It is the first touch. The first impression. The moment a brand becomes tangible.”
+            </blockquote>
+
+            <p className="text-base sm:text-lg text-[#111111]/75 leading-relaxed font-normal">
+              Hannah Pixels was born from a refusal to accept generic packaging. We partner with brands that value detail — creating print and packaging that feels considered, distinctive and made to last.
+            </p>
+
+            <div className="pt-2 flex flex-wrap gap-4 text-xs font-mono text-[#111111]/70">
+              <span className="px-3.5 py-2 bg-white border border-[#E2DDD5]">• FSC® Certified Boards</span>
+              <span className="px-3.5 py-2 bg-white border border-[#E2DDD5]">• Greenguard Vegetal Inks</span>
+              <span className="px-3.5 py-2 bg-white border border-[#E2DDD5]">• UK VAT &amp; UAE TRN Invoicing</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The 5 Hannah Pixels Standards */}
+      <section className="py-20 md:py-32 px-6 lg:px-12 border-b border-[#E2DDD5]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase mb-8 md:mb-12">
+            THE STANDARDS
+          </div>
+          <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+            <div className="lg:col-span-8">
+              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
+                <span className="block">THE FIVE</span>
+                <span className="block italic text-[#A67C52]">PRINCIPLES.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-4 pb-2">
+              <p className="text-base sm:text-lg text-[#111111]/75 leading-relaxed font-normal">
+                Non-negotiable benchmarks that govern every structural dieline, foil impression, and material selection.
+              </p>
+            </div>
+          </div>
+
+          <div className="border-t border-[#E2DDD5]">
+            {standards.map((s) => (
+              <div
+                key={s.num}
+                className="py-10 border-b border-[#E2DDD5] grid lg:grid-cols-12 gap-6 items-start"
+              >
+                <div className="lg:col-span-1 font-serif italic text-2xl text-[#A67C52]">
+                  {s.num}
+                </div>
+                <div className="lg:col-span-4">
+                  <h3 className="font-serif text-2xl sm:text-3xl text-[#111111] font-normal">
+                    {s.title}
+                  </h3>
+                </div>
+                <div className="lg:col-span-7">
+                  <p className="text-base text-[#111111]/75 leading-relaxed font-normal">
+                    {s.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dual Hub Production Desks */}
+      <section className="py-20 md:py-32 px-6 lg:px-12 border-b border-[#E2DDD5] bg-[#EAE5DE]/40">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase mb-8 md:mb-12">
+            GLOBAL ATELIER HUBS
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="p-10 bg-white border border-[#E2DDD5] space-y-4">
+              <div className="flex justify-between items-center text-xs font-mono tracking-wider text-[#A67C52]">
+                <span>LONDON DESK</span>
+                <span>GMT TIMEZONE</span>
+              </div>
+              <h3 className="font-serif text-3xl text-[#111111] font-normal">United Kingdom &amp; Europe</h3>
+              <p className="text-sm text-[#111111]/70 leading-relaxed font-normal">
+                Serving Mayfair boutiques, British perfumery houses, artisan chocolatiers, and publishing houses across the UK. In-person physical swatch reviews and nationwide insured distribution.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-8 rounded-3xl bg-[#0F1412] border border-[#202824] space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#1E3A2F]/40 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                  <Icon name="CheckBadgeIcon" size={24} />
-                </div>
-                <h3 className="font-serif text-2xl font-medium text-white">FSC® Certified Greyboard</h3>
-                <p className="text-sm text-white/70 leading-relaxed">
-                  All rigid box cores utilize 100% recycled, post-consumer pulp greyboards ranging from 1.2mm to 3.0mm thickness, fully recyclable and biologically inert.
-                </p>
+            <div className="p-10 bg-white border border-[#E2DDD5] space-y-4">
+              <div className="flex justify-between items-center text-xs font-mono tracking-wider text-[#A67C52]">
+                <span>DUBAI DESK</span>
+                <span>GST TIMEZONE</span>
               </div>
-
-              <div className="p-8 rounded-3xl bg-[#0F1412] border border-[#202824] space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#93660C]/20 border border-[#F8BC23]/30 flex items-center justify-center text-[#F8BC23]">
-                  <Icon name="SparklesIcon" size={24} />
-                </div>
-                <h3 className="font-serif text-2xl font-medium text-white">Greenguard Soy &amp; UV Inks</h3>
-                <p className="text-sm text-white/70 leading-relaxed">
-                  Zero volatile organic compounds (VOCs). Our offset and digital presses utilize food-safe, child-safe mineral-free vegetal inks with razor-sharp color gamut.
-                </p>
-              </div>
-
-              <div className="p-8 rounded-3xl bg-[#0F1412] border border-[#202824] space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center text-white">
-                  <Icon name="GlobeAltIcon" size={24} />
-                </div>
-                <h3 className="font-serif text-2xl font-medium text-white">Dual-Hub Regional Logistics</h3>
-                <p className="text-sm text-white/70 leading-relaxed">
-                  Dedicated operations in London and Dubai minimize unnecessary transcontinental transit footprints, providing expedited regional delivery across the UK, Europe, and the GCC.
-                </p>
-              </div>
+              <h3 className="font-serif text-3xl text-[#111111] font-normal">UAE &amp; GCC Operations</h3>
+              <p className="text-sm text-[#111111]/70 leading-relaxed font-normal">
+                Engineering opulent fragrance coffrets, VIP presentation hampers, and luxury date boxes across Dubai, Abu Dhabi, Riyadh, and Doha. Direct land and air courier delivery.
+              </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Dual-Hub Atelier Desks */}
-        <section className="py-20 md:py-28 bg-[#FBF9F4] border-t border-[#E6E0D2]">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="max-w-2xl mb-12">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">ATELIER DESKS</span>
-                <span className="w-8 h-px bg-[#93660C]/40" />
-                <span className="editorial-tag text-[#93660C]">GLOBAL HUBS</span>
-              </div>
-              <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-                London &amp; Dubai Operations.
-              </h2>
-            </div>
+      {/* Procurement FAQ */}
+      <FaqSection />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* London Desk */}
-              <div className="p-8 md:p-10 rounded-[2.25rem] bg-white border border-[#E6E0D2] shadow-xs space-y-5">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#93660C] font-bold">
-                    United Kingdom &amp; Europe
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-[#F4EFE6] border border-[#93660C]/20 text-[11px] font-mono text-[#93660C]">
-                    GMT Timezone
-                  </span>
-                </div>
-                <h3 className="font-serif text-3xl font-bold text-[#181A16]">
-                  London Atelier Desk
-                </h3>
-                <p className="text-sm text-[#4A4E43] leading-relaxed">
-                  Serving luxury fragrance houses, Mayfair boutiques, publishing houses, and specialty beverage brands across London and the UK. Full UK VAT invoicing compliant.
-                </p>
-                <div className="pt-4 border-t border-[#E6E0D2] space-y-2 text-xs font-mono text-[#6B6F62]">
-                  <p>• Expedited UK Nationwide Courier &amp; Palletized Distribution</p>
-                  <p>• In-Person Physical Material Proofing Sessions</p>
-                  <p>• Dieline Review Desk: Mon – Fri (9:00 – 18:00 GMT)</p>
-                </div>
-              </div>
-
-              {/* Dubai Desk */}
-              <div className="p-8 md:p-10 rounded-[2.25rem] bg-white border border-[#E6E0D2] shadow-xs space-y-5">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#93660C] font-bold">
-                    United Arab Emirates &amp; GCC
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-[#F4EFE6] border border-[#93660C]/20 text-[11px] font-mono text-[#93660C]">
-                    GST Timezone
-                  </span>
-                </div>
-                <h3 className="font-serif text-3xl font-bold text-[#181A16]">
-                  Dubai Atelier Desk
-                </h3>
-                <p className="text-sm text-[#4A4E43] leading-relaxed">
-                  Engineering opulent rigid gift hampers, perfume coffrets, date confectionery packaging, and VIP presentation boxes across the UAE, Saudi Arabia, and Qatar. UAE TRN compliant.
-                </p>
-                <div className="pt-4 border-t border-[#E6E0D2] space-y-2 text-xs font-mono text-[#6B6F62]">
-                  <p>• GCC Direct Land &amp; Air Freight Door-to-Door Delivery</p>
-                  <p>• Dedicated WhatsApp Client Relationship Specialist</p>
-                  <p>• Studio Consultation Desk: Mon – Sat (9:00 – 19:00 GST)</p>
-                </div>
-              </div>
-            </div>
+      {/* Bottom CTA */}
+      <section className="py-20 md:py-28 px-6 lg:px-12 text-center bg-[#F3EFEA]">
+        <div className="max-w-2xl mx-auto space-y-6">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase">
+            COLLABORATION
           </div>
-        </section>
-
-        {/* Procurement & FAQ */}
-        <FaqSection />
-      </Suspense>
-
-      {/* Consultation Banner */}
-      <section className="py-16 md:py-20 bg-[#090B0A] border-t border-[#202824] text-white">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-2 max-w-xl text-center md:text-left">
-            <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight">
-              Ready to collaborate with Hannah Pixels?
-            </h3>
-            <p className="text-white/70 text-sm leading-relaxed">
-              Connect with our creative directors and procurement leads to discuss your upcoming packaging requirements.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto shrink-0">
+          <h2 className="font-serif text-4xl sm:text-5xl text-[#111111] font-normal leading-tight">
+            Have a project in mind?
+          </h2>
+          <p className="text-base text-[#111111]/70 leading-relaxed">
+            Connect directly with our creative directors to discuss custom dielines, board calipers, and production runs.
+          </p>
+          <div className="pt-2">
             <Link
               to="/contact"
-              className="w-full sm:w-auto text-center px-7 py-3.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all shadow-lg shadow-[#F8BC23]/20"
+              className="bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase px-8 py-4 transition-colors inline-block"
             >
-              Request a Quotation
+              START A PROJECT ↗
             </Link>
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="w-full sm:w-auto text-center px-6 py-3.5 rounded-full border border-white/20 hover:border-[#F8BC23]/60 text-white/90 text-xs font-semibold flex items-center justify-center gap-2 transition-all"
-            >
-              <Icon name="EnvelopeIcon" size={15} className="text-[#F8BC23]" />
-              <span>Email the Atelier</span>
-            </a>
           </div>
         </div>
       </section>

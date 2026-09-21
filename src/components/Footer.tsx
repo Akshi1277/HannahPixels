@@ -1,192 +1,150 @@
 import { Link } from 'react-router-dom'
-import AppImage from '@/components/ui/AppImage'
-import Icon from '@/components/ui/AppIcon'
-import { whatsAppUrl, CONTACT_EMAIL } from '@/lib/contact'
-
-const packagingServices = [
-  { label: 'Luxury Rigid Boxes', href: '/capabilities#services' },
-  { label: 'Product Packaging & Mailers', href: '/capabilities#services' },
-  { label: 'Fragrance & Perfumery', href: '/capabilities#services' },
-  { label: 'Confectionery & Gourmet', href: '/capabilities#services' },
-  { label: 'Luxury Bags & Carry', href: '/capabilities#services' },
-  { label: 'Books & Publishing', href: '/capabilities#services' }
-]
-
-const companyLinks = [
-  { label: 'Our Vision', href: '/about' },
-  { label: 'The Standard', href: '/about#standards' },
-  { label: 'The Process & Engineering', href: '/process' },
-  { label: 'Specialist Finishes', href: '/capabilities#finishes' },
-  { label: 'Sample Swatch Box', href: '/capabilities#sample-kit' },
-  { label: 'Procurement FAQ', href: '/about#faq' },
-  { label: 'Direct Atelier Desks', href: '/contact' }
-]
+import { CONTACT_EMAIL, PHONE_NUMBER } from '@/lib/contact'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#202824] bg-[#040605] pt-16 pb-16 text-white relative overflow-hidden">
-      {/* Ambient background glow */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#F8BC23]/5 rounded-full filter blur-3xl pointer-events-none" />
+    <footer className="bg-[#111111] text-[#F3EFEA] pt-20 pb-16 px-6 lg:px-12 relative overflow-hidden">
+      {/* Giant Ghosted Watermark in Background */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 right-0 select-none pointer-events-none text-center font-serif text-[18vw] leading-none text-white/[0.03] tracking-wider uppercase"
+      >
+        HANNAH
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Signature Brand Statement Banner */}
-        <div className="pb-16 mb-16 border-b border-[#202824] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-          <div className="space-y-4 max-w-2xl">
-            <div className="inline-flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-              <span className="text-xs font-mono font-bold tracking-[0.25em] text-[#F8BC23] uppercase">
-                ATELIER PRINT &amp; PACKAGING HOUSE
-              </span>
+      <div className="max-w-[1400px] mx-auto relative z-10 space-y-16">
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+          {/* Brand Column */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="space-y-1">
+              <h3 className="font-serif text-3xl sm:text-4xl text-white font-normal">
+                Where ideas
+              </h3>
+              <p className="font-serif text-2xl sm:text-3xl italic text-[#C49A74]">
+                take form.
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-serif font-normal tracking-tight text-white leading-[1.12]">
-              Print that speaks.{' '}
-              <br className="hidden sm:inline" />
-              <span className="italic text-[#F8BC23]">Packaging that stays.</span>
-            </h2>
-            <p className="text-sm md:text-base text-white/70 font-normal leading-relaxed">
-              Bespoke luxury packaging, archival print editions, and tailored brand unboxing experiences engineered between London and Dubai.
-            </p>
-          </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto shrink-0">
-            <Link
-              to="/contact"
-              className="group w-full sm:w-auto text-center pl-8 pr-3 py-3 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-widest hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-lg shadow-[#F8BC23]/20 flex items-center justify-center gap-3"
-            >
-              <span>Request a Quotation</span>
-              <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
-                <Icon name="ArrowRightIcon" size={12} />
-              </span>
-            </Link>
-            <a
-              href={whatsAppUrl('Hello Hannah Pixels, I would like to inquire about print and packaging services.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center px-6 py-4 rounded-full border border-white/20 hover:border-[#F8BC23]/50 text-white/90 font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2"
-            >
-              <Icon name="MessageCircleIcon" size={15} className="text-[#F8BC23]" />
-              <span>WhatsApp Studio</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Navigation & Contact Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#202824]">
-          {/* Brand & Atelier Footprint */}
-          <div className="lg:col-span-4 space-y-5">
-            <Link to="/" aria-label="Hannah Pixels homepage" className="inline-block group py-1">
-              <AppImage
-                src="/hannahpixels.png"
-                alt="Hannah Pixels logo"
-                width={150}
-                height={50}
-                className="h-8 md:h-9 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity"
-              />
-            </Link>
-            <p className="text-sm text-white/70 leading-relaxed max-w-sm font-normal">
-              Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world. Designed with intention. Made to be remembered.
+            <p className="text-sm text-white/60 leading-relaxed font-normal max-w-sm">
+              A print and packaging house creating considered physical experiences for brands across the world.
             </p>
 
-            <div className="pt-2 flex flex-col gap-2.5 text-xs text-white/70">
-              <p className="flex items-start gap-2">
-                <Icon name="MapPinIcon" size={15} className="text-[#F8BC23] shrink-0 mt-0.5" />
-                <span>
-                  <strong className="text-white">Serving the UK</strong> — London &amp; nationwide delivery
-                </span>
-              </p>
-              <p className="flex items-start gap-2">
-                <Icon name="MapPinIcon" size={15} className="text-[#F8BC23] shrink-0 mt-0.5" />
-                <span>
-                  <strong className="text-white">Serving the UAE</strong> — Dubai &amp; GCC-wide delivery
-                </span>
-              </p>
-              <p className="flex items-center gap-2 pt-1 text-xs">
-                <Icon name="CheckBadgeIcon" size={15} className="text-emerald-400 shrink-0" />
-                <span className="text-white/80">FSC® Certified • UK VAT &amp; UAE TRN Invoicing Compliant</span>
-              </p>
+            <div className="pt-2">
+              <Link
+                to="/contact"
+                className="inline-block border border-white/20 hover:border-[#C49A74] text-white hover:text-[#C49A74] text-[11px] font-mono tracking-[0.2em] uppercase px-6 py-3 transition-colors"
+              >
+                START A PROJECT ↗
+              </Link>
             </div>
           </div>
 
-          {/* Service Links */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F8BC23]">What We Create</h4>
-            <ul className="space-y-2.5">
-              {packagingServices.map((s) => (
-                <li key={s.label}>
-                  <Link
-                    to={s.href}
-                    className="text-sm text-white/70 hover:text-[#F8BC23] transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]/60 group-hover:bg-[#F8BC23] transition-colors" />
-                    <span>{s.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company Links */}
+          {/* Sitemap */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F8BC23]">Hannah Pixels</h4>
-            <ul className="space-y-2.5">
-              {companyLinks.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    to={l.href}
-                    className="text-sm text-white/70 hover:text-[#F8BC23] transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]/60 group-hover:bg-[#F8BC23] transition-colors" />
-                    <span>{l.label}</span>
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-[11px] font-mono tracking-[0.22em] text-white/50 uppercase">
+              SITEMAP
+            </h4>
+            <ul className="space-y-2.5 text-sm font-normal text-white/80">
+              <li>
+                <Link to="/" className="hover:text-[#C49A74] transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/capabilities" className="hover:text-[#C49A74] transition-colors">
+                  Capabilities
+                </Link>
+              </li>
+              <li>
+                <Link to="/process" className="hover:text-[#C49A74] transition-colors">
+                  Process
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-[#C49A74] transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-[#C49A74] transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Direct Atelier Support */}
+          {/* Capabilities */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F8BC23]">Direct Atelier Advisory</h4>
-            <p className="text-sm text-white/70 leading-relaxed font-normal">
-              Connect directly with our packaging specialists for material guidance, bespoke dielines, and international delivery.
-            </p>
+            <h4 className="text-[11px] font-mono tracking-[0.22em] text-white/50 uppercase">
+              CAPABILITIES
+            </h4>
+            <ul className="space-y-2.5 text-sm font-normal text-white/80">
+              <li>
+                <Link to="/capabilities#luxury-packaging" className="hover:text-[#C49A74] transition-colors">
+                  Luxury Packaging
+                </Link>
+              </li>
+              <li>
+                <Link to="/capabilities#product-packaging" className="hover:text-[#C49A74] transition-colors">
+                  Product Packaging
+                </Link>
+              </li>
+              <li>
+                <Link to="/capabilities#fragrance-beauty" className="hover:text-[#C49A74] transition-colors">
+                  Fragrance &amp; Beauty
+                </Link>
+              </li>
+              <li>
+                <Link to="/capabilities#confectionery" className="hover:text-[#C49A74] transition-colors">
+                  Chocolate &amp; Confectionery
+                </Link>
+              </li>
+              <li>
+                <Link to="/capabilities#paper-carry" className="hover:text-[#C49A74] transition-colors">
+                  Paper &amp; Carry
+                </Link>
+              </li>
+              <li>
+                <Link to="/capabilities#publishing" className="hover:text-[#C49A74] transition-colors">
+                  Books &amp; Publishing
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            <div className="space-y-2.5">
-              <a
-                href={whatsAppUrl("Hello Hannah Pixels team, I'd like to consult on a packaging project.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 p-3 rounded-xl bg-[#181A16] border border-[#F8BC23]/30 text-[#F8BC23] hover:bg-[#202824] hover:border-[#F8BC23]/60 text-xs font-bold transition-all shadow-sm"
-              >
-                <Icon name="MessageCircleIcon" size={16} />
-                <span>WhatsApp Atelier Desk</span>
-              </a>
-
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="flex items-center gap-2.5 p-3 rounded-xl bg-[#181A16] border border-white/10 text-white/80 hover:text-white hover:border-[#F8BC23]/40 text-xs font-medium transition-all"
-              >
-                <Icon name="EnvelopeIcon" size={16} className="text-[#F8BC23]" />
-                <span>{CONTACT_EMAIL}</span>
-              </a>
-            </div>
-
-            <p className="text-[11px] text-white/50 pt-1 font-mono">
-              Atelier Hours: Mon – Sat · 9:00 AM – 7:00 PM (GMT / GST)
-            </p>
+          {/* Enquiries */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-[11px] font-mono tracking-[0.22em] text-white/50 uppercase">
+              ENQUIRIES
+            </h4>
+            <ul className="space-y-2.5 text-sm font-normal text-white/80">
+              <li>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-[#C49A74] transition-colors">
+                  Email — {CONTACT_EMAIL}
+                </a>
+              </li>
+              <li>
+                <span className="text-white/60">Phone — {PHONE_NUMBER}</span>
+              </li>
+              <li className="pt-2 text-xs font-mono text-white/50 tracking-wider">
+                London &amp; Dubai Desks • Worldwide enquiries welcome
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Bottom Credits & Copyright */}
-        <div className="pt-8 sm:pr-28 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} Hannah Pixels. All Rights Reserved.</p>
-          <div className="flex items-center gap-4 text-white/60 font-mono text-[11px]">
-            <span>London</span>
-            <span>·</span>
-            <span>Dubai</span>
-            <span>·</span>
-            <span>Print</span>
-            <span>·</span>
-            <span>Packaging</span>
+        {/* Bottom Copyright Bar */}
+        <div className="pt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/40">
+          <p>© {new Date().getFullYear()} Hannah Pixels. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <span>DESIGN</span>
+            <span>•</span>
+            <span>PRINT</span>
+            <span>•</span>
+            <span>PACKAGING</span>
+            <span>•</span>
+            <span>WORLDWIDE</span>
           </div>
         </div>
       </div>

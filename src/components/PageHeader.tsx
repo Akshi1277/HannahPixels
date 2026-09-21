@@ -1,70 +1,66 @@
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 
 interface PageHeaderProps {
-  badge: string
-  title: string
-  titleItalic?: string
+  eyebrow: string
+  titleLine1?: string
+  titleLine2?: string
+  titleItalic: string
   description: string
-  breadcrumbs?: { label: string; href?: string }[]
+  subnav?: { num: string; label: string; href?: string }[]
   children?: ReactNode
 }
 
 export default function PageHeader({
-  badge,
-  title,
+  eyebrow,
+  titleLine1,
+  titleLine2,
   titleItalic,
   description,
-  breadcrumbs = [{ label: 'Home', href: '/' }],
-  children
+  subnav,
+  children,
 }: PageHeaderProps) {
   return (
-    <div className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-[#090B0A] text-white border-b border-[#202824] overflow-hidden">
-      {/* Ambient background glow */}
-      <div className="absolute top-0 right-1/4 w-[600px] h-[350px] bg-[#F8BC23]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/3 w-[400px] h-[200px] bg-[#3B6A3E]/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono tracking-wider text-white/50 mb-6">
-          {breadcrumbs.map((crumb, idx) => (
-            <span key={crumb.label} className="flex items-center gap-2">
-              {idx > 0 && <span className="text-white/30">/</span>}
-              {crumb.href ? (
-                <Link to={crumb.href} className="hover:text-[#F8BC23] transition-colors">
-                  {crumb.label}
-                </Link>
-              ) : (
-                <span className="text-white/80">{crumb.label}</span>
-              )}
-            </span>
-          ))}
-          <span className="text-white/30">/</span>
-          <span className="text-[#F8BC23] font-semibold">{badge}</span>
-        </nav>
-
-        {/* Header Content */}
-        <div className="space-y-5 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141A17] border border-[#F8BC23]/30">
-            <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-            <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#F8BC23] uppercase">
-              {badge}
-            </span>
-          </div>
-
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-medium tracking-tight text-white leading-[1.08]">
-            {title}{' '}
-            {titleItalic && (
-              <span className="shimmer-gold italic font-normal">{titleItalic}</span>
-            )}
-          </h1>
-
-          <p className="text-base sm:text-lg text-white/75 leading-relaxed font-normal max-w-2xl">
-            {description}
-          </p>
+    <div className="bg-[#F3EFEA] border-b border-[#E2DDD5] pt-32 sm:pt-36 md:pt-44 pb-14 md:pb-20 px-6 lg:px-12 relative">
+      <div className="max-w-[1400px] mx-auto">
+        {/* Eyebrow */}
+        <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase mb-8 md:mb-12">
+          {eyebrow}
         </div>
 
-        {children && <div className="mt-8 pt-8 border-t border-white/10">{children}</div>}
+        {/* Headline + Subtitle Grid */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+          <div className="lg:col-span-8">
+            <h1 className="font-serif text-[3.75rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] xl:text-[9rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
+              {titleLine1 && <span className="block">{titleLine1}</span>}
+              {titleLine2 && <span className="block">{titleLine2}</span>}
+              <span className="block italic text-[#A67C52]">{titleItalic}</span>
+            </h1>
+          </div>
+
+          <div className="lg:col-span-4 pb-2 md:pb-4">
+            <p className="text-base sm:text-lg text-[#111111]/80 font-normal leading-relaxed max-w-md">
+              {description}
+            </p>
+          </div>
+        </div>
+
+        {/* Optional Sub-nav Bar (e.g. on Process page) */}
+        {subnav && subnav.length > 0 && (
+          <div className="mt-12 pt-6 border-t border-[#E2DDD5] flex flex-wrap items-center gap-6 md:gap-10 text-[11px] font-mono tracking-[0.22em] text-[#111111]/70 uppercase">
+            {subnav.map((item) => (
+              <a
+                key={item.num}
+                href={item.href || `#stage-${item.num}`}
+                className="hover:text-[#A67C52] transition-colors"
+              >
+                <span className="text-[#A67C52] mr-2">{item.num} —</span>
+                <span>{item.label}</span>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {children}
       </div>
     </div>
   )

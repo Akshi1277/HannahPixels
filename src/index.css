@@ -1,38 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Manrope:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* Light, paper-toned body */
-  --background: #FBF9F4;
-  --foreground: #181A16;
-  --secondary: #F3EEE3;
-  --secondary-foreground: #181A16;
-  --muted: #F3EEE3;
-  --muted-foreground: #6B6F62;
+  /* Warm alabaster cream background from the reference site */
+  --background: #F3EFEA;
+  --foreground: #111111;
+  --secondary: #EAE5DE;
+  --secondary-foreground: #111111;
+  --muted: #E2DDD5;
+  --muted-foreground: #6B655E;
   --card: #FFFFFF;
-  --card-foreground: #181A16;
-  --border: #E6E0D2;
-  --input: #E6E0D2;
+  --card-foreground: #111111;
+  --border: #E2DDD5;
+  --input: #E2DDD5;
 
-  /* True brand colors, sampled from the logo */
-  --primary: #F8BC23;
-  --primary-foreground: #181A16;
-  --accent: #538B56;
+  /* True brand colors from the reference site */
+  --bronze: #A67C52;
+  --bronze-light: #C49A74;
+  --ink: #111111;
+  --primary: #111111;
+  --primary-foreground: #F3EFEA;
+  --accent: #A67C52;
   --accent-foreground: #FFFFFF;
-  --ring: #F8BC23;
-  /* Deepened variants for text/links on light backgrounds (contrast-safe) */
-  --gold-ink: #93660C;
-  --green-ink: #3B6A3E;
+  --ring: #A67C52;
+  --gold-ink: #A67C52;
 
-  /* Dark chrome bookends: header, footer, hero scrim, floating WhatsApp chip */
-  --dark-bg: #090B0A;
-  --dark-surface: #0F1412;
-  --dark-elevated: #141A17;
-  --dark-border: #202824;
-  --dark-foreground: #FAF8F5;
+  /* Dark section background */
+  --dark-bg: #111111;
+  --dark-surface: #181818;
+  --dark-elevated: #222222;
+  --dark-border: #2A2A2A;
+  --dark-foreground: #F3EFEA;
 
-  --radius: 0.75rem;
-  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius: 0.25rem;
+  --font-sans: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
 }
 
@@ -67,6 +68,7 @@
 
   html {
     scroll-behavior: smooth;
+    background-color: #F3EFEA;
   }
 
   body {
@@ -88,22 +90,35 @@
 }
 
 @layer utilities {
-  /* Hero only — the single largest headline on the page */
-  .display-headline {
+  /* Hero giant headline: WHERE IDEAS TAKE FORM */
+  .hero-editorial-title {
     font-family: var(--font-serif);
-    font-size: clamp(2.75rem, 6vw, 5.25rem);
-    line-height: 1.05;
-    letter-spacing: -0.015em;
-    font-weight: 500;
+    font-size: clamp(4.25rem, 11.5vw, 11.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    font-weight: 400;
   }
 
-  /* Section headlines (H2-level, one per section) */
-  .section-headline {
+  /* Section giant headlines: DESIGNED WITH INTENTION, WHAT WE CREATE */
+  .section-editorial-title {
     font-family: var(--font-serif);
-    font-size: clamp(2.25rem, 4.2vw, 3.75rem);
-    line-height: 1.12;
-    letter-spacing: -0.015em;
-    font-weight: 500;
+    font-size: clamp(3rem, 7.5vw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+
+  .editorial-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.6);
+  }
+
+  .editorial-bronze {
+    color: #A67C52;
+    font-style: italic;
   }
 
   .editorial-serif {

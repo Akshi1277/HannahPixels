@@ -1,38 +1,21 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import AppImage from '@/components/ui/AppImage'
 import Icon from '@/components/ui/AppIcon'
-import { whatsAppUrl } from '@/lib/contact'
 
-const collections = [
-  { label: 'Luxury Rigid Boxes', href: '/capabilities#services', desc: 'Rigid, Gift, Magnetic & Drawer Boxes' },
-  { label: 'Folding Cartons & Mailers', href: '/capabilities#services', desc: 'Corrugated, Folding Cartons & Mailers' },
-  { label: 'Fragrance & Beauty', href: '/capabilities#services', desc: 'Perfume, Cosmetic & Presentation Sets' },
-  { label: 'Chocolate & Confectionery', href: '/capabilities#services', desc: 'Indulgence Boxes & Food Packaging' },
-  { label: 'Paper & Carry', href: '/capabilities#services', desc: 'Luxury Bags, Tissue & Collateral' },
-  { label: 'Books & Publishing', href: '/capabilities#services', desc: 'Hardcovers, Art Books & Catalogues' },
+const navLinks = [
+  { label: 'HOME', to: '/' },
+  { label: 'CAPABILITIES', to: '/capabilities' },
+  { label: 'PROCESS', to: '/process' },
+  { label: 'ABOUT', to: '/about' },
+  { label: 'CONTACT', to: '/contact' },
 ]
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [collectionsOpen, setCollectionsOpen] = useState(false)
-  const [mobileCollectionsOpen, setMobileCollectionsOpen] = useState(false)
-  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  const handleMouseEnter = () => {
-    if (closeTimerRef.current) clearTimeout(closeTimerRef.current)
-    setCollectionsOpen(true)
-  }
-
-  const handleMouseLeave = () => {
-    closeTimerRef.current = setTimeout(() => {
-      setCollectionsOpen(false)
-    }, 150)
-  }
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30)
+    const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -41,7 +24,7 @@ export default function Header() {
     if (menuOpen) {
       document.body.style.overflow = 'hidden'
       const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') closeMenu()
+        if (e.key === 'Escape') setMenuOpen(false)
       }
       window.addEventListener('keydown', handleKeyDown)
       return () => {
@@ -53,303 +36,118 @@ export default function Header() {
     }
   }, [menuOpen])
 
-  const closeMenu = () => {
-    setMenuOpen(false)
-    setMobileCollectionsOpen(false)
-  }
-
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 border-b transition-[background-color,border-color,box-shadow,padding] duration-300 ease-out ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? 'bg-[#090B0A]/95 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] py-3'
-            : 'bg-[#090B0A]/75 backdrop-blur-md py-4'
+            ? 'bg-[#F3EFEA]/95 backdrop-blur-md shadow-xs border-b border-[#E2DDD5] py-4'
+            : 'bg-[#F3EFEA] border-b border-[#E2DDD5]/70 py-5'
         }`}
-        style={{
-          borderBottomColor: scrolled ? '#202824' : 'transparent'
-        }}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
-          {/* Logo with clean luxury presence */}
-          <Link to="/" className="flex items-center group py-1 shrink-0" aria-label="Hannah Pixels homepage">
-            <AppImage
-              src="/hannahpixels.png"
-              alt="Hannah Pixels - Luxury Packaging & Printing"
-              width={160}
-              height={54}
-              priority
-              className="h-8 md:h-9 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity"
-            />
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
+          {/* Logo in Cormorant Garamond */}
+          <Link
+            to="/"
+            className="text-lg md:text-xl font-serif font-medium uppercase tracking-[0.2em] text-[#111111] hover:text-[#A67C52] transition-colors shrink-0"
+            aria-label="Hannah Pixels homepage"
+          >
+            HANNAH PIXELS
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center pill-nav gap-5 xl:gap-7" aria-label="Main navigation">
-            {/* What We Create Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                className="flex items-center gap-1.5 text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-white/80 hover:text-[#F8BC23] transition-colors cursor-pointer py-1 whitespace-nowrap"
-                aria-haspopup="true"
-                aria-expanded={collectionsOpen}
+          <nav className="hidden md:flex items-center gap-7 lg:gap-10" aria-label="Main navigation">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === '/'}
+                className={({ isActive }) =>
+                  `text-[11px] font-mono tracking-[0.26em] uppercase transition-colors whitespace-nowrap ${
+                    isActive
+                      ? 'text-[#111111] font-semibold border-b border-[#A67C52] pb-0.5'
+                      : 'text-[#111111]/70 hover:text-[#111111]'
+                  }`
+                }
               >
-                <span>What We Create</span>
-                <Icon
-                  name="ChevronDownIcon"
-                  size={11}
-                  className={`text-[#F8BC23] transition-transform duration-300 ${collectionsOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-
-              {collectionsOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-80 z-50">
-                  <div className="bg-[#0F1412] border border-[#F8BC23]/30 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.95)] backdrop-blur-2xl overflow-hidden p-2.5">
-                    {collections.map((c) => (
-                      <Link
-                        key={c.label}
-                        to={c.href}
-                        className="flex flex-col px-4 py-2.5 rounded-xl hover:bg-[#1E3A2F]/40 transition-all group"
-                        onClick={() => setCollectionsOpen(false)}
-                      >
-                        <div className="flex items-center justify-between text-xs font-semibold text-white/90 group-hover:text-[#F8BC23]">
-                          <span>{c.label}</span>
-                          <Icon name="ArrowRightIcon" size={10} className="text-[#F8BC23] opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </div>
-                        <span className="text-[11px] text-white/50 group-hover:text-white/70">{c.desc}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <NavLink
-              to="/capabilities"
-              className={({ isActive }) =>
-                `text-[11px] xl:text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap py-1 flex items-center gap-1.5 ${
-                  isActive ? 'text-[#F8BC23]' : 'text-white/80 hover:text-[#F8BC23]'
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />}
-                  <span>Capabilities</span>
-                </>
-              )}
-            </NavLink>
-
-            <NavLink
-              to="/process"
-              className={({ isActive }) =>
-                `text-[11px] xl:text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap py-1 flex items-center gap-1.5 ${
-                  isActive ? 'text-[#F8BC23]' : 'text-white/80 hover:text-[#F8BC23]'
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />}
-                  <span>The Process</span>
-                </>
-              )}
-            </NavLink>
-
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `text-[11px] xl:text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap py-1 flex items-center gap-1.5 ${
-                  isActive ? 'text-[#F8BC23]' : 'text-white/80 hover:text-[#F8BC23]'
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />}
-                  <span>Our Vision</span>
-                </>
-              )}
-            </NavLink>
-
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                `text-[11px] xl:text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap py-1 flex items-center gap-1.5 ${
-                  isActive ? 'text-[#F8BC23]' : 'text-white/80 hover:text-[#F8BC23]'
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#F8BC23]" />}
-                  <span>Contact</span>
-                </>
-              )}
-            </NavLink>
+                {link.label}
+              </NavLink>
+            ))}
           </nav>
 
-          {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
-            <a
-              href={whatsAppUrl("Hello Hannah Pixels team, I'd like to inquire about custom packaging and printing.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-[#F8BC23]/40 text-white/90 hover:text-[#F8BC23] text-xs font-medium transition-all whitespace-nowrap"
-              aria-label="Direct WhatsApp Consultation with Hannah Pixels"
-            >
-              <Icon name="MessageCircleIcon" size={14} className="text-[#F8BC23]" />
-              <span>WhatsApp Studio</span>
-            </a>
-
+          {/* Desktop Right Button */}
+          <div className="hidden md:flex items-center">
             <Link
               to="/contact"
-              className="group flex items-center gap-2.5 bg-[#F8BC23] text-[#090B0A] pl-4 pr-2 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 active:scale-[0.98] shadow-md shadow-[#F8BC23]/20 whitespace-nowrap"
+              className="bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase px-5 py-2.5 transition-colors flex items-center gap-1.5"
             >
-              <span>Request Quote</span>
-              <span className="w-5 h-5 rounded-full bg-black/10 flex items-center justify-center group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
-                <Icon name="ArrowRightIcon" size={10} />
-              </span>
+              <span>START A PROJECT</span>
+              <span className="text-xs">↗</span>
             </Link>
           </div>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Hamburger Button */}
           <button
-            className="lg:hidden flex items-center justify-center w-11 h-11 rounded-full border border-white/20 bg-black/50 backdrop-blur-md text-white"
+            className="md:hidden flex items-center justify-center w-10 h-10 border border-[#111111]/20 bg-white/40 text-[#111111]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
-            aria-controls="mobile-navigation-drawer"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
-            <Icon
-              name={menuOpen ? 'XMarkIcon' : 'Bars3Icon'}
-              size={20}
-              className="text-[#F8BC23]"
-            />
+            <Icon name={menuOpen ? 'XMarkIcon' : 'Bars3Icon'} size={18} />
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Drawer */}
       {menuOpen && (
         <div
-          id="mobile-navigation-drawer"
           role="dialog"
           aria-modal="true"
-          aria-label="Navigation Menu"
-          className="fixed inset-0 z-50 bg-[#090B0A]/98 backdrop-blur-2xl flex flex-col pt-24 px-6 pb-8 overflow-y-auto"
+          className="fixed inset-0 z-50 bg-[#F3EFEA] flex flex-col pt-24 px-8 pb-10 overflow-y-auto"
         >
-          <div className="flex items-center justify-between pb-6 border-b border-[#202824]">
-            <Link to="/" onClick={closeMenu}>
-              <AppImage
-                src="/hannahpixels.png"
-                alt="Hannah Pixels"
-                width={130}
-                height={40}
-                className="h-7 w-auto object-contain"
-              />
+          <div className="flex items-center justify-between pb-6 border-b border-[#E2DDD5]">
+            <Link
+              to="/"
+              onClick={() => setMenuOpen(false)}
+              className="text-lg font-serif font-medium uppercase tracking-[0.2em] text-[#111111]"
+            >
+              HANNAH PIXELS
             </Link>
             <button
-              onClick={closeMenu}
-              aria-label="Close navigation menu"
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+              className="w-10 h-10 border border-[#111111]/20 flex items-center justify-center text-[#111111]"
             >
-              <Icon name="XMarkIcon" size={20} />
+              <Icon name="XMarkIcon" size={18} />
             </button>
           </div>
 
-          <nav className="flex flex-col gap-1 py-6" aria-label="Mobile navigation">
-            <Link
-              to="/"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              Home
-            </Link>
-
-            <div>
-              <button
-                onClick={() => setMobileCollectionsOpen(!mobileCollectionsOpen)}
-                className="w-full flex items-center justify-between py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
+          <nav className="flex flex-col gap-6 py-10" aria-label="Mobile navigation">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === '/'}
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `text-base font-mono tracking-[0.22em] uppercase transition-colors ${
+                    isActive ? 'text-[#A67C52] font-bold' : 'text-[#111111]/80 hover:text-[#111111]'
+                  }`
+                }
               >
-                What We Create
-                <Icon
-                  name="ChevronDownIcon"
-                  size={16}
-                  className={`text-[#F8BC23] transition-transform duration-300 ${mobileCollectionsOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-              {mobileCollectionsOpen && (
-                <div className="pl-3 py-2 flex flex-col gap-1.5 bg-white/5 rounded-xl my-2">
-                  {collections.map((c) => (
-                    <Link
-                      key={c.label}
-                      to={c.href}
-                      onClick={closeMenu}
-                      className="py-2 text-sm text-white/80 hover:text-[#F8BC23] flex items-center justify-between pr-3"
-                    >
-                      <span>{c.label}</span>
-                      <Icon name="ArrowRightIcon" size={12} className="text-[#F8BC23]" />
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <Link
-              to="/capabilities"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              Capabilities &amp; Finishes
-            </Link>
-
-            <Link
-              to="/process"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              The Process &amp; Engineering
-            </Link>
-
-            <Link
-              to="/about"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              Our Vision &amp; Heritage
-            </Link>
-
-            <Link
-              to="/contact"
-              onClick={closeMenu}
-              className="py-3.5 text-base font-semibold text-white/90 hover:text-[#F8BC23] border-b border-white/10 transition-colors"
-            >
-              Contact &amp; Dieline Desk
-            </Link>
+                {link.label}
+              </NavLink>
+            ))}
           </nav>
 
-          <div className="mt-auto space-y-3 pt-6">
-            <a
-              href={whatsAppUrl("Hello Hannah Pixels team, I'd like to inquire about packaging services.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeMenu}
-              className="flex items-center justify-center gap-2 w-full border border-[#264A38] bg-[#141A17] text-[#F8BC23] py-3 rounded-full font-bold text-sm transition-all"
-            >
-              <Icon name="MessageCircleIcon" size={18} className="text-[#F8BC23]" />
-              <span>WhatsApp Specialist Desk</span>
-            </a>
-
+          <div className="mt-auto pt-6 border-t border-[#E2DDD5]">
             <Link
               to="/contact"
-              onClick={closeMenu}
-              className="flex items-center justify-center gap-2 w-full bg-[#F8BC23] text-[#090B0A] py-3.5 rounded-full label-tag hover:bg-[#FFCB4D] transition-all font-bold shadow-lg shadow-[#F8BC23]/20"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-center bg-[#111111] text-[#F3EFEA] py-3.5 text-xs font-mono font-semibold tracking-[0.22em] uppercase flex items-center justify-center gap-1.5 hover:bg-[#A67C52] transition-colors"
             >
-              Request Quote
-              <Icon name="ArrowRightIcon" size={12} />
+              <span>START A PROJECT</span>
+              <span>↗</span>
             </Link>
           </div>
         </div>

@@ -1,133 +1,196 @@
-import { Suspense, lazy } from 'react'
 import { Link } from 'react-router-dom'
-import HeroSection from '@/components/HeroSection'
 import AppImage from '@/components/ui/AppImage'
-import Icon from '@/components/ui/AppIcon'
-import { whatsAppUrl } from '@/lib/contact'
 
-const TestimonialsSection = lazy(() => import('@/components/TestimonialsSection'))
-
-const previewCollections = [
+const catalogueItems = [
   {
-    title: 'Luxury Rigid Boxes',
-    category: 'Magnetic & Presentation Sets',
-    desc: 'Bespoke high-density greyboard wrapped in specialty soft-touch paper with crisp 90° corners.',
-    image: '/images/packaging-category-rigid-boxes.jpg',
-    specs: '1.5mm – 3.0mm Board • Hot Foil • Custom Foam'
+    num: '01',
+    title: 'Luxury Packaging',
+    desc: 'Packaging designed for brands where every detail matters.',
+    to: '/capabilities#luxury-packaging'
   },
   {
-    title: 'Fragrance & Beauty Coffrets',
-    category: 'Niche Perfumery & Cosmetics',
-    desc: 'Opulent coffrets, multi-tier presentation cases, and perfume bottle retention inserts.',
-    image: '/images/packaging-category-fragrance-beauty.jpg',
-    specs: 'Custom Flocked Trays • Satin Pulls • Blind Emboss'
+    num: '02',
+    title: 'Product Packaging',
+    desc: 'Functional, distinctive packaging created around your product and brand.',
+    to: '/capabilities#product-packaging'
   },
   {
-    title: 'Folding Cartons & Mailers',
-    category: 'Retail, D2C & Sustainable Shipping',
-    desc: 'Engineered folding mono-cartons, crash-lock bases, and protective luxury mailers.',
-    image: '/images/packaging-category-folding-cartons.jpg',
-    specs: '300 – 450 GSM Kraft • Spot UV • Tamper Proof'
+    num: '03',
+    title: 'Fragrance & Beauty',
+    desc: 'Opulent coffrets, perfume presentation cases, and retention inserts.',
+    to: '/capabilities#fragrance-beauty'
   },
   {
-    title: 'Confectionery & Gourmet Boxes',
-    category: 'Artisan Chocolate & Fine Foods',
+    num: '04',
+    title: 'Chocolate & Confectionery',
     desc: 'Food-safe certified presentation boxes with moisture-barrier greaseproof liners.',
-    image: '/images/packaging-category-chocolate-food.jpg',
-    specs: 'Direct Food Contact Safe • Cavity Trays • Foil'
+    to: '/capabilities#confectionery'
   },
   {
-    title: 'Luxury Boutique Carrier Bags',
-    category: 'Retail Unboxing & Events',
-    desc: 'Heavyweight art-paper bags with reinforced turnover tops and knotted grosgrain handles.',
-    image: '/images/packaging-category-paper-carry.jpg',
-    specs: '210 – 300 GSM Art Board • Ribbon Handles • Emboss'
+    num: '05',
+    title: 'Paper & Carry',
+    desc: 'Heavyweight art-paper bags with reinforced turnover tops and ribbon handles.',
+    to: '/capabilities#paper-carry'
   },
   {
-    title: 'Hardcovers & Art Publishing',
-    category: 'Monographs, Lookbooks & Catalogues',
-    desc: 'Thread-sewn hardcovers with linen book-cloth binding, gilded edges, and slipcases.',
-    image: '/images/packaging-category-books-publishing.jpg',
-    specs: 'Section Sewn • Bookcloth • Archival Paper'
+    num: '06',
+    title: 'Books & Publishing',
+    desc: 'Thread-sewn hardcovers with linen book-cloth binding and slipcases.',
+    to: '/capabilities#publishing'
+  }
+]
+
+const processSteps = [
+  { num: '01', title: 'Discover', desc: 'We begin with your brand, your product and the purpose behind the piece.' },
+  { num: '02', title: 'Develop', desc: 'Ideas become structures, materials, finishes and considered details.' },
+  { num: '03', title: 'Refine', desc: 'We explore papers, boards, textures and specialist finishes.' },
+  { num: '04', title: 'Produce', desc: 'Every piece is produced with precision and close attention to detail.' }
+]
+
+const principles = [
+  { title: 'Thoughtful Design', desc: 'Every line, fold, and closure engineered with structural purpose.' },
+  { title: 'Exceptional Materials', desc: 'FSC-certified rigid greyboard, specialty papers, and non-toxic vegetal inks.' },
+  { title: 'Precise Production', desc: '±0.1mm CNC cutting, 120°C hot brass stamping, and hand-finished seams.' },
+  { title: 'Worldwide Delivery', desc: 'Dual production desks in London and Dubai dispatching across the globe.' }
+]
+
+const testimonials = [
+  {
+    quote: 'Hannah Pixels is our exclusive packaging atelier for luxury rigid fragrance boxes. Their gold hot foil debossing and precision velvet inserts exceed every standard.',
+    author: 'Tariq Al-Mansoor',
+    role: 'Creative Director, Oud Royal Parfums (Dubai)'
+  },
+  {
+    quote: 'Finding eco-friendly certified packaging with bespoke print and zero plastic liners was tough until we partnered with Hannah Pixels. Impeccable craft.',
+    author: 'Oliver Sterling',
+    role: 'Co-Founder, Sterling Coffee Roasters (London)'
+  },
+  {
+    quote: 'The book-style magnetic rigid boxes for our confectionery collections made an immediate impression on our VIP corporate clients.',
+    author: 'Noor Al-Hassan',
+    role: 'Head of Procurement, Barakah Confectionery (Abu Dhabi)'
   }
 ]
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Editorial Hero */}
-      <HeroSection />
+    <div className="min-h-screen bg-[#F3EFEA] text-[#111111]">
+      {/* ===================== HERO SECTION ===================== */}
+      <section className="pt-32 sm:pt-36 md:pt-40 pb-16 px-6 lg:px-12 border-b border-[#E2DDD5]">
+        <div className="max-w-[1400px] mx-auto">
+          {/* Eyebrow Bar */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase pb-10 border-b border-[#111111]/10 gap-2">
+            <span>PRINT &amp; PACKAGING HOUSE</span>
+            <span className="hidden md:inline">DESIGN • PRINT • PACKAGING — WORLDWIDE</span>
+            <span>NO. 01 — FORM</span>
+          </div>
 
-      {/* Atelier Philosophy & Dual-Hub Intro */}
-      <section className="py-20 md:py-28 bg-[#FBF9F4] border-b border-[#E6E0D2]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-5">
-              <div className="rounded-[2.25rem] p-1.5 bg-[#181A16]/5 ring-1 ring-[#93660C]/15 shadow-sm hover:shadow-2xl transition-all duration-500">
-                <div className="rounded-[calc(2.25rem-0.375rem)] overflow-hidden aspect-[4/5] relative border border-[#E6E0D2]">
-                  <AppImage
-                    src="/images/atelier-vision-master.jpg"
-                    alt="Hannah Pixels artisan examining gold foil debossed rigid packaging"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 42vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-6 left-6 right-6 z-10 flex items-center justify-between text-white">
-                    <div>
-                      <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#F8BC23] font-semibold">
-                        Hannah Pixels Atelier
-                      </p>
-                      <p className="text-xs font-serif italic text-white/95">
-                        Where Ideas Take Form.
-                      </p>
-                    </div>
-                    <span className="text-[10px] font-mono text-white/70 tracking-wider uppercase bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
-                      London &amp; Dubai
-                    </span>
-                  </div>
+          {/* Asymmetric Headline + Packaging Photo Grid */}
+          <div className="pt-12 grid lg:grid-cols-12 gap-8 items-start relative">
+            {/* Headline + Subtext */}
+            <div className="lg:col-span-8 z-10">
+              <h1 className="font-serif text-[4.25rem] sm:text-[7rem] md:text-[9rem] lg:text-[10.5rem] xl:text-[11.8rem] leading-[0.88] font-normal tracking-[-0.02em] select-none text-[#111111]">
+                <span className="block">WHERE</span>
+                <span className="block italic text-[#A67C52]">IDEAS</span>
+                <span className="block">TAKE FORM.</span>
+              </h1>
+
+              <div className="pt-10 max-w-xl space-y-4">
+                <p className="text-base sm:text-lg text-[#111111] font-normal leading-relaxed">
+                  Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world.
+                </p>
+                <p className="text-sm sm:text-base text-[#111111]/70 font-normal leading-relaxed">
+                  From luxury rigid boxes and fragrance packaging to bespoke paper bags, corrugated solutions, chocolate packaging and publishing, we bring together thoughtful design, exceptional materials and precise production.
+                </p>
+
+                <div className="pt-4 flex flex-wrap items-center gap-6">
+                  <Link
+                    to="/capabilities"
+                    className="bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase px-7 py-3.5 transition-colors"
+                  >
+                    EXPLORE CAPABILITIES
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="text-[11px] font-mono font-semibold tracking-[0.22em] uppercase text-[#111111] hover:text-[#A67C52] border-b border-[#111111] pb-1 transition-colors flex items-center gap-1.5"
+                  >
+                    <span>START A PROJECT</span>
+                    <span className="text-xs">↗</span>
+                  </Link>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-7 space-y-7">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">01</span>
-                  <span className="w-8 h-px bg-[#93660C]/40" />
-                  <span className="editorial-tag text-[#93660C]">ATELIER PHILOSOPHY</span>
-                </div>
-                <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight leading-[1.12]">
-                  To Make the Physical World of Brands More Beautiful.
-                </h2>
+            {/* Packaging Photo on the right */}
+            <div className="lg:col-span-4 pt-6 lg:pt-16">
+              <div className="aspect-[3/4] relative overflow-hidden bg-[#7E9689] shadow-xs">
+                <AppImage
+                  src="/images/packaging-category-rigid-boxes.jpg"
+                  alt="Rigid box with gold foil stamping on calm sage background"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
               </div>
-
-              <div className="p-6 md:p-8 rounded-2xl bg-white border border-[#E6E0D2] shadow-xs space-y-3">
-                <p className="text-xs font-mono uppercase tracking-widest text-[#93660C] font-bold">
-                  The First Touch
-                </p>
-                <blockquote className="text-xl md:text-2xl font-serif text-[#181A16] leading-snug">
-                  “We believe packaging is more than protection. It is the first touch. The first impression. The moment a brand becomes tangible.”
-                </blockquote>
+              <div className="pt-3 text-[10px] font-mono tracking-[0.2em] text-[#111111]/60 uppercase">
+                FIG. 01 — RIGID CONSTRUCTION, FOIL DETAIL
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <p className="text-[#3E4237] text-base md:text-lg leading-relaxed font-normal">
-                Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world. Operating with dedicated desks in London and Dubai, we unite thoughtful structural design, exceptional materials, and meticulous finishing.
+      {/* ===================== TICKER RIBBON ===================== */}
+      <div className="bg-[#F3EFEA] border-b border-[#E2DDD5] py-5 overflow-hidden whitespace-nowrap">
+        <div className="flex items-center gap-8 text-2xl md:text-3xl font-serif italic text-[#111111] animate-none">
+          <span>Packaging that stays</span>
+          <span className="text-[#A67C52] not-italic text-sm">♦</span>
+          <span>Rigid boxes</span>
+          <span className="text-[#A67C52] not-italic text-sm">♦</span>
+          <span>Foil &amp; emboss</span>
+          <span className="text-[#A67C52] not-italic text-sm">♦</span>
+          <span>Luxury paper bags</span>
+          <span className="text-[#A67C52] not-italic text-sm">♦</span>
+          <span>Fragrance coffrets</span>
+          <span className="text-[#A67C52] not-italic text-sm">♦</span>
+          <span>Publishing &amp; hardcovers</span>
+          <span className="text-[#A67C52] not-italic text-sm">♦</span>
+          <span>Confectionery packaging</span>
+          <span className="text-[#A67C52] not-italic text-sm">♦</span>
+          <span>London &amp; Dubai</span>
+        </div>
+      </div>
+
+      {/* ===================== 02 — THE BELIEF ===================== */}
+      <section className="py-24 md:py-36 px-6 lg:px-12 border-b border-[#E2DDD5]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase mb-8 md:mb-12">
+            02 — THE BELIEF
+          </div>
+          <div className="grid lg:grid-cols-12 gap-12 items-end">
+            <div className="lg:col-span-8">
+              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
+                <span className="block">DESIGNED WITH</span>
+                <span className="block italic text-[#A67C52]">INTENTION.</span>
+                <span className="block">MADE TO BE</span>
+                <span className="block">REMEMBERED.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-4 space-y-4 pb-2 md:pb-6">
+              <h3 className="font-serif text-2xl sm:text-3xl text-[#111111] font-normal leading-snug">
+                Packaging is more than protection.
+              </h3>
+              <p className="text-base text-[#111111]/70 leading-relaxed font-normal">
+                It is the first touch. The first impression. The moment a brand becomes tangible.
               </p>
-
-              <div className="pt-3 flex flex-wrap items-center gap-4">
+              <div className="pt-2">
                 <Link
                   to="/about"
-                  className="px-6 py-3 rounded-full bg-[#181A16] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#93660C] transition-colors flex items-center gap-2"
+                  className="text-[11px] font-mono font-semibold tracking-[0.22em] uppercase text-[#111111] hover:text-[#A67C52] border-b border-[#111111] pb-1 transition-colors inline-flex items-center gap-1.5"
                 >
-                  <span>Our Heritage &amp; Standards</span>
-                  <Icon name="ArrowRightIcon" size={11} />
-                </Link>
-                <Link
-                  to="/process"
-                  className="px-6 py-3 rounded-full border border-[#E6E0D2] hover:border-[#93660C] text-[#181A16] text-xs font-bold uppercase tracking-wider transition-colors"
-                >
-                  Discover The Process
+                  <span>OUR VISION &amp; STANDARDS</span>
+                  <span>↗</span>
                 </Link>
               </div>
             </div>
@@ -135,198 +198,210 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Curated Packaging Collections Showcase */}
-      <section className="py-24 md:py-32 bg-[#F4EFE6] border-b border-[#E6E0D2]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#93660C]">02</span>
-                <span className="w-8 h-px bg-[#93660C]/40" />
-                <span className="editorial-tag text-[#93660C]">PACKAGING DISCIPLINES</span>
-              </div>
-              <h2 className="section-headline text-[#181A16] text-3xl md:text-5xl font-medium tracking-tight">
-                Considered Packaging Collections.
+      {/* ===================== 03 — CATALOGUE ===================== */}
+      <section className="py-24 md:py-36 px-6 lg:px-12 border-b border-[#E2DDD5]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase mb-8 md:mb-12">
+            03 — CATALOGUE
+          </div>
+          <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+            <div className="lg:col-span-8">
+              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
+                <span className="block">WHAT WE</span>
+                <span className="block italic text-[#A67C52]">CREATE</span>
               </h2>
             </div>
-            <div className="space-y-3 max-w-md">
-              <p className="text-[#4A4E43] text-base leading-relaxed">
-                From ultra-luxe rigid coffrets with velvet inserts to scalable retail cartons and archival hardcovers.
+            <div className="lg:col-span-4 pb-2">
+              <p className="text-base sm:text-lg text-[#111111]/75 leading-relaxed font-normal">
+                Print and packaging developed around the character, purpose and physical experience of your brand.
               </p>
-              <Link
-                to="/capabilities"
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#93660C] hover:text-[#181A16] transition-colors"
-              >
-                <span>View Full Capabilities Studio</span>
-                <Icon name="ArrowRightIcon" size={12} />
-              </Link>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {previewCollections.map((col) => (
-              <div
-                key={col.title}
-                className="rounded-[2rem] bg-white border border-[#E6E0D2] overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group"
+          {/* 6 Editorial Accordion Rows */}
+          <div className="border-t border-[#E2DDD5]">
+            {catalogueItems.map((item) => (
+              <Link
+                key={item.num}
+                to={item.to}
+                className="group py-8 md:py-10 border-b border-[#E2DDD5] grid grid-cols-12 gap-4 items-center hover:bg-black/[0.02] transition-colors"
               >
-                <div className="aspect-[16/11] relative overflow-hidden bg-[#181A16]/5">
-                  <AppImage
-                    src={col.image}
-                    alt={col.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white/90 text-[10px] font-mono uppercase tracking-wider border border-white/15">
-                      {col.category}
-                    </span>
-                  </div>
+                <div className="col-span-2 sm:col-span-1 font-serif italic text-lg sm:text-xl text-[#A67C52]">
+                  {item.num}
                 </div>
-
-                <div className="p-7 flex flex-col justify-between flex-1 space-y-4">
-                  <div className="space-y-2">
-                    <h3 className="font-serif text-2xl font-bold text-[#181A16] group-hover:text-[#93660C] transition-colors">
-                      {col.title}
-                    </h3>
-                    <p className="text-sm text-[#4A4E43] leading-relaxed">
-                      {col.desc}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-[#E6E0D2] flex items-center justify-between text-xs font-mono text-[#93660C]">
-                    <span className="text-[11px] truncate max-w-[200px] text-[#6B6F62]">{col.specs}</span>
-                    <Link
-                      to="/capabilities#services"
-                      className="font-bold text-[#93660C] hover:text-[#181A16] flex items-center gap-1 shrink-0"
-                    >
-                      <span>Explore</span>
-                      <Icon name="ArrowRightIcon" size={10} />
-                    </Link>
-                  </div>
+                <div className="col-span-9 sm:col-span-10 space-y-1">
+                  <h3 className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#111111] font-normal group-hover:text-[#A67C52] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#111111]/65 font-normal">
+                    {item.desc}
+                  </p>
                 </div>
-              </div>
+                <div className="col-span-1 text-right text-lg sm:text-2xl text-[#111111]/40 group-hover:text-[#111111] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">
+                  ↗
+                </div>
+              </Link>
             ))}
           </div>
 
-          <div className="mt-14 text-center">
+          <div className="mt-12 text-right">
             <Link
               to="/capabilities"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#181A16] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#93660C] transition-all hover:scale-105 shadow-md"
+              className="text-[11px] font-mono font-semibold tracking-[0.22em] uppercase text-[#111111] hover:text-[#A67C52] border-b border-[#111111] pb-1 transition-colors inline-flex items-center gap-1.5"
             >
-              <span>Explore All Packaging &amp; Finishes</span>
-              <Icon name="ArrowRightIcon" size={12} />
+              <span>VIEW FULL CAPABILITIES STUDIO</span>
+              <span>↗</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Engineering Process Banner Callout */}
-      <section className="py-20 md:py-28 bg-[#090B0A] text-white border-b border-[#202824] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F8BC23]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141A17] border border-[#F8BC23]/30">
-                <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-                <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#F8BC23] uppercase">
-                  MANUFACTURING INTEGRITY
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white leading-[1.1]">
-                From CAD Dieline to Finished Box.{' '}
-                <span className="shimmer-gold italic font-normal">Every Micron Calibrated.</span>
+      {/* ===================== 04 — MATERIALITY (DARK CONTRAST) ===================== */}
+      <section className="bg-[#111111] text-[#F3EFEA] py-24 md:py-36 px-6 lg:px-12">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-white/50 uppercase mb-8 md:mb-12">
+            04 — MATERIALITY
+          </div>
+          <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+            <div className="lg:col-span-8">
+              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-white uppercase select-none">
+                <span className="block">MATERIALS</span>
+                <span className="block">THAT <span className="italic text-[#C49A74]">MATTER.</span></span>
               </h2>
-              <p className="text-white/75 text-base md:text-lg leading-relaxed max-w-xl">
-                Experience our 4-stage transformation portal: from flat structural dielines and high-speed thermal scoring to high-crush rigid box assembly and 120°C hot gold foil stamping.
+            </div>
+            <div className="lg:col-span-4 pb-2">
+              <p className="text-base sm:text-lg text-white/70 leading-relaxed font-normal">
+                The right material can transform how a product is seen, held and remembered.
               </p>
-              <div className="pt-2 flex flex-wrap items-center gap-4">
-                <Link
-                  to="/process"
-                  className="px-7 py-3.5 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all flex items-center gap-2"
-                >
-                  <span>Launch Process Portal</span>
-                  <Icon name="ArrowRightIcon" size={11} />
-                </Link>
-                <Link
-                  to="/contact"
-                  className="px-6 py-3.5 rounded-full border border-white/20 hover:border-[#F8BC23]/50 text-white text-xs font-semibold uppercase tracking-wider transition-colors"
-                >
-                  Request Vector CAD Dieline
-                </Link>
-              </div>
             </div>
+          </div>
 
-            <div className="lg:col-span-5">
-              <div className="rounded-3xl bg-[#0F1412] p-8 border border-[#202824] space-y-5">
-                <p className="text-xs font-mono uppercase tracking-widest text-[#F8BC23] font-bold">
-                  The Four Production Milestones
-                </p>
-                <div className="space-y-4">
-                  {[
-                    { num: '01', title: 'Precision CAD Dieline', desc: 'Grain direction, fold clearance & glue tab matrix' },
-                    { num: '02', title: 'Thermal Scoring', desc: 'Micro-groove laser creasing without fiber rupture' },
-                    { num: '03', title: 'Formed Rigid Box', desc: '44 ECT crush test structural corner staying' },
-                    { num: '04', title: 'Hot Gold Foil Monogram', desc: '120°C brass die micro-embossed luster stamping' }
-                  ].map((s) => (
-                    <div key={s.num} className="flex items-start gap-3.5 pt-3 border-t border-white/10 first:border-0 first:pt-0">
-                      <span className="font-serif text-lg font-bold text-[#F8BC23]">{s.num}</span>
-                      <div>
-                        <h4 className="text-sm font-semibold text-white">{s.title}</h4>
-                        <p className="text-xs text-white/60">{s.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6 border-t border-white/15">
+            {[
+              { num: '01', title: 'Foil & Emboss', desc: 'Hot-stamped metallic luster and multi-level 3D blind debossing.' },
+              { num: '02', title: 'Speciality Papers', desc: 'Textured, uncoated, linen, and through-dyed archival paper stocks.' },
+              { num: '03', title: 'Rigid Boards', desc: 'High-density 1.2mm to 3.0mm recycled greyboard with sharp 90° corners.' },
+              { num: '04', title: 'Custom Inserts', desc: 'Laser-cut high-density EVA foam lined with velvet, suede, or card partitions.' }
+            ].map((m) => (
+              <div key={m.title} className="p-8 border border-white/15 space-y-4">
+                <span className="font-serif italic text-lg text-[#C49A74]">{m.num}</span>
+                <h3 className="font-serif text-2xl text-white font-normal">{m.title}</h3>
+                <p className="text-xs sm:text-sm text-white/60 leading-relaxed font-normal">{m.desc}</p>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              to="/capabilities#finishes"
+              className="bg-white text-[#111111] hover:bg-[#C49A74] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase px-8 py-3.5 transition-colors inline-block"
+            >
+              DISCOVER SPECIALIST FINISHES ↗
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <Suspense fallback={<div className="h-32 flex items-center justify-center text-xs tracking-widest uppercase text-[#93660C]">Loading Client Perspectives…</div>}>
-        <TestimonialsSection />
-      </Suspense>
-
-      {/* Sample Swatch Box & Quick Quote Bottom Banner */}
-      <section className="py-20 md:py-28 bg-[#FBF9F4] border-t border-[#E6E0D2]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="p-10 md:p-14 rounded-[2.5rem] bg-[#090B0A] text-white border border-[#202824] shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-10 relative overflow-hidden">
-            <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#F8BC23]/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="space-y-4 max-w-2xl relative z-10 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15">
-                <span className="w-2 h-2 rounded-full bg-[#F8BC23]" />
-                <span className="text-[10px] font-mono tracking-widest text-[#F8BC23] uppercase font-bold">
-                  Curated Material Swatch Box
-                </span>
-              </div>
-              <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.12]">
-                Feel the Paper Before You Commit.
-              </h3>
-              <p className="text-white/75 text-sm sm:text-base leading-relaxed">
-                Order our physical sample kit featuring 12+ tactile paper stocks, foil swatches, soft-touch lamination samples, and rigid box board calipers. Dispatched within 48 hours.
+      {/* ===================== 05 — THE PROCESS ===================== */}
+      <section className="py-24 md:py-36 px-6 lg:px-12 border-b border-[#E2DDD5]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase mb-8 md:mb-12">
+            05 — THE PROCESS
+          </div>
+          <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+            <div className="lg:col-span-8">
+              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] lg:text-[8rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
+                <span className="block">FROM IDEA TO</span>
+                <span className="block italic text-[#A67C52]">FINISHED PIECE.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-4 pb-2">
+              <p className="text-base sm:text-lg text-[#111111]/75 leading-relaxed font-normal">
+                Craftsmanship is control. Each stage moves the work closer to its final form — deliberately, precisely, and with close attention to detail.
               </p>
             </div>
+          </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto shrink-0 relative z-10">
-              <Link
-                to="/contact"
-                className="w-full sm:w-auto text-center px-8 py-4 rounded-full bg-[#F8BC23] text-[#090B0A] font-bold text-xs uppercase tracking-wider hover:bg-[#FFCB4D] transition-all hover:scale-105 shadow-lg shadow-[#F8BC23]/25"
-              >
-                Request Quote &amp; Swatch Box
-              </Link>
-              <a
-                href={whatsAppUrl("Hello Hannah Pixels, I would like to request a physical material sample swatch box.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto text-center px-7 py-4 rounded-full border border-white/20 hover:border-[#F8BC23]/60 text-white text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
-              >
-                <Icon name="MessageCircleIcon" size={15} className="text-[#F8BC23]" />
-                <span>WhatsApp Desk</span>
-              </a>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-8 border-t border-[#E2DDD5]">
+            {processSteps.map((s) => (
+              <div key={s.num} className="space-y-4">
+                <div className="font-serif italic text-2xl text-[#A67C52]">{s.num}</div>
+                <h3 className="font-serif text-3xl text-[#111111] font-normal">{s.title}</h3>
+                <p className="text-sm text-[#111111]/70 leading-relaxed font-normal">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-14">
+            <Link
+              to="/process"
+              className="text-[11px] font-mono font-semibold tracking-[0.22em] uppercase text-[#111111] hover:text-[#A67C52] border-b border-[#111111] pb-1 transition-colors inline-flex items-center gap-1.5"
+            >
+              <span>EXPLORE ALL SIX MANUFACTURING PHASES</span>
+              <span>↗</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== 06 — CLIENT PERSPECTIVES ===================== */}
+      <section className="py-24 md:py-36 px-6 lg:px-12 border-b border-[#E2DDD5] bg-[#EAE5DE]/40">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase mb-8 md:mb-12">
+            06 — PERSPECTIVES
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {testimonials.map((t) => (
+              <div key={t.author} className="space-y-6 flex flex-col justify-between">
+                <blockquote className="font-serif text-xl sm:text-2xl text-[#111111] leading-snug font-normal">
+                  “{t.quote}”
+                </blockquote>
+                <div className="pt-4 border-t border-[#E2DDD5] space-y-1">
+                  <p className="text-sm font-semibold text-[#111111]">{t.author}</p>
+                  <p className="text-xs text-[#111111]/60 font-mono tracking-wider">{t.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== 07 — THE PRINCIPLES ===================== */}
+      <section className="py-24 md:py-36 px-6 lg:px-12 border-b border-[#E2DDD5]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase mb-8 md:mb-12">
+            07 — PRINCIPLES
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {principles.map((p) => (
+              <div key={p.title} className="p-8 border border-[#E2DDD5] bg-white space-y-3">
+                <h3 className="font-serif text-2xl text-[#111111] font-normal">{p.title}</h3>
+                <p className="text-sm text-[#111111]/70 leading-relaxed font-normal">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== BOTTOM PROJECT BANNER ===================== */}
+      <section className="py-24 md:py-32 px-6 lg:px-12 text-center bg-[#F3EFEA]">
+        <div className="max-w-2xl mx-auto space-y-6">
+          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase">
+            ATELIER CONSULTATION
+          </div>
+          <h2 className="font-serif text-4xl sm:text-6xl text-[#111111] font-normal leading-tight">
+            Ready to make something <span className="italic text-[#A67C52]">tangible?</span>
+          </h2>
+          <p className="text-base text-[#111111]/70 leading-relaxed">
+            From a single bespoke prototype to large-scale international brand production runs.
+          </p>
+          <div className="pt-4">
+            <Link
+              to="/contact"
+              className="bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-xs font-mono font-semibold tracking-[0.22em] uppercase px-9 py-4 transition-colors inline-block"
+            >
+              START A PROJECT ↗
+            </Link>
           </div>
         </div>
       </section>
