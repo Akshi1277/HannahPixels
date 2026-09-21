@@ -1,9 +1,10 @@
-// TODO(launch-blocker): replace with the real, verified WhatsApp Business number and inbox
-// before going live. Every WhatsApp/email link in the site reads from here so a real number
-// only needs to be swapped in once.
+// Placeholder contact channel — no real inbox/number has been supplied yet.
+// The UI renders these as visibly marked placeholders (see Contact page) rather
+// than presenting them as live, verified contact details.
+export const CONTACT_DETAILS_CONFIRMED = false
 export const WHATSAPP_NUMBER = '447400000000'
-export const CONTACT_EMAIL = 'atelier@hannahpixels.com'
-export const PHONE_NUMBER = '+44 (0) 20 7946 0912'
+export const CONTACT_EMAIL = 'studio@hannahpixels.com'
+export const PHONE_DISPLAY = 'To be confirmed'
 
 export function whatsAppUrl(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`

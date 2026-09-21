@@ -1,0 +1,104 @@
+---
+const navLinks = [
+  { label: 'Home', to: '/' },
+  { label: 'Capabilities', to: '/capabilities' },
+  { label: 'Process', to: '/process' },
+  { label: 'About', to: '/about' },
+  { label: 'Contact', to: '/contact' },
+]
+
+const path = Astro.url.pathname
+const isActive = (to: string) => (to === '/' ? path === '/' : path.startsWith(to))
+---
+
+<header class="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-grid">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-10 h-[76px] flex items-center justify-between gap-6">
+    <a href="/" class="shrink-0" aria-label="Hannah Pixels homepage">
+      <img src="/hannahpixels-dark.png" alt="Hannah Pixels" class="h-8 w-auto object-contain" />
+    </a>
+
+    <nav class="hidden md:flex items-center gap-9" aria-label="Main navigation">
+      {navLinks.map((link) => (
+        <a
+          href={link.to}
+          class:list={[
+            'type-label transition-colors',
+            isActive(link.to) ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
+          ]}
+          aria-current={isActive(link.to) ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="/contact"
+      class="hidden md:inline-flex items-center type-label bg-ink text-ink-foreground hover:bg-accent px-5 py-2.5 transition-colors"
+    >
+      Start a Project
+    </a>
+
+    <button
+      id="menu-toggle"
+      class="md:hidden flex items-center justify-center w-10 h-10 border border-foreground/20"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <span class="relative block w-4 h-3" aria-hidden="true">
+        <span class="menu-bar absolute left-0 top-0 w-4 h-px bg-foreground transition-transform"></span>
+        <span class="menu-bar absolute left-0 bottom-0 w-4 h-px bg-foreground transition-transform"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-50 bg-background flex flex-col px-6 pt-[76px] pb-10 translate-x-full transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] md:hidden"
+>
+  <nav class="flex flex-col gap-1 pt-12" aria-label="Mobile navigation">
+    {navLinks.map((link, i) => (
+      <a
+        href={link.to}
+        class="font-serif text-5xl leading-[1.35] text-foreground hover:text-accent transition-colors"
+        style={`transition-delay: ${i * 40}ms`}
+      >
+        {link.label}
+      </a>
+    ))}
+  </nav>
+  <a
+    href="/contact"
+    class="mt-auto type-label text-center bg-ink text-ink-foreground py-4"
+  >
+    Start a Project
+  </a>
+</div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle')!
+  const menu = document.getElementById('mobile-menu')!
+  const bars = toggle.querySelectorAll('.menu-bar')
+
+  let open = false
+
+  function setOpen(next: boolean) {
+    open = next
+    menu.classList.toggle('translate-x-full', !open)
+    toggle.setAttribute('aria-expanded', String(open))
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
+    document.body.style.overflow = open ? 'hidden' : ''
+    bars[0].classList.toggle('rotate-45', open)
+    bars[0].classList.toggle('translate-y-[5px]', open)
+    bars[1].classList.toggle('-rotate-45', open)
+    bars[1].classList.toggle('-translate-y-[5px]', open)
+  }
+
+  toggle.addEventListener('click', () => setOpen(!open))
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)))
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && open) setOpen(false)
+  })
+</script>

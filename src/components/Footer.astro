@@ -1,0 +1,63 @@
+---
+import { capabilities } from '@/data/capabilities'
+import { CONTACT_EMAIL } from '@/lib/contact'
+
+const year = new Date().getFullYear()
+---
+
+<footer class="bg-ink text-ink-foreground pt-20 pb-10 px-6 lg:px-10 relative overflow-hidden">
+  <div
+    aria-hidden="true"
+    class="absolute -bottom-[6vw] left-0 right-0 select-none pointer-events-none text-center font-serif text-[19vw] leading-none text-white/[0.035] tracking-tight uppercase"
+  >
+    Hannah
+  </div>
+
+  <div class="max-w-[1440px] mx-auto relative z-10">
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-12">
+      <div class="col-span-2 md:col-span-5 space-y-5">
+        <p class="font-serif text-3xl sm:text-4xl leading-[1.05]">
+          Where ideas<br /><span class="italic text-accent-quiet">take form.</span>
+        </p>
+        <p class="text-sm text-white/55 leading-relaxed max-w-xs">
+          Design, print and packaging worldwide.
+        </p>
+      </div>
+
+      <nav class="md:col-span-2 space-y-4" aria-label="Footer navigation">
+        <h4 class="type-label text-white/45">Sitemap</h4>
+        <ul class="space-y-2 text-sm text-white/75">
+          <li><a href="/" class="hover:text-accent-quiet transition-colors">Home</a></li>
+          <li><a href="/capabilities" class="hover:text-accent-quiet transition-colors">Capabilities</a></li>
+          <li><a href="/process" class="hover:text-accent-quiet transition-colors">Process</a></li>
+          <li><a href="/about" class="hover:text-accent-quiet transition-colors">About</a></li>
+          <li><a href="/contact" class="hover:text-accent-quiet transition-colors">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav class="md:col-span-3 space-y-4" aria-label="Footer capabilities">
+        <h4 class="type-label text-white/45">Capabilities</h4>
+        <ul class="space-y-2 text-sm text-white/75">
+          {capabilities.map((c) => (
+            <li>
+              <a href={`/capabilities#${c.slug}`} class="hover:text-accent-quiet transition-colors">{c.title}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="md:col-span-2 space-y-4">
+        <h4 class="type-label text-white/45">Enquiries</h4>
+        <div class="space-y-2 text-sm text-white/75">
+          <a href={`mailto:${CONTACT_EMAIL}`} class="block hover:text-accent-quiet transition-colors">{CONTACT_EMAIL}</a>
+          <p class="text-white/45 text-xs tracking-wide">Worldwide enquiries welcome.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-white/40">
+      <p>© {year} Hannah Pixels. All rights reserved.</p>
+      <p class="type-label text-white/40">Design · Print · Packaging</p>
+    </div>
+  </div>
+</footer>

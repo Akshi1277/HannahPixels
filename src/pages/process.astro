@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import MaskedLines from '@/components/react/MaskedLines'
+import ProcessStepper from '@/components/react/ProcessStepper'
+import { processStages } from '@/data/process'
+---
+
+<BaseLayout
+  title="Process"
+  description="From idea to finished piece — discover, develop, refine, produce, finish, deliver. The six stages behind every piece Hannah Pixels creates."
+>
+  <section class="pt-[140px] pb-16 md:pb-24 px-6 lg:px-10">
+    <div class="max-w-3xl">
+      <div class="type-eyebrow text-muted-foreground mb-6">Process</div>
+      <MaskedLines
+        client:load
+        mode="load"
+        className="type-section text-foreground"
+        lines={['From Idea to', '*Finished Piece.*']}
+      />
+      <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-8 max-w-lg">
+        Craftsmanship is control. Each stage moves the work closer to its final form.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-6 lg:px-10 pb-28 md:pb-40">
+    <div class="max-w-[1440px] mx-auto">
+      <ProcessStepper client:visible stages={processStages} />
+    </div>
+  </section>
+
+  <section class="bg-ink text-ink-foreground py-28 md:py-36 px-6 lg:px-10 text-center">
+    <div class="max-w-2xl mx-auto space-y-8">
+      <h2 class="type-section text-ink-foreground uppercase">Have a project<br /><span class="italic text-accent-quiet">in mind?</span></h2>
+      <a href="/contact" class="type-label inline-block bg-background text-ink px-7 py-3.5 hover:bg-accent-quiet transition-colors">
+        Start a Project
+      </a>
+    </div>
+  </section>
+</BaseLayout>

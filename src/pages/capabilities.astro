@@ -1,0 +1,62 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { capabilities } from '@/data/capabilities'
+---
+
+<BaseLayout
+  title="Capabilities"
+  description="Six disciplines, one standard — luxury packaging, product packaging, fragrance and beauty, chocolate and confectionery, paper and carry, books and publishing."
+>
+  <section class="pt-[140px] pb-20 md:pb-28 px-6 lg:px-10 border-b border-grid">
+    <div class="max-w-3xl">
+      <div class="type-eyebrow text-muted-foreground mb-6">Capabilities</div>
+      <h1 class="type-section text-foreground">What We Create.</h1>
+      <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-8 max-w-xl">
+        Print and packaging developed around the character, purpose and physical experience of your brand.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-x-6 gap-y-3 mt-12 pt-8 border-t border-grid">
+      {capabilities.map((c) => (
+        <a href={`#${c.slug}`} class="type-label text-muted-foreground hover:text-accent transition-colors">{c.title}</a>
+      ))}
+    </div>
+  </section>
+
+  {capabilities.map((cat, idx) => (
+    <section id={cat.slug} class="py-20 md:py-28 px-6 lg:px-10 border-b border-grid scroll-mt-20">
+      <div class="max-w-[1440px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class:list={['lg:col-span-6', idx % 2 === 1 && 'lg:order-2']}>
+          <div class="aspect-[5/4] relative overflow-hidden bg-secondary">
+            <img
+              src={cat.image}
+              alt={cat.title}
+              class="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class:list={['lg:col-span-6', idx % 2 === 1 && 'lg:order-1']}>
+          <div class="max-w-lg">
+            <span class="font-serif italic text-2xl text-accent">{cat.num}</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-foreground leading-[1.02] mt-3">{cat.title}</h2>
+            <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-6">{cat.summary}</p>
+
+            <ul class="flex flex-wrap gap-x-3 gap-y-2 mt-8 text-sm text-foreground/75">
+              {cat.items.map((item, i) => (
+                <li>
+                  {item}{i < cat.items.length - 1 && <span class="text-grid ml-3">·</span>}
+                </li>
+              ))}
+            </ul>
+
+            <a href="/contact" class="type-label text-foreground border-b border-foreground/40 hover:border-accent hover:text-accent transition-colors pb-1 inline-block mt-10">
+              Start a Project →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+</BaseLayout>

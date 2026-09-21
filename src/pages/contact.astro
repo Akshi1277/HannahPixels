@@ -1,0 +1,53 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import MaskedLines from '@/components/react/MaskedLines'
+import ContactForm from '@/components/react/ContactForm'
+import { CONTACT_EMAIL, PHONE_DISPLAY } from '@/lib/contact'
+---
+
+<BaseLayout
+  title="Contact"
+  description="Tell us about your project, your product and what you have in mind. Start a project with Hannah Pixels."
+>
+  <section class="pt-[140px] pb-16 md:pb-24 px-6 lg:px-10">
+    <div class="max-w-3xl">
+      <div class="type-eyebrow text-muted-foreground mb-6">Contact</div>
+      <MaskedLines
+        client:load
+        mode="load"
+        className="type-section text-foreground"
+        lines={["Let's Make", '*Something Tangible.*']}
+      />
+      <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-8 max-w-lg">
+        Tell us about your project, your product and what you have in mind.
+      </p>
+    </div>
+  </section>
+
+  <section class="pb-28 md:pb-40 px-6 lg:px-10">
+    <div class="max-w-[1440px] mx-auto grid lg:grid-cols-12 gap-14 lg:gap-24">
+      <div class="lg:col-span-4 space-y-10">
+        <div class="space-y-3">
+          <h2 class="type-label text-muted-foreground">Email</h2>
+          <a href={`mailto:${CONTACT_EMAIL}`} class="font-serif text-2xl text-foreground hover:text-accent transition-colors block">
+            {CONTACT_EMAIL}
+          </a>
+        </div>
+        <div class="space-y-3">
+          <h2 class="type-label text-muted-foreground">Phone</h2>
+          <p class="font-serif text-2xl text-foreground/50 italic">{PHONE_DISPLAY}</p>
+        </div>
+        <div class="space-y-3">
+          <h2 class="type-label text-muted-foreground">Worldwide Enquiries</h2>
+          <p class="text-base text-muted-foreground leading-relaxed">
+            We work with brands across markets and deliver worldwide.
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <ContactForm client:load />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

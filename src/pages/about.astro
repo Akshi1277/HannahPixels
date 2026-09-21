@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import MaskedLines from '@/components/react/MaskedLines'
+---
+
+<BaseLayout
+  title="About"
+  description="Our vision: to make the physical world of brands more beautiful. Hannah Pixels was created to bring greater thought, craft and character to the way brands are experienced in the physical world."
+>
+  <section class="pt-[140px] pb-16 md:pb-24 px-6 lg:px-10">
+    <div class="max-w-3xl">
+      <div class="type-eyebrow text-muted-foreground mb-6">Our Vision</div>
+      <MaskedLines
+        client:load
+        mode="load"
+        className="type-section text-foreground"
+        lines={['To Make the Physical', 'World of Brands', '*More Beautiful.*']}
+      />
+    </div>
+  </section>
+
+  <section class="px-6 lg:px-10 pb-20 md:pb-28">
+    <div class="max-w-[1440px] mx-auto aspect-[21/9] relative overflow-hidden bg-secondary">
+      <img
+        src="/images/atelier-vision-master.jpg"
+        alt="Material and craft detail"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="pb-28 md:pb-40 px-6 lg:px-10">
+    <div class="max-w-2xl mx-auto space-y-8">
+      <p class="font-serif text-2xl sm:text-3xl text-foreground leading-snug">
+        We believe packaging is more than protection.
+      </p>
+      <p class="text-lg text-muted-foreground leading-relaxed">
+        It is the first touch. The first impression. The moment a brand becomes tangible.
+      </p>
+      <p class="text-lg text-muted-foreground leading-relaxed">
+        Hannah Pixels was created to bring greater thought, craft and character to the way brands are experienced in the physical world.
+      </p>
+      <p class="text-lg text-muted-foreground leading-relaxed">
+        We work with brands that value detail, creating print and packaging that feels considered, distinctive and made to last.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-ink text-ink-foreground py-28 md:py-40 px-6 lg:px-10 text-center">
+    <h2 class="type-section text-ink-foreground uppercase max-w-4xl mx-auto">
+      Made for Brands<br /><span class="italic text-accent-quiet">With a Point of View.</span>
+    </h2>
+  </section>
+</BaseLayout>

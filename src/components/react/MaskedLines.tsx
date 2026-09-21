@@ -1,21 +1,39 @@
-import type { ReactNode } from 'react'
+import { Fragment } from 'react'
 import { motion } from 'framer-motion'
 
-export const LUXURY_EASE = [0.16, 1, 0.3, 1] as const
+const LUXURY_EASE = [0.16, 1, 0.3, 1] as const
 
 interface MaskedLinesProps {
-  lines: (string | ReactNode)[]
+  /** Plain strings. Wrap a word/phrase in *asterisks* to render it as the italic accent. */
+  lines: string[]
   className?: string
   lineClassName?: string
+  /** Class applied to *accented* words — defaults to the standard ink accent. */
+  accentClassName?: string
   delay?: number
   stagger?: number
   mode?: 'load' | 'scroll'
+}
+
+function renderAccented(line: string, accentClassName: string) {
+  const parts = line.split(/(\*[^*]+\*)/g).filter(Boolean)
+  return parts.map((part, i) => {
+    if (part.startsWith('*') && part.endsWith('*')) {
+      return (
+        <em key={i} className={`italic ${accentClassName}`}>
+          {part.slice(1, -1)}
+        </em>
+      )
+    }
+    return <Fragment key={i}>{part}</Fragment>
+  })
 }
 
 export default function MaskedLines({
   lines,
   className = '',
   lineClassName = '',
+  accentClassName = 'text-accent',
   delay = 0,
   stagger = 0.14,
   mode = 'load',
@@ -46,7 +64,7 @@ export default function MaskedLines({
               },
             }}
           >
-            {line}
+            {renderAccented(line, accentClassName)}
           </motion.span>
         </span>
       ))}

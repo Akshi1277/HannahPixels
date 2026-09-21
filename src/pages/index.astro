@@ -1,0 +1,223 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import MaskedLines from '@/components/react/MaskedLines'
+import { capabilities } from '@/data/capabilities'
+import { processStages, principles } from '@/data/process'
+---
+
+<BaseLayout
+  title="Where Ideas Take Form"
+  description="Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world — luxury packaging, fragrance and beauty, chocolate and confectionery, paper and carry, books and publishing."
+>
+  <!-- 01 — HERO -->
+  <section class="relative h-[100svh] min-h-[620px] w-full overflow-hidden">
+    <img
+      src="/images/luxury-packaging-hero.jpg"
+      alt="Hannah Pixels luxury rigid packaging, material study"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-ink/35"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/10 to-transparent"></div>
+
+    <div class="relative z-10 h-full flex flex-col justify-between px-6 lg:px-10 pt-[100px] pb-12 lg:pb-16">
+      <div class="type-eyebrow text-background/70">Print &amp; Packaging House — Worldwide</div>
+
+      <div class="max-w-4xl">
+        <h1 class="sr-only">Where Ideas Take Form.</h1>
+        <MaskedLines
+          client:load
+          mode="load"
+          className="type-hero text-background"
+          accentClassName="text-accent-quiet"
+          lines={['WHERE', '*IDEAS*', 'TAKE FORM.']}
+        />
+
+        <div class="pt-8 max-w-xl space-y-4">
+          <p class="text-lg text-background/90 leading-relaxed">
+            Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world.
+          </p>
+          <p class="text-sm text-background/65 leading-relaxed hidden sm:block">
+            From luxury rigid boxes and fragrance packaging to bespoke paper bags, corrugated solutions, chocolate packaging and publishing, we bring together thoughtful design, exceptional materials and precise production.
+          </p>
+        </div>
+
+        <div class="pt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <a
+            href="/capabilities"
+            class="type-label bg-background text-ink px-6 py-3.5 hover:bg-accent-quiet transition-colors"
+          >
+            Explore Our Capabilities
+          </a>
+          <a
+            href="/contact"
+            class="type-label text-background border-b border-background/50 hover:border-background pb-1 transition-colors"
+          >
+            Start a Project
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 — BRAND STATEMENT -->
+  <section class="py-28 md:py-40 px-6 lg:px-10">
+    <div class="max-w-4xl mx-auto text-center space-y-10">
+      <MaskedLines
+        client:visible
+        mode="scroll"
+        className="type-section text-foreground uppercase"
+        lines={['DESIGNED WITH', '*INTENTION.*', 'MADE TO BE REMEMBERED.']}
+      />
+      <p class="font-serif text-2xl sm:text-3xl text-foreground/80 leading-snug max-w-xl mx-auto">
+        Packaging is more than protection. It is the first touch. The first impression. The moment a brand becomes tangible.
+      </p>
+    </div>
+  </section>
+
+  <!-- 03 — WHAT WE CREATE -->
+  <section class="pb-28 md:pb-40 px-6 lg:px-10">
+    <div class="max-w-[1440px] mx-auto">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 md:mb-20 border-b border-grid pb-8">
+        <h2 class="type-section text-foreground">What We Create</h2>
+        <p class="text-base sm:text-lg text-muted-foreground max-w-sm leading-relaxed">
+          Print and packaging developed around the character, purpose and physical experience of your brand.
+        </p>
+      </div>
+
+      <div>
+        {capabilities.map((item) => (
+          <a
+            href={`/capabilities#${item.slug}`}
+            class="group grid grid-cols-12 gap-4 sm:gap-8 items-center py-7 md:py-9 border-b border-grid hover:bg-secondary/40 transition-colors -mx-4 px-4"
+          >
+            <span class="col-span-2 sm:col-span-1 font-serif italic text-xl text-accent">{item.num}</span>
+            <h3 class="col-span-9 sm:col-span-6 font-serif text-2xl sm:text-4xl md:text-5xl text-foreground group-hover:text-accent transition-colors leading-none">
+              {item.title}
+            </h3>
+            <div class="hidden sm:block sm:col-span-4">
+              <p class="text-sm text-muted-foreground leading-relaxed max-w-xs">{item.summary}</p>
+            </div>
+            <div class="col-span-1 flex justify-end">
+              <span class="text-lg text-foreground/40 group-hover:text-accent group-hover:translate-x-1 transition-all inline-block">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — MATERIALITY -->
+  <section class="bg-ink text-ink-foreground py-28 md:py-40">
+    <div class="px-6 lg:px-10 max-w-[1440px] mx-auto mb-14 md:mb-20">
+      <h2 class="type-section text-ink-foreground uppercase max-w-3xl">
+        Materials <span class="italic text-accent-quiet">That Matter.</span>
+      </h2>
+      <p class="text-base sm:text-lg text-white/60 leading-relaxed max-w-md mt-6">
+        The right material can transform how a product is seen, held and remembered.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-1">
+      <div class="col-span-2 md:col-span-2 aspect-[4/3] relative overflow-hidden">
+        <img src="/images/finish-gold-foil.jpg" alt="Foil-stamped surface detail" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="aspect-[4/3] relative overflow-hidden">
+        <img src="/images/finish-velvet-inlays.jpg" alt="Textured material and inlay detail" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="aspect-[4/3] relative overflow-hidden">
+        <img src="/images/finish-speciality-papers.jpg" alt="Specialty paper texture detail" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="aspect-[4/3] relative overflow-hidden">
+        <img src="/images/finish-blind-deboss.jpg" alt="Embossed board detail" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="col-span-2 md:col-span-3 aspect-[16/7] relative overflow-hidden">
+        <img src="/images/atelier-craft-emboss.jpg" alt="Print and finishing detail" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — FROM IDEA TO FINISHED PIECE -->
+  <section class="py-28 md:py-40 px-6 lg:px-10">
+    <div class="max-w-[1440px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20">
+      <div class="lg:col-span-4">
+        <h2 class="type-section text-foreground lg:sticky lg:top-32">
+          From Idea to<br /><span class="italic text-accent">Finished Piece.</span>
+        </h2>
+      </div>
+
+      <div class="lg:col-span-7 lg:col-start-6">
+        {processStages.map((s, i) => (
+          <div class:list={['py-8 flex gap-6 sm:gap-10', i !== 0 && 'border-t border-grid']}>
+            <span class="font-serif italic text-2xl text-accent shrink-0 w-10">{s.num}</span>
+            <div class="space-y-2">
+              <h3 class="font-serif text-2xl sm:text-3xl text-foreground">{s.title}</h3>
+              <p class="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+        <div class="pt-8">
+          <a href="/process" class="type-label text-foreground border-b border-foreground/40 hover:border-accent hover:text-accent transition-colors pb-1">
+            See the full process →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — THE HANNAH PIXELS STANDARD -->
+  <section class="py-28 md:py-40 px-6 lg:px-10 bg-secondary/50 border-y border-grid">
+    <div class="max-w-3xl mx-auto text-center mb-16 md:mb-20">
+      <h2 class="type-section text-foreground">The Hannah Pixels Standard</h2>
+    </div>
+    <div class="max-w-[1100px] mx-auto divide-y divide-grid">
+      {principles.map((p) => (
+        <div class="py-8 md:py-10 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10">
+          <h3 class="font-serif text-2xl sm:text-3xl text-foreground sm:w-[360px] shrink-0">{p.title}</h3>
+          <p class="text-base text-muted-foreground leading-relaxed">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 07 — WITHOUT BORDERS -->
+  <section class="py-28 md:py-40 px-6 lg:px-10 relative overflow-hidden">
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 800 400"
+      class="absolute inset-0 w-full h-full opacity-[0.06] text-foreground pointer-events-none"
+      fill="none"
+    >
+      <circle cx="400" cy="200" r="120" stroke="currentColor" stroke-width="0.5" />
+      <circle cx="400" cy="200" r="190" stroke="currentColor" stroke-width="0.5" />
+      <line x1="0" y1="200" x2="800" y2="200" stroke="currentColor" stroke-width="0.5" />
+      <line x1="400" y1="0" x2="400" y2="400" stroke="currentColor" stroke-width="0.5" />
+    </svg>
+    <div class="max-w-2xl mx-auto text-center relative">
+      <h2 class="type-section text-foreground uppercase">Without <span class="italic text-accent">Borders.</span></h2>
+      <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-8 max-w-lg mx-auto">
+        From a single bespoke project to larger production runs, Hannah Pixels works with brands across markets and delivers worldwide.
+      </p>
+    </div>
+  </section>
+
+  <!-- 08 — FINAL CTA -->
+  <section class="bg-ink text-ink-foreground py-32 md:py-48 px-6 lg:px-10 text-center">
+    <div class="max-w-3xl mx-auto space-y-10">
+      <h2 class="type-section text-ink-foreground uppercase">
+        Print That Speaks.<br /><span class="italic text-accent-quiet">Packaging That Stays.</span>
+      </h2>
+      <p class="text-base sm:text-lg text-white/60">Have a project in mind?</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 pt-2">
+        <a href="/contact" class="type-label bg-background text-ink px-7 py-3.5 hover:bg-accent-quiet transition-colors">
+          Start a Project
+        </a>
+        <a href="/contact" class="type-label text-ink-foreground border-b border-white/40 hover:border-white pb-1 transition-colors">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
