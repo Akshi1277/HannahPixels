@@ -6,6 +6,7 @@ export interface Capability {
   items: string[]
   image: string
   imageAlt: string
+  imagePosition?: string
 }
 
 export const capabilities: Capability[] = [
@@ -17,6 +18,7 @@ export const capabilities: Capability[] = [
     items: ['Rigid Boxes', 'Luxury Gift Boxes', 'Magnetic Closure Boxes', 'Drawer Boxes', 'Presentation Boxes', 'Bespoke Packaging'],
     image: '/images/packaging-luxury-box.jpg',
     imageAlt: 'Plain white rigid presentation box',
+    imagePosition: 'center 40%',
   },
   {
     num: '02',
@@ -26,6 +28,7 @@ export const capabilities: Capability[] = [
     items: ['Corrugated Boxes', 'Folding Cartons', 'Product Boxes', 'Custom Printed Boxes', 'E-commerce Packaging', 'Retail Packaging'],
     image: '/images/packaging-product-box.jpg',
     imageAlt: 'Plain kraft folding carton box',
+    imagePosition: 'center',
   },
   {
     num: '03',
@@ -35,6 +38,7 @@ export const capabilities: Capability[] = [
     items: ['Perfume Boxes', 'Fragrance Packaging', 'Cosmetic Boxes', 'Beauty Packaging', 'Premium Presentation Sets'],
     image: '/images/packaging-fragrance-bottle.jpg',
     imageAlt: 'Unlabelled glass fragrance bottle',
+    imagePosition: 'center 20%',
   },
   {
     num: '04',
@@ -44,6 +48,7 @@ export const capabilities: Capability[] = [
     items: ['Chocolate Boxes', 'Confectionery Packaging', 'Gift Boxes', 'Premium Food Packaging', 'Seasonal Packaging', 'Bespoke Collections'],
     image: '/images/packaging-chocolate-box.jpg',
     imageAlt: 'Plain striped gift box with ribbon',
+    imagePosition: 'center 75%',
   },
   {
     num: '05',
@@ -53,6 +58,7 @@ export const capabilities: Capability[] = [
     items: ['Luxury Paper Bags', 'Retail Bags', 'Gift Bags', 'Custom Printed Bags', 'Tissue & Wrapping Paper', 'Brand Collateral'],
     image: '/images/packaging-paper-bag.jpg',
     imageAlt: 'Plain kraft paper carry bag',
+    imagePosition: 'center 25%',
   },
   {
     num: '06',
@@ -62,5 +68,6 @@ export const capabilities: Capability[] = [
     items: ['Books', 'Coffee Table Books', 'Art Books', 'Notebooks & Journals', 'Catalogues', 'Editorial Publishing', 'Corporate Publishing'],
     image: '/images/material-book-linen.jpg',
     imageAlt: 'Natural linen bookcloth texture detail',
+    imagePosition: 'center',
   },
 ]

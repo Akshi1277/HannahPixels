@@ -32,6 +32,7 @@ import { capabilities } from '@/data/capabilities'
               src={cat.image}
               alt={cat.imageAlt}
               class="absolute inset-0 w-full h-full object-cover"
+              style={`object-position: ${cat.imagePosition || 'center'};`}
               loading="lazy"
             />
           </div>

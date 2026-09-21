@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import MaskedLines from '@/components/react/MaskedLines'
 import HeadlineReveal from '@/components/HeadlineReveal.astro'
 import CatalogueReveal from '@/components/react/CatalogueReveal'
+import ProcessTimeline from '@/components/react/ProcessTimeline'
 import { capabilities } from '@/data/capabilities'
 import { processStages, principles } from '@/data/process'
 ---
@@ -121,31 +122,48 @@ import { processStages, principles } from '@/data/process'
     </div>
   </section>
 
-  <!-- 05 — FROM IDEA TO FINISHED PIECE -->
-  <section class="py-28 md:py-40 px-6 lg:px-10">
-    <div class="max-w-[1440px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20">
-      <div class="lg:col-span-4">
-        <h2 class="type-section text-foreground lg:sticky lg:top-32">
-          From Idea to<br /><span class="italic text-accent">Finished Piece.</span>
-        </h2>
-      </div>
-
-      <div class="lg:col-span-7 lg:col-start-6">
-        {processStages.map((s, i) => (
-          <div class:list={['py-8 flex gap-6 sm:gap-10', i !== 0 && 'border-t border-grid']}>
-            <span class="font-serif italic text-2xl text-accent shrink-0 w-10">{s.num}</span>
-            <div class="space-y-2">
-              <h3 class="font-serif text-2xl sm:text-3xl text-foreground">{s.title}</h3>
-              <p class="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">{s.desc}</p>
-            </div>
-          </div>
-        ))}
-        <div class="pt-8">
-          <a href="/process" class="type-label text-foreground border-b border-foreground/40 hover:border-accent-ink hover:text-accent-ink transition-colors pb-1">
-            See the full process →
+  <!-- 05 — THE PROCESS -->
+  <section class="py-28 md:py-44 px-6 lg:px-10 border-b border-grid">
+    <div class="max-w-[1440px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-20 md:mb-28">
+        <div class="md:col-span-6">
+          <div class="type-eyebrow text-accent mb-6">05 / The Process</div>
+          <h2 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95]">
+            From Idea<br />
+            to Finished<br />
+            <span class="italic text-accent">Piece.</span>
+          </h2>
+        </div>
+        <div class="md:col-span-5 md:col-start-8 md:pt-10 flex flex-col justify-between">
+          <p class="text-base sm:text-lg text-muted-foreground font-light leading-relaxed max-w-md">
+            Every project follows a considered sequence — from first conversation to finished delivery. Each stage is an opportunity to refine the detail.
+          </p>
+          <a
+            href="/process"
+            class="group mt-8 inline-flex items-center gap-2 type-label text-foreground border-b border-foreground/30 pb-1 hover:border-accent hover:text-accent transition-all duration-300 w-fit"
+          >
+            View Full Process
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
+              aria-hidden="true"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
           </a>
         </div>
       </div>
+
+      <ProcessTimeline client:visible stages={processStages} />
     </div>
   </section>
 
