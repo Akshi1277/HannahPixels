@@ -5,38 +5,50 @@ const catalogueItems = [
   {
     num: '01',
     title: 'Luxury Packaging',
-    desc: 'Packaging designed for brands where every detail matters.',
-    to: '/capabilities#luxury-packaging'
+    desc: 'Bespoke rigid presentation boxes constructed from heavyweight greyboard wrapped in specialty uncoated or textured art paper.',
+    to: '/capabilities#luxury-packaging',
+    image: '/images/packaging-category-rigid-boxes.jpg',
+    specs: 'Rigid Greyboard · Hot Foil · Neodymium Magnets'
   },
   {
     num: '02',
     title: 'Product Packaging',
-    desc: 'Functional, distinctive packaging created around your product and brand.',
-    to: '/capabilities#product-packaging'
+    desc: 'Folding mono-cartons and reinforced corrugated shipping mailers designed for retail dominance and luxury unboxing.',
+    to: '/capabilities#product-packaging',
+    image: '/images/packaging-category-folding-cartons.jpg',
+    specs: 'Virgin Kraft · E/B Flute · Auto-Locking Base'
   },
   {
     num: '03',
     title: 'Fragrance & Beauty',
-    desc: 'Opulent coffrets, perfume presentation cases, and retention inserts.',
-    to: '/capabilities#fragrance-beauty'
+    desc: 'Opulent coffrets, perfume presentation cases, and retention inserts crafted for niche perfumery and skincare.',
+    to: '/capabilities#fragrance-beauty',
+    image: '/images/packaging-category-fragrance-beauty.jpg',
+    specs: 'Custom Flocked Foam · Satin Ribbons · 3D Deboss'
   },
   {
     num: '04',
     title: 'Chocolate & Confectionery',
-    desc: 'Food-safe certified presentation boxes with moisture-barrier greaseproof liners.',
-    to: '/capabilities#confectionery'
+    desc: 'Food-safe certified presentation boxes with moisture-barrier greaseproof liners and airtight magnetic seals.',
+    to: '/capabilities#confectionery',
+    image: '/images/packaging-category-chocolate-food.jpg',
+    specs: 'FDA Certified · Glassine Liners · Cavity Trays'
   },
   {
     num: '05',
     title: 'Paper & Carry',
-    desc: 'Heavyweight art-paper bags with reinforced turnover tops and ribbon handles.',
-    to: '/capabilities#paper-carry'
+    desc: 'Heavyweight art-paper bags with reinforced turnover tops and knotted grosgrain or satin ribbon handles.',
+    to: '/capabilities#paper-carry',
+    image: '/images/packaging-category-paper-carry.jpg',
+    specs: '250 GSM Art Board · Turnover Tops · Foil Crest'
   },
   {
     num: '06',
     title: 'Books & Publishing',
-    desc: 'Thread-sewn hardcovers with linen book-cloth binding and slipcases.',
-    to: '/capabilities#publishing'
+    desc: 'Thread-sewn hardcovers bound in imported European bookcloth, linen, or custom-printed jackets with slipcases.',
+    to: '/capabilities#publishing',
+    image: '/images/packaging-category-books-publishing.jpg',
+    specs: 'Smyth-Sewn · Linen Cloth · Foil Edge Gilding'
   }
 ]
 
@@ -103,38 +115,71 @@ export default function Home() {
                   From luxury rigid boxes and fragrance packaging to bespoke paper bags, corrugated solutions, chocolate packaging and publishing, we bring together thoughtful design, exceptional materials and precise production.
                 </p>
 
-                <div className="pt-4 flex flex-wrap items-center gap-6">
+                <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6">
                   <Link
                     to="/capabilities"
-                    className="bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase px-7 py-3.5 transition-colors"
+                    className="group bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase pl-7 pr-2.5 py-3 transition-all flex items-center gap-3 rounded-full active:scale-[0.98] shadow-md shadow-black/10"
                   >
-                    EXPLORE CAPABILITIES
+                    <span>EXPLORE CAPABILITIES</span>
+                    <span className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                      →
+                    </span>
                   </Link>
+
                   <Link
                     to="/contact"
-                    className="text-[11px] font-mono font-semibold tracking-[0.22em] uppercase text-[#111111] hover:text-[#A67C52] border-b border-[#111111] pb-1 transition-colors flex items-center gap-1.5"
+                    className="group text-[11px] font-mono font-semibold tracking-[0.22em] uppercase text-[#111111] hover:text-[#A67C52] border-b border-[#111111] pb-1 transition-colors flex items-center gap-2"
                   >
                     <span>START A PROJECT</span>
-                    <span className="text-xs">↗</span>
+                    <span className="text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform inline-block">
+                      ↗
+                    </span>
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* Packaging Photo on the right */}
-            <div className="lg:col-span-4 pt-6 lg:pt-16">
-              <div className="aspect-[3/4] relative overflow-hidden bg-[#7E9689] shadow-xs">
-                <AppImage
-                  src="/images/packaging-category-rigid-boxes.jpg"
-                  alt="Rigid box with gold foil stamping on calm sage background"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                />
+            {/* Architectural Exhibit Card on the right */}
+            <div className="lg:col-span-4 pt-6 lg:pt-8 flex flex-col gap-3">
+              <div className="p-3 bg-white border border-[#E2DDD5] shadow-xs group">
+                <div className="aspect-[4/5] relative overflow-hidden bg-[#1E2421]">
+                  <AppImage
+                    src="/images/packaging-category-rigid-boxes.jpg"
+                    alt="Hannah Pixels luxury rigid box with gold foil stamping"
+                    fill
+                    priority
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-black/75 backdrop-blur-xs text-[10px] font-mono tracking-widest text-[#C49A74] uppercase">
+                    ARCHIVE — 01
+                  </div>
+                  <div className="absolute bottom-3 right-3 px-2.5 py-1 bg-white/90 backdrop-blur-xs text-[9px] font-mono tracking-widest text-[#111111] uppercase">
+                    LONDON &amp; DUBAI
+                  </div>
+                </div>
+
+                {/* Technical Specification Blueprint Tag */}
+                <div className="pt-3 pb-1 px-1 space-y-1.5 border-t border-[#E2DDD5]/60 mt-3">
+                  <div className="flex items-center justify-between text-[10px] font-mono tracking-[0.2em] uppercase text-[#111111]/60">
+                    <span>STRUCTURE: RIGID DRAW</span>
+                    <span className="text-[#A67C52]">TOLERANCE: ±0.1MM</span>
+                  </div>
+                  <div className="text-[11px] font-mono text-[#111111]/80 leading-snug">
+                    350 GSM FSC Greyboard · 120°C Stamped Gold Foil · Velvet Inlay Cavity
+                  </div>
+                </div>
               </div>
-              <div className="pt-3 text-[10px] font-mono tracking-[0.2em] text-[#111111]/60 uppercase">
-                FIG. 01 — RIGID CONSTRUCTION, FOIL DETAIL
+
+              {/* Atelier Provenance Strip */}
+              <div className="flex items-center justify-between px-3 py-2 border border-[#E2DDD5] bg-[#FAF8F5] text-[10px] font-mono tracking-wider text-[#111111]/70 uppercase">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#A67C52]" />
+                  <span>CAD DIELINE APPROVED</span>
+                </span>
+                <Link to="/capabilities#luxury-packaging" className="hover:text-[#A67C52] transition-colors underline">
+                  VIEW SPECS ↗
+                </Link>
               </div>
             </div>
           </div>
@@ -218,27 +263,48 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 6 Editorial Accordion Rows */}
+          {/* 6 Editorial Accordion Rows with Real Photographic Previews */}
           <div className="border-t border-[#E2DDD5]">
             {catalogueItems.map((item) => (
               <Link
                 key={item.num}
                 to={item.to}
-                className="group py-8 md:py-10 border-b border-[#E2DDD5] grid grid-cols-12 gap-4 items-center hover:bg-black/[0.02] transition-colors"
+                className="group py-6 md:py-8 border-b border-[#E2DDD5] grid grid-cols-12 gap-3 sm:gap-6 items-center hover:bg-black/[0.02] px-2 sm:px-4 -mx-2 sm:-mx-4 transition-colors"
               >
-                <div className="col-span-2 sm:col-span-1 font-serif italic text-lg sm:text-xl text-[#A67C52]">
+                <div className="col-span-2 sm:col-span-1 font-serif italic text-xl sm:text-2xl text-[#A67C52]">
                   {item.num}
                 </div>
-                <div className="col-span-9 sm:col-span-10 space-y-1">
-                  <h3 className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#111111] font-normal group-hover:text-[#A67C52] transition-colors">
-                    {item.title}
+                
+                <div className="col-span-7 sm:col-span-7 space-y-1.5">
+                  <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#111111] font-normal group-hover:text-[#A67C52] transition-colors flex flex-wrap items-baseline gap-3">
+                    <span>{item.title}</span>
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#111111]/65 font-normal">
+                  <p className="text-xs sm:text-sm text-[#111111]/65 font-normal max-w-xl leading-relaxed">
                     {item.desc}
                   </p>
+                  <div className="text-[10px] font-mono tracking-widest text-[#A67C52] uppercase pt-0.5">
+                    {item.specs}
+                  </div>
                 </div>
-                <div className="col-span-1 text-right text-lg sm:text-2xl text-[#111111]/40 group-hover:text-[#111111] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">
-                  ↗
+
+                {/* Micro Photographic Preview Thumbnail */}
+                <div className="col-span-2 sm:col-span-3 flex justify-end">
+                  <div className="w-16 h-12 sm:w-28 sm:h-18 md:w-36 md:h-22 relative overflow-hidden bg-black/5 border border-[#E2DDD5] group-hover:border-[#A67C52] transition-all duration-300 shadow-2xs">
+                    <AppImage
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 640px) 64px, 144px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-108"
+                    />
+                  </div>
+                </div>
+
+                {/* Circular Arrow Badge */}
+                <div className="col-span-1 text-right">
+                  <span className="w-8 h-8 rounded-full border border-[#111111]/15 group-hover:border-[#A67C52] group-hover:bg-[#A67C52] group-hover:text-white inline-flex items-center justify-center text-sm transition-all duration-300">
+                    ↗
+                  </span>
                 </div>
               </Link>
             ))}
@@ -412,13 +478,39 @@ export default function Home() {
       <section className="py-24 md:py-36 px-6 lg:px-12 border-b border-[#E2DDD5]">
         <div className="max-w-[1400px] mx-auto">
           <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase mb-8 md:mb-12">
-            07 — PRINCIPLES
+            07 — THE BENCHMARK
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {principles.map((p) => (
-              <div key={p.title} className="p-8 border border-[#E2DDD5] bg-white space-y-3">
-                <h3 className="font-serif text-2xl text-[#111111] font-normal">{p.title}</h3>
-                <p className="text-sm text-[#111111]/70 leading-relaxed font-normal">{p.desc}</p>
+
+          <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+            <div className="lg:col-span-8">
+              <h2 className="font-serif text-[3.5rem] sm:text-[5.5rem] md:text-[7rem] leading-[0.9] font-normal tracking-[-0.02em] text-[#111111] uppercase select-none">
+                <span className="block">STANDARDS</span>
+                <span className="block">OF <span className="italic text-[#A67C52]">EXECUTION.</span></span>
+              </h2>
+            </div>
+            <div className="lg:col-span-4 pb-2">
+              <p className="text-base sm:text-lg text-[#111111]/75 leading-relaxed font-normal">
+                Four foundational commitments guiding every dieline cut, hot foil pass, and freight dispatch.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-[#E2DDD5]">
+            {principles.map((p, idx) => (
+              <div
+                key={p.title}
+                className="p-8 sm:p-10 border-r border-b border-[#E2DDD5] bg-[#FAF8F5] hover:bg-white transition-colors duration-300 space-y-4 group"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-serif italic text-2xl text-[#A67C52]">0{idx + 1}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E2DDD5] group-hover:bg-[#A67C52] transition-colors" />
+                </div>
+                <h3 className="font-serif text-2xl sm:text-3xl text-[#111111] font-normal group-hover:text-[#A67C52] transition-colors">
+                  {p.title}
+                </h3>
+                <p className="text-sm text-[#111111]/70 leading-relaxed font-normal">
+                  {p.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -426,23 +518,30 @@ export default function Home() {
       </section>
 
       {/* ===================== BOTTOM PROJECT BANNER ===================== */}
-      <section className="py-24 md:py-32 px-6 lg:px-12 text-center bg-[#F3EFEA]">
-        <div className="max-w-2xl mx-auto space-y-6">
-          <div className="text-[11px] font-mono tracking-[0.24em] text-[#111111]/60 uppercase">
-            ATELIER CONSULTATION
+      <section className="py-24 md:py-36 px-6 lg:px-12 text-center bg-[#F3EFEA]">
+        <div className="max-w-3xl mx-auto space-y-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#111111]/15 text-[10px] font-mono tracking-[0.24em] text-[#111111]/70 uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#A67C52]" />
+            <span>ATELIER CONSULTATION · UK &amp; DUBAI</span>
           </div>
-          <h2 className="font-serif text-4xl sm:text-6xl text-[#111111] font-normal leading-tight">
+
+          <h2 className="font-serif text-4xl sm:text-6xl md:text-7xl text-[#111111] font-normal leading-[1.05]">
             Ready to make something <span className="italic text-[#A67C52]">tangible?</span>
           </h2>
-          <p className="text-base text-[#111111]/70 leading-relaxed">
-            From a single bespoke prototype to large-scale international brand production runs.
+
+          <p className="text-base sm:text-lg text-[#111111]/70 leading-relaxed max-w-xl mx-auto">
+            From a single bespoke prototype to large-scale international brand production runs, our structural engineers and print artisans are ready.
           </p>
-          <div className="pt-4">
+
+          <div className="pt-2">
             <Link
               to="/contact"
-              className="bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-xs font-mono font-semibold tracking-[0.22em] uppercase px-9 py-4 transition-colors inline-block"
+              className="group inline-flex items-center gap-3 bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-xs font-mono font-semibold tracking-[0.22em] uppercase pl-8 pr-2.5 py-3.5 rounded-full transition-all active:scale-[0.98] shadow-md shadow-black/10"
             >
-              START A PROJECT ↗
+              <span>START A PROJECT</span>
+              <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                ↗
+              </span>
             </Link>
           </div>
         </div>

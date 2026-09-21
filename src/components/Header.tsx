@@ -53,7 +53,7 @@ export default function Header() {
             aria-label="Hannah Pixels homepage"
           >
             <img
-              src="/hannahpixels.png"
+              src="/hannahpixels-dark.png"
               alt="Hannah Pixels"
               className="h-8 md:h-9 lg:h-10 w-auto object-contain transition-opacity group-hover:opacity-80"
             />
@@ -79,14 +79,16 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop Right Button */}
+          {/* Desktop Right Button - Button-in-Button Architecture */}
           <div className="hidden md:flex items-center">
             <Link
               to="/contact"
-              className="bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase px-5 py-2.5 transition-colors flex items-center gap-1.5"
+              className="group bg-[#111111] text-[#F3EFEA] hover:bg-[#A67C52] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase pl-5 pr-2 py-2 transition-all flex items-center gap-2.5 rounded-full active:scale-[0.98]"
             >
               <span>START A PROJECT</span>
-              <span className="text-xs">↗</span>
+              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                ↗
+              </span>
             </Link>
           </div>
 
@@ -117,7 +119,7 @@ export default function Header() {
               aria-label="Hannah Pixels homepage"
             >
               <img
-                src="/hannahpixels.png"
+                src="/hannahpixels-dark.png"
                 alt="Hannah Pixels"
                 className="h-8 w-auto object-contain"
               />
