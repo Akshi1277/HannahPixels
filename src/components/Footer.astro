@@ -14,7 +14,7 @@ const year = new Date().getFullYear()
   </div>
 
   <div class="max-w-[1440px] mx-auto relative z-10">
-    <div class="grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-12">
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-x-8 lg:gap-x-12 gap-y-12">
       <div class="col-span-2 md:col-span-5 space-y-5">
         <p class="font-serif text-3xl sm:text-4xl leading-[1.05]">
           Where ideas<br /><span class="italic text-accent-quiet">take form.</span>
@@ -24,32 +24,32 @@ const year = new Date().getFullYear()
         </p>
       </div>
 
-      <nav class="md:col-span-2 space-y-4" aria-label="Footer navigation">
+      <nav class="md:col-span-2 space-y-4 md:border-l md:border-white/10 md:pl-8 lg:pl-10" aria-label="Footer navigation">
         <h3 class="type-label text-white/45">Sitemap</h3>
         <ul class="space-y-2 text-sm text-white/75">
-          <li><a href="/" class="hover:text-accent-quiet transition-colors">Home</a></li>
-          <li><a href="/capabilities" class="hover:text-accent-quiet transition-colors">Capabilities</a></li>
-          <li><a href="/process" class="hover:text-accent-quiet transition-colors">Process</a></li>
-          <li><a href="/about" class="hover:text-accent-quiet transition-colors">About</a></li>
-          <li><a href="/contact" class="hover:text-accent-quiet transition-colors">Contact</a></li>
+          <li><a href="/" class="hover:text-accent-quiet transition-colors duration-200">Home</a></li>
+          <li><a href="/capabilities" class="hover:text-accent-quiet transition-colors duration-200">Capabilities</a></li>
+          <li><a href="/process" class="hover:text-accent-quiet transition-colors duration-200">Process</a></li>
+          <li><a href="/about" class="hover:text-accent-quiet transition-colors duration-200">About</a></li>
+          <li><a href="/contact" class="hover:text-accent-quiet transition-colors duration-200">Contact</a></li>
         </ul>
       </nav>
 
-      <nav class="md:col-span-3 space-y-4" aria-label="Footer capabilities">
+      <nav class="md:col-span-3 space-y-4 md:border-l md:border-white/10 md:pl-8 lg:pl-10" aria-label="Footer capabilities">
         <h3 class="type-label text-white/45">Capabilities</h3>
-        <ul class="space-y-2 text-sm text-white/75">
+        <ul class="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-white/75">
           {capabilities.map((c) => (
             <li>
-              <a href={`/capabilities#${c.slug}`} class="hover:text-accent-quiet transition-colors">{c.title}</a>
+              <a href={`/capabilities#${c.slug}`} class="hover:text-accent-quiet transition-colors duration-200">{c.title}</a>
             </li>
           ))}
         </ul>
       </nav>
 
-      <div class="md:col-span-2 space-y-4">
+      <div class="md:col-span-2 space-y-4 md:border-l md:border-white/10 md:pl-8 lg:pl-10">
         <h3 class="type-label text-white/45">Enquiries</h3>
         <div class="space-y-2 text-sm text-white/75">
-          <a href={`mailto:${CONTACT_EMAIL}`} class="block hover:text-accent-quiet transition-colors">{CONTACT_EMAIL}</a>
+          <a href={`mailto:${CONTACT_EMAIL}`} class="block hover:text-accent-quiet transition-colors duration-200">{CONTACT_EMAIL}</a>
           <p class="text-white/45 text-xs tracking-wide">Worldwide enquiries welcome.</p>
         </div>
       </div>

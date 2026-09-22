@@ -18,16 +18,20 @@ import { capabilities } from '@/data/capabilities'
 
     <div class="flex flex-wrap gap-x-6 gap-y-3 mt-12 pt-8 border-t border-grid">
       {capabilities.map((c) => (
-        <a href={`#${c.slug}`} class="type-label text-muted-foreground hover:text-accent-ink transition-colors">{c.title}</a>
+        <a href={`#${c.slug}`} class="type-label text-muted-foreground border-b border-grid hover:border-accent-ink hover:text-accent-ink transition-colors duration-200 pb-1">{c.title}</a>
       ))}
     </div>
   </section>
 
   {capabilities.map((cat, idx) => (
-    <section id={cat.slug} class="py-20 md:py-28 px-6 lg:px-10 border-b border-grid scroll-mt-20">
+    <section
+      id={cat.slug}
+      class="py-20 md:py-28 px-6 lg:px-10 border-b border-grid scroll-mt-20"
+      style={`--cat-accent:${cat.accentHex}; --cat-accent-ink:${cat.accentInkHex}; background-color: color-mix(in srgb, ${cat.accentHex} 6%, var(--background));`}
+    >
       <div class="max-w-[1440px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
         <div class:list={['lg:col-span-6', idx % 2 === 1 && 'lg:order-2']}>
-          <div class="aspect-[5/4] relative overflow-hidden bg-secondary">
+          <div class="aspect-[5/4] relative overflow-hidden bg-secondary" style="box-shadow: inset 0 -6px 0 0 var(--cat-accent);">
             <img
               src={cat.image}
               alt={cat.imageAlt}
@@ -40,7 +44,7 @@ import { capabilities } from '@/data/capabilities'
 
         <div class:list={['lg:col-span-6', idx % 2 === 1 && 'lg:order-1']}>
           <div class="max-w-lg">
-            <span class="font-serif italic text-2xl text-accent">{cat.num}</span>
+            <span class="font-serif italic text-2xl text-[var(--cat-accent-ink)]">{cat.num}</span>
             <h2 class="font-serif text-4xl sm:text-5xl text-foreground leading-[1.02] mt-3">{cat.title}</h2>
             <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-6">{cat.summary}</p>
 
@@ -52,7 +56,7 @@ import { capabilities } from '@/data/capabilities'
               ))}
             </ul>
 
-            <a href="/contact" class="type-label text-foreground border-b border-foreground/40 hover:border-accent-ink hover:text-accent-ink transition-colors pb-1 inline-block mt-10">
+            <a href="/contact" class="type-label text-foreground border-b border-foreground/40 hover:border-[var(--cat-accent-ink)] hover:text-[var(--cat-accent-ink)] transition-colors duration-200 pb-1 inline-block mt-10">
               Start a Project →
             </a>
           </div>
@@ -64,7 +68,7 @@ import { capabilities } from '@/data/capabilities'
   <section class="bg-ink text-ink-foreground py-28 md:py-40 px-6 lg:px-10 text-center">
     <div class="max-w-2xl mx-auto space-y-8">
       <h2 class="type-section text-ink-foreground uppercase">Have a project<br /><span class="italic text-accent-quiet">in mind?</span></h2>
-      <a href="/contact" class="type-label inline-block bg-background text-ink hover:bg-accent-quiet px-7 py-3.5 transition-colors">
+      <a href="/contact" class="btn-lift type-label inline-block bg-background text-ink hover:bg-accent-quiet px-7 py-3.5">
         Start a Project
       </a>
     </div>

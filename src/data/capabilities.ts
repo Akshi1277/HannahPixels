@@ -7,6 +7,10 @@ export interface Capability {
   image: string
   imageAlt: string
   imagePosition?: string
+  /** Material-sourced accent for this category — large text / washes (WCAG AA at 3:1, large text). */
+  accentHex: string
+  /** Darker variant of accentHex — small text / numerals (WCAG AA at 4.5:1). */
+  accentInkHex: string
 }
 
 export const capabilities: Capability[] = [
@@ -19,6 +23,8 @@ export const capabilities: Capability[] = [
     image: '/images/packaging-luxury-box.jpg',
     imageAlt: 'Plain white rigid presentation box',
     imagePosition: 'center 40%',
+    accentHex: '#96703F',
+    accentInkHex: '#755330',
   },
   {
     num: '02',
@@ -29,6 +35,8 @@ export const capabilities: Capability[] = [
     image: '/images/packaging-product-box.jpg',
     imageAlt: 'Plain kraft folding carton box',
     imagePosition: 'center',
+    accentHex: '#A15A38',
+    accentInkHex: '#7C4429',
   },
   {
     num: '03',
@@ -39,6 +47,8 @@ export const capabilities: Capability[] = [
     image: '/images/packaging-fragrance-bottle.jpg',
     imageAlt: 'Unlabelled glass fragrance bottle',
     imagePosition: 'center 20%',
+    accentHex: '#A97C82',
+    accentInkHex: '#7C4E54',
   },
   {
     num: '04',
@@ -49,6 +59,8 @@ export const capabilities: Capability[] = [
     image: '/images/packaging-chocolate-box.jpg',
     imageAlt: 'Plain striped gift box with ribbon',
     imagePosition: 'center 75%',
+    accentHex: '#7A3B33',
+    accentInkHex: '#5C2B25',
   },
   {
     num: '05',
@@ -59,6 +71,8 @@ export const capabilities: Capability[] = [
     image: '/images/packaging-paper-bag.jpg',
     imageAlt: 'Plain kraft paper carry bag',
     imagePosition: 'center 25%',
+    accentHex: '#74795A',
+    accentInkHex: '#565A40',
   },
   {
     num: '06',
@@ -69,5 +83,7 @@ export const capabilities: Capability[] = [
     image: '/images/material-book-linen.jpg',
     imageAlt: 'Natural linen bookcloth texture detail',
     imagePosition: 'center',
+    accentHex: '#3F4A5C',
+    accentInkHex: '#2C3543',
   },
 ]

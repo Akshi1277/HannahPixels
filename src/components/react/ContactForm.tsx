@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react'
-import { whatsAppUrl } from '@/lib/contact'
+import { whatsAppUrl, mailtoUrl } from '@/lib/contact'
 
 const projectTypes = [
   'Luxury Packaging',
@@ -30,18 +30,19 @@ export default function ContactForm() {
   const update = (key: keyof typeof form) => (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [key]: e.target.value }))
 
+  const buildMessage = () =>
+    `New project enquiry\n\n` +
+    `Name: ${form.name}\n` +
+    `Company: ${form.company}\n` +
+    `Email: ${form.email}\n` +
+    `Phone: ${form.phone}\n` +
+    `Project Type: ${form.projectType}\n` +
+    `Approximate Quantity: ${form.quantity || 'Not specified'}\n\n` +
+    `${form.message}`
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    const message =
-      `New project enquiry\n\n` +
-      `Name: ${form.name}\n` +
-      `Company: ${form.company}\n` +
-      `Email: ${form.email}\n` +
-      `Phone: ${form.phone}\n` +
-      `Project Type: ${form.projectType}\n` +
-      `Approximate Quantity: ${form.quantity || 'Not specified'}\n\n` +
-      `${form.message}`
-    const url = whatsAppUrl(message)
+    const url = whatsAppUrl(buildMessage())
     const win = window.open(url, '_blank', 'noopener,noreferrer')
     if (!win) {
       // Popup blocked — don't claim success. Offer a direct link instead.
@@ -125,9 +126,20 @@ export default function ContactForm() {
         </p>
       )}
 
-      <button type="submit" className="type-label bg-ink text-ink-foreground hover:bg-accent px-8 py-4 transition-colors">
-        Start a Project
-      </button>
+      <div className="space-y-3">
+        <button type="submit" className="btn-lift type-label bg-ink text-ink-foreground hover:bg-accent-ink px-8 py-4">
+          Start a Project
+        </button>
+        <p className="text-sm text-muted-foreground">
+          This opens WhatsApp with your enquiry pre-filled.{' '}
+          <a
+            href={mailtoUrl('Project Enquiry', buildMessage())}
+            className="underline hover:text-accent-ink transition-colors duration-200"
+          >
+            Prefer email?
+          </a>
+        </p>
+      </div>
     </form>
   )
 }

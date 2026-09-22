@@ -147,7 +147,7 @@
     height: 100vh;
     pointer-events: none;
     z-index: 60;
-    opacity: 0.03;
+    opacity: 0.055;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-repeat: repeat;
     mix-blend-mode: multiply;
@@ -159,5 +159,24 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Tactile lift for primary (solid-fill) buttons — the site's own copy
+     promises a physical, material experience; a flat color swap on the
+     one interactive element standing in for "pick this up" undercut it. */
+  .btn-lift {
+    transition:
+      background-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px rgba(20, 18, 15, 0.35);
+  }
+  .btn-lift:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px -4px rgba(20, 18, 15, 0.25);
   }
 }

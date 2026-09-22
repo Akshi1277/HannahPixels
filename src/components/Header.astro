@@ -19,13 +19,9 @@ const isHome = path === '/'
   class="fixed top-0 left-0 right-0 z-40 transition-[background-color,border-color] duration-500 border-b border-transparent data-[scrolled=true]:bg-background/95 data-[scrolled=true]:backdrop-blur-sm data-[scrolled=true]:border-grid"
 >
   <div class="max-w-[1440px] mx-auto px-6 lg:px-10 h-[76px] flex items-center justify-between gap-6">
-    <a href="/" class="shrink-0" aria-label="Hannah Pixels homepage">
-      <img
-        id="site-logo"
-        src={isHome ? '/hannahpixels-white.png' : '/hannahpixels-dark.png'}
-        alt="Hannah Pixels"
-        class="h-8 w-auto object-contain"
-      />
+    <a href="/" class="shrink-0 relative" aria-label="Hannah Pixels homepage">
+      <img src="/hannahpixels-white.png" alt="Hannah Pixels" class="logo-white block h-8 w-auto object-contain" />
+      <img src="/hannahpixels-dark.png" alt="" aria-hidden="true" class="logo-dark absolute inset-0 h-8 w-auto object-contain" />
     </a>
 
     <nav class="hidden md:flex items-center gap-9" aria-label="Main navigation">
@@ -44,7 +40,7 @@ const isHome = path === '/'
     <a
       href="/contact"
       id="nav-cta"
-      class="hidden md:inline-flex items-center type-label bg-ink text-ink-foreground hover:bg-accent px-5 py-2.5 transition-colors duration-500"
+      class="hidden md:inline-flex items-center type-label bg-ink text-ink-foreground hover:bg-accent-ink px-5 py-2.5"
     >
       Start a Project
     </a>
@@ -72,7 +68,7 @@ const isHome = path === '/'
     {navLinks.map((link, i) => (
       <a
         href={link.to}
-        class="font-serif text-5xl leading-[1.35] text-foreground hover:text-accent transition-colors"
+        class="mobile-nav-link font-serif text-5xl leading-[1.35] text-foreground hover:text-accent"
         style={`transition-delay: ${i * 40}ms`}
       >
         {link.label}
@@ -81,7 +77,7 @@ const isHome = path === '/'
   </nav>
   <a
     href="/contact"
-    class="mt-auto type-label text-center bg-ink text-ink-foreground py-4"
+    class="mt-auto type-label text-center bg-ink text-ink-foreground py-4 transition-transform duration-150 active:scale-[0.98]"
   >
     Start a Project
   </a>
@@ -116,6 +112,38 @@ const isHome = path === '/'
     background-color: var(--nav-fg);
   }
 
+  /* Logo crossfade — CSS-driven instead of a JS src-swap, so the mark
+     never pops between colorways as the header blends on scroll. */
+  .logo-white,
+  .logo-dark {
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .logo-dark {
+    opacity: 0;
+  }
+  #site-header[data-scrolled='true'] .logo-white {
+    opacity: 0;
+  }
+  #site-header[data-scrolled='true'] .logo-dark {
+    opacity: 1;
+  }
+
+  #nav-cta {
+    transition:
+      background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px rgba(20, 18, 15, 0.35);
+  }
+  #nav-cta:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px -4px rgba(20, 18, 15, 0.25);
+  }
+
   #site-header[data-blend='true'][data-scrolled='false'] #nav-cta {
     background-color: var(--background);
     color: var(--ink);
@@ -123,18 +151,31 @@ const isHome = path === '/'
   #site-header[data-blend='true'][data-scrolled='false'] #nav-cta:hover {
     background-color: var(--accent-quiet);
   }
+
+  /* Mobile menu links — the per-link stagger delay (set inline) needs an
+     actual entrance transition to stagger, not just a hover color swap. */
+  .mobile-nav-link {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 350ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+      color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #mobile-menu:not(.translate-x-full) .mobile-nav-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 
 <script>
   const header = document.getElementById('site-header')!
-  const logo = document.getElementById('site-logo') as HTMLImageElement | null
 
   if (header.dataset.blend === 'true') {
     const setScrolled = (scrolled: boolean) => {
       const next = scrolled ? 'true' : 'false'
       if (header.dataset.scrolled === next) return
       header.dataset.scrolled = next
-      if (logo) logo.src = scrolled ? '/hannahpixels-dark.png' : '/hannahpixels-white.png'
     }
 
     const threshold = () => Math.max(window.innerHeight - 140, 200)
