@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import HeadlineReveal from '@/components/HeadlineReveal.astro'
-import ProcessStepper from '@/components/react/ProcessStepper'
+import ProcessCutoutSections from '@/components/react/ProcessCutoutSections'
 import { processStages } from '@/data/process'
 ---
 
@@ -9,25 +9,35 @@ import { processStages } from '@/data/process'
   title="Process"
   description="From idea to finished piece — discover, develop, refine, produce, finish, deliver. The six stages behind every piece Hannah Pixels creates."
 >
-  <section class="pt-[140px] pb-16 md:pb-24 px-6 lg:px-10">
+  <section class="pt-[140px] pb-14 md:pb-20 px-6 lg:px-10 max-w-[1440px] mx-auto">
     <div class="max-w-3xl">
-      <div class="type-eyebrow text-muted-foreground mb-6">Process</div>
+      <div class="type-eyebrow text-accent mb-6">05 / The Process</div>
       <HeadlineReveal
         as="h1"
         class="type-section text-foreground"
         lines={['From Idea to', '*Finished Piece.*']}
       />
-      <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-8 max-w-lg">
-        Craftsmanship is control. Each stage moves the work closer to its final form.
+      <p class="text-base sm:text-lg text-muted-foreground leading-relaxed mt-8 max-w-xl">
+        Craftsmanship is control. Each stage moves the work closer to its final form — from initial discovery and structural development to precision presswork, artisan finishes and worldwide delivery.
       </p>
+    </div>
+
+    <!-- Quick stage anchor navigation -->
+    <div class="flex flex-wrap gap-x-8 gap-y-3 mt-12 pt-8 border-t border-grid">
+      {processStages.map((s) => (
+        <a
+          href={`#${s.title.toLowerCase()}`}
+          class="type-label text-muted-foreground hover:text-accent transition-colors flex items-center gap-2.5 group"
+        >
+          <span class="font-serif italic text-accent group-hover:underline">{s.num}</span>
+          <span class="tracking-wide">{s.title}</span>
+        </a>
+      ))}
     </div>
   </section>
 
-  <section class="px-6 lg:px-10 pb-28 md:pb-40">
-    <div class="max-w-[1440px] mx-auto">
-      <ProcessStepper client:visible stages={processStages} />
-    </div>
-  </section>
+  <!-- Full-bleed Cutout Scroll Sections -->
+  <ProcessCutoutSections client:visible stages={processStages} />
 
   <section class="bg-ink text-ink-foreground py-28 md:py-36 px-6 lg:px-10 text-center">
     <div class="max-w-2xl mx-auto space-y-8">

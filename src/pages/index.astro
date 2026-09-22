@@ -13,22 +13,14 @@ import { processStages, principles } from '@/data/process'
   description="Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world — luxury packaging, fragrance and beauty, chocolate and confectionery, paper and carry, books and publishing."
 >
   <!-- 01 — HERO -->
-  <section class="relative min-h-[100svh] w-full overflow-hidden">
-    <img
-      src="/images/material-gold-leaf-texture.jpg"
-      alt="Gold foil material detail"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-ink/40"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/25"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/15 to-transparent"></div>
-
-    <div class="relative z-10 h-full flex flex-col justify-between px-6 lg:px-10 pt-[100px] pb-12 lg:pb-16 [text-shadow:0_2px_20px_rgba(15,13,10,0.65)]">
+  <section class="relative min-h-[100svh] w-full overflow-hidden bg-ink flex flex-col lg:flex-row">
+    {/* Nav-protection scrim — the image panel starts partway across the header,
+        so this keeps the (light-on-dark) nav text legible over it too. */}
+    <div class="hidden lg:block absolute top-0 inset-x-0 h-[140px] bg-gradient-to-b from-ink/80 to-transparent z-20 pointer-events-none"></div>
+    <div class="relative z-10 lg:w-3/5 flex flex-col justify-between px-6 lg:px-10 pt-20 lg:pt-[92px] pb-8 lg:pb-10">
       <div class="type-eyebrow text-background/70">Print &amp; Packaging House — Worldwide</div>
 
-      <div class="max-w-4xl">
+      <div class="max-w-3xl">
         <HeadlineReveal
           as="h1"
           class="type-hero text-background"
@@ -36,7 +28,7 @@ import { processStages, principles } from '@/data/process'
           lines={['WHERE', '*IDEAS*', 'TAKE FORM.']}
         />
 
-        <div class="pt-8 max-w-xl space-y-4">
+        <div class="pt-6 max-w-xl space-y-3">
           <p class="text-lg text-background/90 leading-relaxed">
             Hannah Pixels is a print and packaging house creating considered physical experiences for brands across the world.
           </p>
@@ -45,7 +37,7 @@ import { processStages, principles } from '@/data/process'
           </p>
         </div>
 
-        <div class="pt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <div class="pt-6 flex flex-wrap items-center gap-x-8 gap-y-4">
           <a
             href="/capabilities"
             class="btn-lift type-label bg-background text-ink px-6 py-3.5 hover:bg-accent-quiet"
@@ -60,6 +52,18 @@ import { processStages, principles } from '@/data/process'
           </a>
         </div>
       </div>
+    </div>
+
+    <div class="relative lg:w-2/5 min-h-[46vh] lg:min-h-0">
+      <img
+        src="/images/hero-sage-boxes.jpg"
+        alt="Luxury sage green presentation boxes with gold foil emblem"
+        class="absolute inset-0 w-full h-full object-cover"
+        style="object-position: center;"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-ink/25 via-transparent to-transparent"></div>
     </div>
   </section>
 

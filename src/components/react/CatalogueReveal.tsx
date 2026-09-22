@@ -21,6 +21,21 @@ const getHoverCapable = () => window.matchMedia('(hover: hover) and (pointer: fi
 // Assume hover-capable during SSR/pre-hydration — matches the prior (desktop-only) behavior until corrected client-side.
 const getHoverCapableServer = () => true
 
+function formatTitle(title: string) {
+  if (title.includes('&')) {
+    const parts = title.split(/\s*&\s*/)
+    if (parts.length === 2) {
+      return (
+        <>
+          <span className="inline-block whitespace-nowrap">{parts[0]}&nbsp;&amp;</span>{' '}
+          <span className="inline-block">{parts[1]}</span>
+        </>
+      )
+    }
+  }
+  return title
+}
+
 export default function CatalogueReveal({ items }: { items: Item[] }) {
   const [hovered, setHovered] = useState<number | null>(null)
   // Devices with no real pointer (touch) get an always-visible thumbnail
@@ -57,10 +72,10 @@ export default function CatalogueReveal({ items }: { items: Item[] }) {
 
             {/* Title: 2-line stacked editorial */}
             <h3
-              className="font-serif text-3xl sm:text-5xl md:text-6xl font-light text-foreground transition-colors duration-300 leading-[0.96] max-w-[200px] sm:max-w-[240px] md:max-w-[280px] flex-shrink-0"
+              className="font-serif text-3xl sm:text-5xl md:text-6xl font-light text-foreground transition-colors duration-300 leading-[0.96] max-w-[240px] sm:max-w-[340px] md:max-w-[420px] flex-shrink-0"
               style={{ color: isHovered ? accent : undefined }}
             >
-              {item.title}
+              {formatTitle(item.title)}
             </h3>
           </div>
 

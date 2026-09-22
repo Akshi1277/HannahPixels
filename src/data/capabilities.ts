@@ -53,7 +53,7 @@ export const capabilities: Capability[] = [
   {
     num: '04',
     slug: 'chocolate-confectionery',
-    title: 'Chocolate & Confectionery',
+    title: 'Chocolate & Confectionery',
     summary: 'Packaging that makes indulgence part of the experience.',
     items: ['Chocolate Boxes', 'Confectionery Packaging', 'Gift Boxes', 'Premium Food Packaging', 'Seasonal Packaging', 'Bespoke Collections'],
     image: '/images/packaging-chocolate-box.jpg',
