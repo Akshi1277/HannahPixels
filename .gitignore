@@ -35,3 +35,6 @@ __pycache__/
 .agents/
 .agents/**
 skills-lock.json
+
+# Local design-tool runtime state (dev-server pid/port/token) — never commit
+.impeccable/live/
