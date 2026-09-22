@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import HeadlineReveal from '@/components/HeadlineReveal.astro'
 import ContactForm from '@/components/react/ContactForm'
-import { CONTACT_EMAIL, PHONE_DISPLAY } from '@/lib/contact'
+import { CONTACT_EMAIL, PHONE_DISPLAY, PHONE_TEL } from '@/lib/contact'
 ---
 
 <BaseLayout
@@ -34,7 +34,9 @@ import { CONTACT_EMAIL, PHONE_DISPLAY } from '@/lib/contact'
         </div>
         <div class="space-y-3">
           <h2 class="type-label text-muted-foreground">Phone</h2>
-          <p class="font-serif text-2xl text-foreground/50 italic">{PHONE_DISPLAY}</p>
+          <a href={`tel:${PHONE_TEL}`} class="font-serif text-2xl text-foreground hover:text-accent transition-colors block">
+            {PHONE_DISPLAY}
+          </a>
         </div>
         <div class="space-y-3">
           <h2 class="type-label text-muted-foreground">Worldwide Enquiries</h2>
